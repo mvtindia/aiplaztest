@@ -1,0 +1,543 @@
+[20-Feb-2016 05:57:24 Etc/GMT] PHP Fatal error:  Call to undefined function inclued_once() in /home/vismaadlabs/public_html/bookmyspace/lib/header.php on line 1
+[20-Feb-2016 05:57:30 Etc/GMT] PHP Fatal error:  Call to undefined function inclued_once() in /home/vismaadlabs/public_html/bookmyspace/lib/header.php on line 1
+[20-Feb-2016 05:57:32 Etc/GMT] PHP Fatal error:  Call to undefined function inclued_once() in /home/vismaadlabs/public_html/bookmyspace/lib/header.php on line 1
+[20-Feb-2016 05:57:36 Etc/GMT] PHP Fatal error:  Call to undefined function inclued_once() in /home/vismaadlabs/public_html/bookmyspace/lib/header.php on line 1
+[20-Feb-2016 05:58:11 Etc/GMT] PHP Fatal error:  Call to undefined function inclued_once() in /home/vismaadlabs/public_html/bookmyspace/lib/header.php on line 1
+[20-Feb-2016 05:58:14 Etc/GMT] PHP Fatal error:  Call to undefined function inclued_once() in /home/vismaadlabs/public_html/bookmyspace/lib/header.php on line 1
+[20-Feb-2016 05:58:16 Etc/GMT] PHP Fatal error:  Call to undefined function inclued_once() in /home/vismaadlabs/public_html/bookmyspace/lib/header.php on line 1
+[20-Feb-2016 05:58:28 Etc/GMT] PHP Fatal error:  Call to undefined function inclued_once() in /home/vismaadlabs/public_html/bookmyspace/lib/header.php on line 1
+[20-Feb-2016 05:59:11 Etc/GMT] PHP Fatal error:  Call to undefined function inclued_once() in /home/vismaadlabs/public_html/bookmyspace/lib/header.php on line 1
+[20-Feb-2016 05:59:19 Etc/GMT] PHP Fatal error:  Call to undefined function inclued_once() in /home/vismaadlabs/public_html/bookmyspace/lib/header.php on line 1
+[20-Feb-2016 05:59:19 Etc/GMT] PHP Fatal error:  Call to undefined function inclued_once() in /home/vismaadlabs/public_html/bookmyspace/lib/header.php on line 1
+[20-Feb-2016 12:18:54 Etc/GMT] PHP Parse error:  syntax error, unexpected 'here' (T_STRING) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 111
+[20-Feb-2016 12:18:58 Etc/GMT] PHP Parse error:  syntax error, unexpected 'here' (T_STRING) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 111
+[20-Feb-2016 12:18:59 Etc/GMT] PHP Parse error:  syntax error, unexpected 'here' (T_STRING) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 111
+[20-Feb-2016 12:20:22 Etc/GMT] PHP Parse error:  syntax error, unexpected '.' in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 101
+[20-Feb-2016 12:21:40 Etc/GMT] PHP Parse error:  syntax error, unexpected '.' in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 97
+[20-Feb-2016 12:23:00 Etc/GMT] PHP Parse error:  syntax error, unexpected '.' in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 97
+[20-Feb-2016 12:23:09 Etc/GMT] PHP Parse error:  syntax error, unexpected '.' in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 97
+[20-Feb-2016 12:48:22 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 110
+[20-Feb-2016 12:48:39 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 110
+[20-Feb-2016 12:48:40 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 110
+[20-Feb-2016 12:48:54 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 110
+[20-Feb-2016 12:49:09 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:49:11 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:49:20 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:51:58 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:01 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:08 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:09 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:09 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:09 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:10 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:11 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:11 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:11 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:11 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:13 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:14 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:14 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:14 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:15 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:15 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:15 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:15 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:16 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:16 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:16 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:16 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:16 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:17 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:17 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:17 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:18 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:18 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:18 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:19 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:29 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:30 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:52:31 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[20-Feb-2016 12:54:45 Etc/GMT] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 116
+[22-Feb-2016 06:19:52 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/index.php on line 530
+[22-Feb-2016 12:00:36 Etc/GMT] PHP Parse error:  syntax error, unexpected '<', expecting variable (T_VARIABLE) or '$' in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 194
+[26-Feb-2016 14:37:53 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) or '$' in /home/vismaadlabs/public_html/bookmyspace/index.php on line 490
+[27-Feb-2016 14:20:13 Etc/GMT] PHP Parse error:  syntax error, unexpected '"', expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 231
+[27-Feb-2016 14:21:22 Etc/GMT] PHP Parse error:  syntax error, unexpected '"', expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 231
+[27-Feb-2016 14:21:24 Etc/GMT] PHP Parse error:  syntax error, unexpected '"', expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 231
+[27-Feb-2016 14:21:25 Etc/GMT] PHP Parse error:  syntax error, unexpected '"', expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 231
+[27-Feb-2016 14:22:24 Etc/GMT] PHP Parse error:  syntax error, unexpected '"', expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 231
+[27-Feb-2016 14:22:58 Etc/GMT] PHP Parse error:  syntax error, unexpected '"', expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 231
+[27-Feb-2016 14:25:47 Etc/GMT] PHP Parse error:  syntax error, unexpected '"', expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 226
+[01-Mar-2016 06:31:27 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/list-place.php on line 443
+[03-Mar-2016 11:04:55 Etc/GMT] PHP Notice:  Use of undefined constant geoplugin_region - assumed 'geoplugin_region' in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 15
+[03-Mar-2016 11:04:55 Etc/GMT] PHP Notice:  Use of undefined constant geoplugin_countryCode - assumed 'geoplugin_countryCode' in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 17
+[03-Mar-2016 11:04:55 Etc/GMT] PHP Notice:  Use of undefined constant geoplugin_currencyCode - assumed 'geoplugin_currencyCode' in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 19
+[03-Mar-2016 11:04:55 Etc/GMT] PHP Notice:  Use of undefined constant geoplugin_currencySymbol - assumed 'geoplugin_currencySymbol' in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 21
+[03-Mar-2016 11:04:55 Etc/GMT] PHP Notice:  Use of undefined constant geoplugin_latitude - assumed 'geoplugin_latitude' in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 23
+[03-Mar-2016 11:04:55 Etc/GMT] PHP Notice:  Use of undefined constant geoplugin_longitude - assumed 'geoplugin_longitude' in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 25
+[03-Mar-2016 11:08:07 Etc/GMT] PHP Notice:  Use of undefined constant geoplugin_region - assumed 'geoplugin_region' in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 15
+[03-Mar-2016 11:08:07 Etc/GMT] PHP Notice:  Use of undefined constant geoplugin_countryCode - assumed 'geoplugin_countryCode' in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 17
+[03-Mar-2016 11:08:07 Etc/GMT] PHP Notice:  Use of undefined constant geoplugin_currencyCode - assumed 'geoplugin_currencyCode' in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 19
+[03-Mar-2016 11:08:07 Etc/GMT] PHP Notice:  Use of undefined constant geoplugin_currencySymbol - assumed 'geoplugin_currencySymbol' in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 21
+[03-Mar-2016 11:08:07 Etc/GMT] PHP Notice:  Use of undefined constant geoplugin_latitude - assumed 'geoplugin_latitude' in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 23
+[03-Mar-2016 11:08:07 Etc/GMT] PHP Notice:  Use of undefined constant geoplugin_longitude - assumed 'geoplugin_longitude' in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 25
+[03-Mar-2016 11:17:51 Etc/GMT] PHP Notice:  Use of undefined constant geoplugin_currencyCode - assumed 'geoplugin_currencyCode' in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 19
+[03-Mar-2016 11:17:51 Etc/GMT] PHP Notice:  Use of undefined constant geoplugin_currencySymbol - assumed 'geoplugin_currencySymbol' in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 21
+[03-Mar-2016 11:17:51 Etc/GMT] PHP Notice:  Use of undefined constant geoplugin_latitude - assumed 'geoplugin_latitude' in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 23
+[03-Mar-2016 11:17:51 Etc/GMT] PHP Notice:  Use of undefined constant geoplugin_longitude - assumed 'geoplugin_longitude' in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 25
+[03-Mar-2016 13:36:41 Etc/GMT] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 129
+[03-Mar-2016 13:38:06 Etc/GMT] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 129
+[03-Mar-2016 13:41:37 Etc/GMT] PHP Parse error:  syntax error, unexpected 'for' (T_FOR) in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 129
+[03-Mar-2016 13:41:39 Etc/GMT] PHP Parse error:  syntax error, unexpected 'for' (T_FOR) in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 129
+[04-Mar-2016 14:26:27 Etc/GMT] PHP Parse error:  syntax error, unexpected 'm' (T_STRING), expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 146
+[04-Mar-2016 14:26:31 Etc/GMT] PHP Parse error:  syntax error, unexpected 'm' (T_STRING), expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 146
+[04-Mar-2016 14:26:32 Etc/GMT] PHP Parse error:  syntax error, unexpected 'm' (T_STRING), expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 146
+[04-Mar-2016 14:26:34 Etc/GMT] PHP Parse error:  syntax error, unexpected 'm' (T_STRING), expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 146
+[04-Mar-2016 14:26:35 Etc/GMT] PHP Parse error:  syntax error, unexpected 'm' (T_STRING), expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 146
+[05-Mar-2016 06:28:30 Etc/GMT] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 9
+[05-Mar-2016 06:28:30 Etc/GMT] PHP Warning:  file_get_contents(http://www.geoplugin.net/php.gp?ip=112.196.66.202): failed to open stream: php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution in /home/vismaadlabs/public_html/bookmyspace/demo.php on line 9
+[07-Mar-2016 05:54:19 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 563
+[07-Mar-2016 06:27:53 Etc/GMT] PHP Parse error:  syntax error, unexpected ',' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 18
+[07-Mar-2016 06:27:55 Etc/GMT] PHP Parse error:  syntax error, unexpected ',' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 18
+[07-Mar-2016 06:28:15 Etc/GMT] PHP Parse error:  syntax error, unexpected ',' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 18
+[07-Mar-2016 06:28:53 Etc/GMT] PHP Parse error:  syntax error, unexpected ',' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 18
+[07-Mar-2016 06:29:46 Etc/GMT] PHP Parse error:  syntax error, unexpected ',' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 18
+[07-Mar-2016 06:30:04 Etc/GMT] PHP Parse error:  syntax error, unexpected ',' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 18
+[07-Mar-2016 06:30:06 Etc/GMT] PHP Parse error:  syntax error, unexpected ',' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 18
+[07-Mar-2016 06:30:17 Etc/GMT] PHP Parse error:  syntax error, unexpected ',' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 18
+[07-Mar-2016 06:30:17 Etc/GMT] PHP Parse error:  syntax error, unexpected ',' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 18
+[07-Mar-2016 08:08:23 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 558
+[07-Mar-2016 11:20:31 Etc/GMT] PHP Parse error:  syntax error, unexpected 'header' (T_STRING), expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/list-place.php on line 610
+[07-Mar-2016 11:48:58 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 215
+[07-Mar-2016 11:49:00 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 215
+[07-Mar-2016 12:13:51 Etc/GMT] PHP Parse error:  syntax error, unexpected ';' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 245
+[07-Mar-2016 12:13:54 Etc/GMT] PHP Parse error:  syntax error, unexpected ';' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 245
+[08-Mar-2016 07:56:45 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 540
+[08-Mar-2016 09:09:53 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 684
+[08-Mar-2016 14:20:27 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 791
+[09-Mar-2016 05:15:27 Etc/GMT] PHP Parse error:  syntax error, unexpected '$_SESSION' (T_VARIABLE) in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 405
+[09-Mar-2016 05:22:54 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 479
+[09-Mar-2016 05:24:31 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 478
+[09-Mar-2016 05:26:28 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 478
+[09-Mar-2016 05:27:04 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 478
+[09-Mar-2016 06:47:57 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 477
+[09-Mar-2016 11:05:14 Etc/GMT] PHP Parse error:  syntax error, unexpected 'start' (T_STRING) in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 19
+[09-Mar-2016 11:05:17 Etc/GMT] PHP Parse error:  syntax error, unexpected 'start' (T_STRING) in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 19
+[09-Mar-2016 11:05:20 Etc/GMT] PHP Parse error:  syntax error, unexpected 'start' (T_STRING) in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 19
+[09-Mar-2016 11:05:22 Etc/GMT] PHP Parse error:  syntax error, unexpected 'start' (T_STRING) in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 19
+[09-Mar-2016 12:25:19 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 65
+[09-Mar-2016 12:25:21 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 65
+[09-Mar-2016 12:25:23 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 65
+[09-Mar-2016 12:32:35 Etc/GMT] PHP Parse error:  syntax error, unexpected '.' in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 66
+[09-Mar-2016 12:46:04 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/dashboard.php on line 280
+[09-Mar-2016 13:07:07 Etc/GMT] PHP Parse error:  syntax error, unexpected '$_POST' (T_VARIABLE) in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 229
+[09-Mar-2016 13:31:01 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/dashboard.php on line 194
+[09-Mar-2016 13:32:35 Etc/GMT] PHP Parse error:  syntax error, unexpected '$_POST' (T_VARIABLE) in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 229
+[09-Mar-2016 13:33:18 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/dashboard.php on line 194
+[09-Mar-2016 13:35:26 Etc/GMT] PHP Parse error:  syntax error, unexpected '$_POST' (T_VARIABLE) in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 229
+[09-Mar-2016 13:36:11 Etc/GMT] PHP Parse error:  syntax error, unexpected '$_POST' (T_VARIABLE) in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 229
+[09-Mar-2016 13:37:43 Etc/GMT] PHP Parse error:  syntax error, unexpected '''' (T_CONSTANT_ENCAPSED_STRING) in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 229
+[09-Mar-2016 13:37:58 Etc/GMT] PHP Parse error:  syntax error, unexpected '''' (T_CONSTANT_ENCAPSED_STRING) in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 229
+[10-Mar-2016 08:07:24 Etc/GMT] PHP Parse error:  syntax error, unexpected '$title' (T_VARIABLE), expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 19
+[10-Mar-2016 13:26:01 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 141
+[10-Mar-2016 13:26:03 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 141
+[11-Mar-2016 13:30:31 Etc/GMT] PHP Parse error:  syntax error, unexpected ';' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 88
+[12-Mar-2016 06:40:03 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 162
+[12-Mar-2016 06:40:05 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 162
+[12-Mar-2016 06:40:42 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 164
+[12-Mar-2016 06:40:45 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 164
+[12-Mar-2016 06:41:25 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 164
+[12-Mar-2016 06:41:28 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 164
+[12-Mar-2016 06:42:17 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 165
+[12-Mar-2016 06:42:19 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 165
+[12-Mar-2016 06:42:20 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 165
+[12-Mar-2016 06:44:08 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 165
+[12-Mar-2016 06:44:10 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 165
+[12-Mar-2016 06:46:01 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/index.php on line 367
+[12-Mar-2016 06:46:03 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/index.php on line 367
+[12-Mar-2016 06:46:05 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/index.php on line 367
+[12-Mar-2016 06:46:07 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/index.php on line 367
+[12-Mar-2016 06:49:07 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 165
+[12-Mar-2016 06:49:18 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 166
+[12-Mar-2016 06:49:35 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 166
+[12-Mar-2016 06:50:05 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 166
+[12-Mar-2016 06:50:10 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 166
+[12-Mar-2016 07:39:25 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 660
+[12-Mar-2016 07:39:27 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 660
+[12-Mar-2016 07:39:30 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 660
+[12-Mar-2016 07:39:42 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 660
+[12-Mar-2016 07:39:46 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 660
+[12-Mar-2016 07:40:45 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 649
+[12-Mar-2016 07:40:48 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 649
+[12-Mar-2016 07:44:01 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 648
+[12-Mar-2016 07:45:56 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 648
+[12-Mar-2016 07:46:13 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 648
+[12-Mar-2016 07:46:15 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 648
+[12-Mar-2016 13:18:49 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/eventenquiry.php on line 643
+[12-Mar-2016 13:48:37 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/index.php on line 68
+[12-Mar-2016 13:48:39 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/index.php on line 68
+[12-Mar-2016 13:48:56 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/index.php on line 68
+[12-Mar-2016 13:48:58 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/index.php on line 69
+[12-Mar-2016 13:49:01 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/index.php on line 69
+[12-Mar-2016 13:49:03 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/index.php on line 69
+[13-Mar-2016 02:43:04 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/index.php on line 551
+[13-Mar-2016 02:43:07 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/index.php on line 551
+[14-Mar-2016 07:01:39 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 518
+[14-Mar-2016 07:01:46 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 518
+[14-Mar-2016 07:04:00 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 302
+[14-Mar-2016 07:10:49 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 302
+[14-Mar-2016 07:32:06 Etc/GMT] PHP Parse error:  syntax error, unexpected 'step' (T_STRING), expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 332
+[14-Mar-2016 07:32:08 Etc/GMT] PHP Parse error:  syntax error, unexpected 'step' (T_STRING), expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 332
+[14-Mar-2016 07:32:42 Etc/GMT] PHP Parse error:  syntax error, unexpected 'step' (T_STRING), expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 332
+[14-Mar-2016 08:16:46 Etc/GMT] PHP Notice:  Undefined index: u_id in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 201
+[14-Mar-2016 08:16:46 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 328
+[14-Mar-2016 08:16:46 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 339
+[14-Mar-2016 08:16:46 Etc/GMT] PHP Notice:  Undefined index: u_id in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 436
+[14-Mar-2016 08:16:50 Etc/GMT] PHP Notice:  Undefined index: pervalues in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 27
+[14-Mar-2016 08:17:09 Etc/GMT] PHP Notice:  Undefined index: u_id in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 201
+[14-Mar-2016 08:17:09 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 328
+[14-Mar-2016 08:17:09 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 339
+[14-Mar-2016 08:17:09 Etc/GMT] PHP Notice:  Undefined index: u_id in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 436
+[14-Mar-2016 08:17:11 Etc/GMT] PHP Notice:  Undefined index: pervalues in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 27
+[14-Mar-2016 08:17:44 Etc/GMT] PHP Notice:  Undefined index: u_id in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 201
+[14-Mar-2016 08:17:44 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 328
+[14-Mar-2016 08:17:44 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 339
+[14-Mar-2016 08:17:44 Etc/GMT] PHP Notice:  Undefined index: u_id in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 436
+[14-Mar-2016 08:17:49 Etc/GMT] PHP Notice:  Undefined index: pervalues in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 27
+[14-Mar-2016 08:18:30 Etc/GMT] PHP Notice:  Undefined index: u_id in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 201
+[14-Mar-2016 08:18:30 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 328
+[14-Mar-2016 08:18:30 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 339
+[14-Mar-2016 08:18:30 Etc/GMT] PHP Notice:  Undefined index: u_id in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 436
+[14-Mar-2016 08:18:31 Etc/GMT] PHP Notice:  Undefined index: pervalues in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 27
+[14-Mar-2016 08:19:04 Etc/GMT] PHP Notice:  Undefined index: u_id in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 201
+[14-Mar-2016 08:19:04 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 328
+[14-Mar-2016 08:19:04 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 339
+[14-Mar-2016 08:19:04 Etc/GMT] PHP Notice:  Undefined index: u_id in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 436
+[14-Mar-2016 08:19:06 Etc/GMT] PHP Notice:  Undefined index: pervalues in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 27
+[14-Mar-2016 08:19:37 Etc/GMT] PHP Notice:  Undefined index: u_id in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 201
+[14-Mar-2016 08:19:37 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 328
+[14-Mar-2016 08:19:37 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 339
+[14-Mar-2016 08:19:37 Etc/GMT] PHP Notice:  Undefined index: u_id in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 436
+[14-Mar-2016 08:19:43 Etc/GMT] PHP Notice:  Undefined index: pervalues in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 27
+[14-Mar-2016 10:52:31 Etc/GMT] PHP Parse error:  syntax error, unexpected '/' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 227
+[14-Mar-2016 11:20:26 Etc/GMT] PHP Parse error:  syntax error, unexpected ';' in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 172
+[14-Mar-2016 11:31:31 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 515
+[14-Mar-2016 11:31:37 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 515
+[14-Mar-2016 11:31:53 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 515
+[14-Mar-2016 11:38:08 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 515
+[14-Mar-2016 11:38:27 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 515
+[14-Mar-2016 11:38:31 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 515
+[14-Mar-2016 11:52:03 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 513
+[14-Mar-2016 11:52:06 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 513
+[14-Mar-2016 11:52:07 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 513
+[14-Mar-2016 11:52:09 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 513
+[14-Mar-2016 11:52:13 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 513
+[14-Mar-2016 11:52:19 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 513
+[14-Mar-2016 11:52:22 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 513
+[14-Mar-2016 11:53:47 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 513
+[14-Mar-2016 11:53:51 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 513
+[14-Mar-2016 11:54:39 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 513
+[14-Mar-2016 11:54:42 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 513
+[14-Mar-2016 11:54:44 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 513
+[14-Mar-2016 11:55:53 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 513
+[14-Mar-2016 11:55:56 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 513
+[14-Mar-2016 11:56:18 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 513
+[14-Mar-2016 11:56:22 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 513
+[14-Mar-2016 12:41:27 Etc/GMT] PHP Parse error:  syntax error, unexpected ''</span>/-</h4>' (T_ENCAPSED_AND_WHITESPACE) in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 546
+[14-Mar-2016 12:50:53 Etc/GMT] PHP Parse error:  syntax error, unexpected ''</span>/-</h4>' (T_ENCAPSED_AND_WHITESPACE) in /home/vismaadlabs/public_html/bookmyspace/forms2.php on line 544
+[15-Mar-2016 07:13:09 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 381
+[15-Mar-2016 07:24:16 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 519
+[15-Mar-2016 07:50:34 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 14
+[15-Mar-2016 08:09:26 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 353
+[15-Mar-2016 08:09:30 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 353
+[15-Mar-2016 08:11:17 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 828
+[15-Mar-2016 08:11:20 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 828
+[15-Mar-2016 08:12:29 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 354
+[15-Mar-2016 08:12:31 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 354
+[15-Mar-2016 08:12:32 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 354
+[15-Mar-2016 08:41:13 Etc/GMT] PHP Parse error:  syntax error, unexpected ')' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 21
+[15-Mar-2016 10:46:29 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 478
+[15-Mar-2016 10:54:30 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/booking-form.php on line 5
+[15-Mar-2016 10:54:32 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/booking-form.php on line 5
+[15-Mar-2016 10:55:21 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/booking-form.php on line 5
+[16-Mar-2016 06:05:51 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 376
+[16-Mar-2016 06:05:56 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 376
+[16-Mar-2016 06:06:11 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 376
+[16-Mar-2016 06:06:38 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 376
+[16-Mar-2016 06:06:41 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 376
+[16-Mar-2016 06:06:41 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 376
+[16-Mar-2016 06:06:51 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 376
+[16-Mar-2016 06:06:53 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 376
+[16-Mar-2016 06:59:50 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 312
+[16-Mar-2016 06:59:54 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 312
+[16-Mar-2016 06:59:56 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 312
+[16-Mar-2016 07:42:39 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 493
+[16-Mar-2016 07:42:50 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 493
+[16-Mar-2016 08:20:46 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/paypal_status.php on line 5
+[16-Mar-2016 08:20:51 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/paypal_status.php on line 5
+[16-Mar-2016 08:21:56 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/paypal_status.php on line 5
+[16-Mar-2016 08:21:58 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/paypal_status.php on line 5
+[16-Mar-2016 08:22:22 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/paypal_status.php on line 5
+[16-Mar-2016 08:23:07 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/paypal_status.php on line 5
+[16-Mar-2016 09:46:32 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 868
+[16-Mar-2016 10:18:50 Etc/GMT] PHP Parse error:  syntax error, unexpected 'while' (T_WHILE) in /home/vismaadlabs/public_html/bookmyspace/list-service1.php on line 56
+[16-Mar-2016 10:24:44 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/list-service1.php on line 73
+[16-Mar-2016 10:24:46 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/list-service1.php on line 73
+[16-Mar-2016 10:25:16 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/list-service1.php on line 73
+[16-Mar-2016 10:25:18 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/list-service1.php on line 73
+[16-Mar-2016 10:25:51 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/list-service1.php on line 74
+[16-Mar-2016 10:25:54 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/list-service1.php on line 74
+[16-Mar-2016 10:26:19 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/list-service1.php on line 74
+[16-Mar-2016 10:26:20 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/list-service1.php on line 74
+[16-Mar-2016 10:27:16 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/list-service1.php on line 75
+[16-Mar-2016 11:16:32 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 864
+[16-Mar-2016 11:17:02 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 864
+[16-Mar-2016 11:17:46 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 864
+[16-Mar-2016 11:18:11 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 861
+[16-Mar-2016 11:18:29 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 861
+[16-Mar-2016 11:27:51 Etc/GMT] PHP Parse error:  syntax error, unexpected '$currency' (T_VARIABLE), expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/actions.php on line 853
+[16-Mar-2016 12:07:28 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/new-actions.php on line 55
+[16-Mar-2016 12:07:31 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/new-actions.php on line 55
+[17-Mar-2016 07:09:11 Etc/GMT] PHP Fatal error:  Call to undefined function extact() in /home/vismaadlabs/public_html/bookmyspace/getlat.php on line 12
+[17-Mar-2016 07:09:17 Etc/GMT] PHP Fatal error:  Call to undefined function extact() in /home/vismaadlabs/public_html/bookmyspace/getlat.php on line 12
+[17-Mar-2016 07:09:43 Etc/GMT] PHP Fatal error:  Call to undefined function extact() in /home/vismaadlabs/public_html/bookmyspace/getlat.php on line 12
+[17-Mar-2016 07:09:49 Etc/GMT] PHP Fatal error:  Call to undefined function extact() in /home/vismaadlabs/public_html/bookmyspace/getlat.php on line 12
+[17-Mar-2016 07:11:22 Etc/GMT] PHP Fatal error:  Call to undefined function extact() in /home/vismaadlabs/public_html/bookmyspace/getlat.php on line 12
+[17-Mar-2016 07:11:30 Etc/GMT] PHP Fatal error:  Call to undefined function extact() in /home/vismaadlabs/public_html/bookmyspace/getlat.php on line 12
+[17-Mar-2016 07:12:50 Etc/GMT] PHP Fatal error:  Call to undefined function extact() in /home/vismaadlabs/public_html/bookmyspace/getlat.php on line 12
+[17-Mar-2016 07:12:56 Etc/GMT] PHP Fatal error:  Call to undefined function extact() in /home/vismaadlabs/public_html/bookmyspace/getlat.php on line 12
+[17-Mar-2016 07:13:02 Etc/GMT] PHP Fatal error:  Call to undefined function extact() in /home/vismaadlabs/public_html/bookmyspace/getlat.php on line 12
+[17-Mar-2016 07:13:23 Etc/GMT] PHP Fatal error:  Call to undefined function extact() in /home/vismaadlabs/public_html/bookmyspace/getlat.php on line 12
+[17-Mar-2016 07:14:45 Etc/GMT] PHP Fatal error:  Call to undefined function extact() in /home/vismaadlabs/public_html/bookmyspace/getlat.php on line 12
+[17-Mar-2016 07:14:52 Etc/GMT] PHP Fatal error:  Call to undefined function extact() in /home/vismaadlabs/public_html/bookmyspace/getlat.php on line 12
+[17-Mar-2016 07:15:00 Etc/GMT] PHP Fatal error:  Call to undefined function extact() in /home/vismaadlabs/public_html/bookmyspace/getlat.php on line 12
+[17-Mar-2016 07:15:14 Etc/GMT] PHP Fatal error:  Call to undefined function extact() in /home/vismaadlabs/public_html/bookmyspace/getlat.php on line 12
+[17-Mar-2016 07:15:18 Etc/GMT] PHP Fatal error:  Call to undefined function extact() in /home/vismaadlabs/public_html/bookmyspace/getlat.php on line 12
+[17-Mar-2016 10:10:43 Etc/GMT] PHP Parse error:  syntax error, unexpected ''">' (T_ENCAPSED_AND_WHITESPACE) in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 400
+[17-Mar-2016 12:20:38 Etc/GMT] PHP Parse error:  syntax error, unexpected ';' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 328
+[17-Mar-2016 12:20:57 Etc/GMT] PHP Parse error:  syntax error, unexpected ';' in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 328
+[18-Mar-2016 07:14:05 Etc/GMT] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 374
+[18-Mar-2016 07:14:10 Etc/GMT] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 374
+[18-Mar-2016 07:14:13 Etc/GMT] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 374
+[18-Mar-2016 07:14:25 Etc/GMT] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 374
+[18-Mar-2016 07:24:32 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 189
+[18-Mar-2016 07:24:40 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 189
+[18-Mar-2016 07:24:50 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 189
+[18-Mar-2016 07:39:30 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 191
+[18-Mar-2016 07:39:36 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 191
+[18-Mar-2016 07:39:40 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 191
+[18-Mar-2016 07:39:44 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 191
+[18-Mar-2016 07:40:09 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 196
+[18-Mar-2016 07:40:12 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 196
+[18-Mar-2016 07:42:19 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 196
+[18-Mar-2016 07:42:22 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 196
+[18-Mar-2016 07:46:23 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 194
+[18-Mar-2016 07:46:29 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 194
+[18-Mar-2016 07:46:35 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/vismaadlabs/public_html/bookmyspace/edit-place.php on line 194
+[18-Mar-2016 10:00:13 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 497
+[18-Mar-2016 10:00:19 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 497
+[18-Mar-2016 15:22:38 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 12
+[18-Mar-2016 15:22:44 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 12
+[18-Mar-2016 15:22:52 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 12
+[18-Mar-2016 15:23:44 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 12
+[18-Mar-2016 15:23:48 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 374
+[19-Mar-2016 08:09:02 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 656
+[19-Mar-2016 12:59:22 Etc/GMT] PHP Parse error:  syntax error, unexpected '<' in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 311
+[19-Mar-2016 12:59:28 Etc/GMT] PHP Parse error:  syntax error, unexpected '<' in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 311
+[19-Mar-2016 12:59:30 Etc/GMT] PHP Parse error:  syntax error, unexpected '<' in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 311
+[19-Mar-2016 12:59:34 Etc/GMT] PHP Parse error:  syntax error, unexpected '<' in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 311
+[19-Mar-2016 13:00:57 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 699
+[19-Mar-2016 13:01:00 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 699
+[21-Mar-2016 07:14:42 Etc/GMT] PHP Parse error:  syntax error, unexpected '","' (T_CONSTANT_ENCAPSED_STRING) in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 211
+[21-Mar-2016 07:14:49 Etc/GMT] PHP Parse error:  syntax error, unexpected '","' (T_CONSTANT_ENCAPSED_STRING) in /home/vismaadlabs/public_html/bookmyspace/forms.php on line 211
+[21-Mar-2016 12:47:02 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 386
+[21-Mar-2016 12:47:04 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 386
+[21-Mar-2016 12:47:22 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 386
+[21-Mar-2016 12:47:24 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/searchlst.php on line 386
+[21-Mar-2016 13:13:56 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/dashboard.php on line 703
+[21-Mar-2016 13:13:59 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/dashboard.php on line 703
+[21-Mar-2016 13:14:26 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/vismaadlabs/public_html/bookmyspace/dashboard.php on line 703
+[21-Mar-2016 13:41:30 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/dashboard.php on line 634
+[21-Mar-2016 13:41:33 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/dashboard.php on line 634
+[21-Mar-2016 13:41:55 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/dashboard.php on line 633
+[21-Mar-2016 13:41:56 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/dashboard.php on line 633
+[21-Mar-2016 13:41:58 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/vismaadlabs/public_html/bookmyspace/dashboard.php on line 633
+[22-Mar-2016 07:29:39 Etc/GMT] PHP Parse error:  syntax error, unexpected '<' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 305
+[22-Mar-2016 07:30:14 Etc/GMT] PHP Parse error:  syntax error, unexpected '<' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 305
+[22-Mar-2016 07:30:16 Etc/GMT] PHP Parse error:  syntax error, unexpected '<' in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 305
+[22-Mar-2016 07:30:33 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 551
+[22-Mar-2016 07:30:36 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 551
+[22-Mar-2016 07:34:20 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/vismaadlabs/public_html/bookmyspace/demo-service.php on line 550
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  include(../connect.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  include(../connect.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  include(): Failed opening '../connect.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  include(mainheader.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  include(mainheader.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  include(): Failed opening 'mainheader.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  include(sidebar.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  include(sidebar.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  include(): Failed opening 'header.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Notice:  Undefined variable: connect in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 27
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 27
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 28
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Notice:  Undefined variable: connect in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 108
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 108
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 109
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  include(footer.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  include(footer.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:29:18 Etc/GMT] PHP Warning:  include(): Failed opening 'footer.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  include(../connect.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  include(../connect.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  include(): Failed opening '../connect.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  include(mainheader.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  include(mainheader.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  include(): Failed opening 'mainheader.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  include(sidebar.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  include(sidebar.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  include(): Failed opening 'header.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Notice:  Undefined variable: connect in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 27
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 27
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 28
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Notice:  Undefined variable: connect in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 108
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 108
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 109
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  include(footer.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  include(footer.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:30:01 Etc/GMT] PHP Warning:  include(): Failed opening 'footer.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  include(../connect.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  include(../connect.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  include(): Failed opening '../connect.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  include(mainheader.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  include(mainheader.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  include(): Failed opening 'mainheader.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  include(sidebar.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  include(sidebar.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  include(): Failed opening 'header.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Notice:  Undefined variable: connect in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 27
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 27
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 28
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Notice:  Undefined variable: connect in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 108
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 108
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 109
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  include(footer.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  include(footer.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:30:27 Etc/GMT] PHP Warning:  include(): Failed opening 'footer.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  include(../connect.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  include(../connect.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  include(): Failed opening '../connect.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  include(mainheader.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  include(mainheader.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  include(): Failed opening 'mainheader.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  include(sidebar.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  include(sidebar.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  include(): Failed opening 'header.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Notice:  Undefined variable: connect in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 27
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 27
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 28
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Notice:  Undefined variable: connect in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 108
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 108
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 109
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  include(footer.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  include(footer.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:30:44 Etc/GMT] PHP Warning:  include(): Failed opening 'footer.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  include(../connect.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  include(../connect.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  include(): Failed opening '../connect.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  include(mainheader.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  include(mainheader.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  include(): Failed opening 'mainheader.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  include(sidebar.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  include(sidebar.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  include(): Failed opening 'header.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Notice:  Undefined variable: connect in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 27
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 27
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 28
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Notice:  Undefined variable: connect in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 108
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 108
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 109
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  include(footer.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  include(footer.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:31:42 Etc/GMT] PHP Warning:  include(): Failed opening 'footer.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  include(../connect.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  include(../connect.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  include(): Failed opening '../connect.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  include(mainheader.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  include(mainheader.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  include(): Failed opening 'mainheader.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  include(sidebar.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  include(sidebar.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  include(): Failed opening 'header.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Notice:  Undefined variable: connect in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 27
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 27
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 28
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Notice:  Undefined variable: connect in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 108
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 108
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 109
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  include(footer.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  include(footer.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:31:44 Etc/GMT] PHP Warning:  include(): Failed opening 'footer.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  include(../connect.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  include(../connect.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  include(): Failed opening '../connect.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  include(mainheader.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  include(mainheader.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  include(): Failed opening 'mainheader.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  include(sidebar.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  include(sidebar.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  include(): Failed opening 'header.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Notice:  Undefined variable: connect in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 27
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 27
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 28
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Notice:  Undefined variable: connect in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 108
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 108
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 109
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  include(footer.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  include(footer.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:32:29 Etc/GMT] PHP Warning:  include(): Failed opening 'footer.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 131
+[22-Mar-2016 13:33:42 Etc/GMT] PHP Parse error:  syntax error, unexpected '$query' (T_VARIABLE), expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 28
+[22-Mar-2016 13:33:44 Etc/GMT] PHP Parse error:  syntax error, unexpected '$query' (T_VARIABLE), expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 28
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  include(../connect.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  include(../connect.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  include(): Failed opening '../connect.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  include(mainheader.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  include(mainheader.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  include(): Failed opening 'mainheader.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 1
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  include(sidebar.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  include(sidebar.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 7
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  include(): Failed opening 'header.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 10
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Notice:  Undefined variable: connect in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 28
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 28
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 29
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Notice:  Undefined variable: connect in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 109
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 109
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 110
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  include(footer.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 132
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  include(footer.php): failed to open stream: No such file or directory in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 132
+[22-Mar-2016 13:34:02 Etc/GMT] PHP Warning:  include(): Failed opening 'footer.php' for inclusion (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/vismaadlabs/public_html/bookmyspace/viewenquiry.php on line 132
+[28-Mar-2016 08:22:44 Etc/GMT] PHP Parse error:  syntax error, unexpected '$r19' (T_VARIABLE), expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/dashboard.php on line 207
+[28-Mar-2016 08:22:47 Etc/GMT] PHP Parse error:  syntax error, unexpected '$r19' (T_VARIABLE), expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/dashboard.php on line 207
+[28-Mar-2016 10:49:52 Etc/GMT] PHP Parse error:  syntax error, unexpected '$row_msg' (T_VARIABLE), expecting ',' or ';' in /home/vismaadlabs/public_html/bookmyspace/demo-venue.php on line 408
