@@ -338,7 +338,7 @@ if($match=mysqli_fetch_array($query)){
  <div class="col-lg-10 col-sm-10 col-md-10 col-xs10">
  
 <span class="had-2nd">It's safe</span>
-<p>Your property is covered for up to €500,000.</p>
+<p>We provide a trusted environment.</p>
  </div>
 <div class="clearfix"></div>
 </div>

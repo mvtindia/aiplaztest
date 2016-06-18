@@ -150,7 +150,7 @@ button.multiselect.dropdown-toggle.btn.btn-default
                            $text=str_ireplace('<p>','',$content);
                            $text=str_ireplace('</p>','',$text);
                             ?>
-<iframe class="mg-top10" width="100%" height="415" src="<?php echo $text; ?>" frameborder="0" allowfullscreen></iframe>
+<!--<iframe class="mg-top10" width="100%" height="415" src="<?php echo $text; ?>" frameborder="0" allowfullscreen></iframe>-->
  
   </div>
   </div>
@@ -166,6 +166,7 @@ button.multiselect.dropdown-toggle.btn.btn-default
 
 
 <!--===================About Us Section==========================-->
+<!--
 <div class="container mg-top50">
 <div class="row">
 <div class="col-md-12 col-lg-12 colsm-12 col-xs-12 about-text">
@@ -191,6 +192,7 @@ button.multiselect.dropdown-toggle.btn.btn-default
   </div>
   </div>
   </div>
+-->
 
 <!--===================About Us close==========================-->
 
@@ -277,7 +279,7 @@ if($flag==1){
 <?php }//while ?>
 <div class="col-md-12 col-sm-12 col-xs-12 text-center">
 <a href="events.php" style="">
-<button class="btn-5 bord mg-top10" type="button">View More</button></a>
+<!--<button class="btn-5 bord mg-top10" type="button">View More</button></a>-->
 </div>
 </div>
 <!--======================Services Block Ends=================================-->

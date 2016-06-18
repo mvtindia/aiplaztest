@@ -59,7 +59,7 @@ include('connect.php');?>
   
      <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="space">Postal Code*</label>
-    <input type="text" class="form-control" id="price" placeholder="Contact" name="postal" required>
+    <input type="text" class="form-control" id="price" placeholder="Postal Code" name="postal" required>
   </div>
   
   

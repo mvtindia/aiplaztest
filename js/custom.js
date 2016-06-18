@@ -532,7 +532,7 @@ $('.unread').click(function(){
 });
 
 
-$('.phone').mask('9999-999999');
+$('.phone').mask('(999) 999 9999');
 
 	  /*==============Smooth Scrolling JS==============*/
 
