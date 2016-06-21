@@ -287,7 +287,8 @@ else
                 <div class="col-sm-4">
                     <h3 class="subtitle"><strong>Useful Links</strong></h3>
                     <ul class="site-links">
-                        <li><a href="#">Services</a></li>
+                        <li><a href="aboutus.php">About US</a></li>
+<!--
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">Rooms</a></li>
                         <li><a href="#">Facilities</a></li>
@@ -296,15 +297,18 @@ else
                         <li><a href="#">Special Offer</a></li>
                         <li><a href="#">FAQs</a></li>
                         <li><a href="#">Under Construction</a></li>
+-->
                     </ul>
                 </div>
                 <div class="col-sm-4 text-center">
-                    <h3 class="subtitle wide">Book <strong>My</strong> Space</h3>
+                    <h3 class="subtitle wide">Aiplaz</h3>
                     <div class="moon-divider small"></div>
+<!--
                     <p>24-26-28 Southern Str, Melbourne, VIC</p>
                     <p>(+333) - 333 - 333333   —   (+333) - 333 - 33333</p>
-                    <p><a href="#">info@bookmyspace.com</a></p>
-                    <p><a href="#">http://bookmyspace.com</a></p>
+-->
+                    <p>Sales -<a href="#">sales@aiPlaz.com</a></p>
+                    <p>Support - <a href="#">support@aiPlaz.com </a></p>
                     <div class="moon-divider small"></div>
                     <div class="social-links">
                         <a class="social-link" href="#"><i class="fa fa-facebook"></i><i class="fa fa-facebook"></i></a>
@@ -317,7 +321,7 @@ else
                 </div>
                 <div class="col-sm-4 text-right">
                     <h3 class="subtitle"><strong>Newsletter</strong></h3>
-                    <p>Cras dignissim, velit ut placerat pulvinar, metus justo ultricies lacus, ut consectetur neque augue maximus lectus. Phasellus non placerat nibh.</p>
+<!--                    <p>Cras dignissim, velit ut placerat pulvinar, metus justo ultricies lacus, ut consectetur neque augue maximus lectus. Phasellus non placerat nibh.</p>-->
                     <div class="inputs">
                         <div class="input-wrapper"><input type="text" id="email" name="email" placeholder="Enter your email here"></div>
                         <button><i class="fa fa-arrow-right"></i></button>

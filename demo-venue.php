@@ -1,5 +1,5 @@
 <?php include_once('connect.php');
-if(isset($_REQUEST['placeid'])) {
+if (isset($_REQUEST['placeid'])) {
 ?>
 <!doctype html>
 <html>
