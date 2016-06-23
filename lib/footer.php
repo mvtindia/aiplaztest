@@ -264,6 +264,13 @@ else
   <button type="submit" name="signup" id="signup" class="btn-4">Signup</button>
   <button type="button" class="btn-back">Back</button>
   </div>
+      
+<div>
+<p> By signing up, you agree to our <a href="terms.php" target="_blank">Terms And Conditions</a> </p>
+    
+      
+</div>
+      
   </form>
   </div>
   
