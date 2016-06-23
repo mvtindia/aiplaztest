@@ -276,7 +276,7 @@ else
       </div>
     </div>
         <br>      
-<div>
+<div class="container">
 <p> By signing up, you agree to our <a href="lib/terms.php" target="_blank">Terms And Conditions</a> </p>
     
       
