@@ -266,7 +266,7 @@ else
   </div>
       
 <div>
-<p> By signing up, you agree to our <a href="terms.php" target="_blank">Terms And Conditions</a> </p>
+<p> By signing up, you agree to our <a href="lib/terms.php" target="_blank">Terms And Conditions</a> </p>
     
       
 </div>
