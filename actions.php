@@ -352,8 +352,8 @@ echo "Test begin";
 echo "currency='.$currency.', p_p_n='$p_p_n', p_p_h='.$p_p_h.', w_p_p_n='.$w_p_p_n.' where place_id='.$placeid.' ";
 
 
-// $query=mysqli_query($connect,'update `place` set 	`currency`="'.$currency.'" , `p_p_n`='.$p_p_n.', `p_p_h`='.$p_p_h.', `w_p_p_n`='.$w_p_p_n.' where `place_id`='.$placeid.'');
-$query=mysqli_query($connect,'update place set  currency="RS" , p_p_n="1", p_p_h="1", w_p_p_n="1" where place_id='.$placeid.'');
+ $query=mysqli_query($connect,'update `place` set 	`currency`="'.$currency.'" , `p_p_n`='.$p_p_n.', `p_p_h`='.$p_p_h.', `w_p_p_n`='.$w_p_p_n.' where `place_id`='.$placeid.'');
+//$query=mysqli_query($connect,'update place set  currency="RS" , p_p_n="1", p_p_h="1", w_p_p_n="1" where place_id='.$placeid.'');
 echo "currency='.$currency.', p_p_n='$p_p_n', p_p_h='.$p_p_h.', w_p_p_n='.$w_p_p_n.' where place_id='.$placeid.' ";
 //UPDATE `yamuna`.`place` SET `currency`='Rs', `p_p_n`='12', `p_p_h`='13', `w_p_p_n`='14' WHERE `place_id`='291';
 
