@@ -411,6 +411,7 @@ $que = mysqli_query($connect,"select * from calenderdata where placeid=".$r21['p
 <input type="hidden" name="marker_location" id="marker_location" value="<?php echo rtrim($marker_location,">>>");?>" placeholder="">
 </div>
 
+	<?php include 'lib/footer.php';?>
   <script src="js/forms-map.js"></script>
 </div>
 <div class="clearfix"></div>
@@ -422,8 +423,6 @@ $que = mysqli_query($connect,"select * from calenderdata where placeid=".$r21['p
 
 
 </div><!--container-fluid close-->
-    	<?php include 'lib/footer.php';?>
-
 </body>
 
   
