@@ -5,7 +5,7 @@ include_once('connect.php');
  $place_loc = $_REQUEST['place_loc'];
  }
 else{
-$place_loc = "Hyderabad, Telangana, India";
+$place_loc = "";
 }
  if(!empty($_REQUEST['my-lat'])){
  $mylat = $_REQUEST['my-lat'];
@@ -225,7 +225,7 @@ echo $final1; ?>" name="chout" class="form-control" placeholder="To">
 <p>Location</p>
 </div>
 <div class="col-md-4">
-<input type="text" value="<?php echo $place_loc; ?>" id="autocomplete" name="place_loc" onFocus="geolocate();" class="form-control" >
+<input type="text" value="<?php echo $place_loc; ?>" id="autocomplete" name="place_loc" onFocus="geolocate();" onchange="geolocate()" class="form-control" >
  <input type="hidden" name="my-lat" id="my-lat" value="">
  <input type="hidden" name="my-lng" id="my-lng" value="">
 </div>
