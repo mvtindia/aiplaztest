@@ -70,7 +70,7 @@ button.multiselect.dropdown-toggle.btn.btn-default
     </div><!-- /.carousel -->
       <div class="text-center mg-top" style="position: relative;">
     <h1 class="color2">What are you Planning?</h1>
-    <p class="color2">The more we share the more we have</p>
+    <h4 class="color2">The more we share the more we have</h4>
     </div>
   <div class="search">
         <div class="container">
@@ -84,7 +84,8 @@ button.multiselect.dropdown-toggle.btn.btn-default
                         
                           <label class="sr-only">Location</label>
                           <!-- <input type="text" class="form-control bord" placeholder="City"> -->
-                        <input class="form-control bord" id="autocomplete" placeholder="Location" name="place_loc"  onFocus="geolocate();" onchange="geolocate()" type="text" required>
+                        <input class="form-control bord" id="autocomplete" placeholder="Location" name="place_loc"  onFocus="geolocate()" type="text" required>
+
                         <input type="hidden" name="my-lat" id="my-lat" value="" >
                         <input type="hidden" name="my-lng" id="my-lng" value="" >
                         </div>
@@ -281,7 +282,7 @@ if($flag==1){
 <?php }//while ?>
 <div class="col-md-12 col-sm-12 col-xs-12 text-center">
 <a href="events.php" style="">
-<!--<button class="btn-5 bord mg-top10" type="button">View More</button></a>-->
+<button class="btn-5 bord mg-top10" type="button">View More</button></a>
 </div>
 </div>
 <!--======================Services Block Ends=================================-->

@@ -52,7 +52,7 @@
 		<figure class="snip1205">
 	
       
-<img class="img-responsive" src="../bookmyspace/images/events/<?php echo $row1['ufimage'];?>" >
+<img class="img-responsive" src="images/events/<?php echo $row1['ufimage'];?>" >
 
 <?php ?>
 	<i class="fa fa-search"></i>
