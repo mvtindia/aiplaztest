@@ -282,7 +282,8 @@ if($flag==1){
 <?php }//while ?>
 <div class="col-md-12 col-sm-12 col-xs-12 text-center">
 <a href="events.php" style="">
-<button class="btn-5 bord mg-top10" type="button">View More</button></a>
+<button class="btn-5 bord mg-top10" type="button">View More</button>
+</a>
 </div>
 </div>
 <!--======================Services Block Ends=================================-->
