@@ -228,7 +228,7 @@ if($flag==1){
   $flag=0;
   }//if
   else if($flag==0){?>
- <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 no-pad">
+ <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 no-pad">
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-pad hover-name-main">
 <a href="searchlst.php?place_loc=<?php echo $row['cityname'];?>&my-lat=<?php echo $row['latitude'];?>&my-lng=<?php echo $row['longitude'];?>"><div class="hover-name"> <h1 class="hover-txt"><?php echo $row['cityname'];?></h1></div>
 <img class="img-responsive long-img" src="admin/images/<?php echo $row['photo'];?>">
