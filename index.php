@@ -84,7 +84,8 @@ button.multiselect.dropdown-toggle.btn.btn-default
                         
                           <label class="sr-only">Location</label>
                           <!-- <input type="text" class="form-control bord" placeholder="City"> -->
-                        <input class="form-control bord" id="autocomplete" placeholder="Location" name="place_loc"  onFocus="geolocate();" onchange="geolocate()" type="text" required>
+                        <input class="form-control bord" id="autocomplete" placeholder="Location" name="place_loc"  onFocus="geolocate()" type="text" required>
+
                         <input type="hidden" name="my-lat" id="my-lat" value="" >
                         <input type="hidden" name="my-lng" id="my-lng" value="" >
                         </div>
