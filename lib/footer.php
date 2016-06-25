@@ -292,11 +292,14 @@ else
 <footer class="footer-media">
         <div class="container container-custom">
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <h3 class="subtitle"><strong>Useful Links</strong></h3>
                     <ul class="site-links">
-                        <li><a href="aboutus.php">About US</a></li>
+                        <li><a href="aboutus.php" target="_blank">About US</a></li>
+                        <li><a href="aboutus.php" target="_blank">How it works</a></li>
+
 <!--
+                        
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">Rooms</a></li>
                         <li><a href="#">Facilities</a></li>
@@ -306,11 +309,12 @@ else
                         <li><a href="#">FAQs</a></li>
                         <li><a href="#">Under Construction</a></li>
 -->
+
                     </ul>
                 </div>
-                <div class="col-sm-4 text-center">
-                    <h3 class="subtitle wide">Aiplaz</h3>
-                    <div class="moon-divider small"></div>
+                <div class="col-sm-5 text-center">
+                    <h3 class="subtitle wide">Contact Us</h3>
+<!--                    <div class="moon-divider small"></div>-->
 <!--
                     <p>24-26-28 Southern Str, Melbourne, VIC</p>
                     <p>(+333) - 333 - 333333   —   (+333) - 333 - 33333</p>

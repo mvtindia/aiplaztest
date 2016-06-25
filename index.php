@@ -139,6 +139,7 @@ button.multiselect.dropdown-toggle.btn.btn-default
 
 
 <!--===================How it works Section==========================-->
+<!--
 <div class="container">
 <div class="row">
 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 mg-top50">
@@ -150,11 +151,12 @@ button.multiselect.dropdown-toggle.btn.btn-default
                            $text=str_ireplace('<p>','',$content);
                            $text=str_ireplace('</p>','',$text);
                             ?>
-<!--<iframe class="mg-top10" width="100%" height="415" src="<?php echo $text; ?>" frameborder="0" allowfullscreen></iframe>-->
+<iframe class="mg-top10" width="100%" height="415" src="<?php echo $text; ?>" frameborder="0" allowfullscreen></iframe>
  
   </div>
   </div>
   </div>
+-->
 
 <!--===================How it Works close==========================-->
 
@@ -267,7 +269,7 @@ if($flag==1){
 <div class="col-md-3 hover 1">
     <figure class="snip1205">
 
-<img class="img-responsive" src="../bookmyspace/images/events/<?php echo $row1['ufimage'];?>" >
+<img class="img-responsive" src="images/events/<?php echo $row1['ufimage'];?>" >
 
 <?php ?>
  <i class="fa fa-search"></i>
