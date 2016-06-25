@@ -936,11 +936,6 @@ $(function() {
 		maxSelections: 4
 	});
 });
-$('.barcodeField input').bind('keyup', function(event) {
-    if(event.keyCode==13){
-       $("this + input").focus();     
-    }
-});
 
 
 
