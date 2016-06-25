@@ -82,7 +82,6 @@ button.multiselect.dropdown-toggle.btn.btn-default
                       <div class="col-md-2 pd-0">
                         <div class="form-group">
                         
-                    
                           <label class="sr-only">Location</label>
                           <!-- <input type="text" class="form-control bord" placeholder="City"> -->
                         <input class="form-control bord" id="autocomplete" placeholder="Location" name="place_loc"  onFocus="geolocate();" onchange="geolocate()" type="text" required>
@@ -304,7 +303,7 @@ if($flag==1){
                   $spic=explode(",", $row32['photo']);
                ?>
 <div class="col-md-4">
-<figure class="snip1205">
+    <figure class="snip1205">
   <img src="images/services/<?php echo $spic[0]?>" alt="<?php echo $spic[0];?>"/>
   <i class="fa fa-search"></i>
   <a href="demo-service.php?serviceid=<?php echo $row32['sid'];?>"></a>
