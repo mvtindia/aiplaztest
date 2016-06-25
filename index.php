@@ -39,7 +39,9 @@ button.multiselect.dropdown-toggle.btn.btn-default
 
 <!--=================slider========================-->
 
-<div class="">
+<div class="" style="
+    background: rgba(0, 0, 0, 0.5);
+">
   <div id="carousel-example-generic" class="carousel slide">
 
       <!-- Wrapper for slides -->
