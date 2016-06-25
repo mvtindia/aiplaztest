@@ -65,7 +65,7 @@ include('connect.php');?>
                             ?>
 <!--<iframe class="mg-top10" width="100%" height="415" src="<?php echo $text; ?>" frameborder="0" allowfullscreen></iframe>-->
     
-    <img class="img-responsive long-img" src="admin/images/chicago.jpg">
+    <img class="img-responsive long-img" src="images/howitworks.jpg">
     
  
   </div>
