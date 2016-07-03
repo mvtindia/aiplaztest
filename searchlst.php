@@ -1,5 +1,4 @@
-<?php 
-include_once('connect.php');
+<?php include_once('connect.php');
 //if(isset($_REQUEST['searching'])) { 
  if(!empty($_REQUEST['place_loc'])){
  $place_loc = $_REQUEST['place_loc'];
