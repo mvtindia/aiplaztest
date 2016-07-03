@@ -518,7 +518,7 @@ if($match1=mysqli_fetch_array($query1)){
 		if(!empty($match['p_p_n'])) { ?>
 		<div class="col-md-4 col-sm-4 col-xs-4">
 			<input type="radio" checked="" value="night" id="night_label" class="per_val" name="types">
-			<label for="night_label" style="cursor: pointer;">Per Night</label>
+			<label for="night_label" style="cursor: pointer;">Per Day</label>
 		</div>
 		<?php } 
 		if(!empty($match['w_p_p_n'])) { ?>
@@ -535,23 +535,37 @@ if($match1=mysqli_fetch_array($query1)){
 <form class="book_form"  method="post">
 
 <div class="row bg-row">
+    <div class="col-md-6 col-sm-6 col-xs-6">
+        <input type="hidden" class="ppnight" value="<?php echo $match['p_p_n']; ?>">
+<!--        <h4>&#8377; -->
 
-<div class="col-md-6 col-sm-6 col-xs-6">
-<input type="hidden" class="ppnight" value="<?php echo $match['p_p_n']; ?>">
-<h4>&#8377; <span class="night_rupee"><?php echo $match['p_p_n']; ?></span>/-</h4>
-</div>
-<div class="col-md-6 col-sm-6 col-xs-6">
-<h4 class="text-right">Per Night</h4>
-</div>
+     <?php
+$country = $match['p_country'] ;
+                                       //  echo $country;
+?>
+<?php switch ($country) {
+            ?>
+<?php    case "United States":  $currency= "&#36;"?>
+         <h4>	&#36; <span class="night_rupee"><?php echo $match['p_p_n']; ?></span></h4>
+<?php        break; case "United Kingdom":  $currency= "&163;"?>
+       <h4>&#163; <span class="night_rupee"><?php echo $match['p_p_n']; ?></span></h4> </h4>
+ <?php       break; case "India": $currency= "&#8377;"?>
+        <h4>&#8377; <span class="night_rupee"><?php echo $match['p_p_n']; ?></span></h4> </h4>
+
+<?php }  ?>
+
+
+
+
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-6">
+        <h4 class="text-right">Per Day</h4> </div>
 </div>
 <div class="row mg-top15 ">
 <div class="col-md-4 pd-lr-6">
 
-<div class="input-group mg-top20">
-    
-    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-	<input type="text" id="datepicker" name="checkin" value="<?php if(isset($_REQUEST['checkin'])) { echo $_REQUEST['checkin']; } else { echo date('m/d/Y'); } ?>" placeholder="CheckIn" class="form-control bord-0">
-</div>
+<div class="input-group mg-top20"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+    <input type="text" id="datepicker" name="checkin" value="<?php if(isset($_REQUEST['checkin'])) { echo $_REQUEST['checkin']; } else { echo date('m/d/Y'); } ?>" placeholder="CheckIn" class="form-control bord-0"> </div>
 
 </div>
 <div class="col-md-4 pd-lr-6">
@@ -574,10 +588,10 @@ echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-contro
 <div class="errormessage">
 <div class="row">
 <div class="col-md-6 col-sm-6 col-xs-7">
-<h5>&#8377; <span class="price_cal"><?php echo $match['p_p_n']; ?></span> x <span class="calculated">1 Night</span></h5>
+<h5><?php echo $currency ?> <span class="price_cal"><?php echo $match['p_p_n']; ?></span> x <span class="calculated">1 Night</span></h5>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>&#8377; </span><span class="total_price"><?php echo $match['p_p_n']; ?> </span></h5>
+<h5 class="text-right"><span><?php echo $currency ?> </span><span class="total_price"><?php echo $match['p_p_n']; ?> </span></h5>
 </div>
 </div>
 <div class="row" id="forappend">
@@ -587,7 +601,7 @@ echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-contro
 <h5>Total</h5>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>&#8377; </span><span class="total_price_cal"><?php echo $match['p_p_n']; ?> </span></h5>
+<h5 class="text-right"><span><?php echo $currency ?> </span><span class="total_price_cal"><?php echo $match['p_p_n']; ?> </span></h5>
 </div>
 </div>
 </div>
