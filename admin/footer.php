@@ -1,6 +1,6 @@
    <!--footer section start-->
         <footer>
-            Vismaad Labs &copy; 2016 
+            Aiplaz &copy; 2016 
         </footer>
         <!--footer section end-->
 
