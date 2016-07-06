@@ -6,7 +6,7 @@ include('connect.php');?>
 
 	<title>List a Place</title>
 	<?php include 'lib/top.php';?>
-
+	
 </head>
 
 <body>
@@ -26,8 +26,8 @@ include('connect.php');?>
 <div class="row">
 <div class="banner-txt">
  <h1> Add a new place</h1>
-<h4>Earn money renting out a spare room, marriage place or House. Listing your place is totally free. </h4>
- </div>
+<h4>Earn money renting out a spare room, marriage place or House. Listing your place is totally free. </h4> 
+ </div>  
 </div><!--row close-->
 </div><!--container close-->
 
@@ -51,28 +51,30 @@ include('connect.php');?>
     <label for="space">Name*</label>
     <input type="text" class="form-control" id="price" placeholder="Name" name="name" required>
   </div>
-
+  
    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="space">Contact Number*</label>
     <input type="text" class="form-control phone" id="price" placeholder="Contact" name="contact" required>
   </div>
-
-
-
-
-     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  
+     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <label for="space">Postal Code*</label>
+    <input type="text" class="form-control" id="price" placeholder="Postal Code" name="postal" required>
+  </div>
+  
+  
+     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="space">Location*</label>
     <input type="text" class="form-control" id="price" placeholder="Location" name="location" required>
-<!--  <input class="form-control bord" id="autocomplete" placeholder="Location" name="place_loc"  onFocus="geolocate()" type="text" required>-->
   </div>
-
-
+  
+  
   </div><!--frm-field-mar-->
   <!--=======================================-->
    <div class="clearfix"></div>
-
-
-
+  
+  
+  
     <div class="had-frm-sec">Your Place Location...</div>
   <div class="frm-field-mar ">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0">
@@ -82,8 +84,8 @@ include('connect.php');?>
       <input class="form-control" id="autocomplete" name="address" placeholder="Enter your address" onFocus="geolocate()" type="text" required>
     </div>
   </div>
-
-
+  
+    
     <div id="address" class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mg-top20" style="display:none;">
 
         <input class="field form-control" id="street_number" name="street" disabled="true" >
@@ -104,14 +106,14 @@ include('connect.php');?>
          <input class="field form-control mg-top5" id="administrative_area_level_1" disabled="true" name="state">
       </div>
         <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 pd-bottom20">
-        <label class="label newst">Zip code</label>
+        <label class="label newst">Zip code</label> 
         <input class="field form-control mg-top5" name="postcode" id="postal_code" disabled="true">
       </div>
 	  </div>
 	  <div class="clearfix"></div>
 	    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0 ">
     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 pd-bottom20">
-        <label class="label newst">Country</label>
+        <label class="label newst">Country</label> 
         <input class="field form-control mg-top5" name="country" id="country" disabled="true">
       </div>
 	  </div>
@@ -119,7 +121,7 @@ include('connect.php');?>
 
 
 
-  <!--<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="address">
+  <!--<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" id="address"> 
 
   <label for="space">City *</label>
 
@@ -127,31 +129,31 @@ include('connect.php');?>
   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="space">Postcode *</label>
     <!-- <input type="text" class="form-control" id="price" placeholder="Postcode" name="postcode" >
-
+   
   </div>
-
+  
   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="space">State/region *</label>
     <!-- <input type="text" class="form-control" id="price" placeholder="State/region" name="state" > -->
+   
 
 
-
-
+  
   <div class="clearfix"></div>
   <!--frm-field-mar-->
   <!--=====================================-->
-
-
-
-
-
+  
+  
+  
+  
+  
      <div class="had-frm-sec">Your Place Details</div>
-
+	 
 	  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <label for="space">Space Title*</label>
     <input type="text" class="form-control" id="price" placeholder="Space title" name="space_name" required>
   </div>
-
+  
 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="email">Property type*</label>
     <select class="form-control" id="sel1" name="property"required >
@@ -162,21 +164,19 @@ while($match=mysqli_fetch_array($query)){?>
 <?php }//while ?>
   </select>
   </div>
-
+  
 
 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="space">Capacity*</label>
     <input type="number" class="form-control" name="capacity"required>
   </div>
 
-<!--
   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12"required>
     <label for="space">Accomodates*</label>
     <input type="text" class="form-control" id="accomodates" placeholder="Accomodates" name="accomodates" required>
   </div>
--->
-
-
+  
+  
   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 sample-only">
     <label class="wid100" for="space">Can be used for*</label>
 <select id="select1" class="wid100" multiple="multiple" name="canbe[]">
@@ -185,16 +185,16 @@ while($match=mysqli_fetch_array($query)){?>
 while($match=mysqli_fetch_array($query)){?>
     <option value="<?php echo $match['ufid'];?>"><?php echo $match['ufname'];?></option>
 <?php }//while ?>
-</select>
+</select>	
   </div>
-
+  
   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
   <div class="col-md-12 col-sm-12 col-xs-12 pd-lr-0">  <label for="space">Area*</label></div>
- <div class="col-md-6 pd-l-0">
+ <div class="col-md-6 pd-l-0">   
 <input type="text" class="form-control" id="accomodates" placeholder="Area" name="area" required="">
   </div>
    <div class="col-md-6 pd-r-0">
-<select class="form-control" name="areatype"><option>Select Area Type</option>
+<select class="form-control" name="areatype"><option>Select Area Type*</option>
  <?php $query=mysqli_query($connect,'Select * from area');
 while($match=mysqli_fetch_array($query)){?>
 <option value="<?php echo $match['areaid'];?>"><?php echo $match['areatype'];?></option>
@@ -202,55 +202,54 @@ while($match=mysqli_fetch_array($query)){?>
 </select>
   </div>
 </div>
-
+  
     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Common Ammenties</label>
+    <label for="space">Common Ammenties*</label>
      <?php $query=mysqli_query($connect,'Select * from ammenities where atype="common"');
 while($match=mysqli_fetch_array($query)){?>
-    <div class="col-md-12 checkbox">
-        <label type="checkbox">
-<input type="checkbox" name="commonammenties[]"  value="<?php echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?></label>
+    <div class="col-md-12">
+<input type="checkbox" name="commonammenties[]"  value="<?php echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?>
   </div>
 <?php }?>
   </div>
-
-
+  
+  
       <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Additional Ammenties</label>
+    <label for="space">Additional Ammenties*</label>
          <?php $query=mysqli_query($connect,'Select * from ammenities where atype="additional"');
 while($match=mysqli_fetch_array($query)){?>
-    <div class="col-md-12 checkbox"><label type="checkbox">
-<input type="checkbox" name="add_ammenties[]"  value="<?php echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?></label>
+    <div class="col-md-12">
+<input type="checkbox" name="add_ammenties[]"  value="<?php echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?>
   </div>
 <?php }?>
   </div>
-
-
+  
+  
       <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <label for="space">Description</label>
-    <textarea  class="form-control" id="accomodates"  placeholder="Description" name="details" ></textarea>
+    <label for="space">Description*</label>
+    <textarea  class="form-control" id="accomodates" required placeholder="Description" name="details" ></textarea>
   </div>
-
+  
 
   <div class="clearfix"></div>
 
-
+  
   <!-- <div class="had-frm-sec">Photos & Videos...</div>
   <div class="frm-field-mar">
   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"><b>Upload great photos & Videos of your place *</b></div>
   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"> <label class="custom-upload">
   <input type="file" name="upload_file[]" multiple />ADD PHOTOS</label> </div>
-
+  
    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"> <label class="custom-upload">
    <input type="file" name="upload_video[]" multiple />ADD Videos</label> </div>
   <div class="clearfix"></div>
   </div> --><!--frm-field-mar-->
   <!--=====================================-->
-
-
-
-
-
+  
+  
+  
+  
+  
     <div class="had-frm-sec">Rules</div>
   <div class="frm-field-mar">
       <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -263,7 +262,7 @@ while($match=mysqli_fetch_array($query)){?>
     <?php } ?>
   </select>
   </div>
-
+  
         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="space">Don'ts</label>
     <select class="form-control" id="select4" name="ruledonot[]" multiple>
@@ -277,11 +276,11 @@ while($match=mysqli_fetch_array($query)){?>
   <div class="clearfix"></div>
   </div><!--frm-field-mar-->
   <!--=====================================-->
+  
 
-
-
-
-
+  
+  
+  
       <div class="had-frm-sec">Safety</div>
   <div class="frm-field-mar">
         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 sample-only">
@@ -291,9 +290,9 @@ while($match=mysqli_fetch_array($query)){?>
 while($match=mysqli_fetch_array($query)){?>
     <option value="<?php echo $match['sid'];?>"><?php echo $match['sname'];?></option>
     <?php } ?>
-</select>
+</select> 
   </div>
-
+  
   <div class="col-md-12">
   <h4>Safety Card</h4>
 	<p>Where is safety card located?</p>
@@ -303,21 +302,21 @@ while($match=mysqli_fetch_array($query)){?>
 	 <input type="text" class="form-control" id="accomodates" placeholder="Enter Location" name="fire_extinguisher">
 
   </div>
-
+  
           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="space">Fire Alarm</label>
 	 <input type="text" class="form-control" id="accomodates" placeholder="Enter Location" name="fire_alaram">
 
   </div>
-
-
+  
+  
          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="space">Gas Shutoff valve</label>
 	 <input type="text" class="form-control" id="accomodates" placeholder="Enter Location" name="gas_valve">
 
   </div>
-
-
+  
+  
            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <label for="space">Emergency exit instruction</label>
 	 <textarea class="form-control" id="accomodates" placeholder="Enter Instructions" name="emergency"></textarea>
@@ -326,9 +325,9 @@ while($match=mysqli_fetch_array($query)){?>
   <div class="clearfix"></div>
   </div><!--frm-field-mar-->
   <!--=====================================-->
+  
 
-
-
+  
   <div class="but-align form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <!-- <button id="show-photo" type="submit" name="place" class="btn btn-default cus-save-but">Save & continue</button> -->
   <button type="submit" name="place" class="btn btn-default cus-save-but">Save & continue</button>
@@ -339,7 +338,7 @@ while($match=mysqli_fetch_array($query)){?>
 <!-- details end -->
 
 
-
+ 
   <!--==========================Photos AND Videos TAB STARTS=======================-->
  <form id="photovideo" method="post" enctype="multipart/form-data" style="">
 
@@ -348,7 +347,7 @@ while($match=mysqli_fetch_array($query)){?>
     <div class="tellus-data col-md-12 col-xs-12 col-sm-12 pd-lr-0">
    <div class="had-frm-sec"  >Photos & Videos</div>
   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"><b>Upload great photos & Videos of your place *</b></div>
-   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >     
 <label class="custom-upload uploadphoto">ADD PHOTOS</label>
 <div class="upphoto" style="display:none;">
    <input id="input-7" name="inputphotos[]" data-show-upload="false" multiple type="file" class="file file-loading" >
@@ -372,7 +371,7 @@ while($match=mysqli_fetch_array($query)){?>
   </div> <!--frm-field-mar-->
   </form>
   <!--=====================================-->
-
+  
 
 
 
@@ -380,10 +379,10 @@ while($match=mysqli_fetch_array($query)){?>
 
 
 
-
+  
   <!--==========================PRICE AND TERMS TAB STARTS=======================-->
   <form id="pricetermss" method="post" enctype="multipart/form-data" >
-
+   
   <div class="tellus-data" id="hide-price" style="overflow: auto;">
       <div class="had-frm-sec" >Price & Terms</div>
 
@@ -392,49 +391,39 @@ while($match=mysqli_fetch_array($query)){?>
     <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
       <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="space">Select Your Currency</label>
-<!--    <input type="text" required name="currency" value="<?php echo $_SESSION['currencySymbol'];?>" class="form-control">-->
-
-     <select class="form-control" id="sel1" name="currency" >
+    <input type="text" required name="currency" value="<?php echo $_SESSION['currencySymbol'];?>" class="form-control">
+    <!-- <select class="form-control" id="sel1" name="currency" >
   <option value="">Select Options</option>
     <option value="1">$</option>
     <option value="2">€</option>
     <option value="3">¥</option>
     <option value="4">₹</option>
-  </select>
+  </select> -->
   </div>
-
-
-<!--
-      <?php echo '<pre>';
-var_dump($_SESSION);
-echo '</pre>'; ?>
--->
 
       <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Price Per Day</label>
+    <label for="space">Price Per Night</label>
    <input type="number" required class="form-control" id="accomodates" placeholder="Enter price" name="p_p_n">
   </div>
-
+  
         <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
     <label for="space">Price Per Hour</label>
    <input type="number" required class="form-control" id="accomodates" placeholder="Enter price" name="p_p_h">
   </div>
-<!--
           <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
     <label for="space">Weekend Price Per Night</label>
    <input type="number" required class="form-control" id="accomodates" placeholder="Enter price" name="w_p_p_n">
   </div>
--->
 
-
-
+  
+  
 <!--         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="space">Weekly Discount</label>
     <input class="form-control"  type="text" name="w_discount" value="">
   </div>
-
-
-
+  
+  
+  
         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="space">Monthly Discount</label>
     <input class="form-control"  type="text" name="m_discount" value="">
@@ -442,21 +431,21 @@ echo '</pre>'; ?>
   -->
   <div class="col-md-12 text-center"style="margin-bottom: 11px;">
 <button id="back1" type="button" name="place" class="btn btn-default cus-save-but">Back</button>
-  <button id="next2" type="submit" name="priceterms" class="btn btn-default cus-save-but">Save and continue</button>
+  <button id="next2" type="submit" name="priceterms" class="btn btn-default cus-save-but">Save & continue</button>
   </div>
+  
+ 
+    
 
-
-
-
-
+ 
   </div><!--frm-field-mar-->
-
+  
   </div>
-   </form>
-
+   </form> 
+   
   <div class="clearfix"></div>
   <!--=====================================-->
-
+  
 
 
 
@@ -471,7 +460,7 @@ if(isset($_REQUEST['oplaceid'])){
   if($_REQUEST['amd']=="success"){
   ?>
 <script>
-  $(document).ready(function(){
+  $(document).ready(function(){    
       swal({   title: "Success",   text: "Your details are added Successfully",   timer: 2000,   showConfirmButton: false });
 
    });
@@ -479,12 +468,12 @@ if(isset($_REQUEST['oplaceid'])){
   <?php }//if
   else{ ?>
 <script>
-  $(document).ready(function(){
+  $(document).ready(function(){    
     swal({   title: "Oops!",   text: "Unable To add Your Details",   timer: 2000,   showConfirmButton: false });
    });
   </script>
   <?php }//else ?>
- <script>
+ <script> 
  $(document).ready(function(){
   $("#pricetermss").css('display','none');
   $("#calender-tab").css('display','block');
@@ -493,7 +482,7 @@ if(isset($_REQUEST['oplaceid'])){
   });
 </script>
  <div id="calender-tab" style="display:none;">
-
+  
 <?php $query2=mysqli_query($connect,'SELECT * FROM calenderdata where placeid="'.$_SESSION['placeids'].'"');
 while ($row2=mysqli_fetch_array($query2)) {
   $plabels .= $row2['label'].",";
@@ -519,12 +508,12 @@ while ($row2=mysqli_fetch_array($query2)) {
   }//while?>
 
 <form id="calenderform" method="post" enctype="multipart/form-data" >
-  <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
+  <input type="hidden" class="placeid" name="placeid" value="" id="placeid">    
   <div class="tellus-data col-lg-12 col-sm-12 col-md-12 col-xs-12 pd-lr-0" ><!--id="calendar-tab"-->
       <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>
 
   <div class="frm-field-mar">
-<?php
+<?php 
 $save="";
 $query1=mysqli_query($connect,'SELECT * FROM place where place_id="'.$_SESSION['placeids'].'"');
 if ($row1=mysqli_fetch_array($query1)) {
@@ -538,18 +527,18 @@ if ($row1=mysqli_fetch_array($query1)) {
         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <div id="calendar"></div>
   </div>
-
+  
   <div class="col-md-12 text-center">
 <button id="back2" type="button" name="place" class="btn btn-default cus-save-but">Back</button>
 <!--   <button id="next3" type="submit" name="priceterms" class="btn btn-default cus-save-but">Save</button>
  -->  </div>
-
-
-
+  
+  
+    
   <div class="clearfix"></div>
-
+ 
   </div><!--frm-field-mar-->
-
+  
  </div>
   </form>
 </div>
@@ -557,11 +546,11 @@ if ($row1=mysqli_fetch_array($query1)) {
 }//if isset
 else{
 echo '<div id="calender-tab" style="display:none;">
-
+    
   </div>';
 }//else?>
 
-
+  
   </div>
   <!--=====================================COL-MD-8 LEFT side CLOSE==========================================-->
 
@@ -577,7 +566,7 @@ echo '<div id="calender-tab" style="display:none;">
  <img class="img-responsive" src="img/save.png">
  </div>
  <div class="col-lg-10 col-sm-10 col-md-10 col-xs10">
-
+ 
 <span class="had-2nd">It's safe</span>
 <p>We provide a trusted environment.</p>
  </div>
@@ -589,7 +578,7 @@ echo '<div id="calender-tab" style="display:none;">
  <img class="img-responsive" src="img/easy.png">
  </div>
  <div class="col-lg-10 col-sm-10 col-md-10 col-xs10">
-
+ 
 <span class="had-2nd">It's easy</span>
 <p>We'll do all the hard work of finding guests, while you just enjoy earning money with a spare space.</p>
  </div>
@@ -601,7 +590,7 @@ echo '<div id="calender-tab" style="display:none;">
  <img class="img-responsive" src="img/free.png">
  </div>
  <div class="col-lg-10 col-sm-10 col-md-10 col-xs10">
-
+ 
 <span class="had-2nd">It's free</span>
 <p>We don't charge you to upload your place, and you get instant access to thousands of guests.</p>
  </div>
@@ -609,25 +598,25 @@ echo '<div id="calender-tab" style="display:none;">
 </div>
 
 </div>
-</div>
+</div> 
 </div>
 
   <!--=====================================-->
- <!--==========WHY LIST YOUR PLACE CLOSE============-->
-
+ <!--==========WHY LIST YOUR PLACE CLOSE============-->  
+ 
 
 </div><!--row close-->
 
 
 <!--======footer======-->
-
+	
 <!--======footer close======-->
 </div><!--row close-->
 </div><!--container-fluid close-->
 
-</body>
+</body>	
 </html>
 <!-- <script src="js/forms-map.js"></script> -->
-<?php include 'lib/footer.php'; //if isset
+<?php include 'lib/footer.php'; //if isset 
 
   ?>
