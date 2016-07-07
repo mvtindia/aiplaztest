@@ -468,6 +468,7 @@ echo '</pre>'; ?>
   <?php
 if(isset($_REQUEST['oplaceid'])){
   $placeid=$_REQUEST['oplaceid'];
+    echo $placeid;
   if($_REQUEST['amd']=="success"){
   ?>
 <script>
