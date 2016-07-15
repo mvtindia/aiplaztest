@@ -370,6 +370,7 @@ if(mysqli_num_rows($sql_footer2)>0)
 		$placeid = $_REQUEST['placeid_value'];
 
 		$q = mysqli_query($connect,'Select * from place where place_id="'.$placeid.'"');
+
 		$match= mysqli_fetch_array($q);
 		$datetime = new DateTime('tomorrow');
 		$weeklater = date("m/d/Y", strtotime("+1 week"));
@@ -388,7 +389,7 @@ if(mysqli_num_rows($sql_footer2)>0)
 
 <div class="col-md-6 col-sm-6 col-xs-6">
 <input type="hidden" class="ppnight" value="'.$match['p_p_h'].'">
-<h4>&#8377; <span class="night_rupee">'.$match['p_p_h'].'</span>/-</h4>
+<h4>'.$match['currency'].' <span class="night_rupee">'.$match['p_p_h'].'</span>/-</h4>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-6">
 <h4 class="text-right">Per Hour</h4>
@@ -421,10 +422,14 @@ $('#basic').change(function(){
     var price_cal = $('.ppnight').val();
     var placeid = $('.placeid_val').val();
     console.log("datedata"+date_val2)
+    console.log("end"+endtime)
+    console.log("start"+starttime)
+
     if(endtime!='')
     {
     	if(endtime>starttime)
     	{
+            console.log("End time is greater");
     $.ajax({
       url: 'forms2.php?hoursdate_val1='+date_val2+'&placeid='+placeid+'&pervalues=hour&start_time='+starttime+'&end_time='+endtime,
       success: function(data)
@@ -658,10 +663,10 @@ echo'</div>
 <div class="errormessage">
 <div class="row">
 <div class="col-md-6 col-sm-6 col-xs-7 pricecel">
-<h5>&#8377; <span class="price_cal">'.$match['p_p_h'].'</span> x <span class="calculated">1 Hour</span></h5>
+<h5>'.$match['currency'].' <span class="price_cal">'.$match['p_p_h'].'</span> x <span class="calculated">1 Hour</span></h5>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>&#8377; </span><span class="total_price">'.$match['p_p_h'].' </span></h5>
+<h5 class="text-right"><span>'.$match['currency'].' </span><span class="total_price">'.$match['p_p_h'].' </span></h5>
 </div>
 </div>
 	<div class="row" id="forappend"></div>
@@ -670,7 +675,7 @@ echo'</div>
 <h5>Total</h5>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>&#8377; </span><span class="total_price_cal">'.$match['p_p_h'].' </span></h5>
+<h5 class="text-right"><span>'.$match['currency'].' </span><span class="total_price_cal">'.$match['p_p_h'].' </span></h5>
 </div>
 </div>
 	</div>
@@ -700,10 +705,11 @@ else if($value == 'night')
 
 <div class="col-md-6 col-sm-6 col-xs-6 ">
 <input type="hidden" class="ppnight" value="'.$match['p_p_n'].'">
-<h4>&#8377; <span class="night_rupee">'.$match['p_p_n'].'</span>/-</h4>
+<h4>'.$match['currency'].' <span class="night_rupee">'.$match['p_p_n'].'</span>/-</h4>
+
 </div>
 <div class="col-md-6 col-sm-6 col-xs-6">
-<h4 class="text-right">Per Night</h4>
+<h4 class="text-right">Per Day</h4>
 </div>
 </div>
 <div class="row mg-top15 ">
@@ -736,10 +742,10 @@ else if($value == 'night')
 <div class="errormessage">
 <div class="row" >
 <div class="col-md-6 col-sm-6 col-xs-7 pricecel">
-<h5>&#8377; <span class="price_cal">'.$match['p_p_n'].'</span> x <span class="calculated">1 Night</span></h5>
+<h5>'.$match['currency'].' <span class="price_cal">'.$match['p_p_n'].'</span> x <span class="calculated">1 Day</span></h5>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>&#8377; </span><span class="total_price">'.$match['p_p_n'].' </span></h5>
+<h5 class="text-right"><span>'.$match['currency'].' </span><span class="total_price">'.$match['p_p_n'].' </span></h5>
 </div>
 	</div>
 	<div class="row" id="forappend">
@@ -751,7 +757,7 @@ else if($value == 'night')
 <h5>Total</h5>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>&#8377; </span><span class="total_price_cal">'.$match['p_p_n'].' </span></h5>
+<h5 class="text-right"><span>'.$match['currency'].' </span><span class="total_price_cal">'.$match['p_p_n'].' </span></h5>
 </div>
 </div>
 	</div>
@@ -775,7 +781,7 @@ else if($value == 'week')
 
 <div class="col-md-6 col-sm-6 col-xs-6">
 <input type="hidden" class="ppnight" value="'.$match['w_p_p_n'].'">
-<h4>&#8377; <span class="night_rupee">'.$match['w_p_p_n'].'</span>/-</h4>
+<h4>'.$match['currency'].' <span class="night_rupee">'.$match['w_p_p_n'].'</span>/-</h4>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-6">
 <h4 class="text-right">Per Week</h4>
@@ -812,10 +818,10 @@ else if($value == 'week')
 <div class="row" >
 
 <div class="col-md-6 col-sm-6 col-xs-7 pricecel">
-<h5>&#8377; <span class="price_cal">'.$match['p_p_n'].'</span> x <span class="calculated">1 Night</span></h5>
+<h5>'.$match['currency'].' <span class="price_cal">'.$match['p_p_n'].'</span> x <span class="calculated">1 Night</span></h5>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>&#8377; </span><span class="total_price">'.$match['p_p_n'].' </span></h5>
+<h5 class="text-right"><span>'.$match['currency'].' </span><span class="total_price">'.$match['p_p_n'].' </span></h5>
 </div>
 	</div>
 	<div class="row" id="forappend">
@@ -827,7 +833,7 @@ else if($value == 'week')
 </div>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>&#8377; </span><span class="total_price_cal">'.$match['w_p_p_n'].' </span></h5>
+<h5 class="text-right"><span>'.$match['currency'].' </span><span class="total_price_cal">'.$match['w_p_p_n'].' </span></h5>
 </div>
 </div>
 <div class="errormessage22"></div>

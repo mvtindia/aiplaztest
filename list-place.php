@@ -396,10 +396,8 @@ while($match=mysqli_fetch_array($query)){?>
 
      <select class="form-control" id="sel1" name="currency" >
   <option value="">Select Options</option>
-    <option value="1">$</option>
-    <option value="2">€</option>
-    <option value="3">¥</option>
-    <option value="4">₹</option>
+    <option value="&#36;">$</option>
+    <option value="&#8377;">₹</option>
   </select>
   </div>
 
@@ -468,6 +466,7 @@ echo '</pre>'; ?>
   <?php
 if(isset($_REQUEST['oplaceid'])){
   $placeid=$_REQUEST['oplaceid'];
+    echo $placeid;
   if($_REQUEST['amd']=="success"){
   ?>
 <script>

@@ -416,6 +416,7 @@ if ($row1=mysqli_fetch_array($query1)) {
     border-bottom-color: transparent;
 }
     </style> 
+<!--            <p>Your space has been listed succesfully. You can go to your dashboard </p>-->
     <div id="demo">     
     </div>
     
@@ -436,15 +437,17 @@ if ($row1=mysqli_fetch_array($query1)) {
   </div>
   </div>
   <div class="col-md-12 mg-top10" id="priceper">
-  <div class="col-md-4">
+  <div class="col-md-6">
 <input type="number" id="pph" required placeholder="Price Per hour" class="form-control">
   </div>
-    <div class="col-md-4">
-<input type="number" id="ppw" required placeholder="Price Per Night" class="form-control">
+    <div class="col-md-6">
+<input type="number" id="ppn" required placeholder="Price Per Day" class="form-control">
   </div>
+<!--
     <div class="col-md-4">
 <input type="number" id="ppm" required placeholder="Price Per Week" class="form-control">
   </div>
+-->
   </div>
 
   <input type="text" id="status" required="required" hidden>;
@@ -473,7 +476,7 @@ if ($row1=mysqli_fetch_array($query1)) {
   </div>
   
   <div class="col-md-12 text-center" style="margin-top: 20px;">
-<a id="back2" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
+<a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
 <!--   <button id="next3" type="submit" name="priceterms" class="btn btn-default cus-save-but">Save</button>
  -->  </div>
   
@@ -503,7 +506,7 @@ if ($row1=mysqli_fetch_array($query1)) {
   <!--   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
     
      <script>
-     $(document).ready(function(){
+     $(document).ready(function(){x
       // $('.date21').datepicker();
 			var customizedRangeCalendar = $("#demo").rangeCalendar({ theme:"full-green-theme", start : "+0",startRangeWidth : 1,
 
