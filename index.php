@@ -2,7 +2,7 @@
 <html>
 <head>
 
-  <title>Aiplaz</title>
+  <title>Book My Space</title>
   <?php include 'lib/top.php';?>
 <style>
 #carousel-example-generic{

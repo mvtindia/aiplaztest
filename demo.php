@@ -2,19 +2,15 @@
 session_start();
 /*Get user ip address*/
 $ip_address=$_SERVER['REMOTE_ADDR'];
-//$ip_address=$_SERVER['SERVER_ADDR'];
-//echo $ip_address;
-
 $_SESSION['ip']=$ip_address;
 //echo $ip_address;
 
 /*Get user ip address details with geoplugin.net*/
 $geopluginURL='http://www.geoplugin.net/php.gp?ip='.$ip_address;
 $addrDetailsArr = unserialize(file_get_contents($geopluginURL)); 
-//echo '<pre>'; print_r($addrDetailsArr); echo '</pre>';
+
 /*Get City name */
 $city = $addrDetailsArr['geoplugin_city']; 
-
 /*Get Country name */
 $country = $addrDetailsArr['geoplugin_countryName'];
 /*Get City name by */

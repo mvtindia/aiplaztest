@@ -421,9 +421,6 @@ $('#basic').change(function(){
     var price_cal = $('.ppnight').val();
     var placeid = $('.placeid_val').val();
     console.log("datedata"+date_val2)
-    console.log("end"+endtime)
-    console.log("start"+starttime)
-
     if(endtime!='')
     {
     	if(endtime>starttime)
@@ -706,7 +703,7 @@ else if($value == 'night')
 <h4>&#8377; <span class="night_rupee">'.$match['p_p_n'].'</span>/-</h4>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-6">
-<h4 class="text-right">Per Day</h4>
+<h4 class="text-right">Per Night</h4>
 </div>
 </div>
 <div class="row mg-top15 ">
@@ -739,7 +736,7 @@ else if($value == 'night')
 <div class="errormessage">
 <div class="row" >
 <div class="col-md-6 col-sm-6 col-xs-7 pricecel">
-<h5>&#8377; <span class="price_cal">'.$match['p_p_n'].'</span> x <span class="calculated">1 Day</span></h5>
+<h5>&#8377; <span class="price_cal">'.$match['p_p_n'].'</span> x <span class="calculated">1 Night</span></h5>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
 <h5 class="text-right"><span>&#8377; </span><span class="total_price">'.$match['p_p_n'].' </span></h5>
