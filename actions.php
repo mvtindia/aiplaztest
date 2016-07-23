@@ -473,7 +473,7 @@ if ($row1=mysqli_fetch_array($query1)) {
   </div>
   
   <div class="col-md-12 text-center" style="margin-top: 20px;">
-<a id="back2" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
+<a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
 <!--   <button id="next3" type="submit" name="priceterms" class="btn btn-default cus-save-but">Save</button>
  -->  </div>
   
@@ -996,7 +996,11 @@ $currency = $_POST['currency'];
 $p_p_n = $_POST['p_p_n'];
 $p_p_h = $_POST['p_p_h'];
 $w_p_p_n = $_POST['w_p_p_n'];
-$query=mysqli_query($connect,'update place set  currency="'.$currency.'" , p_p_n="'.$p_p_n.'", p_p_h="'.$p_p_h.'", w_p_p_n="'.$w_p_p_n.'" where place_id="'.$placeid.'"');
+//$query=mysqli_query($connect,'update place set  currency="'.$currency.'" , p_p_n="'.$p_p_n.'", p_p_h="'.$p_p_h.'", w_p_p_n="'.$w_p_p_n.'" where place_id="'.$placeid.'"');
+    
+$query=mysqli_query($connect,'update `place` set `currency`="'.$currency.'" , `p_p_n`="'.$p_p_n.'", `p_p_h`="'.$p_p_h.'", `w_p_p_n`="'.$w_p_p_n.'" where `place_id`='.$placeid.'');
+    
+    
 if($query>0){
   echo"success";
   }

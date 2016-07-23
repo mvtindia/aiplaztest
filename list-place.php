@@ -397,8 +397,6 @@ while($match=mysqli_fetch_array($query)){?>
      <select class="form-control" id="sel1" name="currency" >
   <option value="">Select Options</option>
     <option value="1">$</option>
-    <option value="2">€</option>
-    <option value="3">¥</option>
     <option value="4">₹</option>
   </select>
   </div>
@@ -410,14 +408,16 @@ var_dump($_SESSION);
 echo '</pre>'; ?>
 -->
 
-      <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Price Per Day</label>
-   <input type="number" required class="form-control" id="accomodates" placeholder="Enter price" name="p_p_n">
-  </div>
+    
 
         <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
     <label for="space">Price Per Hour</label>
    <input type="number" required class="form-control" id="accomodates" placeholder="Enter price" name="p_p_h">
+  </div>
+      
+        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <label for="space">Price Per Day</label>
+   <input type="number" required class="form-control" id="accomodates" placeholder="Enter price" name="p_p_n">
   </div>
 <!--
           <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">

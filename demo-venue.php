@@ -572,7 +572,7 @@ $country = $match['p_country'] ;
 <div class="input-group mg-top20">
     
     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-	<input type="text" id="datepicker1" name="checkout" value="<?php if(isset($_REQUEST['checkout'])) { echo $_REQUEST['checkout']; } else { $datetime = new DateTime('tomorrow');
+	<input type="text" id="datepicker1" name="checkout" value="<?php if(isset($_REQUEST['checkout'])) { echo $_REQUEST['checkout']; } else { $datetime = new DateTime('today');
 echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-control bord-0">
 </div>
 
@@ -711,12 +711,16 @@ echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-contro
 		var date_val2 = $('#datepicker1').val();
 		var price_cal = $('.ppnight').val();
 		var placeid = $('.placeid_val').val();
-		if(date_val2<date_val1)
+		if(date_val2>date_val1)
 		{
 		$.ajax({
 			url: 'forms2.php?date_val1='+date_val1+'&date_val2='+date_val2+'&placeid='+placeid,
 			success: function(data)
 			{	
+                console.log(date_val1);
+                console.log(date_val2);
+                console.log(placeid);
+                
 				console.log('my data - '+data);
 				// console.log("<h5>&#8377; <span class="price_cal">'.$match['p_p_n'].'</span> x <span class="calculated">1 Night</span></h5>");
 				data1 = data.split('>>>');
@@ -728,7 +732,8 @@ echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-contro
 				console.log(data1[0]);
 				console.log(data1[1]);
 				console.log(data1[2]);
-				if(data1[1]=='0')
+                    
+                if(data1[1]=='0')
 				{
 					var specific_price2=0;
 				}
