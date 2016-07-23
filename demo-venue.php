@@ -5,7 +5,7 @@ if (isset($_REQUEST['placeid'])) {
 <html>
 <head>
 
-	<title>Book My Space</title>
+	<title>Aiplaz</title>
 	<?php include 'lib/top.php';?>
 	<link href="css/style2.css" rel="stylesheet">
 	<style>
@@ -588,7 +588,7 @@ echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-contro
 <div class="errormessage">
 <div class="row">
 <div class="col-md-6 col-sm-6 col-xs-7">
-<h5><?php echo $currency ?> <span class="price_cal"><?php echo $match['p_p_n']; ?></span> x <span class="calculated">1 Night</span></h5>
+<h5><?php echo $currency ?> <span class="price_cal"><?php echo $match['p_p_n']; ?></span> x <span class="calculated">1 Day</span></h5>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
 <h5 class="text-right"><span><?php echo $currency ?> </span><span class="total_price"><?php echo $match['p_p_n']; ?> </span></h5>
@@ -711,6 +711,12 @@ echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-contro
 		var date_val2 = $('#datepicker1').val();
 		var price_cal = $('.ppnight').val();
 		var placeid = $('.placeid_val').val();
+        console.log(date_val1);
+        console.log(date_val2);
+        console.log(price_cal);
+        console.log(placeid);
+//        alert((date_val1.getMonth() + 1) + '/' + date_val1.getDate() + '/' +  date_val1.getFullYear());
+
 		if(date_val2<date_val1)
 		{
 		$.ajax({
