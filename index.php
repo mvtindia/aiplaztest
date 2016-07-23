@@ -336,11 +336,11 @@ else{ ?>
 
 
 <!--====================================Testimonial==========================-->
-<div class="testimon-bg">
-<div class="testimon-main">
+<div class="">
+<div class="testimon">
 <div class="container">
 <div class="row">
-<div><h1 class="city-had-cus2">Testimonial</h1></div>
+<div><h1 class="city-had-cus1">Testimonial</h1></div>
 <!--=====================test slider=================-->
 
     <div class='col-md-offset-2 col-md-8'>
