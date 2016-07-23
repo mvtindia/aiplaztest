@@ -335,65 +335,6 @@ else{ ?>
 
 
 
-<!--====================================Testimonial==========================-->
-<div class="">
-<div class="testimon">
-<div class="container">
-<div class="row">
-<div><h1 class="city-had-cus1">Testimonial</h1></div>
-<!--=====================test slider=================-->
-
-    <div class='col-md-offset-2 col-md-8'>
-      <div class="carousel slide" data-ride="carousel" id="quote-carousel">
-        <!-- Bottom Carousel Indicators -->
-        <ol class="carousel-indicators">
-          <?php $sql = mysqli_query($connect,"SELECT * FROm testimonials order by tid");
-          $i=0;
-        while($row=mysqli_fetch_array($sql)){
-
- ?>
-          <li data-target="#quote-carousel" data-slide-to="<?php echo $i++;?>" class="<?php echo $row['tactive'];?>"></li>
-<?php } ?>
-        </ol>
-        
-        <!-- Carousel Slides / Quotes -->
-        <div class="carousel-inner">
-        <?php $sql = mysqli_query($connect,"SELECT * FROm testimonials order by tid");
-        while($row=mysqli_fetch_array($sql)){
- ?>
-          <!-- Quote 1 -->
-          <div class="item <?php echo $row['tactive'];?>">
-           <!--  <blockquote> -->
-              <div class="row">
-                
-                <div class="col-sm-12">
-                  <p class="text-test"><?php echo $row['tcontent'];?></p>
-                  <div class="ceo-name">
-          <center><h5><?php echo $row['tname'];?></h5></center>
-          <!-- <center><h5>CEO of Pineapple</h5></center> -->
-          </div>
-                </div>
-              </div>
-           <!--  </blockquote> -->
-          </div>
-          <?php }//while ?>
-      
-        </div>
-        
-      
-      </div>                          
-    </div>
-  
-<!--======================test slider end==============-->
-</div><!--row close-->
-</div><!--container close-->
-</div><!--testimon-main close-->
-</div>
-<!--====================================Testimonial end==========================-->
-
-  
-  
-  
   
   
   
