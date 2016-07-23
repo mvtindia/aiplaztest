@@ -365,6 +365,7 @@ $que = mysqli_query($connect,"select * from calenderdata where placeid=".$r21['p
 <?php $spacename=$r21['space_name'];?>
           <h4 class="hotel-name"><?php 
           if(strlen($spacename)>10){echo substr($spacename,0,10)."..." ;}else{echo $spacename;} ?></h4>
+<!--
           <div class="req-cus rat-star">
           <i class="fa fa-star"></i>
           <i class="fa fa-star"></i>
@@ -372,22 +373,41 @@ $que = mysqli_query($connect,"select * from calenderdata where placeid=".$r21['p
           <i class="fa fa-star-o"></i>
           <i class="fa fa-star-o"></i>
           </div>
+-->
+              
+              
+        <?php
+$country = $r21['p_country'] ;
+                                       //  echo $country;
+?>
+<?php switch ($country) {
+            ?>
+<?php    case "United States":  $currency= "&#36;"?>
+<?php        break; case "United Kingdom":  $currency= "&163;"?>
+ <?php       break; case "India": $currency= "&#8377;"?>
+<?php }  ?>      
+        
           <div class="req-cus"><i class="fa fa-map-marker icncolor"></i> <?php $paddress=$r21['p_address'];
           if(strlen($paddress)>40){echo substr($paddress,0,30)."..." ;}else{echo $paddress;} ?></div>
           <div class="col-md-6 col-sm-6 col-xs-12 no-pad req-cus"><?php 
           if(!empty($r21['p_p_h']))
           {
-            echo '<i class="fa fa-inr icncolor"></i> ' .$r21['p_p_h'].' Per  Hour<br>';
+              echo $currency;
+            echo '' .$r21['p_p_h'].' Per  Hour<br>';
           }else{ echo "<br>";//'<i class="fa fa-inr icncolor"></i> ' .$spph.' Per  Hour<br>';
         }
           if(!empty($r21['p_p_n']))
           {
-            echo '<i class="fa fa-inr icncolor"></i> '.$r21['p_p_n'].' Per Night<br>';
+                            echo $currency;
+
+            echo ''.$r21['p_p_n'].' Per Night<br>';
           }else{ echo "<br>";//'<i class="fa fa-inr icncolor"></i> ' .$sppn.' Per  Night<br>';
         }
           if(!empty($r21['w_p_p_n']))
           {
-            echo '<i class="fa fa-inr icncolor"></i> '.$r21['w_p_p_n'].' Per Week';
+                            echo $currency;
+
+            echo ''.$r21['w_p_p_n'].' Per Week';
           }else{ echo "<br>";//'<i class="fa fa-inr icncolor"></i> ' .$sppw.' Per  Week<br>';
         }
           ?> </div>

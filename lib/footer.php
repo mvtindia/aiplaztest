@@ -297,6 +297,7 @@ else
                     <ul class="site-links">
                         <li><a href="aboutus.php" target="_blank">About US</a></li>
                         <li><a href="aboutus.php" target="_blank">How it works</a></li>
+                        <li><a href="aboutus.php" target="_blank">Testimonials</a></li>
 
 <!--
                         

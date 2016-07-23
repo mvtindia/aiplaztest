@@ -464,11 +464,16 @@ if($match=mysqli_fetch_array($query)){
     <input type="hidden"  name="placeid" value="<?php echo $pid; ?>">
       <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="space">Select Your Currency</label>
-    <input type="text" required name="currency" value="<?php echo $row['currency'];?>" class="form-control">
-  </div>
+ <select class="form-control" id="sel1" name="currency" >
+  <option value="">Select Options</option>
+    <option value="1">$</option>
+    <option value="4">₹</option>
+  </select>  </div>
+      
+      
 
       <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Price Per Night</label>
+    <label for="space">Price Per Day</label>
    <input type="text" required class="form-control" id="accomodates" value="<?php echo $row['p_p_n'];?>" placeholder="Enter price" name="p_p_n">
   </div>
   
@@ -476,10 +481,12 @@ if($match=mysqli_fetch_array($query)){
     <label for="space">Price Per Hour</label>
    <input type="text" required class="form-control" id="accomodates" value="<?php echo $row['p_p_h'];?>" placeholder="Enter price" name="p_p_h">
   </div>
+<!--
           <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
     <label for="space">Weekend Price Per Night</label>
    <input type="text" required class="form-control" id="accomodates" value="<?php echo $row['w_p_p_n'];?>" placeholder="Enter price" name="w_p_p_n">
   </div>
+-->
 
   <div class="col-md-12 text-center form-group">
 
