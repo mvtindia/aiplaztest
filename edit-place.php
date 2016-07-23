@@ -406,7 +406,7 @@ if($match=mysqli_fetch_array($query)){
 <label class="custom-upload uploadphoto">ADD PHOTOS</label>
 <div class="upphoto" style="display:none;">
    <input id="input-7" name="inputphotos[]" data-show-upload="false" multiple type="file" class="file file-loading" >
-    <p style="font-size: 12px"> Please Upload Photos of (jpg/jpeg/png/gif) Formats with min size 700*500</p>
+    <p style="font-size: 12px"> Please Upload Photos of (jpg/jpeg/png/gif) formats</p>
 </div>
 </div>
 
