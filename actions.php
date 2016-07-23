@@ -292,7 +292,7 @@ $types = $_FILES['inputvideos']['type'];
               $imageInformation = getimagesize($tmpphotos[$i]);
              $imageWidth = $imageInformation[0]; //Contains the Width of the Image
              $imageHeight = $imageInformation[1]; //Contains the Height of the Image
-              if($imageWidth >= '700' && $imageHeight >='500' )
+              if($imageWidth >= '250' && $imageHeight >='100' )
               {
                 $photos .= $inputphotos[$i].",";
                 move_uploaded_file($tmpphotos[$i], $path);
