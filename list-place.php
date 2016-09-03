@@ -204,25 +204,36 @@ while($match=mysqli_fetch_array($query)){?>
 </div>
 
     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Common Ammenties</label>
+    <label class="wid100" for="space">Common Ammenties</label>
+                      <select class="form-control" id="select6" name="commonammenties[]" multiple >
+
      <?php $query=mysqli_query($connect,'Select * from ammenities where atype="common"');
 while($match=mysqli_fetch_array($query)){?>
     <div class="col-md-12 checkbox">
         <label type="checkbox">
-<input type="checkbox" name="commonammenties[]"  value="<?php echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?></label>
+<!--<input type="checkbox" name="commonammenties[]"  value="<?php echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?></label>-->
+        <option name="commonammenties[]"value="<?php echo $match['aid'];?>"><?php echo $match['aname'];?></option>
+
   </div>
 <?php }?>
+                                              </select>
+
   </div>
 
 
       <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Additional Ammenties</label>
+        <label class="wid100" for="space">Additional Ammenties</label>
+              <select class="form-control" id="select5" name="add_ammenties[]" multiple >
+
          <?php $query=mysqli_query($connect,'Select * from ammenities where atype="additional"');
 while($match=mysqli_fetch_array($query)){?>
     <div class="col-md-12 checkbox"><label type="checkbox">
-<input type="checkbox" name="add_ammenties[]"  value="<?php echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?></label>
+<!--<input type="checkbox" name="add_ammenties[]"  value="<?php echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?></label>-->
+<option name="add_ammenties[]"value="<?php echo $match['aid'];?>"><?php echo $match['aname'];?></option>
+
   </div>
 <?php }?>
+                    </select>
   </div>
 
 
