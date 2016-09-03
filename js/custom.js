@@ -803,6 +803,9 @@ $(function(){
         $('#select2').multiselect();
          $('#select3').multiselect();
           $('#select4').multiselect();
+          $('#select5').multiselect();
+          $('#select6').multiselect();
+
 
 
 
