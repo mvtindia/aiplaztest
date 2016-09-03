@@ -11,12 +11,12 @@ $place_loc = "";
  }
  else
  {
-  $mylat = 17.3700;
+  $mylat = 	41.881832;
  }
  if(!empty($_REQUEST['my-lng'])){
  $mylng = $_REQUEST['my-lng'];
  }else{
-  $mylng = 78.4800;
+  $mylng = -87.623177;
  }
  if(!empty($_REQUEST['events'])){
   $events='';
