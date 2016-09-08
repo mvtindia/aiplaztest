@@ -6,7 +6,7 @@ session_start();
 <div class="row">
 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
  <?php $q = mysqli_query($connect,"select * from logo"); $r = mysqli_fetch_array($q); ?>
-<a href="index.php"><img class="img-responsive" src="images/<?php echo $r['logo_image']; ?>"></a>
+<a href="index.php"><img style="max-width:60%" class="img-responsive" src="images/<?php echo $r['logo_image']; ?>"></a>
 </div>
 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
  <nav class="navbar navbar-inverse cus-nav">
