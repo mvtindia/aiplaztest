@@ -66,6 +66,7 @@ button.multiselect.dropdown-toggle.btn.btn-default
           <div class="carousel-caption">
      </div>
         </div><!-- /.item -->
+		
 
       </div><!-- /.carousel-inner -->
 
