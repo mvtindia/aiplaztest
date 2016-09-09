@@ -67,6 +67,11 @@ button.multiselect.dropdown-toggle.btn.btn-default
      </div>
         </div><!-- /.item -->
 		
+			<!-- Fourth slide -->
+        <div class="item basketball">
+          <div class="carousel-caption">
+     </div>
+        </div><!-- /.item -->
 
       </div><!-- /.carousel-inner -->
 
