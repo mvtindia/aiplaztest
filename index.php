@@ -297,6 +297,7 @@ if($flag==1){
 <!--==================Hire Professional Block starts here======================-->
 
 
+<!--
 <div class="container mg-bottom30">
 <h1 class="city-had-cus text-center">Looking to hire event professionals ? Begin here</h1>
  <?php 
@@ -327,6 +328,7 @@ else{ ?>
  <?php }} ?>
 
 </div>
+-->
 
 
 
