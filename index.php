@@ -71,8 +71,8 @@ button.multiselect.dropdown-toggle.btn.btn-default
 
     </div><!-- /.carousel -->
       <div class="text-center mg-top" style="position: relative;">
-    <h1 class="color2">What are you Planning?</h1>
-    <h4 class="color2">The more we share the more we have</h4>
+    <h1 class="color2">What do you want to find?</h1>
+<!--    <h4 class="color2">The more we share the more we have</h4>-->
     </div>
   <div class="search">
         <div class="container">

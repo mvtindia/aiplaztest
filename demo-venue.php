@@ -5,7 +5,7 @@ if (isset($_REQUEST['placeid'])) {
 <html>
 <head>
 
-	<title>Book My Space</title>
+	<title>2Finda</title>
 	<?php include 'lib/top.php';?>
 	<link href="css/style2.css" rel="stylesheet">
 	<style>
