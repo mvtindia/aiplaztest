@@ -2,7 +2,7 @@
 <html>
 <head>
 
-  <title>Book My Space</title>
+  <title>2finda</title>
   <?php include 'lib/top.php';?>
 <style>
 #carousel-example-generic{
