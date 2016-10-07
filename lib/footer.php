@@ -320,8 +320,8 @@ else
                     <p>24-26-28 Southern Str, Melbourne, VIC</p>
                     <p>(+333) - 333 - 333333   —   (+333) - 333 - 33333</p>
 -->
-                    <p>Sales -<a href="#">sales@aiPlaz.com</a></p>
-                    <p>Support - <a href="#">support@aiPlaz.com </a></p>
+                    <p>Sales -<a href="#">sales@2Finda.com</a></p>
+                    <p>Support - <a href="#">support@2Finda.com </a></p>
                     <div class="moon-divider small"></div>
                     <div class="social-links">
                         <a class="social-link" href="#"><i class="fa fa-facebook"></i><i class="fa fa-facebook"></i></a>
