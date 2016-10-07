@@ -76,7 +76,7 @@ $guests = 1;
 <html>
 <head>
 
-	<title>Book My Space</title>
+	<title>Book a Space</title>
 	<?php include 'lib/top.php';?>
 
 	<style>
