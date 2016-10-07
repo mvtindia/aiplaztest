@@ -426,8 +426,8 @@ $country = $r21['p_country'] ;
                           }
      ?>
 
-<input type="hidden" name="marker_addresses" id="marker_addresses" value="<?php echo rtrim($marker_addresses,">>>");?>" placeholder="">
-<input type="hidden" name="marker_location" id="marker_location" value="<?php echo rtrim($marker_location,">>>");?>" placeholder="">
+<!--<input type="hidden" name="marker_addresses" id="marker_addresses" value="<?php echo rtrim($marker_addresses,">>>");?>" placeholder="">-->
+<!--<input type="hidden" name="marker_location" id="marker_location" value="<?php echo rtrim($marker_location,">>>");?>" placeholder="">-->
 </div>
 
 	<?php include 'lib/footer.php';?>
