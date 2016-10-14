@@ -571,7 +571,7 @@ $('#ephotovideo').css('display','block');
   
   <div class="footer-lst">
 <div class="container wid100">
-<span>Copyright &copy; 2016 Bookmyspace</span>
+<span>Copyright &copy; 2016 2Finda</span>
 <div class="row">
 </div><!--row close-->
 </div><!--container close-->

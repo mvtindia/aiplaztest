@@ -9,7 +9,7 @@
   <meta name="author" content="ThemeBucket">
   <link rel="shortcut icon" href="#" type="image/png">
 
-  <title>Book My Space</title>
+  <title>2Finda</title>
     <!--gritter css-->
   <link rel="stylesheet" type="text/css" href="js/gritter/css/jquery.gritter.css" />
    <!--ios7-->

@@ -292,7 +292,7 @@ else
 <footer class="footer-media">
         <div class="container container-custom">
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-6">
                     <h3 class="subtitle"><strong>Useful Links</strong></h3>
                     <ul class="site-links">
                         <li><a href="aboutus.php" target="_blank">About US</a></li>
@@ -313,15 +313,15 @@ else
 
                     </ul>
                 </div>
-                <div class="col-sm-5 text-center">
+                <div class="col-sm-6 text-center">
                     <h3 class="subtitle wide">Contact Us</h3>
 <!--                    <div class="moon-divider small"></div>-->
 <!--
                     <p>24-26-28 Southern Str, Melbourne, VIC</p>
                     <p>(+333) - 333 - 333333   —   (+333) - 333 - 33333</p>
 -->
-                    <p>Sales -<a href="#">sales@aiPlaz.com</a></p>
-                    <p>Support - <a href="#">support@aiPlaz.com </a></p>
+                    <p>Sales -<a href="#">sales@2Finda.com</a></p>
+                    <p>Support - <a href="#">support@2Finda.com </a></p>
                     <div class="moon-divider small"></div>
                     <div class="social-links">
                         <a class="social-link" href="#"><i class="fa fa-facebook"></i><i class="fa fa-facebook"></i></a>
@@ -332,14 +332,16 @@ else
                         <a class="social-link" href="#"><i class="fa fa-youtube"></i><i class="fa fa-youtube"></i></a>
                     </div>
                 </div>
+<!--
                 <div class="col-sm-4 text-right">
                     <h3 class="subtitle"><strong>Newsletter</strong></h3>
-<!--                    <p>Cras dignissim, velit ut placerat pulvinar, metus justo ultricies lacus, ut consectetur neque augue maximus lectus. Phasellus non placerat nibh.</p>-->
+                    <p>Cras dignissim, velit ut placerat pulvinar, metus justo ultricies lacus, ut consectetur neque augue maximus lectus. Phasellus non placerat nibh.</p>
                     <div class="inputs">
                         <div class="input-wrapper"><input type="text" id="email" name="email" placeholder="Enter your email here"></div>
                         <button><i class="fa fa-arrow-right"></i></button>
                     </div>
                 </div>
+-->
             </div>
         </div>
        
@@ -349,7 +351,7 @@ else
   
   <div class="footer-lst">
 <div class="container wid100">
-<span>Copyright &copy; 2016 Bookmyspace</span>
+<span>Copyright &copy; 2016 2Finda</span>
 <div class="row">
 </div><!--row close-->
 </div><!--container close-->

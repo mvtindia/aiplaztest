@@ -1,6 +1,6 @@
    <!--footer section start-->
         <footer>
-            Aiplaz &copy; 2016 
+            2Finda &copy; 2016 
         </footer>
         <!--footer section end-->
 
