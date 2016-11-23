@@ -437,10 +437,10 @@ h1 {
 /*================New css=========================*/ 
     footer{
 		background-color: #202935;   
-	color: #59677a;
-   font-family: 'Lato', sans-serif;
+	    color: #59677a;
+        font-family: 'Lato', sans-serif;
 	    padding-top: 10px;
-    padding-bottom: 30px;
+        padding-bottom: 25px;
 	}
 	footer ul{
 		list-style-type:none;
