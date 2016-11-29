@@ -322,7 +322,7 @@ else
 -->
                     <p>Sales -<a href="#">sales@2Finda.com</a></p>
                     <p>Support - <a href="#">support@2Finda.com </a></p>
-                    <!--<div class="moon-divider small"></div>-->x`x`
+                    <!--<div class="moon-divider small"></div>-->
                     <div class="social-links">
                         <a class="social-link" href="#"><i class="fa fa-facebook"></i><i class="fa fa-facebook"></i></a>
                         <a class="social-link" href="#"><i class="fa fa-twitter"></i><i class="fa fa-twitter"></i></a>
