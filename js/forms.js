@@ -68,6 +68,7 @@ $("#signup_form").submit(function(e)
 {
     var formObj = $(this);
     var formURL = formObj.attr("action");
+    
     var formData = new FormData(this);
     $.ajax({
         url: 'actions.php?value=101',
@@ -320,16 +321,20 @@ $("#change_pass").submit(function(e)
     e.unbind();
 }); 
     
+
 /* add place form start */
-     $('form#add_place').submit(function() {
+     $('#add_place').submit(function() {
       $('.ishowload').css('display','block');
-       var formData = new FormData($(this)[0]);
-       //console.log('submitted');
+       var formData = new FormData(this);
+       //console_log($formData[0]);
        $.ajax({
            url: 'actions.php?place=001',
            type: 'POST',
            data: formData,
-           async: false,
+           mimeType:"multipart/form-data",
+           cache: false,
+           contentType: false,
+           processData: false,
            success: function(data){
                $('.ishowload').css('display','none');
             var datas=data.split(",,,");
@@ -340,20 +345,18 @@ $("#change_pass").submit(function(e)
               $("#photovideo").css('display','block');
               $("#details").css('display','none');
               }
-              else if(datas[0]=='error')
+              else if(datas[1]=='error')
               {
                   swal({ title: 'Error', text: 'Something Went Wrong.', timer: 2000
 });
               }
-               else if(datas[0]=='login')
+               else if(datas[1]=='login')
               {
                   swal({ title: 'Login First', text: 'You Have to login', timer: 2000
 });
               }
-             },
-           cache: false,
-           contentType: false,
-           processData: false
+             }
+           
        });
        return false;
    });
@@ -459,7 +462,7 @@ $('.ishowload').css('display','block');
 
        var formData = new FormData(this);
        $.ajax({
-           url: 'actions.php',
+           url: 'actions.php?priceterms=303',
            type: 'POST',
            data:  formData,
            mimeType:"multipart/form-data",
@@ -505,6 +508,7 @@ $('.ishowload').css('display','block');
   }
   else  //for olden browsers
    {
+       console.log("after the else");
        //generate a random id
        var  iframeId = 'unique' + (new Date().getTime());
 

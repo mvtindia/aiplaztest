@@ -25,14 +25,13 @@ button.multiselect.dropdown-toggle.btn.btn-default
 </head>
 
 <body>
-<?php include_once('connect.php'); ?>
 
 <div class="container-fluid"><!--container-fluid start-->
 <div class="row">
 
 
 <!--==============menu header=========================-->
-<div class="menu-had">
+<div class="menu-had">  
 <?php include 'lib/header.php';?>
 </div><!--menu-had close-->
 <!--==============menu header close=========================-->

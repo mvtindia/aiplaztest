@@ -19,12 +19,19 @@ if(isset($_REQUEST['value']))
   $q2 = mysqli_query($connect,'INSERT INTO `users`(`fname`, `lname`, `email`, `pwd`, `contact`) VALUES ("'.$fname.'","'.$lname.'","'.$email.'","'.$pwd.'","'.$contact.'")');
   if($q2)
   {
+    // the message
+    $msg = "First line of text\nSecond line of text";
+
+    // use wordwrap() if lines are longer than 70 characters
+    $msg = wordwrap($msg,70);
+
+    // send email
+    mail("$email","2finda Sign Up Successfull",$msg, "From: test@2finda.com");
+
     echo 'done';
-  }
-  }
-  else
-  {
+  } else {
     echo 'already';
+  }
   }
 }
 
@@ -37,7 +44,7 @@ if(isset($_REQUEST['login']))
 {
    $email = $_POST['email'];
    $password = $_POST['password'];
-  $password = md5($password);
+   $password = md5($password);
   $q2 = mysqli_query($connect,'SELECT * FROM users where email="'.$email.'" AND pwd="'.$password.'"');
   if(mysqli_num_rows($q2)>0)
   {
@@ -154,12 +161,13 @@ if(isset($_REQUEST['change_pass']))
 }
 // end here
 // Add place Start Here
-if(isset($_POST['place']))
+if(isset($_REQUEST['place']))
 {
  // echo "working";
+//error_log($_POST['name']);
 $name = $_POST['name'];
 $contact = $_POST['contact'];
-$postal = $_POST['postal'];
+//$postal = $_POST['postal'];
 $location = $_POST['location'];
 
 $address = $_POST['address'];
@@ -227,11 +235,21 @@ $capacity = $_POST['capacity'];
 
 if($_SESSION['u_id']=="")
 {
+error_log("here I ammmmmmm");
 echo "login";
 }
 else
 {
-$sql = mysqli_query($connect,"INSERT INTO `place` ( `p_name`, `p_contact`, `postal_code`, `p_location`, `p_address`, `p_country`, `p_city`, `p_code`, `p_state`, `space_name`, `property_typeid`, `can_be_usedid`, `accomodates`, `place_area`, `ammenties_id`, `add_ammenties`, `details`, `rules_doid`, `rules_donotid`, `timestampdate`, `saftyid`, `fire_extinguisher`, `fire_alarm`, `gas_valve`, `exit_extinguisher`,`capacity`,`user_id`,`areatype`) VALUES ('".$name."', '".$contact."', '".$postal."', '".$location."', '".$address."','".$country."' ,'".$city."' ,'".$postcode."','".$state."', '".$space_name."', '".$property."', '".$canbe."', '".$accomodates."', '".$area."', '".$commonammenties."', '".$add_ammenties."', '".$details."',  '".$ruledo."', '".$ruledonot."', '".date('Y-m-d')."', '".$safety."', '".$fire_extinguisher."', '".$fire_alaram."', '".$gas_valve."', '".$emergency."','".$capacity."','".$_SESSION['u_id']."','".$areatype."')");
+//$sql = mysqli_query($connect,"INSERT INTO `place` (`user_id`, `p_name`, `timestampdate`) VALUES ('" . mysql_real_escape_string($_SESSION['u_id'] . "','test user', NOW()));
+
+try {
+$sql = mysqli_query($connect,'INSERT INTO `place` ( `p_name`, `p_contact`, `p_location`, `p_address`, `p_country`, `p_city`, `p_code`, `p_state`, `space_name`, `property_typeid`, `can_be_usedid`, `accomodates`, `place_area`, `ammenties_id`, `add_ammenties`, `details`, `rules_doid`, `rules_donotid`, `timestampdate`, `saftyid`, `fire_extinguisher`, `fire_alarm`, `gas_valve`, `exit_extinguisher`,`capacity`,`user_id`,`areatype`) VALUES ("'.$name.'", "'.$contact.'", "'.$location.'", "'.$address.'","'.$country.'" ,"'.$city.'" ,"'.$postcode.'","'.$state.'", "'.$space_name.'", "'.$property.'", "'.$canbe.'", "'.$accomodates.'", "'.$area.'", "'.$commonammenties.'", "'.$add_ammenties.'", "'.$details.'", "'.$ruledo.'", "'.$ruledonot.'", "'.date('Y-m-d').'", "'.$safety.'", "'.$fire_extinguisher.'", "'.$fire_alaram.'", "'.$gas_valve.'", "'.$emergency.'","'.$capacity.'", "'.$_SESSION['u_id'].'","'.$areatype.'")');
+} catch (Exception $e) {
+     error_log("we have a problem");
+}
+
+error_log("there I was");
+error_log("sqlcode: " + $sql);
 echo $_SESSION['placeids']=mysqli_insert_id($connect);
 echo ',,,'; 
 if($sql>0){
@@ -246,7 +264,7 @@ else{
 
  
 
-if(isset($_POST['photo']))
+if(isset($_REQUEST['photo']))
 {
 	    $supported_image = array(
                                               'jpg',
@@ -338,8 +356,9 @@ else
 }//isset photo
 
 //price
-if(isset($_POST['priceterms']))
+if(isset($_REQUEST['priceterms']))
 {
+  error_log("in the priceterms if statement");
 //$placeid=$_POST['placeid'];
 $placeid=$_POST['placeid'];
 $currency = $_POST['currency'];
