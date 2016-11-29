@@ -148,7 +148,7 @@ $guests = 1;
 <div class="main-center-data" style="margin-top: 129px;">
 <div class="search-lst-data">
 <div class="col-md-5 pd-l-0 hidden-sm hidden-xs">
-<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAHOSxxua5IIFTA1-WiZbenpWIj0yv9hU8"></script>
 
 <div id="map_canvas"></div>
 </div>
@@ -443,11 +443,17 @@ $country = $r21['p_country'] ;
 
 </div><!--container-fluid close-->
 </body>
+<?php 
+   if(!isset($_SESSION['u_id'])) {
+?>
+<script>
+     $("#myModal2").modal();
+</script>
+<?php   }
+?>
 
-  
-	
-	
 </html>
+
 <?php /*} // if(isset - searching end)
 else{echo "no input";}*/
 ?>

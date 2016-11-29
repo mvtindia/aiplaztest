@@ -20,19 +20,19 @@ include('connect.php');?>
 <?php include 'lib/header.php';?>
 </div><!--menu-had close-->
 <!--==============menu header close=========================-->
-<div class="banner-bg">
+<!--<div class="banner-bg">
 <div class="banner-upper">
 <div class="container">
-<div class="row">
-<div class="banner-txt">
+<div class="row">-->
+<!--<div class="banner-txt">
  <h1> Add a new place</h1>
 <h4>Earn money renting out a spare room, marriage place or House. Listing your place is totally free. </h4>
  </div>
-</div><!--row close-->
-</div><!--container close-->
+</div>--><!--row close-->
+<!--</div>--><!--container close-->
 
-</div><!--banner-upper close-->
-</div><!--banner-bg close-->
+<!--</div>--><!--banner-upper close-->
+<!--</div>--><!--banner-bg close-->
 <div class="container">
 <div class="row">
 <div class="col-lg-8 col-sm-8 col-md-8 col-xs-12">
@@ -257,9 +257,6 @@ while($match=mysqli_fetch_array($query)){?>
   <div class="clearfix"></div>
   </div> --><!--frm-field-mar-->
   <!--=====================================-->
-
-
-
 
 
     <div class="had-frm-sec">Rules</div>
@@ -637,8 +634,16 @@ echo '<div id="calender-tab" style="display:none;">
 </div><!--container-fluid close-->
 
 </body>
-</html>
+
 <!-- <script src="js/forms-map.js"></script> -->
 <?php include 'lib/footer.php'; //if isset
-
-  ?>
+?>
+<?php 
+   if(!isset($_SESSION['u_id'])) {
+?>
+<script>
+     $("#myModal2").modal();
+</script>
+<?php   }
+?>
+</html>
