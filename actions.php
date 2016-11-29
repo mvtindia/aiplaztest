@@ -233,9 +233,8 @@ $gas_valve = $_POST['gas_valve'];
 $emergency = $_POST['emergency'];
 $capacity = $_POST['capacity'];
 
-if($_SESSION['u_id']=="")
+if(!isset($_SESSION['u_id']))
 {
-error_log("here I ammmmmmm");
 echo "login";
 }
 else

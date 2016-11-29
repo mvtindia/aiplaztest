@@ -443,11 +443,17 @@ $country = $r21['p_country'] ;
 
 </div><!--container-fluid close-->
 </body>
+<?php 
+   if(!isset($_SESSION['u_id'])) {
+?>
+<script>
+     $("#myModal2").modal();
+</script>
+<?php   }
+?>
 
-  
-	
-	
 </html>
+
 <?php /*} // if(isset - searching end)
 else{echo "no input";}*/
 ?>

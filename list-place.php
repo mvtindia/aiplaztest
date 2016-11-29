@@ -634,8 +634,16 @@ echo '<div id="calender-tab" style="display:none;">
 </div><!--container-fluid close-->
 
 </body>
-</html>
+
 <!-- <script src="js/forms-map.js"></script> -->
 <?php include 'lib/footer.php'; //if isset
-
-  ?>
+?>
+<?php 
+   if(!isset($_SESSION['u_id'])) {
+?>
+<script>
+     $("#myModal2").modal();
+</script>
+<?php   }
+?>
+</html>
