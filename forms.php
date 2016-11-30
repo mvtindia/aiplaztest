@@ -441,56 +441,68 @@ echo"not";
 // calender data
 	if(isset($_REQUEST['label']))
   {
-  $place = $_REQUEST['placeid_cal'];
+    $place = $_REQUEST['placeid_cal'];
     if($place=="")
     {
-     $place_id = $_SESSION['placeids'];
-    }
-    else
-    {
+      $place_id = $_SESSION['placeids'];
+    } else {
       $place_id = $place;
     }
- $label=$_REQUEST['label'];
+    
 
-  $datefirst=date('Y-m-d',strtotime($_REQUEST['datefirst']));
+    $label=$_REQUEST['label'];
 
-  $datelast=date('Y-m-d',strtotime($_REQUEST['datelast']));
+    $datefirst=date('Y-m-d',strtotime($_REQUEST['datefirst']));
 
- $status=$_REQUEST['status'];
+    $datelast=date('Y-m-d',strtotime($_REQUEST['datelast']));
+    
+    $status=$_REQUEST['status'];
+    
  // $pdate2=$_REQUEST['pdate2'];
  // $ptime1=$_REQUEST['ptime1'];
  // $ptime2=$_REQUEST['ptime2'];
  //$repetition=$_REQUEST['repetition'];
  // $repetition='';
- $pph=$_REQUEST['pph'];
- $ppn=$_REQUEST['ppn'];
- $ppw=$_REQUEST['ppw'];
+    $pph=$_REQUEST['pph'];
+    $ppn=$_REQUEST['ppn'];
+    $ppw=$_REQUEST['ppw'];
+    
+    $days1 = "";
+    $dtz = new DateTimeZone('America/Chicago');
+    try {
+      $st1    = new DateTime($datefirst, $dtz);
+    } catch (Exception $e) {
+      error_log($e->getMessage());
+    }
 
-$days1 = "";
-     
+    try {
+      $et1    = new DateTime($datelast, $dtz);
+    } catch (Exception $e) {
+      error_log($e->getMessage());
+    }
 
-      $st1    = new DateTime($datefirst);
-      $et1    = new DateTime($datelast);
-      $in1 = new DateInterval('P1D'); // 1 day interval
-      $per1   = new DatePeriod($st1, $in1, $et1);
-      foreach ($per1 as $day) 
+    $in1    = new DateInterval('P1D'); // 1 day interval
+    $per1   = new DatePeriod($st1, $in1, $et1);
+    
+    foreach ($per1 as $day) 
       {
             // Do stuff with each $day...
            $days1 .= $day->format('Y-m-d').',';
-      }    
-     $days1 = $days1.$datelast;
-
-       $chinout = explode(',',$days1);
-
+      }
+     
+    $days1 = $days1.$datelast;
+    
+    $chinout = explode(',',$days1);
+    error_log("before calender select");
     $que = mysqli_query($connect,"select * from calenderdata where placeid='".$place_id."'");
-      while($rw = mysqli_fetch_array($que))
+    while($rw = mysqli_fetch_array($que))
       {
          
         $days="";
         $newdays = "";
-        $start    = new DateTime($rw['date1']);
+        $start    = new DateTime($rw['date1'], $dtz);
         $end_date = $rw['date2'];
-        $end      = new DateTime($rw['date2']);
+        $end      = new DateTime($rw['date2'], $dtz);
         $interval = new DateInterval('P1D'); // 1 day interval
         $period   = new DatePeriod($start, $interval, $end);
         foreach ($period as $day) {
@@ -504,15 +516,13 @@ $days1 = "";
         foreach ($newdays as $range) {
           $ranges = explode(',',$range);
          
-          
           for($ik = 0 ; $ik<count($chinout); $ik++)
           { 
            	 $chinout[$ik];
             if(in_array($chinout[$ik], $ranges))
             {
-             
-             
-					$msg="Exist";                          
+               
+					    $msg="Exist";                          
                
                // if counting end
                           } // if in array end
@@ -523,22 +533,20 @@ $days1 = "";
 
     
  //echo 'INSERT INTO `calenderdata`( `placeid`, `p_p_n`, `p_p_h`, `w_p_p_n`, `date1`, `date2`, `label`, `status`, `time1`, `time2`, `repetition`, `ctimestampdate`) values("'.$_SESSION['placeids'].'","'.$ppn.'","'.$pph.'","'.$wppn.'","'.$pdate1.'","'.$pdate2.'" ,"'.$plabel.'" ,"'.$pstatus.'", "'.$ptime1.'" ,"'.$ptime2.'","'.$repetition.'" , "'.$curdate.'")';
-
+error_log($msg);
 $curdate=date('Y-m-d');
-	if($msg == "")
+if($msg == "")
 	{
- $query=mysqli_query($connect,'INSERT INTO `calenderdata`( `placeid`, `p_p_n`, `p_p_h`, `w_p_p_n`, `date1`, `date2`, `label`, `status`,  `ctimestampdate`) values("'.$place_id.'","'.$ppn.'","'.$pph.'","'.$ppw.'","'.$datefirst.'","'.$datelast.'" ,"'.$label.'" ,"'.$status.'" , "'.$curdate.'")');
-
-if($query>0){
-   echo "ok";
-}else{
-   echo "not";
-}
-}
-else
-{
-	echo "Already";
-}
+    $query=mysqli_query($connect,'INSERT INTO `calenderdata`( `placeid`, `p_p_n`, `p_p_h`, `w_p_p_n`, `date1`, `date2`, `label`, `status`,  `ctimestampdate`) values("'.$place_id.'","'.$ppn.'","'.$pph.'","'.$ppw.'","'.$datefirst.'","'.$datelast.'" ,"'.$label.'" ,"'.$status.'" , "'.$curdate.'")');
+    error_log("query");
+    if($query>0){
+      echo "ok";
+    }else{
+      echo "not";
+    }   
+  } else {
+	  echo "Already";
+  }
 }
 
 //add services
@@ -779,62 +787,62 @@ if($sql>0)
                 $('#datevalue1').val(year+"-"+month+"-"+day).attr('readonly');
                $('#datevalue2').val(year1+"-"+month1+"-"+day1).attr('readonly');
               });
-$('.service1').css('display','none');
-
-$('.avail1').click(function(){
-  $('this').css('background','white;');
-  $('.avail2').removeAttr('disabled');
-     $('#status').attr('value','Available');
-     $('#priceper').css('display','block');
+          $('.service1').css('display','none');
+          $('.avail1').click(function(){
+          $('this').css('background','white;');
+          $('.avail2').removeAttr('disabled');
+          $('#status').attr('value','Available');
+          $('#priceper').css('display','block');
     });
 
-    $('.avail2').click(function(){
-      $('#priceper input').attr('value','');
-      $('#priceper').css('display','none');
-       $('this').css('background','white;');
+  $('.avail2').click(function(){
+  $('#priceper input').attr('value','');
+  $('#priceper').css('display','none');
+  $('this').css('background','white;');
   $('.avail1').removeAttr('disabled');
   $('#pph').val('');
-   $('#ppw').val('');
-    $('#ppm').val('');
-      $('#status').attr('value','Not Available');
+  $('#ppw').val('');
+  $('#ppm').val('');
+  $('#status').attr('value','Not Available');
     });
+
   $(".myset").click(function(e)
   {
     //$("#savail")[0].reset();
     var status = $('#status').val();
-  var pph = $('#pph').val();
-   var ppw = $('#ppw').val();
+    var pph = $('#pph').val();
+    var ppw = $('#ppw').val();
     var ppm = $('#ppm').val();
-   var label =  $('#plabel').val();
-   var date1 = $('#datevalue1').val();
-   var date2 = $('#datevalue2').val();
-   console.log('label1='+label+'&datefirst='+date1+'&datelast='+date2+'&status='+status+'&pph='+pph+'&ppn='+ppw+'&ppw='+ppm);
-     $.ajax({
+    var label =  $('#plabel').val();
+    var date1 = $('#datevalue1').val();
+    var date2 = $('#datevalue2').val();
+    console.log('label1='+label+'&datefirst='+date1+'&datelast='+date2+'&status='+status+'&pph='+pph+'&ppn='+ppw+'&ppw='+ppm);
+    $.ajax({
            url: 'forms.php?label1='+label+'&datefirst='+date1+'&datelast='+date2+'&status='+status+'&pph='+pph+'&ppn='+ppw+'&ppw='+ppm,
            contentType: false,
            cache: false,
            processData:false,
            success: function(data, textStatus, jqXHR)
            {    
-            console.log(data);
+             console.log(data);
              if(data == 'ok')
              { 
                $('.service1').css('display','none');
                $('#serviceform').find("input[type=text], textarea").val("");
                
-               $('#display-form').css('display','none');
-              //swal( 'Success!', 'Sucessfully Saved', 'success');
-              swal({ title: 'Success', text: 'Sucessfully Saved', timer: 2000 });
-              $('#selecteddates').load(window.location + ' #selecteddates');
+               //$('#display-form').css('display','none');
+              
+               swal({ title: 'Success', text: 'Sucessfully Saved', timer: 2000 });
+               $('#selecteddates').load(window.location + ' #selecteddates');
               // $('.comment-main').load(window.location + ' .comment-main');
                $('.month-cell').removeClass('selected');
-              $('.selected').append( "<p style='    padding: 1px 2px 1px 2px;color: rgb(3, 218, 171); background:rgb(205, 87, 87); font-size: 13px;  margin: 11px -9px; display: inline-block;'>"+label+"</p>" );
-              $('.start').addClass('last');
+               $('.selected').append( "<p style='padding: 1px 2px 1px 2px;color: rgb(3, 218, 171); background:rgb(205, 87, 87); font-size: 13px;  margin: 11px -9px; display: inline-block;'>"+label+"</p>" );
+               $('.start').addClass('last');
            
              }
              else
              { 
-              $('#selecteddates').load(window.location + ' #selecteddates');
+               $('#selecteddates').load(window.location + ' #selecteddates');
                //swal( 'Oops!', 'This Date Range Already Booked', 'error');
                swal({ title: 'Error', text: 'This Date Range is not Available', timer: 2000 });
              }      
@@ -865,34 +873,33 @@ else
 // calender data
   if(isset($_REQUEST['label1']))
   {
-     $label .=$_REQUEST['label1'];
-       $place = $_REQUEST['placeid_cal'];
-    if($place=="")
-    {
-      $place_id = $_SESSION['sid'];
-    }
-    else
-    {
-      $place_id = $place;
-    }
-  $label=$_REQUEST['label'];
+      $label .=$_REQUEST['label1'];
+      $place = $_REQUEST['placeid_cal'];
+      if($place=="")
+      {
+        $place_id = $_SESSION['sid'];
+      }
+      else
+      {
+        $place_id = $place;
+      }
+      $label=$_REQUEST['label'];
 
-  $datefirst=date('Y-m-d',strtotime($_REQUEST['datefirst']));
+      $datefirst=date('Y-m-d',strtotime($_REQUEST['datefirst']));
 
-  $datelast=date('Y-m-d',strtotime($_REQUEST['datelast']));
+      $datelast=date('Y-m-d',strtotime($_REQUEST['datelast']));
 
- $status=$_REQUEST['status'];
+      $status=$_REQUEST['status'];
  // $pdate2=$_REQUEST['pdate2'];
  // $ptime1=$_REQUEST['ptime1'];
  // $ptime2=$_REQUEST['ptime2'];
  //$repetition=$_REQUEST['repetition'];
  // $repetition='';
- $pph=$_REQUEST['pph'];
- $ppn=$_REQUEST['ppn'];
- $ppw=$_REQUEST['ppw'];
+      $pph=$_REQUEST['pph'];
+      $ppn=$_REQUEST['ppn'];
+      $ppw=$_REQUEST['ppw'];
 
-$days1 = "";
-     
+      $days1 = "";
 
       $st1    = new DateTime($datefirst);
       $et1    = new DateTime($datelast);
