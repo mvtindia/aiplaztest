@@ -247,7 +247,6 @@ $sql = mysqli_query($connect,'INSERT INTO `place` ( `p_name`, `p_contact`, `p_lo
      error_log("we have a problem");
 }
 
-error_log("there I was");
 error_log("sqlcode: " + $sql);
 echo $_SESSION['placeids']=mysqli_insert_id($connect);
 echo ',,,'; 
@@ -357,51 +356,50 @@ else
 //price
 if(isset($_REQUEST['priceterms']))
 {
-  error_log("in the priceterms if statement");
-//$placeid=$_POST['placeid'];
-$placeid=$_POST['placeid'];
-$currency = $_POST['currency'];
-$p_p_n = $_POST['p_p_n'];
-$p_p_h = $_POST['p_p_h'];
-$w_p_p_n = $_POST['w_p_p_n'];
-$w_discount = $_POST['w_discount'];
-$m_discount = $_POST['m_discount'];
-echo "Test begin";
-echo "currency='.$currency.', p_p_n='$p_p_n', p_p_h='.$p_p_h.', w_p_p_n='.$w_p_p_n.' where place_id='.$placeid.' ";
+  //if ($_REQUEST['priceterms'] == 303) {
+    $placeid=$_POST['placeid'];
+    $currency = $_POST['currency'];
+    $p_p_n = $_POST['p_p_n'];
+    $p_p_h = $_POST['p_p_h'];
+    $w_p_p_n = $_POST['w_p_p_n'];
+    $w_discount = $_POST['w_discount'];
+    $m_discount = $_POST['m_discount'];
+    echo "Test begin";
+    echo "currency='.$currency.', p_p_n='$p_p_n', p_p_h='.$p_p_h.', w_p_p_n='.$w_p_p_n.' where place_id='.$placeid.' ";
 
 
 // $query=mysqli_query($connect,'update `place` set 	`currency`="'.$currency.'" , `p_p_n`='.$p_p_n.', `p_p_h`='.$p_p_h.', `w_p_p_n`='.$w_p_p_n.' where `place_id`='.$placeid.'');
 
-$query=mysqli_query($connect,'update `place` set 	`currency`="'.$currency.'" , `p_p_n`="'.$p_p_n.'", `p_p_h`="'.$p_p_h.'", `w_p_p_n`="'.$w_p_p_n.'" where `place_id`='.$placeid.'');
+    $query=mysqli_query($connect,'update `place` set 	`currency`="'.$currency.'" , `p_p_n`="'.$p_p_n.'", `p_p_h`="'.$p_p_h.'", `w_p_p_n`="'.$w_p_p_n.'" where `place_id`='.$placeid.'');
 
 
 //$query=mysqli_query($connect,'update place set  currency="RS" , p_p_n="1", p_p_h="1", w_p_p_n="1" where place_id='.$placeid.'');
-echo "currency='.$currency.', p_p_n='$p_p_n', p_p_h='.$p_p_h.', w_p_p_n='.$w_p_p_n.' where place_id='.$placeid.' ";
+    echo "currency='.$currency.', p_p_n='$p_p_n', p_p_h='.$p_p_h.', w_p_p_n='.$w_p_p_n.' where place_id='.$placeid.' ";
 //UPDATE `yamuna`.`place` SET `currency`='Rs', `p_p_n`='12', `p_p_h`='13', `w_p_p_n`='14' WHERE `place_id`='291';
 
 
-echo "test end ".$placeid;
-if($query>0)
-{
-	echo "success post price";
-    echo "success";
-  }
-else{
-	echo "error123 ";
-  echo " db error begin ".mysqli_error($query);
-  error_log("Failed to connect to database!", 0);
-
-} 
+    echo "test end ".$placeid;
+    if($query>0)
+    {
+	    echo "success post price";
+      echo "success";
+    } else {
+	    echo "error123 ";
+      echo " db error begin ".mysqli_error($query);
+      error_log("Failed to connect to database!", 0);
+    } 
 
 //check with error123 623 to 628 
 
 
-  echo ",,,";?>
+    echo ",,,";
+  //} else {
+  //  $placeid = $_REQUEST['placeid'];
+  //}
+  ?> 
   <form id="calenderform" method="post" enctype="multipart/form-data" >
   <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
 
-
-      
   <div class="tellus-data col-md-12 col-sm-12 col-xs-12 pd-lr-0" ><!--id="calendar-tab"-->
       <div class="had-frm-sec" >Seasonal Pricing & Scheduling</div>
 
@@ -506,21 +504,21 @@ if ($row1=mysqli_fetch_array($query1)) {
   <link rel="stylesheet" type="text/css" href="jquery-cal/css/range-calendar.css">
   <link rel="stylesheet" type="text/css" href="jquery-cal/css/range-style.css">
 
-      <script src="js/jquery.min.js"></script>     
-     <script src="bootstrap/js/bootstrap.js"></script>
+  <script src="js/jquery.min.js"></script>     
+  <script src="bootstrap/js/bootstrap.js"></script>
      
      <!-- range calender -->
-       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment-with-langs.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment-with-langs.min.js"></script>
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
     <script src="js/custom-calendar.js"></script>-->
-    <script src="jquery-cal/js/jquery.rangecalendar.js"></script>
+  <script src="jquery-cal/js/jquery.rangecalendar.js"></script>
   <!--   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
     
-     <script>
+  <script>
      $(document).ready(function(){
       // $('.date21').datepicker();
 			var customizedRangeCalendar = $("#demo").rangeCalendar({ theme:"full-green-theme", start : "+0",startRangeWidth : 1,
@@ -545,7 +543,7 @@ if ($row1=mysqli_fetch_array($query1)) {
     //         }
 
     //          });
- $(".cal-cell ").click(function(){
+        $(".cal-cell ").click(function(){
                 $('#display-form').css('display','block');
               });
         $(".cal-cell ").mouseenter(function(){
@@ -574,36 +572,36 @@ if ($row1=mysqli_fetch_array($query1)) {
                 $('#datevalue1').val(year+"-"+month+"-"+day).attr('readonly');
                $('#datevalue2').val(year1+"-"+month1+"-"+day1).attr('readonly');
               });
-$('#priceper').css('display','none');
+          $('#priceper').css('display','none');
 
-$('.avail1').click(function(){
-  $('this').css('background','white;');
-  $('.avail2').removeAttr('disabled');
-     $('#status').attr('value','Available');
-     $('#priceper').css('display','block');
+          $('.avail1').click(function(){
+          $('this').css('background','white;');
+          $('.avail2').removeAttr('disabled');
+          $('#status').attr('value','Available');
+          $('#priceper').css('display','block');
     });
 
     $('.avail2').click(function(){
-      $('#priceper input').attr('value','');
-      $('#priceper').css('display','none');
-       $('this').css('background','white;');
-  $('.avail1').removeAttr('disabled');
-  $('#pph').val('');
-   $('#ppw').val('');
-    $('#ppm').val('');
-      $('#status').attr('value','Not Available');
+        $('#priceper input').attr('value','');
+        $('#priceper').css('display','none');
+        $('this').css('background','white;');
+        $('.avail1').removeAttr('disabled');
+        $('#pph').val('');
+        $('#ppw').val('');
+        $('#ppm').val('');
+        $('#status').attr('value','Not Available');
     });
-  $(".myset").click(function(e)
-  {
-    var status = $('#status').val();
-  var pph = $('#pph').val();
-   var ppw = $('#ppw').val();
-    var ppm = $('#ppm').val();
-   var label =  $('#plabel').val();
-   var date1 = $('#datevalue1').val();
-   var date2 = $('#datevalue2').val();
-   console.log('label='+label+'&datefirst='+date1+'&datelast='+date2+'&status='+status+'&pph='+pph+'&ppn='+ppw+'&ppw='+ppm);
-     $.ajax({
+    $(".myset").click(function(e)
+    {
+      var status = $('#status').val();
+      var pph = $('#pph').val();
+      var ppw = $('#ppw').val();
+      var ppm = $('#ppm').val();
+      var label =  $('#plabel').val();
+      var date1 = $('#datevalue1').val();
+      var date2 = $('#datevalue2').val();
+      console.log('label='+label+'&datefirst='+date1+'&datelast='+date2+'&status='+status+'&pph='+pph+'&ppn='+ppw+'&ppw='+ppm);
+      $.ajax({
            url: 'forms.php?label='+label+'&datefirst='+date1+'&datelast='+date2+'&status='+status+'&pph='+pph+'&ppn='+ppw+'&ppw='+ppm,
            contentType: false,
            cache: false,
@@ -613,16 +611,16 @@ $('.avail1').click(function(){
             console.log(data);
              if(data == 'ok')
              { 
-               $('#priceper').css('display','none');
-               $('#calenderform').find("input[type=text], textarea").val("");
+                $('#priceper').css('display','none');
+                $('#calenderform').find("input[type=text], textarea").val("");
                
-               $('#display-form').css('display','none');
-              swal( 'Success!', 'Sucessfully Submitted', 'success');
-              $('#selecteddates').load(window.location + ' #selecteddates');
+                $('#display-form').css('display','none');
+                swal( 'Success!', 'Sucessfully Submitted', 'success');
+                $('#selecteddates').load(window.location + ' #selecteddates');
               // $('.comment-main').load(window.location + ' .comment-main');
-               $('.month-cell').removeClass('selected');
-              $('.selected').append( "<p style='    padding: 1px 2px 1px 2px;color: rgb(3, 218, 171); background:rgb(205, 87, 87); font-size: 13px;  margin: 11px -9px; display: inline-block;'>Booked</p>" );
-              $('.start').addClass('last');
+                $('.month-cell').removeClass('selected');
+                $('.selected').append( "<p style='    padding: 1px 2px 1px 2px;color: rgb(3, 218, 171); background:rgb(205, 87, 87); font-size: 13px;  margin: 11px -9px; display: inline-block;'>Booked</p>" );
+                $('.start').addClass('last');
            
            
 
@@ -640,8 +638,8 @@ $('.avail1').click(function(){
              }
              else
              { 
-              $('#selecteddates').load(window.location + ' #selecteddates');
-               swal( 'Oops!', 'This Date Range Already Booked', 'error');
+                $('#selecteddates').load(window.location + ' #selecteddates');
+                swal( 'Oops!', 'This Date Range Already Booked', 'error');
              }      
            },
       });

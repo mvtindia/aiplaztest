@@ -478,7 +478,7 @@ if(isset($_REQUEST['oplaceid'])){
   $placeid=$_REQUEST['oplaceid'];
   if($_REQUEST['amd']=="success"){
   ?>
-<script>
+  <script>
   $(document).ready(function(){
       swal({   title: "Success",   text: "Your details are added Successfully",   timer: 2000,   showConfirmButton: false });
 
@@ -486,14 +486,14 @@ if(isset($_REQUEST['oplaceid'])){
   </script>
   <?php }//if
   else{ ?>
-<script>
+  <script>
   $(document).ready(function(){
     swal({   title: "Oops!",   text: "Unable To add Your Details",   timer: 2000,   showConfirmButton: false });
    });
   </script>
   <?php }//else ?>
  <script>
- $(document).ready(function(){
+  $(document).ready(function(){
   $("#pricetermss").css('display','none');
   $("#calender-tab").css('display','block');
   $("#photovideo").css('display','none');
