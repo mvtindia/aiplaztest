@@ -20,13 +20,13 @@ if(isset($_REQUEST['value']))
   if($q2)
   {
     // the message
-    $msg = "First line of text\nSecond line of text";
+    //$msg = "First line of text\nSecond line of text";
 
     // use wordwrap() if lines are longer than 70 characters
-    $msg = wordwrap($msg,70);
+    //$msg = wordwrap($msg,70);
 
     // send email
-    mail("$email","2finda Sign Up Successfull",$msg, "From: test@2finda.com");
+    //mail("$email","2finda Sign Up Successfull",$msg, "From: test@2finda.com");
 
     echo 'done';
   } else {
@@ -58,6 +58,48 @@ if(isset($_REQUEST['login']))
   }
 }
 // end here
+if(isset($_REQUEST['fblogin']))
+{
+   
+   require_once 'fbConfig.php';
+   require_once 'user.php';
+   
+   
+    //Get user profile data from facebook
+    $fbUserProfile = $facebook->api('/me?fields=id,first_name,last_name,email');
+    
+    //Initialize User class
+    $user = new User();
+    error_log("facebook");
+    //Insert or update user data to the database
+    $fbUserData = array(
+        'fuid'      => $fbUserProfile['id'],
+        'fname'     => $fbUserProfile['first_name'],
+        'lname'     => $fbUserProfile['last_name'],
+        'email'     => $fbUserProfile['email']
+    );
+    $userData = $user->checkUser($fbUserData);
+    
+    //Put user data into session
+    
+    $_SESSION['u_id'] = $userData['uid'];
+    
+    /*Render facebook profile data
+    if(!empty($userData)){
+        $output = '<h1>Facebook Profile Details </h1>';
+        $output .= '<img src="'.$userData['picture'].'">';
+        $output .= '<br/>Facebook ID : ' . $userData['oauth_uid'];
+        $output .= '<br/>Name : ' . $userData['first_name'].' '.$userData['last_name'];
+        $output .= '<br/>Email : ' . $userData['email'];
+        $output .= '<br/>Gender : ' . $userData['gender'];
+        $output .= '<br/>Locale : ' . $userData['locale'];
+        $output .= '<br/>Logged in with : Facebook';
+        $output .= '<br/><a href="'.$userData['link'].'" target="_blank">Click to Visit Facebook Page</a>';
+        $output .= '<br/>Logout from <a href="logout.php">Facebook</a>'; 
+    }else{
+        $output = '<h3 style="color:red">Some problem occurred, please try again.</h3>';
+    }*/
+  }
 
 //update profile pic start here
 

@@ -185,9 +185,17 @@ else
       </div>
       <div class="modal-body">
     <div id="first-block">
+    <?php
+//Include FB config file && User class
+    include 'fbConfig.php';
+  
+    $loginURL = $facebook->getLoginUrl(array('redirect_uri'=>$redirectURL,'scope'=>$fbPermissions));
+    $output = '<a href="'.$loginURL.'"><button class="fb-btn"><i class="fa fa-facebook"></i>&nbsp;Join with Facebook</button></a>';
+    ?>     
         <div class="fb">
-  <button class="fb-btn"><i class="fa fa-facebook"></i>&nbsp;Join with Facebook</button>
-  </div>
+          <!--<a href=<?php echo $output ?><button class="fb-btn"><i class="fa fa-facebook"></i>&nbsp;Join with Facebook</button></a>-->
+          <?php echo $output ?>
+        </div>
 
   <div class="google mg-top10">
   <button class="google-btn"><i class="fa fa-google-plus"></i>&nbsp;Join with Google</button>

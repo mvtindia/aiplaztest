@@ -24,11 +24,11 @@ include('connect.php');?>
 <div class="banner-upper">
 <div class="container">
 <div class="row">-->
-<!--<div class="banner-txt">
+<div class="banner-txt">
  <h1> Add a new place</h1>
-<h4>Earn money renting out a spare room, marriage place or House. Listing your place is totally free. </h4>
+<!--<h4>Earn money renting out a spare room, marriage place or House. Listing your place is totally free. </h4>-->
  </div>
-</div>--><!--row close-->
+<!--</div>--><!--row close-->
 <!--</div>--><!--container close-->
 
 <!--</div>--><!--banner-upper close-->
@@ -61,8 +61,8 @@ include('connect.php');?>
 
 
      <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <label for="space">Location*</label>
-    <input type="text" class="form-control" id="price" placeholder="Location" name="location" required>
+    <!--label for="space">Location*</label>
+    <input type="text" class="form-control" id="price" placeholder="Location" name="location" required>-->
 <!--  <input class="form-control bord" id="autocomplete" placeholder="Location" name="place_loc"  onFocus="geolocate()" type="text" required>-->
   </div>
 
