@@ -20,13 +20,13 @@ if(isset($_REQUEST['value']))
   if($q2)
   {
     // the message
-    //$msg = "First line of text\nSecond line of text";
+    $msg = "First line of text\nSecond line of text";
 
     // use wordwrap() if lines are longer than 70 characters
-    //$msg = wordwrap($msg,70);
+    $msg = wordwrap($msg,70);
 
     // send email
-    //mail("$email","2finda Sign Up Successfull",$msg, "From: test@2finda.com");
+    mail("$email","2finda Sign Up Successfull",$msg, "From: test@2finda.com");
 
     echo 'done';
   } else {
@@ -206,7 +206,7 @@ if(isset($_REQUEST['change_pass']))
 if(isset($_REQUEST['place']))
 {
  // echo "working";
-//error_log($_POST['name']);
+error_log($_POST['name']);
 $name = $_POST['name'];
 $contact = $_POST['contact'];
 //$postal = $_POST['postal'];
@@ -438,14 +438,18 @@ if(isset($_REQUEST['priceterms']))
   //} else {
   //  $placeid = $_REQUEST['placeid'];
   //}
-  ?> 
+  ?>
+  <script>
+    var incr = "no";
+  </script>
   <form id="calenderform" method="post" enctype="multipart/form-data" >
   <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
 
   <div class="tellus-data col-md-12 col-sm-12 col-xs-12 pd-lr-0" ><!--id="calendar-tab"-->
       <div class="had-frm-sec" >Seasonal Pricing & Scheduling</div>
-
-  <div class="frm-field-mar">
+      <button id="mvdtb"><---</button><button id="mvdtf">---></button>
+      <div id="dp"></div>
+  
 <?php 
 $save="";
 //$placeid=75;
@@ -457,238 +461,224 @@ if ($row1=mysqli_fetch_array($query1)) {
   echo "<input type='hidden' name='save' id='save' value=".$save.">";
 }
 ?>
-
-        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
-           <style>
-.full-green-theme.range-calendar, .full-green-theme .range-calendar {
-    background-color: #FC8B11 !important;
-}
-.nav-tabs {
-    border-bottom: 1px solid #FC8B11 !important;
-}
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-    color: #FC8B11 !important;
-    cursor: default;
-    background-color: #FFF !important;
-    border: 1px solid #FC8B11  !important;
-    border-bottom-color: transparent;
-}
-    </style> 
-    <div id="demo">     
-    </div>
-    
-    <div id="display-form" style="display: none;">
-  <div class="details in" style="width:100%;">
-<!--   <div class="arrow" style="left: 147px;"></div> -->
-  <div class="events in">
-  <form  id="savail" >
-  <div class="col-md-12">
-  <div class="event empty">
-  <input class="form-control "type="text" required id="plabel" placeholder="Give Dates a Label" name="plabel">
-  </div></div>
-  <div class="col-md-12 mg-top10">
-  <div class="col-md-6">
-<button class="btn-3 btn-custom2 avail1" style="background: #03DAAB;" type="button">Available</button>
-  </div><div class="col-md-6">
-<button class="btn-3 btn-custom2 avail2" type="button">Not Available</button>
-  </div>
-  </div>
-  <div class="col-md-12 mg-top10" id="priceper">
-  <div class="col-md-4">
-<input type="number" id="pph" required placeholder="Price Per hour" class="form-control">
-  </div>
-    <div class="col-md-4">
-<input type="number" id="ppw" required placeholder="Price Per Night" class="form-control">
-  </div>
-    <div class="col-md-4">
-<input type="number" id="ppm" required placeholder="Price Per Week" class="form-control">
-  </div>
-  </div>
-
-  <input type="text" id="status" required="required" hidden>;
-  <div class="col-md-12 mg-top10" id="showpnames"></div>
-  <div class="col-md-12 mg-top10"><div class="col-md-6">
-  <input class="form-control date21" required type="text" id="datevalue1" name="pdate1" readonly>
-  </div>
-  <div class="col-md-6">
-  <input class="form-control date21" required type="text" id="datevalue2" name="pdate2" readonly>
-  <!-- <input class="form-control placeid" type="hidden" name="placeid" placeholder="dd/mm/yy"> -->
- <!--  <input class="form-control" type="hidden" name="ppath" value="http://localhost/nf/bookmyspace"> --></div>
-  </div>
- <!--  <div class="col-md-12 mg-top10">
-  <div class="col-md-6">
-  <input class="form-control" type="time" name="ptime1"></div>
-  <div class="col-md-6">
-  <input class="form-control" type="time" name="ptime2">
-  </div>
-  </div> -->
-  <div class="col-md-12 mg-top10"><div class="col-md-6">
-  <button class="btn-3 btn-custom2 cancl" type="button">Cancel</button></div>
-  <div class="col-md-6"><button class="btn-3 btn-custom2 myset" type="button" name="values">Set</button></div></div></form></div></div>
- <!--  -->
-
   
   </div>
   
   <div class="col-md-12 text-center" style="margin-top: 20px;">
-<a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
-<!--   <button id="next3" type="submit" name="priceterms" class="btn btn-default cus-save-but">Save</button>
- -->  </div>
-  
-  
-    
-  <div class="clearfix"></div>
- 
-  </div><!--frm-field-mar-->
-  
- </div>
+      <a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
+  </div>
   </form>
-  <link rel="stylesheet" type="text/css" href="jquery-cal/css/range-calendar.css">
-  <link rel="stylesheet" type="text/css" href="jquery-cal/css/range-style.css">
+  
+  
+  <div class="clearfix"></div>
+  <script type="text/javascript">
+  var dp = new DayPilot.Calendar("dp");
+  var dae = new Date();
+  var x = 1;
 
-  <script src="js/jquery.min.js"></script>     
-  <script src="bootstrap/js/bootstrap.js"></script>
-     
-     <!-- range calender -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment-with-langs.min.js"></script>
-
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
-    <script src="js/custom-calendar.js"></script>-->
-  <script src="jquery-cal/js/jquery.rangecalendar.js"></script>
-  <!--   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
+  function dayplt() {
     
-  <script>
-     $(document).ready(function(){
-      // $('.date21').datepicker();
-			var customizedRangeCalendar = $("#demo").rangeCalendar({ theme:"full-green-theme", start : "+0",startRangeWidth : 1,
-
-
-});
-    //    $('.date21').datepicker(
-    //     {  //beforeShowDay: $.datepicker.noWeekends,
-    //         beforeShowDay: function (date) {
-    //             var startDate = "2016-03-15", // some start date
-    // endDate = "2016-03-21",  // some end date
-    // dateRange = [];           // array to hold the range
-
-    //             // populate the array
-    //             for (var d = new Date(startDate); d <= new Date(endDate); d.setDate(d.getDate() + 1)) {
-    //                 dateRange.push($.datepicker.formatDate('yy-mm-dd', d));
-    //             }
-
-
-    //             var dateString = jQuery.datepicker.formatDate('yy-mm-dd', date);
-    //             return [dateRange.indexOf(dateString) == -1];
-    //         }
-
-    //          });
-        $(".cal-cell ").click(function(){
-                $('#display-form').css('display','block');
-              });
-        $(".cal-cell ").mouseenter(function(){
-               var start = $('.start').attr('date-id');
-               var  year = start.substring(0,4);
-               var month = start.substring(4,6);
-               var day = start.substring(6,8);
-               var last = $('.last').attr('date-id');
-               var  year1 = last.substring(0,4);
-               var month1 = last.substring(4,6);
-               var day1 = last.substring(6,8);
-             
-                $('#datevalue1').val(year+"-"+month+"-"+day).attr('readonly');
-               $('#datevalue2').val(year1+"-"+month1+"-"+day1).attr('readonly');
-              });
-         $(".cal-cell").mouseleave(function(){
-               var start = $('.start').attr('date-id');
-             var  year = start.substring(0,4);
-             var month = start.substring(4,6);
-             var day = start.substring(6,8);
-                var last = $('.last').attr('date-id');
-                var  year1 = last.substring(0,4);
-             var month1 = last.substring(4,6);
-             var day1 = last.substring(6,8);
-              
-                $('#datevalue1').val(year+"-"+month+"-"+day).attr('readonly');
-               $('#datevalue2').val(year1+"-"+month1+"-"+day1).attr('readonly');
-              });
-          $('#priceper').css('display','none');
-
-          $('.avail1').click(function(){
-          $('this').css('background','white;');
-          $('.avail2').removeAttr('disabled');
-          $('#status').attr('value','Available');
-          $('#priceper').css('display','block');
-    });
-
-    $('.avail2').click(function(){
-        $('#priceper input').attr('value','');
-        $('#priceper').css('display','none');
-        $('this').css('background','white;');
-        $('.avail1').removeAttr('disabled');
-        $('#pph').val('');
-        $('#ppw').val('');
-        $('#ppm').val('');
-        $('#status').attr('value','Not Available');
-    });
-    $(".myset").click(function(e)
+    dp.cssClassPrefix = "calendar_white";
+    dp.viewType = "Week";
+    // view
+    if (incr == "forw")
     {
-      var status = $('#status').val();
-      var pph = $('#pph').val();
-      var ppw = $('#ppw').val();
-      var ppm = $('#ppm').val();
-      var label =  $('#plabel').val();
-      var date1 = $('#datevalue1').val();
-      var date2 = $('#datevalue2').val();
-      console.log('label='+label+'&datefirst='+date1+'&datelast='+date2+'&status='+status+'&pph='+pph+'&ppn='+ppw+'&ppw='+ppm);
-      $.ajax({
-           url: 'forms.php?label='+label+'&datefirst='+date1+'&datelast='+date2+'&status='+status+'&pph='+pph+'&ppn='+ppw+'&ppw='+ppm,
-           contentType: false,
-           cache: false,
-           processData:false,
-           success: function(data, textStatus, jqXHR)
-           {    
-            console.log(data);
-             if(data == 'ok')
-             { 
-                $('#priceper').css('display','none');
-                $('#calenderform').find("input[type=text], textarea").val("");
-               
-                $('#display-form').css('display','none');
-                swal( 'Success!', 'Sucessfully Submitted', 'success');
-                $('#selecteddates').load(window.location + ' #selecteddates');
-              // $('.comment-main').load(window.location + ' .comment-main');
-                $('.month-cell').removeClass('selected');
-                $('.selected').append( "<p style='    padding: 1px 2px 1px 2px;color: rgb(3, 218, 171); background:rgb(205, 87, 87); font-size: 13px;  margin: 11px -9px; display: inline-block;'>Booked</p>" );
-                $('.start').addClass('last');
-           
-           
+        //var dataI = new Date();
+        var i = dae.valueOf() + (604800000 * x);
+        dae = new Date( i);
+        //console.log(dae.getMonth());
+    } else if (incr == "back") {
+        //var dataI = new Date();
+        var i = dae.valueOf() - (604800000 * x);
+        dae = new Date( i);
+        //console.log(dae.getMonth());
+    }
+    //alert(("0" + dae.getDate()).slice(-2));
+    dp.startDate = dae.getFullYear() + "-" + ("0" + (dae.getMonth() + 1)).slice(-2) + "-" + ("0" + dae.getDate()).slice(-2);
+    //dp.startDate = "2016-11-25";  // or just dp.startDate = "2013-03-25";
+    dp.days = 1;
+    dp.allDayEventHeight = 25;
+    dp.initScrollPos = 9 * 40;
+    dp.moveBy = 'Full';
+    
+    // bubble, with async loading
+    /*dp.bubble = new DayPilot.Bubble({
+        cssClassPrefix: "bubble_default",
+        onLoad: function(args) {
+            var ev = args.source;
+            args.async = true;  // notify manually using .loaded()
+            
+            // simulating slow server-side load
+            setTimeout(function() {
+                args.html = "testing bubble for: <br>" + ev.text();
+                args.loaded();
+            }, 500);
+        }
+    });
+    
+    dp.contextMenu = new DayPilot.Menu({
+        cssClassPrefix: "menu_default",
+        items: [
+        {text:"Show event ID", onclick: function() {alert("Event value: " + this.source.value());} },
+        {text:"Show event text", onclick: function() {alert("Event text: " + this.source.text());} },
+        {text:"Show event start", onclick: function() {alert("Event start: " + this.source.start().toStringSortable());} },
+        {text:"Delete", onclick: function() { dp.events.remove(this.source); } }
+    ]});*/
 
-            // $( ".selected").each(function( index ) {
-            //   if($(this).hasClass('.month-cell'))
-            //   {
-            //     
-            //   }
-            //   else
-            //   {
-            //     $(this).css('display','none');
-            //   }
-            // });
+    // event movijng
+    dp.onEventMoved = function (args) {
+        dp.message("Moved: " + args.e.text());
+    };
+    
+    dp.onBeforeHeaderRender = function(args) {
+        args.header.areas = [{"action":"JavaScript","bottom":1,"w":17,"html":"<div><div><\/div><\/div>","css":"resource_action_menu","js":"(function(e) { alert(e.date);; })","top":0,"v":"Visible","right":1}];
+    };
+    
+    // event resizing
+    dp.onEventResized = function (args) {
+        dp.message("Resized: " + args.e.text());
+    };
 
-             }
-             else
-             { 
-                $('#selecteddates').load(window.location + ' #selecteddates');
-                swal( 'Oops!', 'This Date Range Already Booked', 'error');
-             }      
-           },
-      });
+    // event creating
+    dp.onTimeRangeSelected = function (args) {
+        var name = prompt("New event name:", "Event");
+        dp.clearSelection();
+        if (!name) return;
+        var e = new DayPilot.Event({
+            start: args.start,
+            end: args.end,
+            id: DayPilot.guid(),
+            resource: args.resource,
+            text: name
+        });
+        dp.events.add(e);
+        args.text = name;
+        //console.log(args);
+        DayPilot.request(
+                        "cal_db.php", 
+                        function(req) { // success
+                            //var response = eval("(" + req.responseText + ")");
+                            //if (response && response.result) {
+                            //    dp.message("Created: " + response.message);
+                            //}
+                        },
+                        args,
+                        function(req) {  // error
+                            dp.message("Saving failed");
+                        }
+        ); 
+        //DayPilot.request(
+          /*  $.ajax({
+                url:"cal_db.php",
+                type:"POST",
+                data:args,
+                success:function(req){
+                    var response = eval("(" + req.responseText + ")");
+                    if (response && response.result) {
+                        dp.message("Created: " + response.message);
+                    }
+                },
+                error:function(req) {  // error
+                    dp.message("Saving failed");
+                }                    
+            });
+            */
+    };
+
+    
+    dp.onTimeRangeDoubleClicked = function(args) {
+        alert("DoubleClick: start: " + args.start + " end: " + args.end + " resource: " + args.resource);
+    };
+    
+    dp.onEventClick = function(args) {
+        alert("clicked: " + args.e.id());
+    };
+
+    dp.onEventMoved = function (args) {
+        DayPilot.request(
+            "cal_move.php", 
+            function(req) { // success
+                var response = eval("(" + req.responseText + ")");
+                if (response && response.result) {
+                    //dp.message("Moved: " + response.message);
+                }
+            },
+            args,
+            function(req) {  // error
+                //dp.message("Saving failed");
+            }
+        );        
+    };
+
+    dp.onEventResized = function (args) {
+     DayPilot.request(
+        "cal_move.php", 
+        function(req) { // success
+            var response = eval("(" + req.responseText + ")");
+            if (response && response.result) {
+                dp.message("Resized: " + response.message);
+            }
+        },
+        args,
+        function(req) {  // error
+            dp.message("Saving failed");
+        }
+    );    
+};
+    
+    dp.init();
+
+    /*var e = new DayPilot.Event({
+        start: new DayPilot.Date("2013-03-25T12:00:00"),
+        end: new DayPilot.Date("2013-03-25T12:00:00").addHours(3),
+        id: DayPilot.guid(),
+        text: "Special event",
+        areas: [{"action":"JavaScript","js":"(function(e) { dp.events.remove(e); })","h":17,"w":17,"v":"Hover","css":"event_action_delete","top":3,"right":2}]    
+    });
+    dp.events.add(e);*/
+  };
+  function loadEvents() {
+    DayPilot.request("cal_load.php", function(result) {
+        //console.log(result);
+        var data = eval("(" + result.responseText + ")");
+        for(var i = 0; i < data.length; i++) {
+            var e = new DayPilot.Event(data[i]);                
+            dp.events.add(e);
+        }
+    });
+    }
+  dayplt();
+  loadEvents();
+</script>
+
+<!-- bottom 
+                </div>
+	        </div>
+        </div>
+    </div>-->
+</html>
+<script type="text/javascript">
+$(document).ready(function() {
+
+    var url = window.location.href;
+    var filename = url.substring(url.lastIndexOf('/')+1);
+    if (filename === "") filename = "index.html";
+    $(".menu a[href='" + filename + "']").addClass("selected");
+    $( "#mvdtf" ).click(function() {
+        incr = "forw";
+        var i = dae.valueOf() + (604800000 * x);
+        dae = new Date( i);
+        dp.init();
+    });
+    $( "#mvdtb" ).click(function() {
+        incr = "back";
+        dayplt();
+    });
 });
-	}); 
-     </script>
-
+        
+</script>
+});
+    
 
   <?php
 //}
