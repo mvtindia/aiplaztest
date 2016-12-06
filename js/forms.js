@@ -78,7 +78,7 @@ $("#signup_form").submit(function(e)
         contentType: false,
         cache: false,
         processData:false,
-    success: function(data, textStatus, jqXHR)
+        success: function(data, textStatus, jqXHR)
     {   
         console.log(data);
         if(data == 'already')
@@ -100,7 +100,7 @@ $("#signup_form").submit(function(e)
                   }, 2000);
         }
     },
-     error: function(jqXHR, textStatus, errorThrown) 
+        error: function(jqXHR, textStatus, errorThrown) 
      {
         swal("Failure!", "Email Id already Exist!", "error");
      }          
@@ -196,10 +196,15 @@ $("#login").submit(function(e)
 
 $(".fb-btn").click(function(e)
 {
-    alert("Hello");
-}
-
-
+    $.ajax({
+           url: 'actions.php?fblogin=777',
+           success: function(data){
+            console.log(data);},
+           cache: false,
+           contentType: false,
+           processData: false
+       });
+});
 
 //profile image upload here
 $("#upload_profile").submit(function(e)
@@ -486,7 +491,7 @@ $('.ishowload').css('display','block');
              $("#pricetermss").css('display','none');
 
               $("#calender-tab").css('display','block');
-              $("#calender-tab").html(datas[1]);
+              //$("#calender-tab").html(datas[1]);
             
 
              console.log(data);
