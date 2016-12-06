@@ -194,6 +194,13 @@ $("#login").submit(function(e)
     }     
 });
 
+$(".fb-btn").click(function(e)
+{
+    alert("Hello");
+}
+
+
+
 //profile image upload here
 $("#upload_profile").submit(function(e)
 {
