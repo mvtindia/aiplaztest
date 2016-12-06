@@ -168,7 +168,6 @@ else
 }
     ?>
 <div id="myModal2" class="modal fade" role="dialog">
-
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -184,61 +183,51 @@ else
         <h4 class="modal-title">Login to continue</h4>
       </div>
       <div class="modal-body">
-    <div id="first-block">
-    <?php
-/*Include FB config file && User class
-    include 'fbConfig.php';
+          <div id="first-block">
+            <?php
+//Include FB config file && User class
+              include 'fbConfig.php';
   
-    $loginURL = $facebook->getLoginUrl(array('redirect_uri'=>$redirectURL,'scope'=>$fbPermissions));
-    $output = '<a href="'.$loginURL.'"><button class="fb-btn"><i class="fa fa-facebook"></i>&nbsp;Join with Facebook</button></a>';
-    */
-    ?>    
-        <div class="fb">
-          <button class="fb-btn"><i class="fa fa-facebook"></i>&nbsp;Join with Facebook</button>
-          <?php //echo $output ?>
-        </div>
-
-  <div class="google mg-top10">
-  <button class="google-btn"><i class="fa fa-google-plus"></i>&nbsp;Join with Google</button>
-  </div>
-
-  <p class="text-center">or</p>
-  <div class="text-center">
-  <button type="button" class="btn-3">Login</button>
-  <button type="button" class="btn-4">Signup</button>
-  </div>
-  </div>
-  <div class="hide1" id="second-block">
+              $loginURL = $facebook->getLoginUrl(array('redirect_uri'=>$redirectURL,'scope'=>$fbPermissions));
+              $output = '<a href="'.$loginURL.'"><button class="fb-btn"><i class="fa fa-facebook"></i>&nbsp;Join with Facebook</button></a>';
+            ?>     
+              <div class="fb">
+          <!--<a href=<?php echo $output ?><button class="fb-btn"><i class="fa fa-facebook"></i>&nbsp;Join with Facebook</button></a>-->
+                  <?php echo $output ?>
+              </div>
+              <div class="google mg-top10">
+                <button class="google-btn"><i class="fa fa-google-plus"></i>&nbsp;Join with Google</button>
+              </div>
+              <p class="text-center">or</p>
+              <div class="text-center">
+                <button type="button" class="btn-3">Login</button>
+                <button type="button" class="btn-4">Signup</button>
+              </div>
+          </div>
+          <div class="hide1" id="second-block">
   <form class="form-group" id="login">
   
-  <div class="input-group" id="login">
-    
-    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-  <input type="email" class="form-control form-height40 bord-0"  name="email" reuired placeholder="Email Id"/>
-</div>
+            <div class="input-group" id="login">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <input type="email" class="form-control form-height40 bord-0"  name="email" reuired placeholder="Email Id"/>
+            </div>
 
-<div class="input-group mg-top20">
-    
-    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-  <input type="password" class="form-control form-height40 bord-0" name="password" required placeholder="Password"/>
-
-  <input type="hidden" class="urlval" >
-
-</div>
-
-  <div class="text-center mg-top10">
-  <button type="submit" class="btn-3" name="login">Login</button>
-  <button type="button" class="btn-back">Back</button>
-  </div>
+            <div class="input-group mg-top20">
+              <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+              <input type="password" class="form-control form-height40 bord-0" name="password" required placeholder="Password"/>
+              <input type="hidden" class="urlval" >
+            </div>
+            <div class="text-center mg-top10">
+              <button type="submit" class="btn-3" name="login">Login</button>
+              <button type="button" class="btn-back">Back</button>
+            </div>
   </form>
-  </div>
+          </div>
   
-  
-  <div class="hide1" id="third-block">
+          <div class="hide1" id="third-block">
   <form class="form-group" action="actions.php" id="signup_form" method="POST">
   
-  <div class="input-group">
-    
+            <div class="input-group">
     <span class="input-group-addon"><i class="fa fa-user"></i></span>
   <input type="text" class="form-control form-height40 bord-0" name="fname" placeholder="First Name" required/>
 </div>
