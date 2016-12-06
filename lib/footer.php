@@ -207,7 +207,7 @@ else
           <div class="hide1" id="second-block">
   <form class="form-group" id="login">
   
-            <div class="input-group" id="login">
+            <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-user"></i></span>
               <input type="email" class="form-control form-height40 bord-0"  name="email" reuired placeholder="Email Id"/>
             </div>
