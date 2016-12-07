@@ -1,5 +1,5 @@
 <?php session_start();
-include('connect.php');?>
+include_once('connect.php');?>
 <!doctype html>
 <html>
 <head>
@@ -303,7 +303,7 @@ include('connect.php');?>
                         <div class="tellus-data" id="hide-price" style="overflow: auto;">
                             <div class="had-frm-sec" >Price & Terms</div>
                             <div class="frm-field-mar">
-                                <?php include_once('demo.php');?>
+                                <?php //include_once('demo.php');?>
                                 <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label for="space">Select Your Currency</label>
@@ -339,7 +339,7 @@ echo '</pre>'; ?>
                     </form>
 
                         <div class="clearfix"></div>
-
+<input type="hidden" id="spacehog">
 
   <!--============================Price AND TERMS TAB CLOSE============================-->
 
@@ -356,7 +356,7 @@ echo '</pre>'; ?>
                     </script>
                         <div id="calender-tab" style="display:none;">
                             <?php 
-                                $query2=mysqli_query($connect,'SELECT * FROM calenderdata where placeid="'.$_SESSION['placeids'].'"');
+                                //$query2=mysqli_query($connect,'SELECT * FROM calenderdata where placeid="'.$_SESSION['placeids'].'"');
                             ?>
 
                         <form id="calenderform" method="post" enctype="multipart/form-data" >
@@ -524,15 +524,20 @@ echo '</pre>'; ?>
     dp.onTimeRangeSelected = function (args) {
         var name = prompt("New event name:", "Event");
         dp.clearSelection();
+        form = $('#calenderform');
+        args.placeid = form.find('input.placeid').val();
+        args.idd = DayPilot.guid();
+
         if (!name) return;
         var e = new DayPilot.Event({
             start: args.start,
             end: args.end,
-            id: DayPilot.guid(),
+            id: args.idd,
             resource: args.resource,
             text: name
         });
         dp.events.add(e);
+        
         args.text = name;
         //console.log(args);
         DayPilot.request(
@@ -576,6 +581,8 @@ echo '</pre>'; ?>
     };
 
     dp.onEventMoved = function (args) {
+        form = $('#calenderform');
+        args.placeid = form.find('input.placeid').val();
         DayPilot.request(
             "cal_move.php", 
             function(req) { // success
@@ -592,20 +599,22 @@ echo '</pre>'; ?>
     };
 
     dp.onEventResized = function (args) {
-    DayPilot.request(
-        "cal_move.php", 
-        function(req) { // success
-            var response = eval("(" + req.responseText + ")");
-            if (response && response.result) {
-                dp.message("Resized: " + response.message);
+        form = $('#calenderform');
+        args.placeid = form.find('input.placeid').val();    
+        DayPilot.request(
+            "cal_move.php", 
+            function(req) { // success
+                var response = eval("(" + req.responseText + ")");
+                if (response && response.result) {
+                //dp.message("Resized: " + response.message);
+                }
+            },
+            args,
+            function(req) {  // error
+                //dp.message("Saving failed");
             }
-        },
-        args,
-        function(req) {  // error
-            dp.message("Saving failed");
-        }
-    );    
-};
+        );    
+    };
     
     dp.init();
 
