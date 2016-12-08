@@ -30,8 +30,7 @@ if(isset($_REQUEST['value']))
     
     $body = 'Hi ' . $fname . ',
 
-To confirm your 2finda account, simply click on the following link:
-http://localhost:8081/verify.php?id=' . $id . '&code=' . $code . '
+To confirm your 2finda account, simply click on the following link: http://' . $_SERVER['SERVER_NAME'] . '/verify.php?id=' . $id . '&code=' . $code . '
 
 Your 2finda team';
 
