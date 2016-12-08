@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once('connect.php');
+require_once('swift_required.php');
 
 // signup form start
 
@@ -12,21 +13,58 @@ if(isset($_REQUEST['value']))
   $pwd = md5($_REQUEST['pwd']);
   $contact = mysqli_real_escape_string($connect,$_REQUEST['contact']);
 
+  
+
   $q1 = mysqli_query($connect,"select * from users where email='".$email."'");
 
   if(mysqli_num_rows($q1) <= 0) {
-
-  $q2 = mysqli_query($connect,'INSERT INTO `users`(`fname`, `lname`, `email`, `pwd`, `contact`) VALUES ("'.$fname.'","'.$lname.'","'.$email.'","'.$pwd.'","'.$contact.'")');
+  $code = md5(uniqid(rand()));  
+  $q2 = mysqli_query($connect,'INSERT INTO `users`(`fname`, `lname`, `email`, `pwd`, `contact`, `activation_link`, `a_status`) VALUES ("'.$fname.'","'.$lname.'","'.$email.'","'.$pwd.'","'.$contact.'","'.$code.'",999)');
   if($q2)
   {
+    
+    $id = mysqli_insert_id($connect); 
+    error_log($id);
+    $key = base64_encode($id);
+    $id = $key;
+    
+    $body = 'Hi ' . $fname . ',
+
+To confirm your 2finda account, simply click on the following link:
+http://localhost:8081/verify.php?id=' . $id . '&code=' . $code . '
+
+Your 2finda team';
+
+    //$body = " Hi ";
+    error_log($body);
+    $transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')->setUsername('aguschwan@gmail.com')->setPassword('cubs2010');
+    $message = \Swift_Message::newInstance('Confirm Registration')
+
+  // Give the message a subject
+    //->setSubject('Your subject')
+
+  // Set the From address with an associative array
+    ->setFrom(array('info@2finda.com'))
+
+  // Set the To addresses with an associative array
+    ->setTo(array($email))
+
+  // Give it a body
+    ->setBody($body)
+    ;
+    error_log('swift');
+    $mailer = \Swift_Mailer::newInstance($transport);
+    
+    $result = $mailer->send($message);
+    error_log($result);
     // the message
-    $msg = "First line of text\nSecond line of text";
+    //$msg = "First line of text\nSecond line of text";
 
     // use wordwrap() if lines are longer than 70 characters
-    $msg = wordwrap($msg,70);
+    //$msg = wordwrap($msg,70);
 
     // send email
-    mail("$email","2finda Sign Up Successfull",$msg, "From: test@2finda.com");
+    //mail("$email","Earn money with your listed place on 2finda.com",$msg, "From: info@2finda.com");
 
     echo 'done';
   } else {
@@ -42,19 +80,21 @@ if(isset($_REQUEST['value']))
 // Login start Here
 if(isset($_REQUEST['login']))
 {
-   $email = $_POST['email'];
-   $password = $_POST['password'];
-   $password = md5($password);
-  $q2 = mysqli_query($connect,'SELECT * FROM users where email="'.$email.'" AND pwd="'.$password.'"');
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $password = md5($password);
+  $statusY = 0;
+
+  $q2 = mysqli_query($connect,'SELECT * FROM users where email="'.$email.'" AND pwd="'.$password.'" and a_status = "'.$statusY.'"');
   if(mysqli_num_rows($q2)>0)
   {
       $row = mysqli_fetch_array($q2);
       $_SESSION['u_id'] = $row['uid'];
-    echo 'done';
+      echo 'done';
   }
   else
   {
-    echo 'wrong data';
+      echo 'wrong data';
   }
 }
 // end here
@@ -206,7 +246,7 @@ if(isset($_REQUEST['change_pass']))
 if(isset($_REQUEST['place']))
 {
  // echo "working";
-error_log($_POST['name']);
+//error_log($_POST['name']);
 $name = $_POST['name'];
 $contact = $_POST['contact'];
 //$postal = $_POST['postal'];
@@ -289,8 +329,11 @@ $sql = mysqli_query($connect,'INSERT INTO `place` ( `p_name`, `p_contact`, `p_lo
      error_log("we have a problem");
 }
 
-error_log("sqlcode: " + $sql);
-echo $_SESSION['placeids']=mysqli_insert_id($connect);
+//error_log("sqlcode: " + $sql);
+$_SESSION['placeids']=mysqli_insert_id($connect);
+echo $_SESSION['placeids'];
+//error_log("placeid");
+//error_log($_SESSION['placeids']);
 echo ',,,'; 
 if($sql>0){
   echo "success";
@@ -319,6 +362,8 @@ if(isset($_REQUEST['photo']))
                                             );
 
 $placeid=$_POST['placeid'];
+$pi2="$placeid";
+error_log($pi2);
 $inputphotos = $_FILES['inputphotos']['name'];
 $tmpphotos = $_FILES['inputphotos']['tmp_name'];
 
