@@ -12,11 +12,11 @@ if(isset($_REQUEST['value']))
   $email = mysqli_real_escape_string($connect,$_REQUEST['email']);
   $pwd = md5($_REQUEST['pwd']);
   $contact = mysqli_real_escape_string($connect,$_REQUEST['contact']);
-  error_log('actions');
+ 
   
 
   $q1 = mysqli_query($connect,"select * from users where email='".$email."'");
-
+   error_log('actions');
   if(mysqli_num_rows($q1) <= 0) {
   $code = md5(uniqid(rand()));  
   $q2 = mysqli_query($connect,'INSERT INTO `users`(`fname`, `lname`, `email`, `pwd`, `contact`, `activation_link`, `a_status`) VALUES ("'.$fname.'","'.$lname.'","'.$email.'","'.$pwd.'","'.$contact.'","'.$code.'",999)');
