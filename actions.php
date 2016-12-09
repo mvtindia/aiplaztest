@@ -16,10 +16,11 @@ if(isset($_REQUEST['value']))
   
 
   $q1 = mysqli_query($connect,"select * from users where email='".$email."'");
-   error_log('actions');
+   
   if(mysqli_num_rows($q1) <= 0) {
   $code = md5(uniqid(rand()));  
   $q2 = mysqli_query($connect,'INSERT INTO `users`(`fname`, `lname`, `email`, `pwd`, `contact`, `activation_link`, `a_status`) VALUES ("'.$fname.'","'.$lname.'","'.$email.'","'.$pwd.'","'.$contact.'","'.$code.'",999)');
+  error_log('actions');
   if($q2)
   {
     
