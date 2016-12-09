@@ -4,7 +4,7 @@ include_once('connect.php');
 require_once('swift_required.php');
 
 // signup form start
-error_log("actions");
+
 if(isset($_REQUEST['value']))
 {
   $fname = mysqli_real_escape_string($connect,$_REQUEST['fname']);
@@ -12,7 +12,7 @@ if(isset($_REQUEST['value']))
   $email = mysqli_real_escape_string($connect,$_REQUEST['email']);
   $pwd = md5($_REQUEST['pwd']);
   $contact = mysqli_real_escape_string($connect,$_REQUEST['contact']);
-
+  error_log('actions');
   
 
   $q1 = mysqli_query($connect,"select * from users where email='".$email."'");
