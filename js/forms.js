@@ -350,10 +350,13 @@ $("#change_pass").submit(function(e)
            success: function(data){
                $('.ishowload').css('display','none');
             var datas=data.split(",,,");
-              console.log(data);
+              //console.log(datas);
               if(datas[1]=='success')
               {       
               $('.placeid').val(datas[0]);
+              console.log(datas[0]);
+              //$('.spacehog').val(datas[0]);
+              //console.log($('.spacehog'));
               $("#photovideo").css('display','block');
               $("#details").css('display','none');
               }
@@ -362,7 +365,7 @@ $("#change_pass").submit(function(e)
                   swal({ title: 'Error', text: 'Something Went Wrong.', timer: 2000
 });
               }
-               else if(datas[1]=='login')
+               else if(datas[0]=='login')
               {
                   swal({ title: 'Login First', text: 'You Have to login', timer: 2000
 });
@@ -384,6 +387,7 @@ $("form#photovideo").submit(function(e)
     {
         $('.ishowload').css('display','block');
         var formData = new FormData(this);
+        
         $.ajax({
             url: 'actions.php?photo=123',
             type: 'POST',
@@ -494,7 +498,7 @@ $('.ishowload').css('display','block');
               //$("#calender-tab").html(datas[1]);
             
 
-             console.log(data);
+             //console.log(data);
             /* }
              else{
                  $('.ishowload').css('display','none');

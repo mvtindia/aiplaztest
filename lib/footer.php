@@ -207,7 +207,7 @@ else
           <div class="hide1" id="second-block">
   <form class="form-group" id="login">
   
-            <div class="input-group">
+            <div class="input-group" id="login">
               <span class="input-group-addon"><i class="fa fa-user"></i></span>
               <input type="email" class="form-control form-height40 bord-0"  name="email" reuired placeholder="Email Id"/>
             </div>
@@ -373,27 +373,17 @@ else
 
 
     <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
- 
+    <script src="js/forms.js"></script>
     <script type="text/javascript" src="bm/js/plugins/canvas-to-blob.min.js"></script>
     <script src="bm/js/fileinput.min.js" type="text/javascript"></script>
     <script src="js/custom-calendar.js"></script>
-     
     <script type="text/javascript" src="js/jquery.mask.js"></script>
-
-  
-     
-     <script src="sm/dist/sweetalert2.min.js"></script>
-
-     <script src="js/nouislider.js"></script>
-
-     
+    <script src="sm/dist/sweetalert2.min.js"></script>
+    <script src="js/nouislider.js"></script>
     <script type="text/javascript" src="js/jquery.mask.js"></script>
     <script src="js/custom.js"></script>
-   
-   
-      <script src="js/forms.js"></script>
-
-      <script src="js/forms2.js"></script>
+    
+    <script src="js/forms2.js"></script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
    
