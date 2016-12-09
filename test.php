@@ -1,0 +1,1 @@
+<?php echo function_exists('proc_open') ? 'Yep' : 'Nope'; ?>
