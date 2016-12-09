@@ -4,7 +4,7 @@ include_once('connect.php');
 require_once('swift_required.php');
 
 // signup form start
-
+error_log("actions");
 if(isset($_REQUEST['value']))
 {
   $fname = mysqli_real_escape_string($connect,$_REQUEST['fname']);
