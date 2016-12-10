@@ -43,7 +43,7 @@ Your 2finda team';
 
   // Give the message a subject
     //->setSubject('Your subject')
-  
+  error_log("before SendGrid call");
   $sendgrid = new SendGrid('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');
   $email    = new SendGrid\Email();
   error_log("actions");
