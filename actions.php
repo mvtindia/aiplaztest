@@ -42,7 +42,7 @@ Your 2finda team';
     $params = array(
       'api_user' => $user,
       'api_key' => $pass,
-      'to' => 'test3@gooseswan.com',
+      'to' => 'andy@gooseswan.com',
       'subject' => 'subject of the email',
       'html' => 'I am the HTML parameter',
       'text' => 'I am the text parameter',
