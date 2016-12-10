@@ -36,7 +36,6 @@ To confirm your 2finda account, simply click on the following link: http://' . $
 
 Your 2finda team';
 
-    
     $url = 'https://api.sendgrid.com/';
     $user='azure_4389271fb296cc51e6ae084dc9819730@azure.com';
     $pass='Book1234';
@@ -56,8 +55,9 @@ Your 2finda team';
     curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
     curl_setopt($session, CURLOPT_HEADER, false);
     curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
     $response = curl_exec($session);
-    error_log($response);
+    error_log(curl_error($session));
     curl_close($session);
     error_log("successful");
 
