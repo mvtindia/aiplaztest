@@ -37,18 +37,19 @@ To confirm your 2finda account, simply click on the following link: http://' . $
 Your 2finda team';
 
     $url = 'https://api.sendgrid.com/';
+    $subject = 'Confirm Registration';
     $user='azure_4389271fb296cc51e6ae084dc9819730@azure.com';
     $pass='Book1234';
     $params = array(
       'api_user' => $user,
       'api_key' => $pass,
-      'to' => 'andy@gooseswan.com',
-      'subject' => 'subject of the email',
-      'html' => 'I am the HTML parameter',
-      'text' => 'I am the text parameter',
+      'to' => $email,
+      'subject' => $subject,
+      'html' => $body,
+      //'text' => 'I am the text parameter',
       'from' => 'info@2finda.com',
     );
-    error_log('here');
+    //error_log('here');
     $request = $url.'api/mail.send.json';
     $session = curl_init($request);
     curl_setopt ($session, CURLOPT_POST, true);
