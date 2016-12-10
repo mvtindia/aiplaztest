@@ -2,6 +2,7 @@
 session_start();
 include_once('connect.php');
 require_once('swift_required.php');
+require('lib/SendGrid.php');
 
 // signup form start
 
@@ -36,26 +37,35 @@ To confirm your 2finda account, simply click on the following link: http://' . $
 Your 2finda team';
 
     //$body = " Hi ";
-    error_log($body);
-    $transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')->setUsername('aguschwan@gmail.com')->setPassword('cubs2010');
-    $message = \Swift_Message::newInstance('Confirm Registration')
+    //error_log($body);
+    //$transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')->setUsername('aguschwan@gmail.com')->setPassword('cubs2010');
+    //$message = \Swift_Message::newInstance('Confirm Registration')
 
   // Give the message a subject
     //->setSubject('Your subject')
+  
+  $sendgrid = new SendGrid("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");
+  $email    = new SendGrid\Email();
 
+  $email->addTo("test@sendgrid.com")
+      ->setFrom("you@youremail.com")
+      ->setSubject("Sending with SendGrid is Fun")
+      ->setHtml("and easy to do anywhere, even with PHP");
+
+  $sendgrid->send($email);
   // Set the From address with an associative array
-    ->setFrom(array('info@2finda.com'))
+    //->setFrom(array('info@2finda.com'))
 
   // Set the To addresses with an associative array
-    ->setTo(array($email))
+    //->setTo(array($email))
 
   // Give it a body
-    ->setBody($body)
-    ;
+    //->setBody($body)
+    //;
     error_log('swift');
-    $mailer = \Swift_Mailer::newInstance($transport);
+    //$mailer = \Swift_Mailer::newInstance($transport);
     
-    $result = $mailer->send($message);
+    //$result = $mailer->send($message);
     error_log($result);
     // the message
     //$msg = "First line of text\nSecond line of text";
