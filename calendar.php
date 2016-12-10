@@ -50,18 +50,7 @@
     dp.viewType = "Week";
     dp.height = 400;
     // view
-    if (incr == "forw")
-    {
-        //var dataI = new Date();
-        var i = dae.valueOf() + (604800000 * x);
-        dae = new Date( i);
-        //console.log(dae.getMonth());
-    } else if (incr == "back") {
-        //var dataI = new Date();
-        var i = dae.valueOf() - (604800000 * x);
-        dae = new Date( i);
-        //console.log(dae.getMonth());
-    }
+    
     
     dp.startDate = dae.getFullYear() + "-" + ("0" + (dae.getMonth() + 1)).slice(-2) + "-" + ("0" + dae.getDate()).slice(-2);
     dp.businessBeginsHour = 0;
