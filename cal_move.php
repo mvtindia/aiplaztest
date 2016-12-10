@@ -6,7 +6,7 @@ $id = $received->e->id;
 $placeid = $received->placeid;
 error_log($placeid);
 $start = $received->newStart;
-error_log($id);
+error_log($newStart);
 //$start = str_replace("T", " ", $start);
 //$start2 = date("Y-m-d h:i:s");
 $end = $received->newEnd;
