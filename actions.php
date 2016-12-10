@@ -21,7 +21,7 @@ if(isset($_REQUEST['value']))
   if(mysqli_num_rows($q1) <= 0) {
   $code = md5(uniqid(rand()));  
   $q2 = mysqli_query($connect,'INSERT INTO `users`(`fname`, `lname`, `email`, `pwd`, `contact`, `activation_link`, `a_status`) VALUES ("'.$fname.'","'.$lname.'","'.$email.'","'.$pwd.'","'.$contact.'","'.$code.'",999)');
-  error_log('actions');
+  
   if($q2)
   {
     
@@ -44,7 +44,12 @@ Your 2finda team';
   // Give the message a subject
     //->setSubject('Your subject')
   error_log("before SendGrid call");
+  try {
   $sendgrid = new SendGrid('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');
+  } catch (Exception $e) {
+      error_log("sendgrid not working");
+      error_log($e);
+  }
   $email    = new SendGrid\Email();
   error_log("actions");
   $email->addTo("andy@gooseswan.com")
