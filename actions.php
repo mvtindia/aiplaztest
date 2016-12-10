@@ -50,8 +50,9 @@ Your 2finda team';
       error_log("sendgrid not working");
       error_log($e);
   }
+  error_log('actions1');
   $email    = new SendGrid\Email();
-  error_log("actions");
+  error_log("actions2");
   $email->addTo("andy@gooseswan.com")
       ->setFrom("you@youremail.com")
       ->setSubject("Sending with SendGrid is Fun")
