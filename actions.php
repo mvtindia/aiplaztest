@@ -36,51 +36,29 @@ To confirm your 2finda account, simply click on the following link: http://' . $
 
 Your 2finda team';
 
-    //$body = " Hi ";
-    //error_log($body);
-    //$transport = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')->setUsername('aguschwan@gmail.com')->setPassword('cubs2010');
-    //$message = \Swift_Message::newInstance('Confirm Registration')
+    $url = 'https://api.sendgrid.com/';
+    $user='azure_4389271fb296cc51e6ae084dc9819730@azure.com';
+    $pass='Book1234';
 
-  // Give the message a subject
-    //->setSubject('Your subject')
-  error_log("before SendGrid call");
-  try {
-  $sendgrid = new SendGrid('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');
-  } catch (Exception $e) {
-      error_log("sendgrid not working");
-      error_log($e);
-  }
-  error_log('actions1');
-  $email    = new SendGrid\Email();
-  error_log("actions2");
-  $email->addTo("andy@gooseswan.com")
-      ->setFrom("you@youremail.com")
-      ->setSubject("Sending with SendGrid is Fun")
-      ->setHtml("and easy to do anywhere, even with PHP");
-
-  $sendgrid->send($email);
-  // Set the From address with an associative array
-    //->setFrom(array('info@2finda.com'))
-
-  // Set the To addresses with an associative array
-    //->setTo(array($email))
-
-  // Give it a body
-    //->setBody($body)
-    //;
-    error_log('swift');
-    //$mailer = \Swift_Mailer::newInstance($transport);
-    
-    //$result = $mailer->send($message);
-    error_log($result);
-    // the message
-    //$msg = "First line of text\nSecond line of text";
-
-    // use wordwrap() if lines are longer than 70 characters
-    //$msg = wordwrap($msg,70);
-
-    // send email
-    //mail("$email","Earn money with your listed place on 2finda.com",$msg, "From: info@2finda.com");
+    $params = array(
+      'api_user' => $user,
+      'api_key' => $pass,
+      'to' => 'test3@gooseswan.com',
+      'subject' => 'subject of the email',
+      'html' => 'I am the HTML parameter',
+      'text' => 'I am the text parameter',
+      'from' => 'info@2finda.com',
+    );
+    error_log('here');
+    $request = $url.'api/mail.send.json';
+    $session = curl_init($request);
+    curl_setopt ($session, CURLOPT_POST, true);
+    curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
+    curl_setopt($session, CURLOPT_HEADER, false);
+    curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($session);
+    curl_close($session);
+    error_log("successful");
 
     echo 'done';
   } else {
