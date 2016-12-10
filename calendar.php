@@ -18,12 +18,6 @@
 <link type="text/css" rel="stylesheet" href="themes/calendar_white.css?v=2542" />    
 <link type="text/css" rel="stylesheet" href="themes/calendar_green.css?v=2542" />    
 <?php include 'lib/top.php';?>
-<script>
-    var incr = "no";
-</script>
-
-<body>
-</head>
 
 <body>
 
@@ -34,6 +28,9 @@
         </div><!--menu-had close-->
         <div class="banner-txt">    
             <h1></h1>
+        </div>
+        <div class="text-center" style="margin-top: 20px;">
+            <a id="" type="button" href="dashboard.php" name="<pla></pla>ce" class="btn btn-default cus-save-but">My DashBoard</a>
         </div>
         <div class="container"  >
             <button id="mvdtb"><---</button><button id="mvdtf">---></button>
@@ -172,8 +169,7 @@
     };
 
     dp.onEventMoved = function (args) {
-        form = $('#calenderform');
-        args.placeid = form.find('input.placeid').val();
+        args.placeid = <?php echo $_GET['placeid']; ?>;
         DayPilot.request(
             "cal_move.php", 
             function(req) { // success
@@ -244,15 +240,16 @@ $(document).ready(function() {
     if (filename === "") filename = "index.html";
     $(".menu a[href='" + filename + "']").addClass("selected");
     $( "#mvdtf" ).click(function() {
-        incr = "forw";
         var i = dae.valueOf() + (604800000 * x);
         dae = new Date( i);
         dp.startDate = dae.getFullYear() + "-" + ("0" + (dae.getMonth() + 1)).slice(-2) + "-" + ("0" + dae.getDate()).slice(-2);
         dp.update();
     });
     $( "#mvdtb" ).click(function() {
-        incr = "back";
-        dayplt();
+        var i = dae.valueOf() - (604800000 * x);
+        dae = new Date( i);
+        dp.startDate = dae.getFullYear() + "-" + ("0" + (dae.getMonth() + 1)).slice(-2) + "-" + ("0" + dae.getDate()).slice(-2);
+        dp.update();
     });
     
 });
