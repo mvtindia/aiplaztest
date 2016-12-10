@@ -175,8 +175,7 @@
     };
 
     dp.onEventResized = function (args) {
-        form = $('#calenderform');
-        args.placeid = form.find('input.placeid').val();    
+        args.placeid = <?php echo $_GET['placeid']; ?>;   
         DayPilot.request(
             "cal_move.php", 
             function(req) { // success
