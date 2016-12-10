@@ -44,10 +44,10 @@ Your 2finda team';
   // Give the message a subject
     //->setSubject('Your subject')
   
-  $sendgrid = new SendGrid("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");
+  $sendgrid = new SendGrid('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');
   $email    = new SendGrid\Email();
-
-  $email->addTo("test@sendgrid.com")
+  error_log("actions");
+  $email->addTo("andy@gooseswan.com")
       ->setFrom("you@youremail.com")
       ->setSubject("Sending with SendGrid is Fun")
       ->setHtml("and easy to do anywhere, even with PHP");
