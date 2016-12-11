@@ -331,7 +331,7 @@ error_log($email);
 $url = 'https://api.sendgrid.com/';
 $subject = 'Earn money with your listed place on 2finda.com';
 $body = 
-'Dear Vin M.,"\n"
+"Dear Vin M.,<br><br>
 We’re really happy you’ve joined 2finda.com as a host. So, what do you do now?
 
 Read our general tips on being a successful host.
@@ -340,10 +340,10 @@ The higher your place appears on our result pages, the more likely you are to re
 - A detailed description
 - A competitive price
 - Great photos
-- An updated calendar
-To update everything and anything, just click here."\n"
-Kind regards,"\n"
-Your 2finda team'
+- An updated calendar<br>
+To update everything and anything, just click here.
+Kind regards,<br><br>
+Your 2finda team"
 ;
 $user='azure_4389271fb296cc51e6ae084dc9819730@azure.com';
 $pass='Book1234';
