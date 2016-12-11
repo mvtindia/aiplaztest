@@ -18,21 +18,23 @@ session_start();
       </button>
   
     </div>
+
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav pull-right-cus" >
         <li id="one"><a href="searchlst.php" >Book a Space</a></li><!--btn-custom-->
-        <li id="two"><a href="list-place.php">List a Space</a></li>
-        <li id="three"><a href="list-service.php">List a Service</a></li>
-      </ul>  
-    
+    <li id="two">
+      <a href="list-place.php">
+        List a Space
+        </a>
+         </li>
+    <!--<li id="three"><a href="list-service.php">List a Service</a>     
+    </li>-->
     <?php 
     if(isset($_SESSION['u_id']))
     {
-       
        $q2 = mysqli_query($connect,'SELECT * FROM users where uid="'.$_SESSION['u_id'].'"');
         $res = mysqli_fetch_array($q2)                                                                
         ?>
-      
       <li class="dropdown "><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="login-name" tabindex="-1"> <img class="usr-profile" src="img/<?php if(!empty($res['profile'])){echo $res['profile'];}else{echo "default-user.png";} ?>">&nbsp;<?php echo $res['fname']." ".$res['lname']; ?><span class="caret"></span></a>
 
       <ul class="dropdown-menu">
@@ -46,8 +48,7 @@ session_start();
     else
     {
       ?>
-    
-        <li><a class="signlog" href="#" data-toggle="modal" data-target="#myModal2">Signup/Login</a></li>
+    <li><a class="signlog" href="#" data-toggle="modal" data-target="#myModal2">Signup/Login</a></li>
       
       <?php
     }
