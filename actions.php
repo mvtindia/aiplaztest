@@ -26,7 +26,7 @@ if(isset($_REQUEST['value']))
   {
     
     $id = mysqli_insert_id($connect); 
-    error_log($id);
+    //error_log($id);
     $key = base64_encode($id);
     $id = $key;
     
@@ -87,6 +87,7 @@ if(isset($_REQUEST['login']))
   {
       $row = mysqli_fetch_array($q2);
       $_SESSION['u_id'] = $row['uid'];
+      $_SESSION['email'] = $row['email'];
       echo 'done';
   }
   else
@@ -325,12 +326,53 @@ $sql = mysqli_query($connect,'INSERT INTO `place` ( `p_name`, `p_contact`, `p_lo
 } catch (Exception $e) {
      error_log("we have a problem");
 }
+$email = $_SESSION['email'];
+error_log($email);
+$url = 'https://api.sendgrid.com/';
+$subject = 'Earn money with your listed place on 2finda.com';
+$body = 
+'Dear Vin M.,"\n"
+We’re really happy you’ve joined 2finda.com as a host. So, what do you do now?
 
+Read our general tips on being a successful host.
+Find out more about staying safe on 2finda.
+The higher your place appears on our result pages, the more likely you are to receive booking requests. To optimise your place visibility, make sure you have:
+- A detailed description
+- A competitive price
+- Great photos
+- An updated calendar
+To update everything and anything, just click here."\n"
+Kind regards,"\n"
+Your 2finda team'
+;
+$user='azure_4389271fb296cc51e6ae084dc9819730@azure.com';
+$pass='Book1234';
+$params = array(
+      'api_user' => $user,
+      'api_key' => $pass,
+      'to' => $email,
+      'subject' => $subject,
+      'html' => $body,
+      //'text' => 'I am the text parameter',
+      'from' => 'info@2finda.com',
+);
+    //error_log('here');
+$request = $url.'api/mail.send.json';
+$session = curl_init($request);
+curl_setopt ($session, CURLOPT_POST, true);
+curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
+curl_setopt($session, CURLOPT_HEADER, false);
+curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+$response = curl_exec($session);
+error_log(curl_error($session));
+curl_close($session);
 //error_log("sqlcode: " + $sql);
 $_SESSION['placeids']=mysqli_insert_id($connect);
 echo $_SESSION['placeids'];
 //error_log("placeid");
 //error_log($_SESSION['placeids']);
+
 echo ',,,'; 
 if($sql>0){
   echo "success";
