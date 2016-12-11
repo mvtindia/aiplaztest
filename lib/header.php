@@ -22,13 +22,8 @@ session_start();
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav pull-right-cus" >
         <li id="one"><a href="searchlst.php" >Book a Space</a></li><!--btn-custom-->
-    <li id="two">
-      <a href="list-place.php">
-        List a Space
-        </a>
-         </li>
-    <!--<li id="three"><a href="list-service.php">List a Service</a>     
-    </li>-->
+        <li id="two"><a href="list-place.php">List a Space</a></li>
+        <li id="three"><a href="list-service.php">List a Service</a></li>
     <?php 
     if(isset($_SESSION['u_id']))
     {
