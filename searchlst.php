@@ -424,6 +424,9 @@ $que = mysqli_query($connect,"select * from calenderdata where placeid=".$r21['p
 
 	          <?php include 'lib/footer.php';?>
             <script src="js/forms-map.js"></script>
+            <script>
+              initAutocomplete();
+            </script>
           </div>
           <div class="clearfix"></div>
         </div>
