@@ -1,34 +1,31 @@
 $(document).ready(function(){
 //var inday = new Array(5);
-var myurl=window.location.href;
-        var check1=myurl.indexOf('index.php') > -1;
-        var check3=myurl.indexOf('searchlst') > -1;
-              if(check1==true || check3==true){
-                $('#autocomplete').blur(function(){
+    var myurl=window.location.href;
+    var check1=myurl.indexOf('index.php') > -1;
+    var check3=myurl.indexOf('searchlst') > -1;
+    if(check1==true || check3==true){
+      $('#autocomplete').blur(function(){
+          //$('#my-address').val();
+          codeAddress();
+      });
 
-                //$('#my-address').val();
-                codeAddress();
-              });
-
-                function codeAddress() {
-    geocoder = new google.maps.Geocoder();
-    var address = document.getElementById("autocomplete").value;
-    geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        $('#autocomplete').focus();
-        lt=results[0].geometry.location.lat();
-        ln=results[0].geometry.location.lng();
-        $('#my-lat').val(lt);
-        $('#my-lng').val(ln);
-      } 
-
-      else {
+    function codeAddress() {
+      geocoder = new google.maps.Geocoder();
+      var address = document.getElementById("autocomplete").value;
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          $('#autocomplete').focus();
+          lt=results[0].geometry.location.lat();
+          ln=results[0].geometry.location.lng();
+          $('#my-lat').val(lt);
+          $('#my-lng').val(ln);
+        } else {
         // alert("Geocode was not successful for the following reason: " + status);
-      }
-    });
-  }
+        }
+      });
+    }
 
-                }//if check1
+    }//if check1
 
 
 
@@ -55,7 +52,7 @@ var locations = inday;
 
 var lt1=$('#mylat').val()//30.9007;
 var ln1=$('#mylng').val();
-/*========================Map JS=============================*/
+/*========================Map JS=============================
 function initialize() {
   var mapProp = {
      center:new google.maps.LatLng(lt1,ln1),//,
@@ -63,7 +60,8 @@ function initialize() {
     mapTypeId:google.maps.MapTypeId.ROADMAP
   };
   var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-}
+}*/
+
 google.maps.event.addDomListener(window, 'load', initialize);
 var geocoder;
 var map;
@@ -79,8 +77,6 @@ function initialize() {
   geocoder = new google.maps.Geocoder();
   
   for (i = 0; i < locations.length; i++) {
-
-
     geocodeAddress(locations, i);
   }
 }
@@ -142,6 +138,7 @@ function createMarker(results) {
   infoWindow(marker, map, title, address, url);
   return marker;
 }
+
 }); // document brackets close
  
 
