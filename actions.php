@@ -67,6 +67,8 @@ Your 2finda team';
   } else {
     echo 'already';
   }
+  } else {
+    echo 'already';
   }
 }
 
