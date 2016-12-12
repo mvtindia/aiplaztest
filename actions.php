@@ -332,16 +332,16 @@ $url = 'https://api.sendgrid.com/';
 $subject = 'Earn money with your listed place on 2finda.com';
 $body = 
 "Dear Vin M.,<br><br>
-We’re really happy you’ve joined 2finda.com as a host. So, what do you do now?
+We’re really happy you’ve joined 2finda.com as a host. So, what do you do now?<br>
 
-Read our general tips on being a successful host.
-Find out more about staying safe on 2finda.
+Read our general tips on being a successful host.<br>
+Find out more about staying safe on 2finda.<br>
 The higher your place appears on our result pages, the more likely you are to receive booking requests. To optimise your place visibility, make sure you have:
-- A detailed description
-- A competitive price
-- Great photos
-- An updated calendar<br>
-To update everything and anything, just click here.
+<br>- A detailed description
+<br>- A competitive price
+<br>- Great photos
+<br>- An updated calendar<br>
+To update everything and anything, just click here.<br><br>
 Kind regards,<br><br>
 Your 2finda team"
 ;
