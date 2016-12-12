@@ -363,8 +363,8 @@ else
      <script src="bootstrap/js/bootstrap.js"></script>
    
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
-   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-   <script src="http://www.jqueryscript.net/demo/jQuery-jQuery-UI-Based-Date-Range-Picker-Plugin/jquery.comiseo.daterangepicker.js"></script>
+   <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+   <script src="https://www.jqueryscript.net/demo/jQuery-jQuery-UI-Based-Date-Range-Picker-Plugin/jquery.comiseo.daterangepicker.js"></script>
    
    
         <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
@@ -1216,5 +1216,5 @@ $(document).ready(function() {
       }
     </script>
     
-<script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
-  <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<script src="https://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+  <script src="https://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
