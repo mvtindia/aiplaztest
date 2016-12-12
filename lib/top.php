@@ -5,14 +5,14 @@
 	<link href="css/style.css" rel="stylesheet">
 		<link href="css/style2.css" rel="stylesheet">
 	<link href="css/animate.css" rel="stylesheet">
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <!--	<link href="css/bootstrap-select.css" rel="stylesheet">-->
 <link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
 	<link href="css/star-rating.min.css" rel="stylesheet"/>
 	<link href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css" rel="stylesheet">
 	<link href="css/responsive.css" rel="stylesheet"/>
 	<link rel="stylesheet" type="text/css" href="sm/dist/sweetalert2.css">
-		<link href="http://www.jqueryscript.net/demo/jQuery-jQuery-UI-Based-Date-Range-Picker-Plugin/jquery.comiseo.daterangepicker.css" rel="stylesheet">
+		<link href="https://www.jqueryscript.net/demo/jQuery-jQuery-UI-Based-Date-Range-Picker-Plugin/jquery.comiseo.daterangepicker.css" rel="stylesheet">
 
 <link href="bm/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 <!-- canvas-to-blob.min.js is only needed if you wish to resize images before upload.
