@@ -299,6 +299,7 @@ button.multiselect.dropdown-toggle.btn.btn-default
 
 <!--======footer======-->
     <?php include 'lib/footer.php';?>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0ceT-_kjPt8INNEKoVX9axkv3zw3miBY&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
     <script src="js/forms-map.js"></script>
 <!--======footer close======-->
 
