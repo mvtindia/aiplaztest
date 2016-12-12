@@ -61,8 +61,8 @@
   }
    //and date2='".$pdate2."' and date1='".$pdate1."'
 //echo "select * from place where p_address like '%".$place_loc."%' and capacity >= '".$guests."' and ((p_p_h between ".$minbud." and ".$maxbud.") or (p_p_n between ".$minbud." and ".$maxbud.") or (w_p_p_n between ".$minbud." and ".$maxbud."))";
- // $q21 = mysqli_query($connect,"select * from place where p_address like '%".$place_loc."%' and capacity >= '".$guests."' and ((p_p_h between ".$minbud." and ".$maxbud.") or (p_p_n between ".$minbud." and ".$maxbud.") or (w_p_p_n between ".$minbud." and ".$maxbud."))"); 
-  $q21 = mysqli_query($connect,"select * from place where p_address like '%".$place_loc."%' "); 
+ $q21 = mysqli_query($connect,"select * from place where p_address like '%".$place_loc."%' and capacity >= '".$guests."' and ((p_p_h between ".$minbud." and ".$maxbud.") or (p_p_n between ".$minbud." and ".$maxbud.") or (w_p_p_n between ".$minbud." and ".$maxbud."))"); 
+  //$q21 = mysqli_query($connect,"select * from place where p_address like '%".$place_loc."%' "); 
 
 ?>
 <!doctype html>
@@ -127,7 +127,7 @@
   <div class="">
 
 <!--==============menu header=========================-->
-    <div class="menu-had2" style="    position: fixed;
+    <div class="menu-had2" style="position: fixed;
       z-index: 20;
       top: 0px;
       width: 100%;">
@@ -139,7 +139,8 @@
       <div class="main-center-data" style="margin-top: 129px;">
         <div class="search-lst-data">
           <div class="col-md-5 pd-l-0 hidden-sm hidden-xs">
-            <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAHOSxxua5IIFTA1-WiZbenpWIj0yv9hU8"></script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0ceT-_kjPt8INNEKoVX9axkv3zw3miBY&libraries=places"></script>
+      <!--      <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAHOSxxua5IIFTA1-WiZbenpWIj0yv9hU8"></script> -->          
             <div id="map_canvas"></div>
           </div>
         </div>
@@ -433,6 +434,7 @@ $que = mysqli_query($connect,"select * from calenderdata where placeid=".$r21['p
 
 </div><!--container-fluid close-->
 </body>
+</script>
 <?php 
    //if(!isset($_SESSION['u_id'])) {
 ?>
