@@ -1145,6 +1145,9 @@ if(isset($_GET['calender_id']))
   $wppn = $_GET['cal_wppn'];
 
   error_log($ppn);
+  error_log($pph);
+  error_log($wppn);
+  
   $sql = mysqli_query($connect,"UPDATE calenderdata SET p_p_n='".$ppn."',p_p_h='".$pph."',w_p_p_n='".$wppn."' WHERE calid='".$cal."'");
   if($sql>0)
   {
