@@ -790,10 +790,11 @@ $('.onclick_submit_price').click(function(){
     value_in = value_in+$(this).val()+",";
   });
   value_in = value_in.split(',');
-  //var ppn = value_in[0];
-  var ppn = $('#he1').val();
-  var pph = $('#he2').val();
-  var wppn = $('#he3').val();
+  var ppn = value_in[0];
+  var pph = value_in[1];
+  var wppn = value_in[2];
+  console(ppn);
+
      $.ajax({
            url: 'actions.php?calender_id='+clid+'&cal_ppn='+ppn+'&cal_pph='+pph+'&cal_wppn='+wppn,
            success: function(data){
