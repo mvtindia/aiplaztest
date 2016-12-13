@@ -484,29 +484,20 @@ else
 //price
 if(isset($_REQUEST['priceterms']))
 {
-  //if ($_REQUEST['priceterms'] == 303) {
     $placeid=$_POST['placeid'];
-    $currency = $_POST['currency'];
+    //$currency = $_POST['currency'];
     $p_p_n = $_POST['p_p_n'];
     $p_p_h = $_POST['p_p_h'];
     $w_p_p_n = $_POST['w_p_p_n'];
     $w_discount = $_POST['w_discount'];
     $m_discount = $_POST['m_discount'];
-    echo "Test begin";
-    echo "currency='.$currency.', p_p_n='$p_p_n', p_p_h='.$p_p_h.', w_p_p_n='.$w_p_p_n.' where place_id='.$placeid.' ";
+    //echo "Test begin";
+    //echo "currency='.$currency.', p_p_n='$p_p_n', p_p_h='.$p_p_h.', w_p_p_n='.$w_p_p_n.' where place_id='.$placeid.' ";
 
+    $query=mysqli_query($connect,'update `place` set 	`p_p_n`="'.$p_p_n.'", `p_p_h`="'.$p_p_h.'", `w_p_p_n`="'.$w_p_p_n.'" where `place_id`='.$placeid.'');
 
-// $query=mysqli_query($connect,'update `place` set 	`currency`="'.$currency.'" , `p_p_n`='.$p_p_n.', `p_p_h`='.$p_p_h.', `w_p_p_n`='.$w_p_p_n.' where `place_id`='.$placeid.'');
-
-    $query=mysqli_query($connect,'update `place` set 	`currency`="'.$currency.'" , `p_p_n`="'.$p_p_n.'", `p_p_h`="'.$p_p_h.'", `w_p_p_n`="'.$w_p_p_n.'" where `place_id`='.$placeid.'');
-
-
-//$query=mysqli_query($connect,'update place set  currency="RS" , p_p_n="1", p_p_h="1", w_p_p_n="1" where place_id='.$placeid.'');
-    echo "currency='.$currency.', p_p_n='$p_p_n', p_p_h='.$p_p_h.', w_p_p_n='.$w_p_p_n.' where place_id='.$placeid.' ";
-//UPDATE `yamuna`.`place` SET `currency`='Rs', `p_p_n`='12', `p_p_h`='13', `w_p_p_n`='14' WHERE `place_id`='291';
-
-
-    echo "test end ".$placeid;
+    //echo "currency='.$currency.', p_p_n='$p_p_n', p_p_h='.$p_p_h.', w_p_p_n='.$w_p_p_n.' where place_id='.$placeid.' ";
+    //echo "test end ".$placeid;
     if($query>0)
     {
 	    echo "success post price";
