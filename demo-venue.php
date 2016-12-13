@@ -4,7 +4,6 @@ if (isset($_REQUEST['placeid'])) {
 <!doctype html>
 <html>
 <head>
-
 	<title>2Finda</title>
 	<?php include 'lib/top.php';?>
 	<link href="css/style2.css" rel="stylesheet">
@@ -648,25 +647,25 @@ echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-contro
     border-bottom: 2px solid #1BBC9B;">
             <div class="col-md-3 text-center"><?php echo $row9['date1'] ?></div>
             <div class="col-md-3 text-center"><?php echo $row9['date2'] ?></div>
-            <?php if(($row9['p_p_n']=="")&&($row9['p_p_h']=="")&&($row9['w_p_p_n']==""))
+            <?php /* if(($row9['p_p_n']=="")&&($row9['p_p_h']=="")&&($row9['w_p_p_n']==""))
             {
               ?>
 <div class="col-md-6 text-center">Not Available</div>
 <?php
             }
               else
-              {
+              {*/
                ?>
             <div class="col-md-2 text-center">
-            <?php echo $row9['p_p_n'] ?>
+            <?php echo $match['p_p_n'] ?>
             </div>
             <div class="col-md-2 text-center">
-           <?php echo $row9['p_p_h'] ?>
+           <?php echo $match['p_p_h'] ?>
             </div>
             <div class="col-md-2 text-center">
-            <?php echo $row9['w_p_p_n'] ?>
+            <?php echo $match['w_p_p_n'] ?>
             </div>
-            <?php } ?>
+            <?php //} ?>
             </div>
           <?php
           $he++;
