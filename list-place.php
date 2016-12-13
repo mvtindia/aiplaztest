@@ -309,11 +309,11 @@ include_once('connect.php');?>
                                     <label for="space">Select Your Currency</label>
 <!--    <input type="text" required name="currency" value="<?php echo $_SESSION['currencySymbol'];?>" class="form-control">-->
 
-                                    <select class="form-control" id="sel1" name="currency" >
+                                    <!--<select class="form-control" id="sel1" name="currency" >
                                         <option value="">Select Options</option>
                                         <option value="1">$</option>
                                         <option value="4">₹</option>
-                                    </select>
+                                    </select>-->
                                 </div>
 <!--
       <?php echo '<pre>';
@@ -323,11 +323,11 @@ echo '</pre>'; ?>
 
                                 <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <label for="space">Price Per Hour</label>
-                                    <input type="number" required class="form-control" id="accomodates" placeholder="Enter price" name="p_p_h">
+                                    <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$$$" name="p_p_h">
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label for="space">Price Per Day</label>
-                                    <input type="number" required class="form-control" id="accomodates" placeholder="Enter price" name="p_p_n">
+                                    <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$$$" name="p_p_n">
                                 </div>
 
                                 <div class="col-md-12 text-center"style="margin-bottom: 11px;">
@@ -346,14 +346,7 @@ echo '</pre>'; ?>
 
   <!--==========================Calendar TAB STARTS=======================-->
                     
-                    <script>
-                        /*$(document).ready(function(){
-                            $("#pricetermss").css('display','none');
-                            $("#calender-tab").css('display','block');
-                            $("#photovideo").css('display','none');
-                            $("#details").css('display','none');
-                        });*/
-                    </script>
+                    
                         <div id="calender-tab" style="display:none;">
                             <?php 
                                 //$query2=mysqli_query($connect,'SELECT * FROM calenderdata where placeid="'.$_SESSION['placeids'].'"');
@@ -374,7 +367,7 @@ echo '</pre>'; ?>
                                                 echo "<input type='hidden' name='save' id='save' value=".$save.">";
                                         }
                                     ?>
-                                    <button id="mvdtb"><---</button><button id="mvdtf">---></button>
+                                    <button id="mvdtb">&#8592;</button><button id="mvdtf">&#8594;</button>
                                     <div id="dp"></div>
                                     <div class="col-md-12 text-center">
                                         <button id="back2" type="button" name="place" class="btn btn-default cus-save-but">Back</button>
