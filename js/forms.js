@@ -782,7 +782,7 @@ $("form#ephotovideo").submit(function(e)
 
 //calender price  update
 
-$('.onclcick_submit_price').click(function(){
+$('.onclick_submit_price').click(function(){
   var clid = $(this).val();
   var m = $(this).attr('id');
   var value_in =""; 
@@ -794,7 +794,7 @@ $('.onclcick_submit_price').click(function(){
   var pph = value_in[1];
   var wppn = value_in[2];
      $.ajax({
-           url: 'actions.php?calneder_id='+clid+'&cal_ppn='+ppn+'&cal_pph='+pph+'&cal_wppn='+wppn,
+           url: 'actions.php?calender_id='+clid+'&cal_ppn='+ppn+'&cal_pph='+pph+'&cal_wppn='+wppn,
            success: function(data){
             console.log(data);
            if(data=="ok"){  
