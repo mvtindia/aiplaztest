@@ -66,11 +66,11 @@ include('connect.php');?>
                 </div>
                 <!--<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label for="space">Postal Code</label>
-                  <input type="text" class="form-control" id="price" placeholder="Contact" value="<?php echo $row['postal_code'];?>" name="postal" required>
+                  <input type="text" class="form-control" id="price" placeholder="Contact" value="<?php //echo $row['postal_code'];?>" name="postal" required>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label for="space">Location</label>
-                  <input type="text" class="form-control" id="price" placeholder="Location" value="<?php echo $row['p_location'];?>" name="location" required>
+                  <input type="text" class="form-control" id="price" placeholder="Location" value="<?php //echo $row['p_location'];?>" name="location" required>
                 </div>-->
               </div><!--frm-field-mar-->
   <!--=======================================-->
@@ -484,21 +484,21 @@ if($match=mysqli_fetch_array($query)){
     border-bottom: 2px solid rgb(252, 139, 17);">
             <div class="col-md-3 text-center"><?php echo $row9['date1'] ?></div>
             <div class="col-md-3 text-center"><?php echo $row9['date2'] ?></div>
-            <?php if(($row9['p_p_n']=="")&&($row9['p_p_h']=="")&&($row9['w_p_p_n']==""))
-            {
+            <?php /*if(($row9['p_p_n']=="")&&($row9['p_p_h']=="")&&($row9['w_p_p_n']==""))
+            {*/
               ?>
 <div class="col-md-3 text-center">Not Available</div>
 <?php
             }
-              else
+              //else
               {
 
                ?>
-            <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="p_p_n" value="<?php echo $row9['p_p_n'] ?>"></div>
-            <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="p_p_h" value="<?php echo $row9['p_p_h'] ?>"></div>
-            <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="w_p_p_n" value="<?php echo $row9['w_p_p_n'] ?>"></div>
-            <?php } ?>
-            <div class="col-md-3 text-center"><button name="calender_price_update"id="he<?php echo$he; ?>" class="btn btn-success onclcick_submit_price " value="<?php echo $row9['calid']; ?>"><i class="fa fa-pencil"></i></button>
+            <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="p_p_n" value="<?php echo $row9['p_p_n'] ? $row9['p_p_n'] : '0';  ?>"></div>
+            <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="p_p_h" value="<?php echo $row9['p_p_h']  ? $row9['p_p_h'] : '0';  ?>"></div>
+            <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="w_p_p_n" value="<?php echo $row9['w_p_p_n']  ? $row9['w_p_p_n'] : '0'; ?>"></div>
+            <?php //} ?>
+            <div class="col-md-3 text-center"><button name="calender_price_update" id="he<?php echo $he; ?>" class="btn btn-success onclick_submit_price " value="<?php echo $row9['calid']; ?>"><i class="fa fa-pencil"></i></button>
             <button name="calender_price_update"id="the<?php echo $row9['calid']; ?>" class="btn btn-danger onclcick_delete_price " value="<?php echo $row9['calid']; ?>"><i class="fa fa-trash"></i></button></div>
             </div>
           <?php
@@ -640,72 +640,76 @@ p {
   <button type="button" class="btn-4">Signup</button>
   </div>
   </div>
+
   <div class="hide1" id="second-block">
-  <form class="form-group" id="login">
-  
-  <div class="input-group" id="login">
-    
-    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-  <input type="email" class="form-control form-height40 bord-0"  name="email" reuired placeholder="Email Id"/>
-</div>
-
-<div class="input-group mg-top20">
-    
-    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-  <input type="password" class="form-control form-height40 bord-0" name="password" required placeholder="Password"/>
-
-  <input type="hidden" class="urlval" >
-
-</div>
-
-  <div class="text-center mg-top10">
-  <button type="submit" class="btn-3" name="login">Login</button>
-  <button type="button" class="btn-back">Back</button>
-  </div>
-  </form>
+<form class="form-group" id="login">
+    <div class="input-group" id="login">
+      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+      <input type="email" class="form-control form-height40 bord-0"  name="email" required placeholder="Email Id"/>
+    </div>
+    <div class="input-group mg-top20">
+      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+      <input type="password" class="form-control form-height40 bord-0" name="password" required placeholder="Password"/>
+      <input type="hidden" class="urlval" >
+    </div>
+    <div class="text-center mg-top10">
+      <button type="submit" class="btn-3" name="login">Login</button>
+      <button type="button" class="btn-back">Back</button>
+    </div>
+</form>
   </div>
   
   
   <div class="hide1" id="third-block">
-  <form class="form-group" action="actions.php" id="signup_form" method="POST">
-  
-  <div class="input-group">
-    
-    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-  <input type="text" class="form-control form-height40 bord-0" name="fname" placeholder="First Name" required/>
-</div>
-
-<div class="input-group mg-top20">
-    
-    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-  <input type="text" class="form-control form-height40 bord-0" name="lname" placeholder="Last Name" required/>
-</div>
-
-
-<div class="input-group mg-top20">
-    
-    <span class="input-group-addon"><i class="fa fa-at"></i></span>
-  <input type="email" class="form-control form-height40 bord-0" name="email" placeholder="Email Address" required/>
-</div>
-
-<div class="input-group mg-top20">
-    
-    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-<input type="password" class="form-control form-height40 bord-0 pwd" minlength="6" name="pwd" id="pwd" placeholder="Password" required/>
-</div>
-
-<div class="input-group mg-top20">
-    
-    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-<input type="text"  maxlength="15" class="form-control form-height40 bord-0 phone" name="contact" placeholder="Mobile" required/>
-</div>  
-
-  
-  <div class="text-center mg-top10">
-  <button type="submit" name="signup" id="signup" class="btn-4">Signup</button>
-  <button type="button" class="btn-back">Back</button>
+<form class="form-group" action="actions.php" id="signup_form" method="POST">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+      <input type="text" class="form-control form-height40 bord-0" name="fname" placeholder="First Name" required/>
+    </div>
+    <div class="input-group mg-top20">
+      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+      <input type="text" class="form-control form-height40 bord-0" name="lname" placeholder="Last Name" required/>
+    </div>
+    <div class="input-group mg-top20">
+      <span class="input-group-addon"><i class="fa fa-at"></i></span>
+      <input type="email" class="form-control form-height40 bord-0" name="email" placeholder="Email Address" required/>
+    </div>
+    <div class="input-group mg-top20">
+      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+      <input type="password" class="form-control form-height40 bord-0 pwd" minlength="6" name="pwd" id="pwd" placeholder="Password" required/>
+    </div>
+    <div class="input-group mg-top20">
+      <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+      <input type="text"  maxlength="15" class="form-control form-height40 bord-0 phone" name="contact" placeholder="Mobile" required/>
+    </div>  
+    <div class="text-center mg-top10">
+      <button type="submit" name="signup" id="signup" class="btn-4">Signup</button>
+      <button type="button" class="btn-back">Back</button>
+    </div>
+</form>
   </div>
-  </form>
+
+  <div class="hide1" id="fourth-block">
+<form class="form-group" id="change_price">
+    <div class="input-group" id="change_price">
+      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+      <input type="text" class="form-control form-height40 bord-0" value=""  name="ppn"/>
+    </div>
+    <div class="input-group mg-top20">
+      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+      <input type="text" class="form-control form-height40 bord-0" value="" name="pph"/>
+      <input type="hidden" class="urlval" >
+    </div>
+    <div class="input-group mg-top20">
+      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+      <input type="text" class="form-control form-height40 bord-0" value="" name="wpph"/>
+      <input type="hidden" class="urlval" >
+    </div>
+    <div class="text-center mg-top10">
+      <button type="submit" class="btn-3" name="change_price">Login</button>
+      <button type="button" class="btn-back">Back</button>
+    </div>
+</form>
   </div>
   
       </div>
