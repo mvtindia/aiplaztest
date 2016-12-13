@@ -1137,9 +1137,9 @@ echo"not";
 //end here
 
 //calender data price
-if(isset($_GET['calneder_id']))
+if(isset($_GET['calender_id']))
 {
-  $cal = $_GET['calneder_id'];
+  $cal = $_GET['calender_id'];
   $ppn = $_GET['cal_ppn'];
   $pph = $_GET['cal_pph'];
   $wppn = $_GET['cal_wppn'];

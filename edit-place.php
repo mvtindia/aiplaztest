@@ -487,7 +487,7 @@ if($match=mysqli_fetch_array($query)){
             <?php /*if(($row9['p_p_n']=="")&&($row9['p_p_h']=="")&&($row9['w_p_p_n']==""))
             {*/
               ?>
-<div class="col-md-3 text-center">Not Available</div>
+<!--<div class="col-md-3 text-center">Not Available</div>-->
 <?php
             }
               //else
