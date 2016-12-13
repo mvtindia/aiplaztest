@@ -305,14 +305,14 @@ include_once('connect.php');?>
                             <div class="frm-field-mar">
                                 <?php //include_once('demo.php');?>
                                 <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
-                                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <!--<label for="space">Select Your Currency</label>
+                                <!--<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <label for="space">Select Your Currency</label>
                                     <select class="form-control" id="sel1" name="currency" >
                                         <option value="">Select Options</option>
                                         <option value="1">$</option>
                                         <option value="4">₹</option>
-                                    </select>-->
-                                </div>
+                                    </select>
+                                </div>-->
 <!--
       <?php echo '<pre>';
 var_dump($_SESSION);
