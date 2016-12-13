@@ -443,6 +443,8 @@ echo '</pre>'; ?>
 <!-- <script src="js/forms-map.js"></script> -->
 <?php include 'lib/footer.php'; //if isset
 ?>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0ceT-_kjPt8INNEKoVX9axkv3zw3miBY&signed_in=true&libraries=places&callback=initAutocomplete"
+        async defer></script>
 </body>
 <?php 
    if(!isset($_SESSION['u_id'])) {
