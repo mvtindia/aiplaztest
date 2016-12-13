@@ -12,247 +12,205 @@ include('connect.php');?>
 <body>
 
 <div class="container-fluid"><!--container-fluid start-->
-<div class="row">
+  <div class="row">
 
 
 <!--==============menu header=========================-->
-<div class="menu-had2">
-<?php include 'lib/header.php';?>
-</div><!--menu-had close-->
+    <div class="menu-had2">
+      <?php include 'lib/header.php';?>
+    </div><!--menu-had close-->
 <!--==============menu header close=========================-->
-<div class="banner-bg">
-<div class="banner-upper">
-<div class="container">
-<div class="row">
-<div class="banner-txt">
- <h1> Edit a place</h1>
-<h4>Earn money renting out a spare room, marriage place or House. Listing your place is totally free. </h4> 
- </div>  
-</div><!--row close-->
-</div><!--container close-->
-
-</div><!--banner-upper close-->
-</div><!--banner-bg close-->
-<div class="container">
-<div class="row">
-<?php  $pid=$_REQUEST['placeid'];
- $query=mysqli_query($connect,'SELECT * FROM `place`,users where place_id="'.$pid.'" and uid=user_id');
+    <div class="banner-bg">
+      <div class="banner-upper">
+        <div class="container">
+          <div class="row">
+            <div class="banner-txt">
+              <h1> Edit a place</h1>
+              <h4>Earn money renting out a spare room, marriage place or House. Listing your place is totally free. </h4> 
+            </div>  
+          </div><!--row close-->
+        </div><!--container close-->
+      </div><!--banner-upper close-->
+    </div><!--banner-bg close-->
+    <div class="container">
+      <div class="row">
+        <?php  $pid=$_REQUEST['placeid'];
+          $query=mysqli_query($connect,'SELECT * FROM `place`,users where place_id="'.$pid.'" and uid=user_id');
                                 $row=mysqli_fetch_array($query);
-?>
-<div class="col-lg-8 col-sm-8 col-md-8 col-xs-12">
-<div class="ishowload" style="display:none;top:50%;box-shadow:none;background-color:transparent;border:none;">
-      <img class="showimg1" src="img/loading.gif" style="margin:0 auto;display:block;width:53px;">
-</div>
+        ?>
+        <div class="col-lg-8 col-sm-8 col-md-8 col-xs-12">
+        <div class="ishowload" style="display:none;top:50%;box-shadow:none;background-color:transparent;border:none;">
+          <img class="showimg1" src="img/loading.gif" style="margin:0 auto;display:block;width:53px;">
+        </div>
 <!-- details start -->
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Details</a></li>
-    <li><a data-toggle="tab" href="#menu12">Photos & Videos</a></li>
-    <li><a data-toggle="tab" href="#menu13">Prices</a></li>
-    <li><a data-toggle="tab" href="#menu14">Special Prices</a></li>
-  </ul>
-  <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-      <div class="tellus-data col-md-12 col-xs-12 col-sm-12 pd-lr-0" id="edetails">
-<div class="had-frm">Your Details</div>
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#home">Details</a></li>
+          <li><a data-toggle="tab" href="#menu12">Photos & Videos</a></li>
+          <li><a data-toggle="tab" href="#menu13">Prices</a></li>
+          <li><a data-toggle="tab" href="#menu14">Special Prices</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="home" class="tab-pane fade in active">
+            <div class="tellus-data col-md-12 col-xs-12 col-sm-12 pd-lr-0" id="edetails">
+              <div class="had-frm">Your Details</div>
 <form class="pd-bottom20" role="form" id="edit_place" method="POST">
-<div class="frm-field-mar">
-  <input type="hidden" class="placeid" name="placeid" value="<?php echo $row['place_id'];?>" id="placeid">
-
-
-  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Name</label>
-    <input type="text" class="form-control" id="price" placeholder="Name" name="name" value="<?php echo $row['p_name'];?>" required>
-  </div>
-  
-   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Contact Number</label>
-    <input type="text" class="form-control phone" id="price" placeholder="Contact" value="<?php echo $row['p_contact'];?>" name="contact" required>
-  </div>
-  
-     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Postal Code</label>
-    <input type="text" class="form-control" id="price" placeholder="Contact" value="<?php echo $row['postal_code'];?>" name="postal" required>
-  </div>
-  
-  
-     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Location</label>
-    <input type="text" class="form-control" id="price" placeholder="Location" value="<?php echo $row['p_location'];?>" name="location" required>
-  </div>
-  
-  
-  </div><!--frm-field-mar-->
+              <div class="frm-field-mar">
+                <input type="hidden" class="placeid" name="placeid" value="<?php echo $row['place_id'];?>" id="placeid">
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label for="space">Name</label>
+                  <input type="text" class="form-control" id="price" placeholder="Name" name="name" value="<?php echo $row['p_name'];?>" required>
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label for="space">Contact Number</label>
+                  <input type="text" class="form-control phone" id="price" placeholder="Contact" value="<?php echo $row['p_contact'];?>" name="contact" required>
+                </div>
+                <!--<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label for="space">Postal Code</label>
+                  <input type="text" class="form-control" id="price" placeholder="Contact" value="<?php echo $row['postal_code'];?>" name="postal" required>
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label for="space">Location</label>
+                  <input type="text" class="form-control" id="price" placeholder="Location" value="<?php echo $row['p_location'];?>" name="location" required>
+                </div>-->
+              </div><!--frm-field-mar-->
   <!--=======================================-->
-   <div class="clearfix"></div>
-  
-  
-  
-    <div class="had-frm-sec">Your Place Location...</div>
-  <div class="frm-field-mar ">
-  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Address *</label>
-  </div>
-  
-        <div id="locationField" class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-      <input class="form-control" id="autocomplete" name="address" value="<?php echo $row['p_address'] ;?>" placeholder="Enter your address" onFocus="geolocate()" type="text" required>
-    </div>
-    <div id="address" class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mg-top20" style="display:none;">
-
-        <input class="field form-control" id="street_number" value="" name="street" disabled="true" >
-            </div>
-             <div id="address" class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mg-top20" style="display:none;">
-                <input class="field form-control" id="route" value="" readonly>
-            </div>
-
-      <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-     <label class="label">City</label>
-        <input class="field form-control" id="locality" value="<?php echo $row['p_city'];?>" readonly name="city" >
-      </div>
-        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-        <label class="label">State</label>
-         <input class="field form-control" id="administrative_area_level_1" value="<?php echo $row['p_state'];?>" readonly name="state">
-      </div>
-        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 pd-bottom20">
-        <label class="label">Zip code</label> 
-        <input class="field form-control" name="postcode" id="postal_code" value="<?php echo $row['p_code'];?>" readonly>
-      </div>
-    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 pd-bottom20">
-        <label class="label">Country</label> 
-        <input class="field form-control" name="country" id="country" value="<?php echo $row['p_country'];?>" readonly>
-      </div>
-    </div>
-
-
-  <div class="clearfix"></div>
+              <div class="clearfix"></div>
+              <div class="had-frm-sec">Your Place Location...</div>
+              <div class="frm-field-mar ">
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label for="space">Address *</label>
+                </div>
+                <div id="locationField" class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                  <input class="form-control" id="autocomplete" name="address" value="<?php echo $row['p_address'] ;?>" placeholder="Enter your address" onFocus="geolocate()" type="text" required>
+                </div>
+                <div id="address" class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mg-top20" style="display:none;">
+                  <input class="field form-control" id="street_number" value="" name="street" disabled="true" >
+                </div>
+                <div id="address" class="col-lg-6 col-sm-6 col-md-6 col-xs-6 mg-top20" style="display:none;">
+                  <input class="field form-control" id="route" value="" readonly>
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+                  <label class="label">City</label>
+                  <input class="field form-control" id="locality" value="<?php echo $row['p_city'];?>" readonly name="city" >
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+                  <label class="label">State</label>
+                  <input class="field form-control" id="administrative_area_level_1" value="<?php echo $row['p_state'];?>" readonly name="state">
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 pd-bottom20">
+                  <label class="label">Zip code</label> 
+                  <input class="field form-control" name="postcode" id="postal_code" value="<?php echo $row['p_code'];?>" readonly>
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 pd-bottom20">
+                  <label class="label">Country</label> 
+                  <input class="field form-control" name="country" id="country" value="<?php echo $row['p_country'];?>" readonly>
+                </div>
+              </div>
+              <div class="clearfix"></div>
   <!--frm-field-mar-->
   <!--=====================================-->
   
-  
-  
-  
-  
-     <div class="had-frm-sec">Your Place Details</div>
-   
-    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <label for="space">Space Title *</label>
-    <input type="text" class="form-control" id="price" placeholder="Space title" value="<?php echo $row['p_country'];?>" name="space_name" required>
-  </div>
-  
-<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="email">Property type *</label>
-    <select class="form-control" id="sel1" name="property" required >
-      <option value="">Select Property type</option>
-    <?php 
-    $query=mysqli_query($connect,'Select * from property');
-while($match=mysqli_fetch_array($query)){
-  if($row['property_typeid']==$match['pid']){?>
-    <option value="<?php echo $match['pid'];?>" selected><?php echo $match['ptype'];?></option>
-<?php }
-else{ ?>
-  <option value="<?php echo $match['pid'];?>" selected><?php echo $match['ptype'];?></option>
-  <?php } }//while ?>
-  </select>
-  </div>
-  
-
-<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Capacity</label>
-    <input type="number" class="form-control" name="capacity" value="<?php echo $row['capacity'];?>" required>
-  </div>
-
-  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" >
-    <label for="space">Accomodates *</label>
-    <input type="text" class="form-control" id="accomodates" placeholder="Accomodates" value="<?php echo $row['p_country'];?>" name="accomodates" required>
-  </div>
-  
-  
-  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 sample-only">
-    <label class="wid100" for="space">Can be used for *</label>
-<select id="select1" class="wid100" multiple="multiple" name="canbe[]" required>
-      <option value="" >Select Events</option>
-    <?php 
-    $events=explode(",",$row['can_be_usedid']);
-    $query=mysqli_query($connect,'Select * from usedfor');
-while($match=mysqli_fetch_array($query)){
-  if(in_array($match['ufid'], $events)){?>
-    <option value="<?php echo $match['ufid'];?>" selected><?php echo $match['ufname'];?></option>
-<?php }
-else{?>
-    <option value="<?php echo $match['ufid'];?>"><?php echo $match['ufname'];?></option>
-
- <?php }}//while ?>
-</select> 
-  </div>
-  
-    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-  <div class="col-md-12">  <label for="space">Area*</label></div>
- <div class="col-md-6">   
-<input type="text" class="form-control" id="accomodates" placeholder="Area" name="area" value="<?php echo $row['place_area'];?>" required="">
-  </div>
-   <div class="col-md-6">
-<select class="form-control" name="areatype"><option>Select Area Type*</option>
- <?php $query=mysqli_query($connect,'Select * from area');
-while($match=mysqli_fetch_array($query)){
+              <div class="had-frm-sec">Your Place Details</div>
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <label for="space">Space Title *</label>
+                  <input type="text" class="form-control" id="price" placeholder="Space title" value="<?php echo $row['p_country'];?>" name="space_name" required>
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label for="email">Property type *</label>
+                  <select class="form-control" id="sel1" name="property" required >
+                    <option value="">Select Property type</option>
+                    <?php 
+                      $query=mysqli_query($connect,'Select * from property');
+                      while($match=mysqli_fetch_array($query)){
+                        if($row['property_typeid']==$match['pid']){?>
+                          <option value="<?php echo $match['pid'];?>" selected><?php echo $match['ptype'];?></option>
+                    <?php } else { ?>
+                          <option value="<?php echo $match['pid'];?>" selected><?php echo $match['ptype'];?></option>
+                    <?php } }//while ?>
+                  </select>
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label for="space">Capacity</label>
+                  <input type="number" class="form-control" name="capacity" value="<?php echo $row['capacity'];?>" required>
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" >
+                  <label for="space">Accomodates *</label>
+                  <input type="text" class="form-control" id="accomodates" placeholder="Accomodates" value="<?php echo $row['p_country'];?>" name="accomodates" required>
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 sample-only">
+                  <label class="wid100" for="space">Can be used for *</label>
+                  <select id="select1" class="wid100" multiple="multiple" name="canbe[]" required>
+                    <option value="" >Select Events</option>
+                    <?php 
+                      $events=explode(",",$row['can_be_usedid']);
+                      $query=mysqli_query($connect,'Select * from usedfor');
+                      while($match=mysqli_fetch_array($query)){
+                        if(in_array($match['ufid'], $events)){?>
+                          <option value="<?php echo $match['ufid'];?>" selected><?php echo $match['ufname'];?></option>
+                    <?php } else {?>
+                          <option value="<?php echo $match['ufid'];?>"><?php echo $match['ufname'];?></option>
+                    <?php }}//while ?>
+                  </select> 
+                </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="col-md-12">  
+                  <label for="space">Area*</label>
+                </div>
+                <div class="col-md-6">   
+                  <input type="text" class="form-control" id="accomodates" placeholder="Area" name="area" value="<?php echo $row['place_area'];?>" required="">
+                </div>
+                <div class="col-md-6">
+                  <select class="form-control" name="areatype"><option>Select Area Type*</option>
+                  <?php $query=mysqli_query($connect,'Select * from area');
+                    while($match=mysqli_fetch_array($query)){
       //echo "<<<<<".$match['areaid']."<br> >>>>>>".$row['areatype'];
-  if($match['areaid']==$row['areatype']){
-?>
-<option value="<?php echo $match['areaid'];?>" selected><?php echo $match['areatype'];?></option>
-<?php } else{?>
-<option value="<?php echo $match['areaid'];?>"><?php echo $match['areatype'];?></option>
-<?php }}?>
-</select>
-  </div>
-</div> 
-  
-  
-    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Common Ammenities *</label>
-     <?php 
-    $caid=explode(",",$row['ammenties_id']);
-
-    $query=mysqli_query($connect,'Select * from ammenities where atype="common"');
-while($match=mysqli_fetch_array($query)){
-  if(in_array($match['aid'], $caid)){?>
-    <div class="col-md-12">
-<input type="checkbox" name="commonammenties[]"  value="<?php echo $match['aid'];?>" checked>&nbsp;<?php echo $match['aname'];?>
-  </div>
-<?php }else{
-  ?>
-<div class="col-md-12">
-<input type="checkbox" name="commonammenties[]"  value="<?php echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?>
-  </div>
-  <?php } }//while?>
-  </div>
-  
-  
-      <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Additional Ammenities *</label>
-         <?php 
-          $aid=explode(",",$row['add_ammenties']);
-          $query1=mysqli_query($connect,'SELECT * FROM `ammenities` where atype="additional" ');
-                                      while($match=mysqli_fetch_array($query1)){
-                                      if(in_array($match['aid'], $aid)){
-         ?>
-    <div class="col-md-12">
-<input type="checkbox" name="add_ammenties[]" value="<?php echo $match['aid'];?>" checked>&nbsp;<?php echo $match['aname'];?>
-  </div>
-<?php  }else{
-  ?>
-<div class="col-md-12">
-<input type="checkbox" name="add_ammenties[]"  value="<?php echo $match['aid'];?>" >&nbsp;<?php echo $match['aname'];?>
-  </div>
-  <?php } }//while?>?>
-  </div>
-  
-  
-      <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <label for="space">Description *</label>
-    <textarea  class="form-control" id="accomodates" required placeholder="Description" name="details" ><?php echo $row['details'];?></textarea>
-  </div>
-  
-
-  <div class="clearfix"></div>
-
+                      if($match['areaid']==$row['areatype']){
+                  ?>
+                    <option value="<?php echo $match['areaid'];?>" selected><?php echo $match['areatype'];?></option>
+                  <?php } else{?>
+                    <option value="<?php echo $match['areaid'];?>"><?php echo $match['areatype'];?></option>
+                  <?php }}?>
+                  </select>
+                </div>  
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label for="space">Common Ammenities *</label>
+                <?php 
+                  $caid=explode(",",$row['ammenties_id']);
+                  $query=mysqli_query($connect,'Select * from ammenities where atype="common"');
+                  while($match=mysqli_fetch_array($query)){
+                    if(in_array($match['aid'], $caid)){?>
+                      <div class="col-md-12">
+                        <input type="checkbox" name="commonammenties[]"  value="<?php echo $match['aid'];?>" checked>&nbsp;<?php echo $match['aname'];?>
+                      </div>
+                <?php }else{ ?>
+                      <div class="col-md-12">
+                        <input type="checkbox" name="commonammenties[]"  value="<?php echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?>
+                      </div>
+                <?php } }//while?>
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label for="space">Additional Ammenities *</label>
+                <?php 
+                  $aid=explode(",",$row['add_ammenties']);
+                  $query1=mysqli_query($connect,'SELECT * FROM `ammenities` where atype="additional" ');
+                    while($match=mysqli_fetch_array($query1)){
+                      if(in_array($match['aid'], $aid)){
+                ?>
+                <div class="col-md-12">
+                  <input type="checkbox" name="add_ammenties[]" value="<?php echo $match['aid'];?>" checked>&nbsp;<?php echo $match['aname'];?>
+                </div>
+                <?php } else {?>
+                <div class="col-md-12">
+                  <input type="checkbox" name="add_ammenties[]"  value="<?php echo $match['aid'];?>" >&nbsp;<?php echo $match['aname'];?>
+                </div>
+                <?php } }//while?>?>
+              </div>
+              <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <label for="space">Description *</label>
+                <textarea  class="form-control" id="accomodates" required placeholder="Description" name="details" ><?php echo $row['details'];?></textarea>
+              </div>
+              <div class="clearfix"></div>
   
   <!-- <div class="had-frm-sec">Photos & Videos...</div>
   <div class="frm-field-mar">
@@ -266,91 +224,76 @@ while($match=mysqli_fetch_array($query)){
   </div> --><!--frm-field-mar-->
   <!--=====================================-->
   
-  
-  
-  
-  
-    <div class="had-frm-sec">Rules</div>
-  <div class="frm-field-mar">
-      <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Do's</label>
-   <select class="form-control" id="select3" name="ruledo[]" multiple>
-      <option>Select Rules</option>
-     <?php 
-    $dorule=explode(",",$row['rules_doid']);
- $query=mysqli_query($connect,'Select * from rules where rtype="do"');
-while($match=mysqli_fetch_array($query)){
-  if(in_array($match['rid'], $dorule)){?>
-    <option value="<?php echo $match['rid'];?>" selected><?php echo $match['rname'];?></option>
-    <?php } 
-    else{?>
-    <option value="<?php echo $match['rid'];?>"><?php echo $match['rname'];?></option>
-    <?php } }?>
-  </select>
-  </div>
-  
-        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Don'ts</label>
-   <select class="form-control" id="select4" name="ruledonot[]" multiple>
-       <option>Select Rules</option>
-     <?php 
-    $dontrule=explode(",",$row['rules_donotid']);
- $query=mysqli_query($connect,'Select * from rules where rtype="dont"');
-while($match=mysqli_fetch_array($query)){
-  if(in_array($match['rid'], $dontrule)){?>
-    <option value="<?php echo $match['rid'];?>" selected><?php echo $match['rname'];?></option>
-    <?php } 
-    else{?>
-    <option value="<?php echo $match['rid'];?>"><?php echo $match['rname'];?></option>
-    <?php } } ?>
-  </select>
-  </div>
-  <div class="clearfix"></div>
-  </div><!--frm-field-mar-->
+              <div class="had-frm-sec">Rules</div>
+              <div class="frm-field-mar">
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label for="space">Do's</label>
+                  <select class="form-control" id="select3" name="ruledo[]" multiple>
+                    <option>Select Rules</option>
+                    <?php 
+                      $dorule=explode(",",$row['rules_doid']);
+                      $query=mysqli_query($connect,'Select * from rules where rtype="do"');
+                      while($match=mysqli_fetch_array($query)){
+                        if(in_array($match['rid'], $dorule)) { ?>
+                    <option value="<?php echo $match['rid'];?>" selected><?php echo $match['rname'];?></option>
+                    <?php } else {?>
+                    <option value="<?php echo $match['rid'];?>"><?php echo $match['rname'];?></option>
+                    <?php } }?>
+                  </select>   
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label for="space">Don'ts</label>
+                  <select class="form-control" id="select4" name="ruledonot[]" multiple>
+                    <option>Select Rules</option>
+                    <?php 
+                      $dontrule=explode(",",$row['rules_donotid']);
+                      $query=mysqli_query($connect,'Select * from rules where rtype="dont"');
+                      while($match=mysqli_fetch_array($query)){
+                        if(in_array($match['rid'], $dontrule)){?>
+                    <option value="<?php echo $match['rid'];?>" selected><?php echo $match['rname'];?></option>
+                    <?php } else {?>
+                    <option value="<?php echo $match['rid'];?>"><?php echo $match['rname'];?></option>
+                    <?php } } ?>
+                  </select>
+                </div>
+                <div class="clearfix"></div>
+              </div><!--frm-field-mar-->
   <!--=====================================-->
   
-      <div class="had-frm-sec">Safety</div>
-  <div class="frm-field-mar">
-        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 sample-only">
-    <label class="wid100" for="space">Safety Checklist</label>
-<select id="select2" class="wid100" multiple="multiple" name="safety[]">
-<option value="">Select Safety Options</option>
-   <?php 
-    $safety=explode(",",$row['saftyid']);
-    $query=mysqli_query($connect,'Select * from safety');
-while($match=mysqli_fetch_array($query)){
-  if(in_array($match['sid'], $safety)){?>
-  ?>
-    <option value="<?php echo $match['sid'];?>" selected><?php echo $match['sname'];?></option>
-    <?php } 
-    else{?>
-    <option value="<?php echo $match['sid'];?>"><?php echo $match['sname'];?></option>
-    <?php } }?>
-</select> 
-  </div>
-  
-  <div class="col-md-12">
-  <h4>Safety Card</h4>
-  <p>Where is safety card located?</p>
-  </div>
-        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Fire Exitinguisher</label>
-   <input type="text" class="form-control" id="accomodates" value="<?php echo $row['fire_extinguisher'];?>" placeholder="Enter Location" name="fire_extinguisher">
-
-  </div>
-  
-          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Fire Alarm</label>
-   <input type="text" class="form-control" id="accomodates" value="<?php echo $row['fire_alarm'];?>" placeholder="Enter Location" name="fire_alaram">
-
-  </div>
-  
-  
-         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Gas Shutoff valve</label>
-   <input type="text" class="form-control" id="accomodates" value="<?php echo $row['gas_valve'];?>" placeholder="Enter Location" name="gas_valve">
-
-  </div>
+            <div class="had-frm-sec">Safety</div>
+            <div class="frm-field-mar">
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 sample-only">
+                <label class="wid100" for="space">Safety Checklist</label>
+                <select id="select2" class="wid100" multiple="multiple" name="safety[]">
+                  <option value="">Select Safety Options</option>
+                  <?php 
+                    $safety=explode(",",$row['saftyid']);
+                    $query=mysqli_query($connect,'Select * from safety');
+                    while($match=mysqli_fetch_array($query)){
+                      if(in_array($match['sid'], $safety)){?>
+                  ?>  
+                  <option value="<?php echo $match['sid'];?>" selected><?php echo $match['sname'];?></option>
+                  <?php } else { ?>
+                  <option value="<?php echo $match['sid'];?>"><?php echo $match['sname'];?></option>
+                  <?php } }?>
+                </select> 
+              </div>
+              <div class="col-md-12">
+                <h4>Safety Card</h4>
+                <p>Where is safety card located?</p>
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label for="space">Fire Exitinguisher</label>
+                <input type="text" class="form-control" id="accomodates" value="<?php echo $row['fire_extinguisher'];?>" placeholder="Enter Location" name="fire_extinguisher">
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label for="space">Fire Alarm</label>
+                <input type="text" class="form-control" id="accomodates" value="<?php echo $row['fire_alarm'];?>" placeholder="Enter Location" name="fire_alaram">
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label for="space">Gas Shutoff valve</label>
+                <input type="text" class="form-control" id="accomodates" value="<?php echo $row['gas_valve'];?>" placeholder="Enter Location" name="gas_valve">
+              </div>
   
   
            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -463,23 +406,21 @@ if($match=mysqli_fetch_array($query)){
     <?php include_once('demo.php');?>
     <input type="hidden"  name="placeid" value="<?php echo $pid; ?>">
       <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    <label for="space">Select Your Currency</label>
+    <!--<label for="space">Select Your Currency</label>
  <select class="form-control" id="sel1" name="currency" >
   <option value="">Select Options</option>
     <option value="1">$</option>
     <option value="4">₹</option>
-  </select>  </div>
+  </select>-->  </div>
       
-      
-
       <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <label for="space">Price Per Day</label>
-   <input type="text" required class="form-control" id="accomodates" value="<?php echo $row['p_p_n'];?>" placeholder="Enter price" name="p_p_n">
+   <input type="text" required class="form-control" id="accomodates" value="<?php echo "$" . $row['p_p_n'];?>" placeholder="Enter price" name="p_p_n">
   </div>
   
         <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
     <label for="space">Price Per Hour</label>
-   <input type="text" required class="form-control" id="accomodates" value="<?php echo $row['p_p_h'];?>" placeholder="Enter price" name="p_p_h">
+   <input type="text" required class="form-control" id="accomodates" value="<?php echo "$" . $row['p_p_h'];?>" placeholder="Enter price" name="p_p_h">
   </div>
 <!--
           <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -493,10 +434,6 @@ if($match=mysqli_fetch_array($query)){
   <button id="next2" type="submit" name="qeprice_place" class="btn btn-default cus-save-but">Save & continue</button>
   </div>
   
- 
-    
-
- 
   </div><!--frm-field-mar-->
   
   </div>
@@ -593,27 +530,13 @@ if($match=mysqli_fetch_array($query)){
     </div>
     </div>
 
-
-
- 
-  
-
-
-
-  <!--============================Photos AND Videos TAB CLOSE============================-->
-
-
-
-  
-  
+  <!--============================Photos AND Videos TAB CLOSE============================-->  
 
 
   <div class="clearfix"></div>
   <!--=====================================-->
   
   </div>
-
-
 
 <!--==========WHY LIST YOUR PLACE?============-->
  <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">

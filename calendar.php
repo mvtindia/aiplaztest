@@ -33,7 +33,7 @@
             <a id="" type="button" href="dashboard.php" name="<pla></pla>ce" class="btn btn-default cus-save-but">My DashBoard</a>
         </div>
         <div class="container"  >
-            <button id="mvdtb"><---</button><button id="mvdtf">---></button>
+            <button id="mvdtb">&#8592;</button><button id="mvdtf">&#8594;</button>
             <div id="dp"></div>
         </div>
     </div>

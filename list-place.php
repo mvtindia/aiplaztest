@@ -306,10 +306,8 @@ include_once('connect.php');?>
                                 <?php //include_once('demo.php');?>
                                 <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <label for="space">Select Your Currency</label>
-<!--    <input type="text" required name="currency" value="<?php echo $_SESSION['currencySymbol'];?>" class="form-control">-->
-
-                                    <!--<select class="form-control" id="sel1" name="currency" >
+                                    <!--<label for="space">Select Your Currency</label>
+                                    <select class="form-control" id="sel1" name="currency" >
                                         <option value="">Select Options</option>
                                         <option value="1">$</option>
                                         <option value="4">₹</option>
@@ -358,14 +356,14 @@ echo '</pre>'; ?>
                                 <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>
                                 <div class="frm-field-mar"> 
                                     <?php
-                                        $save="";
+                                        /*$save="";
                                         $query1=mysqli_query($connect,'SELECT * FROM place where place_id="'.$_SESSION['placeids'].'"');
                                         if ($row1=mysqli_fetch_array($query1)) {
                                             if(!empty($row1['p_p_n'])){$ppn=$row1['p_p_n'];$save .="1,";}else{$save .="0,";}
                                             if(!empty($row1['p_p_h'])){$ppn=$row1['p_p_h'];$save .="1,";}else{$save .="0,";}
                                             if(!empty($row1['w_p_p_n'])){$ppn=$row1['w_p_p_n'];$save .="1";}else{$save .="0";}
                                                 echo "<input type='hidden' name='save' id='save' value=".$save.">";
-                                        }
+                                        }*/
                                     ?>
                                     <button id="mvdtb">&#8592;</button><button id="mvdtf">&#8594;</button>
                                     <div id="dp"></div>

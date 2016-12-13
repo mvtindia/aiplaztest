@@ -657,10 +657,10 @@ echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-contro
               {*/
                ?>
             <div class="col-md-2 text-center">
-            <?php echo $match['p_p_n'] ?>
+            <?php echo "$" . $match['p_p_n'] ?>
             </div>
             <div class="col-md-2 text-center">
-           <?php echo $match['p_p_h'] ?>
+           <?php echo "$" . $match['p_p_h'] ?>
             </div>
             <div class="col-md-2 text-center">
             <?php echo $match['w_p_p_n'] ?>
@@ -674,7 +674,7 @@ echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-contro
       else{
         echo '<div class="row"style="padding: 11px 0px 1px 0px;
     border-bottom: 2px solid #1BBC9B;">
-    <div class="col-md-8"> No Special Price yet!</div> 
+    <div class="col-md-8"></div> 
           </div>';
         } ?>     
 
