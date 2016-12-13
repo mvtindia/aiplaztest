@@ -657,13 +657,22 @@ echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-contro
               {*/
                ?>
             <div class="col-md-2 text-center">
-            <?php echo "$" . $match['p_p_n'] ?>
+            <?php
+			 	$ppn = ($row9['p_p_n'] ? $row9['p_p_n'] : $match['p_p_n']);
+				echo "$" . $ppn; 
+			?>
             </div>
             <div class="col-md-2 text-center">
-           <?php echo "$" . $match['p_p_h'] ?>
+           	<?php 
+		   		$pph = ($row9['p_p_h'] ? $row9['p_p_h'] : $match['p_p_h']);
+				echo "$" . $pph;
+		  	?>
             </div>
             <div class="col-md-2 text-center">
-            <?php echo $match['w_p_p_n'] ?>
+            <?php 
+				$wpph = ($row9['w_p_p_h'] ? $row9['w_p_p_h'] : $match['w_p_p_h']);
+				echo "$" . $wpph; 
+			?>
             </div>
             <?php //} ?>
             </div>

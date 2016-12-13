@@ -367,6 +367,9 @@ echo '</pre>'; ?>
                                     ?>
                                     <button id="mvdtb">&#8592;</button><button id="mvdtf">&#8594;</button>
                                     <div id="dp"></div>
+                                    <div class="col-md-12 text-center" style="margin-top: 20px;">
+                                        <a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
+                                    </div>
                                     <div class="col-md-12 text-center">
                                         <button id="back2" type="button" name="place" class="btn btn-default cus-save-but">Back</button>
 <!--   <button id="next3" type="submit" name="priceterms" class="btn btn-default cus-save-but">Save</button>
