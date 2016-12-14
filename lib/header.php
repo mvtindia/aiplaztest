@@ -1,8 +1,8 @@
 <?php 
 
 include_once('connect.php');
-require_once 'fbConfig.php';
-require_once 'User.php';
+require_once('fbConfig.php');
+require_once('User.php');
 session_start();
 if ($fbUser) {
     $fbUserProfile = $facebook->api('/me?fields=id,first_name,last_name,email,link,gender,locale,picture');
