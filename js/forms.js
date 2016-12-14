@@ -793,7 +793,7 @@ $('.onclick_submit_price').click(function(){
   var ppn = value_in[0];
   var pph = value_in[1];
   var wppn = value_in[2];
-  console.log(ppn);
+  console.log(clid);
 
      $.ajax({
            url: 'actions.php?calender_id='+clid+'&cal_ppn='+ppn+'&cal_pph='+pph+'&cal_wppn='+wppn,
