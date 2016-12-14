@@ -7,11 +7,12 @@ session_start();
 if(!isset($_SESSION['u_id']))
 {
   if ($fbUser) {
+    error_log("after fbuser check");
     $fbUserProfile = $facebook->api('/me?fields=id,first_name,last_name,email,link,gender,locale,picture');
     
     //Initialize User class
     $user = new User();
-    
+    error_log("after user");
     //Insert or update user data to the database
     $fbUserData = array(
         'oauth_provider'=> 'facebook',
