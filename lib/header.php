@@ -4,7 +4,9 @@ include_once('connect.php');
 require_once('fbConfig.php');
 require_once('user.php');
 session_start();
-if ($fbUser) {
+if(!isset($_SESSION['u_id']))
+{
+  if ($fbUser) {
     $fbUserProfile = $facebook->api('/me?fields=id,first_name,last_name,email,link,gender,locale,picture');
     
     //Initialize User class
@@ -22,6 +24,7 @@ if ($fbUser) {
     
     //Put user data into session
     $_SESSION['uid'] = $userData['uid'];
+  }
 }
  ?>
  <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
