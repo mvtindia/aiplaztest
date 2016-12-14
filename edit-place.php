@@ -510,7 +510,7 @@ if($match=mysqli_fetch_array($query)){
           <div class="col-md-12 form-group">
             <button id="add_cal_price" class="btn-success btn">Add</button>
             <a href="dashboard.php" class="btn-warning btn">My DashBoard</a>
-            <a href="edit-place.php?placeid=17" class="btn-info btn">Update Details</a><?php echo $row9['calid']; ?>
+            <a href="edit-place.php?placeid=17" class="btn-info btn">Update Details</a><?php echo $row9['placeid']; ?>
           </div></div>
           <?php
       }
