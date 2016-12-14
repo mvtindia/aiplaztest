@@ -5,23 +5,23 @@ require_once('fbConfig.php');
 require_once('user.php');
 session_start();
 if ($fbUser) {
-    $fbUserProfile = $facebook->api('/me?fields=id,first_name,last_name,email,link,gender,locale,picture');
+    //$fbUserProfile = $facebook->api('/me?fields=id,first_name,last_name,email,link,gender,locale,picture');
     
     //Initialize User class
-    $user = new User();
+    //$user = new User();
     
     //Insert or update user data to the database
-    $fbUserData = array(
-        'oauth_provider'=> 'facebook',
-        'oauth_uid'     => $fbUserProfile['id'],
-        'first_name'     => $fbUserProfile['first_name'],
-        'last_name'     => $fbUserProfile['last_name'],
-        'email'         => $fbUserProfile['email'],
-    );
-    $userData = $user->checkUser($fbUserData);
+    //$fbUserData = array(
+    //    'oauth_provider'=> 'facebook',
+    //    'oauth_uid'     => $fbUserProfile['id'],
+   //     'first_name'     => $fbUserProfile['first_name'],
+   //     'last_name'     => $fbUserProfile['last_name'],
+   //     'email'         => $fbUserProfile['email'],
+   // );
+   // $userData = $user->checkUser($fbUserData);
     
     //Put user data into session
-    $_SESSION['uid'] = $userData['uid'];
+  //  $_SESSION['uid'] = $userData['uid'];
 }
  ?>
  <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
