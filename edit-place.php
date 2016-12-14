@@ -499,8 +499,8 @@ if($match=mysqli_fetch_array($query)){
             <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="p_p_h" value="<?php echo $row9['p_p_h']  ? $row9['p_p_h'] : '0';  ?>"></div>
             <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="w_p_p_n" value="<?php echo $row9['w_p_p_n']  ? $row9['w_p_p_n'] : '0'; ?>"></div>
             <?php //} ?>
-            <div class="col-md-3 text-center"><button name="calender_price_update" id="he<?php echo $he; ?>" class="btn btn-success onclick_submit_price " value="<?php echo $row9['calid'] ?>" ><i class="fa fa-pencil"></i></button>
-            <button name="calender_price_update" id="he<?php echo $row9['calid']; ?>" class="btn btn-danger onclcick_delete_price " value="<?php echo $row9['calid'] ?>"><i class="fa fa-trash"></i></button></div>
+            <div class="col-md-3 text-center"><button name="calender_price_update" id="he<?php echo $he; ?>" class="btn btn-success onclick_submit_price " value="<?php echo $row9['calid'] ?>" ><i class="fa fa-floppy-o"></i></button>
+            <button name="calender_price_update" id="he<?php echo $row9['calid']; ?>" class="btn btn-danger onclick_delete_price " value="<?php echo $row9['calid'] ?>"><i class="fa fa-trash"></i></button></div>
             </div>
           <?php
           $he++;
@@ -511,7 +511,7 @@ if($match=mysqli_fetch_array($query)){
           <div class="col-md-12 form-group">
             <button id="add_cal_price" class="btn-success btn">Add</button>
             <a href="dashboard.php" class="btn-warning btn">My DashBoard</a>
-            <a href="edit-place.php?placeid=17" class="btn-info btn">Update Details</a>
+            <!--<a href="edit-place.php?placeid=17" class="btn-info btn">Update Details</a>-->
           </div></div>
           <?php
       }
