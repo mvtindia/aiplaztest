@@ -1143,7 +1143,7 @@ if(isset($_GET['calender_id']))
   $ppn = $_GET['cal_ppn'];
   $pph = $_GET['cal_pph'];
   $wppn = $_GET['cal_wppn'];
-
+  error_log($cal);
   error_log($ppn);
   error_log($pph);
   error_log($wppn);
