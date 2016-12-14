@@ -27,7 +27,7 @@
                 <?php include 'lib/header.php';?>
         </div><!--menu-had close-->
         <div class="banner-txt">    
-            <h1></h1>
+            <h1><?php echo $_GET['placename']; ?></h1>
         </div>
         <div class="text-center" style="margin-top: 20px;">
             <a id="" type="button" href="dashboard.php" name="<pla></pla>ce" class="btn btn-default cus-save-but">My DashBoard</a>
