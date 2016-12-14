@@ -4,7 +4,7 @@
 
   function dayplt() {
     
-    dp.cssClassPrefix = "calendar_white";
+    dp.cssClassPrefix = "month_green";
     dp.viewType = "Week";
     // view
     if (incr == "forw")
