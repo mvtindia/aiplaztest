@@ -12,6 +12,7 @@ require_once 'inc/facebook.php';
 $appId = '1446252165384800'; //Facebook App ID
 $appSecret = '8051355b0df611d2116c13a7f097b327'; // Facebook App Secret
 $redirectURL = 'http://' . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]; // Callback URL
+error_log($redirectURL);
 $fbPermissions = 'email';  //Required facebook permissions
 
 //Call Facebook API
