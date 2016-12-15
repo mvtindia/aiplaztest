@@ -11,7 +11,7 @@ if(!isset($_SESSION['u_id']))
     error_log("after fbuser check");
     $fbUserProfile = $facebook->api('/me?fields=id,first_name,last_name,email');
 
-    $query1 = mysqli_query($connect, "SELECT * FROM `users` WHERE `fuid` = '".$fbUserProfile['id']."'");
+    $query1 = mysqli_query($connect, "SELECT * FROM `users` WHERE `fuid` = '".$fbUserProfile['id']."' AND `a_status` = 0");
     //Initialize User class
     //$user = new User();
     
@@ -24,8 +24,42 @@ if(!isset($_SESSION['u_id']))
         'email'         => $fbUserProfile['email'],
     );*/
     if (! mysqli_num_rows($query1)) {
-      $query2 = mysqli_query($connect, "INSERT INTO `users` SET `fuid` = '".$fbUserProfile['id']."', `fname` = '".$fbUserProfile['first_name']."', `lname` = '".$fbUserProfile['last_name']."', `email` = '".$fbUserProfile['email']."', `pwd` = 'password', `contact` = 'contact'");
-      $_SESSION['u_id'] = mysqli_insert_id($connect);
+      $query2 = mysqli_query($connect, "INSERT INTO `users` SET `fuid` = '".$fbUserProfile['id']."', `fname` = '".$fbUserProfile['first_name']."', `lname` = '".$fbUserProfile['last_name']."', `email` = '".$fbUserProfile['email']."', `pwd` = 'password', `contact` = 'contact', a_status = 999");
+      
+      $id = mysqli_insert_id($connect); 
+      $key = base64_encode($id);
+      $id = $key;
+      $code = md5(uniqid(rand()));
+      $body = 'Hi ' . $fbUserProfile['fname'] . ',
+
+To confirm your 2finda account, simply click on the following link: http://' . $_SERVER['SERVER_NAME'] . '/verify.php?id=' . $id . '&code=' . $code . '
+
+Your 2finda team';
+
+      $url = 'https://api.sendgrid.com/';
+      $subject = 'Confirm Registration';
+      $user='azure_4389271fb296cc51e6ae084dc9819730@azure.com';
+      $pass='Book1234';
+      $params = array(
+        'api_user' => $user,
+        'api_key' => $pass,
+        'to' => $email,
+        'subject' => $subject,
+        'html' => $body,
+      //'text' => 'I am the text parameter',
+        'from' => 'info@2finda.com',
+      );
+    
+      $request = $url.'api/mail.send.json';
+      $session = curl_init($request);
+      curl_setopt ($session, CURLOPT_POST, true);
+      curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
+      curl_setopt($session, CURLOPT_HEADER, false);
+      curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+      $response = curl_exec($session);
+      error_log(curl_error($session));
+      curl_close($session);
     } else {
       $row1 = mysqli_fetch_array($query1);
       error_log($row1['uid']);
