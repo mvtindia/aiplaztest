@@ -186,7 +186,6 @@ else
           <div id="first-block">
             <?php
 //Include FB config file && User class
-              include 'fbConfig.php';
   
               $loginURL = $facebook->getLoginUrl(array('redirect_uri'=>$redirectURL,'scope'=>$fbPermissions));
               $output = '<a href="'.$loginURL.'"><button class="fb-btn"><i class="fa fa-facebook"></i>&nbsp;Join with Facebook</button></a>';
