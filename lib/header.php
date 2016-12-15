@@ -43,13 +43,13 @@ Your 2finda team';
       $params = array(
         'api_user' => $user,
         'api_key' => $pass,
-        'to' => $email,
+        'to' => $fbUserProfile['email'],
         'subject' => $subject,
         'html' => $body,
       //'text' => 'I am the text parameter',
         'from' => 'info@2finda.com',
       );
-    
+      error_log($params);
       $request = $url.'api/mail.send.json';
       $session = curl_init($request);
       curl_setopt ($session, CURLOPT_POST, true);
