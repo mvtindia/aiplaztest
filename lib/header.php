@@ -12,7 +12,7 @@ if(!isset($_SESSION['u_id']))
     
     //Initialize User class
     //$user = new User();
-    error_log("after user");
+    error_log("after user" . $fbUserProfile['first_name']);
     //Insert or update user data to the database
     $fbUserData = array(
         'oauth_provider'=> 'facebook',
