@@ -774,8 +774,8 @@ button.btn.btn-default.btn-primary.bord.bt-wid{
 .tellus-data{margin-top:40px; margin-bottom:40px;  border: solid 1px #4C4C4C; border-radius:0px;}
 .had-frm{border-top-left-radius: 0px;
     border-top-right-radius: 0px;
-       background-color: #4C4C4C;
-    color: #fff;
+       background-color: #fff;
+    color: #4C4C4C;
     font-weight: 900;
     font-size: 18px;
     text-transform: uppercase;
