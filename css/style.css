@@ -437,10 +437,10 @@ h1 {
 /*================New css=========================*/ 
     footer{
 		background-color: #202935;   
-	color: #59677a;
-   font-family: 'Lato', sans-serif;
+	    color: #59677a;
+        font-family: 'Lato', sans-serif;
 	    padding-top: 10px;
-    padding-bottom: 30px;
+        padding-bottom: 25px;
 	}
 	footer ul{
 		list-style-type:none;
@@ -758,9 +758,10 @@ button.btn.btn-default.btn-primary.bord.bt-wid{
 	border-radius:0px !important;
 }
 
-.banner-bg{    background-image: url(../img/Hyatt-Regenc.jpg);
+.banner-bg{    
+    /*background-image: url(../img/Hyatt-Regenc.jpg);*/
     background-position: center;
-    color: #fff;
+    color: #4C4C4C;
     background-repeat: no-repeat;
     background-size: cover;
     }
@@ -893,14 +894,14 @@ button.btn.btn-default.btn-primary.bord.bt-wid{
 }
 .load_start
   {
-    top:212px,
+    top:212px;
     box-shadow:none;
-    background-color':transparent;
+    background-color': transparent;
     border':none;
   }
   
 .comiseo-daterangepicker-triggerbutton{
-      background: #fff !important;
+    background: #fff !important;
     height: 45px !important;
   }
   .comiseo-daterangepicker-triggerbutton.ui-button{

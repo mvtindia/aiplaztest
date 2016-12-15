@@ -26,7 +26,7 @@ include('connect.php');?>
           <div class="row">
             <div class="banner-txt">
               <h1> Edit a place</h1>
-              <h4>Earn money renting out a spare room, marriage place or House. Listing your place is totally free. </h4> 
+              <h4></h4> 
             </div>  
           </div><!--row close-->
         </div><!--container close-->
