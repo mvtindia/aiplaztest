@@ -30,7 +30,7 @@
             <h1><?php echo $_GET['placename']; ?></h1>
         </div>
         <div class="text-center" style="margin-top: 20px;">
-            <a id="" type="button" href="dashboard.php" name="<pla></pla>ce" class="btn btn-default cus-save-but">My DashBoard</a>
+            <a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
         </div>
         <div class="container"  >
             <button id="mvdtb">&#8592;</button><button id="mvdtf">&#8594;</button>
@@ -100,7 +100,7 @@
 
     // event creating
     dp.onTimeRangeSelected = function (args) {
-        var name = prompt("New event name:", "Event");
+        var name = prompt("New event name:", "Available");
         dp.clearSelection();
         args.placeid = <?php echo $_GET['placeid']; ?>;
         args.idd = DayPilot.guid();
