@@ -24,12 +24,13 @@ if(!isset($_SESSION['u_id']))
         'email'         => $fbUserProfile['email'],
     );*/
     if (! mysqli_num_rows($query1)) {
-      $query2 = mysqli_query($connect, "INSERT INTO `users` SET `fuid` = '".$fbUserProfile['id']."', `fname` = '".$fbUserProfile['first_name']."', `lname` = '".$fbUserProfile['last_name']."', `email` = '".$fbUserProfile['email']."', `pwd` = 'password', `contact` = 'contact', a_status = 999");
+      $code = md5(uniqid(rand()));
+      $query2 = mysqli_query($connect, "INSERT INTO `users` SET `fuid` = '".$fbUserProfile['id']."', `fname` = '".$fbUserProfile['first_name']."', `lname` = '".$fbUserProfile['last_name']."', `email` = '".$fbUserProfile['email']."', `pwd` = 'password', `contact` = 'contact', `activation_link` = $code, `a_status` = 999");
       
       $id = mysqli_insert_id($connect); 
       $key = base64_encode($id);
       $id = $key;
-      $code = md5(uniqid(rand()));
+     
       $body = 'Hi ' . $fbUserProfile['fname'] . ',
 
 To confirm your 2finda account, simply click on the following link: http://' . $_SERVER['SERVER_NAME'] . '/verify.php?id=' . $id . '&code=' . $code . '
