@@ -21,12 +21,12 @@ if(!isset($_SESSION['u_id']))
         'last_name'     => $fbUserProfile['last_name'],
         'email'         => $fbUserProfile['email'],
     );*/
-    error_log($fbUserProfile['id']);
+    
     $query = mysqli_query($connect, "INSERT INTO `users` SET `fuid` = '".$fbUserProfile['id']."', `fname` = '".$fbUserProfile['first_name']."', `lname` = '".$fbUserProfile['last_name']."', `email` = '".$fbUserProfile['email']."', `pwd` = 'password', `contact` = 'contact'");         
     error_log($query);
     //Put user data into session
-    $_SESSION['uid'] = mysqli_insert_id($connect);
-    error_log($_SESSION['uid']);
+    $_SESSION['u_id'] = mysqli_insert_id($connect);
+    
   }
 }
  ?>
