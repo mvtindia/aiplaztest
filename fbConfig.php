@@ -3,7 +3,7 @@
 //session_start();
 
 //Include Facebook SDK
-error_log("before incfb");
+//error_log("before incfb");
 require_once 'inc/facebook.php';
 
 /*
@@ -11,7 +11,7 @@ require_once 'inc/facebook.php';
  */
 $appId = '1446252165384800'; //Facebook App ID
 $appSecret = '8051355b0df611d2116c13a7f097b327'; // Facebook App Secret
-$redirectURL = 'http://' . $_SERVER['SERVER_NAME'] . '/index.php'; // Callback URL
+$redirectURL = 'http://' . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]; // Callback URL
 $fbPermissions = 'email';  //Required facebook permissions
 
 //Call Facebook API
