@@ -10,7 +10,7 @@ if(!isset($_SESSION['u_id']))
     
     error_log("after fbuser check");
     $fbUserProfile = $facebook->api('/me?fields=id,first_name,last_name,email');
-
+    error_log($fbUserProfile['id']);
     $query1 = mysqli_query($connect, "SELECT * FROM `users` WHERE `fuid` = '".$fbUserProfile['id']."' AND `a_status` = 0");
     //Initialize User class
     //$user = new User();
