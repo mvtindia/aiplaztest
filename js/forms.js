@@ -194,7 +194,7 @@ $("#login").submit(function(e)
     }     
 });
 
-$(".fb-btn").click(function(e)
+/*$(".fb-btn").click(function(e)
 {
     $.ajax({
            url: 'actions.php?fblogin=777',
@@ -204,7 +204,7 @@ $(".fb-btn").click(function(e)
            contentType: false,
            processData: false
        });
-});
+});*/
 
 //profile image upload here
 $("#upload_profile").submit(function(e)
@@ -847,7 +847,7 @@ $('.onclcick_submit_price1').click(function(){
 //end here
 
 //delete price calenderdata
-$('.onclcick_delete_price').click(function(){
+$('.onclick_delete_price').click(function(){
 var d_cal = $(this).val();
     $.ajax({
            url: 'actions.php?deletecalneder_id='+d_cal,
