@@ -3,6 +3,7 @@
 //session_start();
 
 //Include Facebook SDK
+error_log("before incfb");
 require_once 'inc/facebook.php';
 
 /*
@@ -18,6 +19,6 @@ $facebook = new Facebook(array(
   'appId'  => $appId,
   'secret' => $appSecret
 ));
-//$fbUser = $facebook->getUser();
+$fbUser = $facebook->getUser();
 
 ?>
