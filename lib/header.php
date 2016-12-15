@@ -28,6 +28,7 @@ if(!isset($_SESSION['u_id']))
       $_SESSION['u_id'] = mysqli_insert_id($connect);
     } else {
       $row1 = mysqli_fetch_array($query1);
+      error_log($row1['uid']);
       $_SESSION['u_id'] = $row1['uid'];
     }
     
