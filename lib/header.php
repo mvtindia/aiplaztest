@@ -12,20 +12,18 @@ if(!isset($_SESSION['u_id']))
     
     //Initialize User class
     //$user = new User();
-    error_log("after user" . $fbUserProfile['first_name']);
+    
     //Insert or update user data to the database
-    $fbUserData = array(
+    /*$fbUserData = array(
         'oauth_provider'=> 'facebook',
         'oauth_uid'     => $fbUserProfile['id'],
         'first_name'     => $fbUserProfile['first_name'],
         'last_name'     => $fbUserProfile['last_name'],
         'email'         => $fbUserProfile['email'],
-    );
-    error_log($fbUserData);
-    //$userData = $user->checkUser($fbUserData);
+    );*/
     
-    $query = mysqli_query($connect, "INSERT INTO `users` SET fuid = '".$res1['fuid']."', fname = '".$res1['fname']."', lname = '".$res1['lname']."', email = '".$res1['email']."', pwd = 'password', contact = 'contact'");         
-    
+    $query = mysqli_query($connect, "INSERT INTO `users` SET fuid = '".$fbUserProfile['fuid']."', fname = '".$fbUserProfile['fname']."', lname = '".$fbUserProfile['lname']."', email = '".$fbUserProfile['email']."', pwd = 'password'");         
+    error_log($query);
     //Put user data into session
     $_SESSION['uid'] = mysqli_insert_id($connect);
   }
