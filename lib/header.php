@@ -2,16 +2,16 @@
 
 include_once('connect.php');
 require_once('fbConfig.php');
-require_once('user.php');
+//require_once('user.php');
 session_start();
 if(!isset($_SESSION['u_id']))
 {
   if ($fbUser) {
     error_log("after fbuser check");
-    $fbUserProfile = $facebook->api('/me?fields=id,first_name,last_name,email,link,gender,locale,picture');
+    $fbUserProfile = $facebook->api('/me?fields=id,first_name,last_name,email');
     
     //Initialize User class
-    $user = new User();
+    //$user = new User();
     error_log("after user");
     //Insert or update user data to the database
     $fbUserData = array(
@@ -21,10 +21,13 @@ if(!isset($_SESSION['u_id']))
         'last_name'     => $fbUserProfile['last_name'],
         'email'         => $fbUserProfile['email'],
     );
-    $userData = $user->checkUser($fbUserData);
+    error_log($fbUserData);
+    //$userData = $user->checkUser($fbUserData);
+    
+    $query = mysqli_query($connect, "INSERT INTO `users` SET fuid = '".$res1['fuid']."', fname = '".$res1['fname']."', lname = '".$res1['lname']."', email = '".$res1['email']."', pwd = 'password', contact = 'contact'");         
     
     //Put user data into session
-    $_SESSION['uid'] = $userData['uid'];
+    $_SESSION['uid'] = mysqli_insert_id($connect);
   }
 }
  ?>
