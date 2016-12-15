@@ -25,7 +25,7 @@ if(!isset($_SESSION['u_id']))
     );*/
     if (! mysqli_num_rows($query1)) {
       $code = md5(uniqid(rand()));
-      $query2 = mysqli_query($connect, "INSERT INTO `users` SET `fuid` = '".$fbUserProfile['id']."', `fname` = '".$fbUserProfile['first_name']."', `lname` = '".$fbUserProfile['last_name']."', `email` = '".$fbUserProfile['email']."', `pwd` = 'password', `contact` = 'contact', `activation_link` = $code, `a_status` = 999");
+      $query2 = mysqli_query($connect, "INSERT INTO `users` SET `fuid` = '".$fbUserProfile['id']."', `fname` = '".$fbUserProfile['first_name']."', `lname` = '".$fbUserProfile['last_name']."', `email` = '".$fbUserProfile['email']."', `pwd` = 'password', `contact` = 'contact', `activation_link` = '".$code."', `a_status` = 999");
       
       $id = mysqli_insert_id($connect); 
       $key = base64_encode($id);
