@@ -22,7 +22,7 @@ if(!isset($_SESSION['u_id']))
         'email'         => $fbUserProfile['email'],
     );*/
     error_log($fbUserProfile['id']);
-    $query = mysqli_query($connect, "INSERT INTO `users` SET `fuid` = '9999999', `fname` = '".$fbUserProfile['first_name']."', `lname` = '".$fbUserProfile['last_name']."', `email` = '".$fbUserProfile['email']."', `pwd` = 'password'");         
+    $query = mysqli_query($connect, "INSERT INTO `users` SET `fuid` = '9999999', `fname` = '".$fbUserProfile['first_name']."', `lname` = '".$fbUserProfile['last_name']."', `email` = '".$fbUserProfile['email']."', `pwd` = 'password', `contact` = 'contact'");         
     error_log($query);
     //Put user data into session
     $_SESSION['uid'] = mysqli_insert_id($connect);
