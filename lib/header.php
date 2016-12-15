@@ -7,9 +7,11 @@ session_start();
 if(!isset($_SESSION['u_id']))
 {
   if ($fbUser) {
+    
     error_log("after fbuser check");
     $fbUserProfile = $facebook->api('/me?fields=id,first_name,last_name,email');
-    
+
+    $query1 = mysqli_query($connect, "SELECT * FROM `users` WHERE `fuid` = '".$fbUserProfile['id']."'");
     //Initialize User class
     //$user = new User();
     
@@ -21,11 +23,13 @@ if(!isset($_SESSION['u_id']))
         'last_name'     => $fbUserProfile['last_name'],
         'email'         => $fbUserProfile['email'],
     );*/
-    
-    $query = mysqli_query($connect, "INSERT INTO `users` SET `fuid` = '".$fbUserProfile['id']."', `fname` = '".$fbUserProfile['first_name']."', `lname` = '".$fbUserProfile['last_name']."', `email` = '".$fbUserProfile['email']."', `pwd` = 'password', `contact` = 'contact'");         
-    error_log($query);
-    //Put user data into session
-    $_SESSION['u_id'] = mysqli_insert_id($connect);
+    if (! mysqli_num_rows($query1)) {
+      $query2 = mysqli_query($connect, "INSERT INTO `users` SET `fuid` = '".$fbUserProfile['id']."', `fname` = '".$fbUserProfile['first_name']."', `lname` = '".$fbUserProfile['last_name']."', `email` = '".$fbUserProfile['email']."', `pwd` = 'password', `contact` = 'contact'");
+      $_SESSION['u_id'] = mysqli_insert_id($connect);
+    } else {
+      $row1 = mysqli_fetch_array($query1);
+      $_SESSION['u_id'] = $row1['uid'];
+    }
     
   }
 }
