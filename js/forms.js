@@ -460,8 +460,8 @@ $("form#photovideo").submit(function(e)
 
 
  $('#back2').click(function(){
-                  $("#pricetermss").css('display','block');
-                  $("#photovideo").css('display','none');
+                  $("#pricetermss").css('display','none');
+                  $("#photovideo").css('display','block');
                   $("#calender-tab").css('display','none');
                   $("#details").css('display','none');
 
