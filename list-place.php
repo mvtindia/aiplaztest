@@ -78,7 +78,7 @@ include_once('connect.php');?>
 
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">     
                                     <label for="space">Name*</label>
-                                    <input type="text" class="form-control" id="price" placeholder="Name" name="name" required>
+                                    <input type="text" class="form-control" id="price" placeholder="Name" value="<?php if (isset($res['fname']) && isset($res['lname'])) { echo $res['fname'] . $res['lname'];} ?>" name="name" required>
                                 </div>
 
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -396,9 +396,7 @@ echo '</pre>'; ?>
                                     <div class="clearfix"></div>
                                 </div><!--frm-field-mar--> 
                             </div>
-                            <div class="col-md-12 text-center" style="margin-top: 20px;">
-                                <a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
-                            </div>
+                            
                         </form>
                             <div class="clearfix"></div>
                         </div><!-- calendar tab -->
