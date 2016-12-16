@@ -6,22 +6,8 @@
     
     dp.cssClassPrefix = "month_green";
     dp.viewType = "Week";
-    // view
-    if (incr == "forw")
-    {
-        //var dataI = new Date();
-        var i = dae.valueOf() + (604800000 * x);
-        dae = new Date( i);
-        //console.log(dae.getMonth());
-    } else if (incr == "back") {
-        //var dataI = new Date();
-        var i = dae.valueOf() - (604800000 * x);
-        dae = new Date( i);
-        //console.log(dae.getMonth());
-    }
-    //alert(("0" + dae.getDate()).slice(-2));
     dp.startDate = dae.getFullYear() + "-" + ("0" + (dae.getMonth() + 1)).slice(-2) + "-" + ("0" + dae.getDate()).slice(-2);
-    //dp.startDate = "2016-11-25";  // or just dp.startDate = "2013-03-25";
+ 
     dp.days = 1;
     dp.allDayEventHeight = 25;
     dp.initScrollPos = 9 * 40;
@@ -67,7 +53,7 @@
 
     // event creating
     dp.onTimeRangeSelected = function (args) {
-        var name = prompt("New event name:", "Event");
+        var name = prompt("Label:", "Available");
         dp.clearSelection();
         form = $('#calenderform');
         args.placeid = form.find('input.placeid').val();
