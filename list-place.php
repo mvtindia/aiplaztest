@@ -78,12 +78,12 @@ include_once('connect.php');?>
 
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">     
                                     <label for="space">Name*</label>
-                                    <input type="text" class="form-control" id="price" placeholder="Name" value="<?php if (isset($res['fname']) && isset($res['lname'])) { echo $res['fname'] . $res['lname'];} ?>" name="name" required>
+                                    <input type="text" class="form-control" id="price" placeholder="Name" value="<?php if (isset($res['fname']) && isset($res['lname'])) { echo $res['fname'] . " " . $res['lname'];} ?>" name="name" required>
                                 </div>
 
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label for="space">Contact Number*</label>
-                                    <input type="text" class="form-control phone" id="price" placeholder="Contact" name="contact" required>
+                                    <input type="text" class="form-control phone" id="price" placeholder="Contact"  value=<?php if (isset($res['contact'])) { echo $res['contact'];} ?> name="contact" required>
                                 </div>
                             </div><!--frm-field-mar-->
   <!--=======================================-->
@@ -317,7 +317,7 @@ include_once('connect.php');?>
   <!--============================Photos AND Videos TAB CLOSE============================-->
 
   <!--==========================PRICE AND TERMS TAB STARTS=======================-->
-                        <form id="pricetermss" method="post" enctype="multipart/form-data" >
+                        <!--<form id="pricetermss" method="post" enctype="multipart/form-data" >
                         <div class="tellus-data" id="hide-price" style="overflow: auto;">
                             <div class="had-frm-sec" >Price & Terms</div>
                             <div class="frm-field-mar">
@@ -337,7 +337,7 @@ var_dump($_SESSION);
 echo '</pre>'; ?>
 -->
 
-                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <!--<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <label for="space">Price Per Hour</label>
                                     <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$$$" name="p_p_h">
                                 </div>
@@ -351,11 +351,11 @@ echo '</pre>'; ?>
                                     <button id="next2" type="submit" name="priceterms" class="btn btn-default cus-save-but">Save and continue</button>
                                 </div>
                             </div><!--frm-field-mar-->
-                        </div><!-- tell us -->
-                    </form>
+                        <!--</div>
+                    </form>-->
 
                         <div class="clearfix"></div>
-<input type="hidden" id="spacehog">
+
 
   <!--============================Price AND TERMS TAB CLOSE============================-->
 

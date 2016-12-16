@@ -401,9 +401,10 @@ $("form#photovideo").submit(function(e)
               data1 = data.split(">>>");
               console.log(data1[0]+" "+data1[1]);
              if(data1[0]=="success"){
-                 $('.ishowload').css('display','none');
-              $("#pricetermss").css('display','block');
-             $("#photovideo").css('display','none');
+                $('.ishowload').css('display','none');
+                $("#pricetermss").css('display','none');
+                $("#photovideo").css('display','none');
+                $("#calender-tab").css('display','block');
                 }
              else if(data1[0]=='wrong_exe')
              {
