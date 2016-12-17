@@ -858,6 +858,7 @@ var d_cal = $(this).val();
              // $('.for_re').load(window.location + ' .for_re');
               // $(this).attr('disabled');
               $('#the'+d_cal).parent('div').parent('div').css('display','none');
+              swal('Success','Updated Successfully','success');
            }
            else
            {
@@ -964,6 +965,100 @@ $("form#epricetermss").submit(function(e)
 });
 //end  HERE
 
+$("form#calenderform").submit(function(e)
+{
+$('.ishowload').css('display','block');
+   var formObj = $(this);
+
+   if(window.FormData !== undefined)  // for HTML5 browsers
+   {
+
+       var formData = new FormData(this);
+       $.ajax({
+           url: 'actions.php?savetime=303',
+           type: 'POST',
+           data:  formData,
+           mimeType:"multipart/form-data",
+           contentType: false,
+           cache: false,
+           processData:false,
+           success: function(data, textStatus, jqXHR)
+           { 
+            var datas=data.split(",,,");
+
+
+            // if(datas[0]=="success"){    
+            $('.ishowload').css('display','none');
+            $("#pricetermss").css('display','none');
+            $("#calender-tab").css('display','block');
+            swal('Success','Updated Successfully','success');
+              //$("#calender-tab").html(datas[1]);
+            
+            $('#back2').click(function(){
+                  $("#pricetermss").css('display','block');
+                  $("#photovideo").css('display','none');
+                  $("#calender-tab").css('display','none');
+                  $("#details").css('display','none');
+
+                });
+
+                
+
+           },
+      });
+       e.preventDefault();
+       e.unbind();
+  }
+  else  //for olden browsers
+   {
+       console.log("after the else");
+       //generate a random id
+       var  iframeId = 'unique' + (new Date().getTime());
+
+       //create an empty iframe
+       var iframe = $('<iframe src="javascript:false;" name="'+iframeId+'" />');
+
+       //hide it
+       iframe.hide();
+
+       //set form target to iframe
+       formObj.attr('target',iframeId);
+
+       //Add iframe to body
+       iframe.appendTo('body');
+       iframe.load(function(e)
+       {
+           var doc = getDoc(iframe[0]);
+           var docRoot = doc.body ? doc.body : doc.documentElement;
+           var data = docRoot.innerHTML;
+           //data is returned from server.
+
+       });
+
+   }     
+});
+
+$('#repeat').click(function(){
+    	if ($('#timing').val() == 'd') {
+			$dater = new Date($('#date1').val());
+			$dater2 = new Date($('#date2').val());
+			$dater.setDate($dater.getDate() + 1);
+			$dater2.setDate($dater2.getDate() + 1);
+			$('#date1').val($dater.getFullYear() + "-" + String("0" + ($dater.getMonth() + 1)).slice(-2)  + "-" + String("0" + $dater.getDate()).slice(-2) + " " + String("0" + $dater.getHours()).slice(-2) + ":" + String("0" + $dater.getSeconds()).slice(-2));
+			$('#date2').val($dater2.getFullYear() + "-" + String("0" + ($dater2.getMonth() + 1)).slice(-2) + "-" + String("0" + $dater2.getDate()).slice(-2) + " " + String("0" + $dater2.getHours()).slice(-2) + ":" + String("0" + $dater2.getSeconds()).slice(-2));
+                	
+		} else if ($('#timing').val() == 'w') {
+			$dater = new Date($('#date1').val());
+			$dater2 = new Date($('#date2').val());
+			$dater.setDate($dater.getDate() + 7);
+			$dater2.setDate($dater2.getDate() + 7);
+			
+			$('#date1').val($dater.getFullYear() + "-" + String("00" + ($dater.getMonth() + 1)).slice(-2) + "-" + String("0" + $dater.getDate()).slice(-2) + " " + String("0" + $dater.getHours()).slice(-2) + ":" + String("0" + $dater.getSeconds()).slice(-2));
+			$('#date2').val($dater2.getFullYear() + "-" + String("00" + ($dater2.getMonth() + 1)).slice(-2) + "-" + String("0" + $dater2.getDate()).slice(-2) + " " + String("0" + $dater2.getHours()).slice(-2) + ":" + String("0" + $dater2.getSeconds()).slice(-2));
+                	
+		}
+        $('form#calenderform').submit();
+});
 
 $('#add_cal_price').click(function(){
 $('#cal_data_cl').css('display','block');
