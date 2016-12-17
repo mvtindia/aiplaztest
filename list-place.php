@@ -4,8 +4,13 @@ include_once('connect.php');?>
 <html>
 <head>
 
-	<title>List a Place</title>
-  <script src='js/daypilot-all.min.js?v=2542'></script>
+<title>List a Place</title>
+  
+
+<!-- Optional theme -->
+
+  <!--
+ 
   <link type="text/css" rel="stylesheet" href="helpers/demo.css?v=2542" />
   <link type="text/css" rel="stylesheet" href="helpers/media/layout.css?v=2542" />
   <link type="text/css" rel="stylesheet" href="helpers/media/elements.css?v=2542" />
@@ -13,19 +18,23 @@ include_once('connect.php');?>
   <link type="text/css" rel="stylesheet" href="themes/month_white.css?v=2542" />    
   <link type="text/css" rel="stylesheet" href="themes/month_green.css?v=2542" />    
   <link type="text/css" rel="stylesheet" href="themes/month_transparent.css?v=2542" />    
-  <!--<link type="text/css" rel="stylesheet" href="themes/month_traditional.css?v=2542" />
+  <link type="text/css" rel="stylesheet" href="themes/month_traditional.css?v=2542" />
   <link type="text/css" rel="stylesheet" href="themes/areas.css?v=2542" />       
   <link type="text/css" rel="stylesheet" href="themes/navigator_8.css?v=2542" />
-  <link type="text/css" rel="stylesheet" href="themes/calendar_traditional.css?v=2542" />-->  
+  <link type="text/css" rel="stylesheet" href="themes/calendar_traditional.css?v=2542" />
   <link type="text/css" rel="stylesheet" href="themes/navigator_white.css?v=2542" />    
         
   <link type="text/css" rel="stylesheet" href="themes/calendar_transparent.css?v=2542" />    
   <link type="text/css" rel="stylesheet" href="themes/calendar_white.css?v=2542" />    
-  <link type="text/css" rel="stylesheet" href="themes/calendar_green.css?v=2542" /> 
+  <link type="text/css" rel="stylesheet" href="themes/calendar_green.css?v=2542" /> -->j
 	<?php include 'lib/top.php';?>
-  <script>
-    var incr = "no";
-  </script>
+  <style>
+    .bootstrap-datetimepicker-widget {
+        font-size: 10px;
+	    width: 200px;
+    }
+  </style>
+
 
 </head>
 
@@ -78,12 +87,12 @@ include_once('connect.php');?>
 
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">     
                                     <label for="space">Name*</label>
-                                    <input type="text" class="form-control" id="price" placeholder="Name" value="<?php if (isset($res['fname']) && isset($res['lname'])) { echo $res['fname'] . " " . $res['lname'];} ?>" name="name" required>
+                                    <input type="text" class="form-control" id="price" placeholder="Name" name="name" required>
                                 </div>
 
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label for="space">Contact Number*</label>
-                                    <input type="text" class="form-control phone" id="price" placeholder="Contact"  value=<?php if (isset($res['contact'])) { echo $res['contact'];} ?> name="contact" required>
+                                    <input type="text" class="form-control phone" id="price" placeholder="Contact" name="contact" required>
                                 </div>
                             </div><!--frm-field-mar-->
   <!--=======================================-->
@@ -317,7 +326,7 @@ include_once('connect.php');?>
   <!--============================Photos AND Videos TAB CLOSE============================-->
 
   <!--==========================PRICE AND TERMS TAB STARTS=======================-->
-                        <!--<form id="pricetermss" method="post" enctype="multipart/form-data" >
+                        <form id="pricetermss" method="post" enctype="multipart/form-data" >
                         <div class="tellus-data" id="hide-price" style="overflow: auto;">
                             <div class="had-frm-sec" >Price & Terms</div>
                             <div class="frm-field-mar">
@@ -337,7 +346,7 @@ var_dump($_SESSION);
 echo '</pre>'; ?>
 -->
 
-                                <!--<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <label for="space">Price Per Hour</label>
                                     <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$$$" name="p_p_h">
                                 </div>
@@ -351,8 +360,8 @@ echo '</pre>'; ?>
                                     <button id="next2" type="submit" name="priceterms" class="btn btn-default cus-save-but">Save and continue</button>
                                 </div>
                             </div><!--frm-field-mar-->
-                        <!--</div>
-                    </form>-->
+                        </div><!-- tell us -->
+                    </form>
 
                         <div class="clearfix"></div>
 
@@ -364,42 +373,56 @@ echo '</pre>'; ?>
                     
                     
                         <div id="calender-tab" style="display:none;">
-                            <?php 
-                                //$query2=mysqli_query($connect,'SELECT * FROM calenderdata where placeid="'.$_SESSION['placeids'].'"');
-                            ?>
-
-                        <form id="calenderform" method="post" enctype="multipart/form-data" >
+  <form id="calenderform" method="post" enctype="multipart/form-data" >
                             <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
                             <div class="tellus-data col-lg-12 col-sm-12 col-md-12 col-xs-12 pd-lr-0" ><!--id="calendar-tab"-->
                                 <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>
-                                <div class="frm-field-mar"> 
-                                    <?php
-                                        /*$save="";
-                                        $query1=mysqli_query($connect,'SELECT * FROM place where place_id="'.$_SESSION['placeids'].'"');
-                                        if ($row1=mysqli_fetch_array($query1)) {
-                                            if(!empty($row1['p_p_n'])){$ppn=$row1['p_p_n'];$save .="1,";}else{$save .="0,";}
-                                            if(!empty($row1['p_p_h'])){$ppn=$row1['p_p_h'];$save .="1,";}else{$save .="0,";}
-                                            if(!empty($row1['w_p_p_n'])){$ppn=$row1['w_p_p_n'];$save .="1";}else{$save .="0";}
-                                                echo "<input type='hidden' name='save' id='save' value=".$save.">";
-                                        }*/
-                                    ?>
-                                    <button id="mvdtb">&#8592;</button><button id="mvdtf">&#8594;</button>
-                                    <div id="dp"></div>
-                                    <div class="col-md-12 text-center" style="margin-top: 20px;">
-                                        <a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
+                                <div class="frm-field-mar">
+		                     
+          	                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker6' style="float: left;">
+                                       
+                		                <input type='text' class="form-control" name="date1" id="date1" placeholder="From" data-date-format="YYYY-MM-DD HH:mm" />
+                		                <span class="input-group-addon">
+                    			            <span class="glyphicon glyphicon-calendar"></span>
+                		                </span>
+            	                    </div>
+               	                    <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker7' style="float: left;">
+                                        
+                		                <input type='text' class="form-control" name="date2" id="date2" placeholder="To" data-date-format="YYYY-MM-DD HH:mm"/>
+                		                <span class="input-group-addon">
+                    			            <span class="glyphicon glyphicon-calendar"></span>
+                		                </span>
+            	                    </div>
+				
+    		                        <div class="form-group col-lg-5 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                    <label for="space">Price Per Hour</label>
+                                        <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$$$" name="p_p_h">
                                     </div>
-                                    <div class="col-md-12 text-center">
-                                        <button id="back2" type="button" name="place" class="btn btn-default cus-save-but">Back</button>
-<!--   <button id="next3" type="submit" name="priceterms" class="btn btn-default cus-save-but">Save</button>
- -->                                </div>
-
+                                    <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                    <label for="space">Price Per Day</label>
+                                        <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$$$" name="p_p_n">
+                                    </div>
+                                    <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                	                    <button id="savetime" type="submit" name="savetime" class="btn btn-default cus-save-but">Add Availability</button>
+                                        <button id="repeat" type="button" name="repeat" class="btn btn-default cus-save-but">Repeat</button>
+		                            </div>
+                                    <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                                        <select class="form-control selectpicker" id="timing" name="timing">
+                                            <option value="">Select Repeat Frequency</option>
+                                            <option value="d">Daily</option>
+                                            <option value="w">Weekly</option>
+                                        </select>
+                                    </div>
+		                            <div class="col-md-12 text-center"style="margin-bottom: 11px;">
+			                            <button id="back2" type="button" name="place" class="btn btn-default cus-save-but">Back</button>                        	
+			                            <a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
+		                            </div>
                                     <div class="clearfix"></div>
-                                </div><!--frm-field-mar--> 
+    	                        </div><!--frm-field-mar--> 
                             </div>
-                            
-                        </form>
+</form>
                             <div class="clearfix"></div>
-                        </div><!-- calendar tab -->
+                        </div>
                     </div> <!-- details -->
                     <!-- below is ok -->
                     <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
@@ -463,17 +486,24 @@ echo '</pre>'; ?>
      $("#myModal2").modal();
 </script>
 <?php } ?>
-<script src='js/calendar.js'></script>
-
-<script>
-  dayplt();
+<script type="text/javascript">
+$(function () {
+            $('#datetimepicker6').datetimepicker({
+               
+            });
+            $('#datetimepicker7').datetimepicker({
+               
+            });
+});
 </script>
-
 </html>
 
 <script type="text/javascript">
 
+
+
 $(document).ready(function() {
+    
 
     var url = window.location.href;
     var filename = url.substring(url.lastIndexOf('/')+1);

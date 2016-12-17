@@ -356,33 +356,27 @@ else
  
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="js/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
-     <script src="bootstrap/js/bootstrap.js"></script>
-   
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
-   <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-   <script src="https://www.jqueryscript.net/demo/jQuery-jQuery-UI-Based-Date-Range-Picker-Plugin/jquery.comiseo.daterangepicker.js"></script>
-   
-   
-        <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
-      
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="https://www.jqueryscript.net/demo/jQuery-jQuery-UI-Based-Date-Range-Picker-Plugin/jquery.comiseo.daterangepicker.js"></script>
+<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
 
-
-    <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
-    <script src="js/forms.js"></script>
-    <script type="text/javascript" src="bm/js/plugins/canvas-to-blob.min.js"></script>
-    <script src="bm/js/fileinput.min.js" type="text/javascript"></script>
-    <script src="js/custom-calendar.js"></script>
-    <script type="text/javascript" src="js/jquery.mask.js"></script>
-    <script src="sm/dist/sweetalert2.min.js"></script>
-    <script src="js/nouislider.js"></script>
-    <script type="text/javascript" src="js/jquery.mask.js"></script>
-    <script src="js/custom.js"></script>
-    
-    <script src="js/forms2.js"></script>
+<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+<script src="js/forms.js"></script>
+<script type="text/javascript" src="bm/js/plugins/canvas-to-blob.min.js"></script>
+<script src="bm/js/fileinput.min.js" type="text/javascript"></script>
+<script src="js/custom-calendar.js"></script>
+<script type="text/javascript" src="js/jquery.mask.js"></script>
+<script src="sm/dist/sweetalert2.min.js"></script>
+<script src="js/nouislider.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/forms2.js"></script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
    
@@ -1145,16 +1139,7 @@ $(document).ready(function() {
   });
 
 });
-  </script>
-
-
-
-  
-
- 
-
-    <script>
-         var placeSearch, autocomplete;
+      var placeSearch, autocomplete;
       var componentForm = {
         street_number: 'short_name',
         route: 'long_name',

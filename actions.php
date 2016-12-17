@@ -859,6 +859,34 @@ else{
 
 }//if isset
 
+if(isset($_REQUEST['savetime']))
+{
+ // echo "working";
+$placeid = $_POST['placeid'];
+$date1=$_POST['date1'];
+$date2 = $_POST['date2'];
+$pph = $_POST['p_p_h'];
+$ppn = $_POST['p_p_n'];
+error_log($date1);
+if($_SESSION['u_id']=="")
+{
+echo "login";
+}
+else
+{
+$sql = mysqli_query($connect,"INSERT `calenderdata` SET `placeid`='".$placeid."', `p_p_n`='".$ppn."', 
+`p_p_h`='".$pph."', `date1`='".$date1."', `date2`='".$date2."', `ctimestampdate` = '".date('Y-m-d')."'" );
+//echo $_SESSION['placeids']=mysqli_insert_id($connect);
+echo ',,,'; 
+if($sql>0){
+  echo "success";
+}
+else{
+  echo "error";
+}
+}
+
+}//if isset
 //del pic from list places edit
 if(isset($_REQUEST['delpic'])=='el_del'){
      $pid=$_REQUEST['pid'];

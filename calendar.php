@@ -53,8 +53,8 @@
     
     
     dp.startDate = dae.getFullYear() + "-" + ("0" + (dae.getMonth() + 1)).slice(-2) + "-" + ("0" + dae.getDate()).slice(-2);
-    dp.businessBeginsHour = 0;
-    dp.businessEndsHour = 24;
+    dp.BusinessBeginsHour = 9;
+    dp.BusinessEndsHour = 24;
     dp.days = 1;
     dp.allDayEventHeight = 25;
     dp.initScrollPos = 9 * 40;
@@ -193,14 +193,6 @@
     
     dp.init();
 
-    /*var e = new DayPilot.Event({
-        start: new DayPilot.Date("2013-03-25T12:00:00"),
-        end: new DayPilot.Date("2013-03-25T12:00:00").addHours(3),
-        id: DayPilot.guid(),
-        text: "Special event",
-        areas: [{"action":"JavaScript","js":"(function(e) { dp.events.remove(e); })","h":17,"w":17,"v":"Hover","css":"event_action_delete","top":3,"right":2}]    
-    });
-    dp.events.add(e);*/
   };
 
   function loadEvents() {
@@ -208,8 +200,18 @@
 
     DayPilot.request("cal_load.php", function(result) {
         var data = eval("(" + result.responseText + ")");
+        
         for(var i = 0; i < data.length; i++) {
-            var e = new DayPilot.Event(data[i]);                
+            //data[i]['id'] = DayPilot.guid();
+            //data[i]['text'] = 'Available';
+            
+            var e = new DayPilot.Event(
+            { 
+                start: new DayPilot.Date(data[i]['start']),
+                end: new DayPilot.Date(data[i]['end']),
+                id: DayPilot.guid(),
+                text: "Available"
+             });                
             dp.events.add(e);
         }
     }, placeid)
