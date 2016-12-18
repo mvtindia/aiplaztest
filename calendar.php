@@ -210,7 +210,7 @@
                 start: new DayPilot.Date(data[i]['start']),
                 end: new DayPilot.Date(data[i]['end']),
                 id: DayPilot.guid(),
-                text: "Available"
+                text: data[i]['status'],
              });                
             dp.events.add(e);
         }
