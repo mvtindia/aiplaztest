@@ -370,7 +370,7 @@ $response = curl_exec($session);
 error_log(curl_error($session));
 curl_close($session);
 //error_log("sqlcode: " + $sql);
-$_SESSION['placeids']=mysqli_insert_id($connect);
+echo $_SESSION['placeids']=mysqli_insert_id($connect);
 
 //error_log("placeid");
 //error_log($_SESSION['placeids']);
