@@ -210,7 +210,7 @@
                 start: new DayPilot.Date(data[i]['start']),
                 end: new DayPilot.Date(data[i]['end']),
                 id: DayPilot.guid(),
-                text: data[i]['status'],
+                text: data[i]['text'],
              });                
             dp.events.add(e);
         }
