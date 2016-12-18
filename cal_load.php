@@ -15,8 +15,8 @@ $events = array();
 while ($row = $result->fetch_array()) {
   //error_log($row['label']);
   $e = new Event();
-  $e->id = $row['calid'];
-  $e->text = $row['label'];
+  //$e->id = $row['calid'];
+  $e->text = $row['status'];
   $e->start = $row['date1'];
   $e->end = $row['date2'];
   $events[] = $e;
