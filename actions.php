@@ -397,6 +397,7 @@ if(isset($_REQUEST['photo']))
 	     $supported_videos = array(
                                               'mp4',
                                               'webm',
+                                              'mov',
                                             );
 
 $placeid=$_POST['placeid'];
@@ -1030,7 +1031,7 @@ if(isset($_REQUEST['checkgal'])=='addgal'){
      
 }//isset
 
-if(isset($_POST['qephoto']))
+if(isset($_REQUEST['qephoto']))
 {
   //echo "working";
       $supported_image = array(
@@ -1043,12 +1044,13 @@ if(isset($_POST['qephoto']))
        $supported_videos = array(
                                               'mp4',
                                               'webm',
+                                              'mov',
                                             );
 
-$placeid=$_POST['placeid1'];
-$pg=$_POST['pg'];
-$inputphotos = $_FILES['inputphotos']['name'];
-$tmpphotos = $_FILES['inputphotos']['tmp_name'];
+      $placeid=$_POST['placeid1'];
+      $pg=$_POST['pg'];
+      $inputphotos = $_FILES['inputphotos']['name'];
+      $tmpphotos = $_FILES['inputphotos']['tmp_name'];
 
     
       $inp=implode(',', $inputphotos);
@@ -1060,12 +1062,12 @@ $tmpphotos = $_FILES['inputphotos']['tmp_name'];
 
 //echo "newpg:".$newpg;
 
-$pg1=$_POST['pg1'];
-$pg2=$_POST['pg2'];
-$inputvideos = $_FILES['inputvideos']['name'];
-$tmpvideos = $_FILES['inputvideos']['tmp_name'];
-$types = $_FILES['inputvideos']['type'];
-  $inp1=implode(',', $inputvideos);
+      $pg1=$_POST['pg1'];
+      $pg2=$_POST['pg2'];
+      $inputvideos = $_FILES['inputvideos']['name'];
+      $tmpvideos = $_FILES['inputvideos']['tmp_name'];
+      $types = $_FILES['inputvideos']['type'];
+      $inp1=implode(',', $inputvideos);
       if(!empty($pg1)){
        $newpg1=$pg1.",".$inp1;
       }else{
@@ -1083,8 +1085,8 @@ $types = $_FILES['inputvideos']['type'];
 //echo "<br>newpg2:".$newpg2;
 
 
-  for ($i=0; $i < count($inputphotos) ; $i++)
-  { 
+      for ($i=0; $i < count($inputphotos) ; $i++)
+      { 
     $path = "images/placephotos/".$inputphotos[$i];
     $ext = strtolower(pathinfo($inputphotos[$i], PATHINFO_EXTENSION));
     if (in_array($ext, $supported_image))
@@ -1092,7 +1094,7 @@ $types = $_FILES['inputvideos']['type'];
               $imageInformation = getimagesize($tmpphotos[$i]);
              $imageWidth = $imageInformation[0]; //Contains the Width of the Image
              $imageHeight = $imageInformation[1]; //Contains the Height of the Image
-              if($imageWidth >= '700' && $imageHeight >='500' )
+              if($imageWidth >= '200' && $imageHeight >='500' )
               {
                 $photos .= $inputphotos[$i].",";
                 move_uploaded_file($tmpphotos[$i], $path);
@@ -1102,7 +1104,7 @@ $types = $_FILES['inputvideos']['type'];
                   $err_msg = $inputphotos[$i];
               } 
       }
-  }
+      }
   $photos=rtrim($photos,",");
 
   for ($j=0; $j < count($inputvideos); $j++)
@@ -1119,24 +1121,27 @@ $types = $_FILES['inputvideos']['type'];
 $videos=rtrim($videos,",");
 $videotype=rtrim($type,",");
 //echo 'update place set photo="'.$newpg.'" , video="'.$newpg1.'" , video_type="'.$newpg2.'" where place_id="'.$placeid.'"';
+error_log("error:" . $err_msg);
 if($err_msg=='')
 {
-$query=mysqli_query($connect,'update place set photo="'.$newpg.'" , video="'.$newpg1.'" , video_type="'.$newpg2.'" where place_id="'.$placeid.'"');
-if($query>0){
-  echo "success";
-  echo">>>";
-}
-else
-{
-  echo "error";
-  echo">>>";
-}
-}
-else
-{
+  error_log('after err_msg');
+  error_log($newpg);
+  error_log($newpg1);
+  error_log($newpg2);
+  error_log($placeid);
+  $query=mysqli_query($connect,'update place set photo="'.$newpg.'" , video="'.$newpg1.'" , video_type="'.$newpg2.'" where place_id="'.$placeid.'"');
+  if($query>0){
+    echo "success";
+    echo">>>";
+  } else {
+    echo "error";
+    echo">>>";
+  }
+} else {
   echo"wrong_exe";  
-   echo">>>";
-  echo $err_msg;}
+  echo">>>";
+  echo $err_msg;
+}
 }//isset photo
 
 //update place price
@@ -1210,8 +1215,9 @@ if(isset($_GET['deletecalender_id']))
 {
   $val = $_GET['deletecalender_id'];
   error_log('delcal');
-  error_log($_GET['deletecalendar_id']);
+  error_log($val);
   $sql = mysqli_query($connect,"DELETE FROM calenderdata WHERE calid='".$val."'");
+  error_log($sql);
   if($sql>0)
   {
     echo"ok";
