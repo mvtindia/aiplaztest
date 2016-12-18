@@ -1214,7 +1214,7 @@ if(isset($_GET['deletecalender_id']))
   $sql = mysqli_query($connect,"DELETE FROM calenderdata WHERE calid='".$val."'");
   if($sql>0)
   {
-echo"ok";
+    echo"ok";
   }
   else
   {
@@ -1222,7 +1222,7 @@ echo"ok";
   }
   header('location:edit.php?msg=price deleted');
 }
-}
+
 //end here
 
 //calender data delete here
