@@ -61,7 +61,7 @@
   }
    //and date2='".$pdate2."' and date1='".$pdate1."'
 //echo "select * from place where p_address like '%".$place_loc."%' and capacity >= '".$guests."' and ((p_p_h between ".$minbud." and ".$maxbud.") or (p_p_n between ".$minbud." and ".$maxbud.") or (w_p_p_n between ".$minbud." and ".$maxbud."))";
- $q21 = mysqli_query($connect,"select * from place where p_address like '%".$place_loc."%' and capacity >= '".$guests."' and ((p_p_h between ".$minbud." and ".$maxbud.") or (p_p_n between ".$minbud." and ".$maxbud.") or (w_p_p_n between ".$minbud." and ".$maxbud."))"); 
+ $q21 = mysqli_query($connect,"select * from place a, calenderdata b where place_id = placeid and status = 'unbooked' and p_address like '%".$place_loc."%' and capacity >= '".$guests."' and ((p_p_h between ".$minbud." and ".$maxbud.") or (p_p_n between ".$minbud." and ".$maxbud.") or (w_p_p_n between ".$minbud." and ".$maxbud."))"); 
   //$q21 = mysqli_query($connect,"select * from place where p_address like '%".$place_loc."%' "); 
 
 ?>
@@ -82,7 +82,7 @@
     height:100% !important;
   }
 	.container-custom{
-		
+		 
 		width:100% !Important;
 	}
   .multiselect-selected-text

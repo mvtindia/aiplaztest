@@ -874,7 +874,7 @@ echo "login";
 else
 {
 $sql = mysqli_query($connect,"INSERT `calenderdata` SET `placeid`='".$placeid."', `p_p_n`='".$ppn."', 
-`p_p_h`='".$pph."', `date1`='".$date1."', `date2`='".$date2."', `ctimestampdate` = '".date('Y-m-d')."'" );
+`p_p_h`='".$pph."', `date1`='".$date1."', `date2`='".$date2."', `status` ='unbooked', `ctimestampdate` = '".date('Y-m-d')."'" );
 error_log(mysqli_error($con));
 //echo $_SESSION['placeids']=mysqli_insert_id($connect);
 echo ',,,'; 
