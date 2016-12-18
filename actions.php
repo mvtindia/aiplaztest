@@ -1209,6 +1209,7 @@ if(isset($_GET['calneder_id1']))
 if(isset($_GET['deletecalender_id']))
 {
   $val = $_GET['deletecalender_id'];
+  error_log($_GET['deletecalendar_id']);
   $sql = mysqli_query($connect,"DELETE FROM calenderdata WHERE calid='".$val."'");
   if($sql>0)
   {
