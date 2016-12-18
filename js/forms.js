@@ -847,6 +847,7 @@ $('.onclcick_submit_price1').click(function(){
 //delete price calenderdata
 $('.onclick_delete_price').click(function(){
 var d_cal = $(this).val();
+    console.log(d_cal);
     $.ajax({
            url: 'actions.php?deletecalender_id='+d_cal,
            success: function(data){
