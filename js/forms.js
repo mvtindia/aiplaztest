@@ -859,7 +859,7 @@ var d_cal = $(this).val();
            }
            else
            {
-            alert("not");
+              swal('Fail', 'Updated Unsuccessfully', 'failure');
            } 
            },
            cache: false,
