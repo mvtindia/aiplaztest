@@ -500,7 +500,8 @@ if($match=mysqli_fetch_array($query)){
             <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="w_p_p_n" value="<?php echo $row9['w_p_p_n']  ? $row9['w_p_p_n'] : '0'; ?>"></div>
             <?php //} ?>
             <div class="col-md-3 text-center"><button name="calender_price_update" id="he<?php echo $he; ?>" class="btn btn-success onclick_submit_price " value="<?php echo $row9['calid'] ?>" ><i class="fa fa-floppy-o"></i></button>
-            <button name="calender_price_update" id="he<?php echo $row9['calid']; ?>" class="btn btn-danger onclick_delete_price " value="<?php echo $row9['calid'] ?>"><i class="fa fa-trash"></i></button></div>
+            <button name="calender_price_delete" id="he<?php echo $row9['calid']; ?>" class="btn btn-danger onclick_delete_price " value="<?php echo $row9['calid'] ?>"><i class="fa fa-trash"></i></button></div>
+            
             </div>
           <?php
           $he++;
@@ -895,3 +896,4 @@ p {
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0ceT-_kjPt8INNEKoVX9axkv3zw3miBY&signed_in=true&libraries=places&callback=initAutocomplete"
         async defer></script>
+   

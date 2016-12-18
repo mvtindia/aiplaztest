@@ -1214,19 +1214,16 @@ if(isset($_GET['calneder_id1']))
 if(isset($_GET['deletecalender_id']))
 {
   $val = $_GET['deletecalender_id'];
-  error_log('delcal');
-  error_log($val);
   $sql = mysqli_query($connect,"DELETE FROM calenderdata WHERE calid='".$val."'");
   error_log($sql);
   if($sql>0)
   {
-    echo"ok";
+echo"ok";
   }
   else
   {
     echo"not";
   }
-  header('location:edit.php?msg=price deleted');
 }
 
 //end here

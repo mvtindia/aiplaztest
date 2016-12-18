@@ -721,7 +721,9 @@ $("form#ephotovideo").submit(function(e)
             processData:false,
             success: function(data, textStatus, jqXHR)
             {
+              
               var data1 = data.split(">>>");
+              console.log(data1[0]);
              if(data1[0]=="success"){
                  $('.ishowload').css('display','none');
               $("#epricetermss").css('display','block');
@@ -855,7 +857,7 @@ var d_cal = $(this).val();
            if(data=="ok"){  
              // $('.for_re').load(window.location + ' .for_re');
               // $(this).attr('disabled');
-              $('#the'+d_cal).parent('div').parent('div').css('display','none');
+              $('#he'+d_cal).parent('div').parent('div').css('display','none');
               swal('Success','Updated Successfully','success');
            }
            else
