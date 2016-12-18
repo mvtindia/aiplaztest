@@ -26,7 +26,7 @@ include_once('connect.php');?>
         
   <link type="text/css" rel="stylesheet" href="themes/calendar_transparent.css?v=2542" />    
   <link type="text/css" rel="stylesheet" href="themes/calendar_white.css?v=2542" />    
-  <link type="text/css" rel="stylesheet" href="themes/calendar_green.css?v=2542" /> -->j
+  <link type="text/css" rel="stylesheet" href="themes/calendar_green.css?v=2542" /> -->
 	<?php include 'lib/top.php';?>
   <style>
     .bootstrap-datetimepicker-widget {
