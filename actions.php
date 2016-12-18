@@ -358,7 +358,7 @@ $params = array(
       //'text' => 'I am the text parameter',
       'from' => 'info@2finda.com',
 );
-    //error_log('here');
+    
 $request = $url.'api/mail.send.json';
 $session = curl_init($request);
 curl_setopt ($session, CURLOPT_POST, true);
@@ -369,11 +369,8 @@ curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
 $response = curl_exec($session);
 error_log(curl_error($session));
 curl_close($session);
-//error_log("sqlcode: " + $sql);
-echo $_SESSION['placeids']=mysqli_insert_id($connect);
 
-//error_log("placeid");
-//error_log($_SESSION['placeids']);
+echo $_SESSION['placeids']=mysqli_insert_id($connect);
 
 echo ',,,'; 
 if($sql>0){
@@ -1209,9 +1206,9 @@ if(isset($_GET['calneder_id1']))
 //end here
 
 //calender data delete here
-if(isset($_GET['deletecalneder_id']))
+if(isset($_GET['deletecalender_id']))
 {
-  $val = $_GET['deletecalneder_id'];
+  $val = $_GET['deletecalender_id'];
   $sql = mysqli_query($connect,"DELETE FROM calenderdata WHERE calid='".$val."'");
   if($sql>0)
   {
@@ -1221,6 +1218,8 @@ echo"ok";
   {
     echo"not";
   }
+  header('location:edit.php?msg=price deleted');
+}
 }
 //end here
 

@@ -354,9 +354,6 @@ $("#change_pass").submit(function(e)
               if(datas[1]=='success')
               {       
               $('.placeid').val(datas[0]);
-              console.log(datas[0]);
-              //$('.spacehog').val(datas[0]);
-              //console.log($('.spacehog'));
               $("#photovideo").css('display','block');
               $("#details").css('display','none');
               }
@@ -851,7 +848,7 @@ $('.onclcick_submit_price1').click(function(){
 $('.onclick_delete_price').click(function(){
 var d_cal = $(this).val();
     $.ajax({
-           url: 'actions.php?deletecalneder_id='+d_cal,
+           url: 'actions.php?deletecalender_id='+d_cal,
            success: function(data){
             console.log(data);
            if(data=="ok"){  
@@ -967,7 +964,7 @@ $("form#epricetermss").submit(function(e)
 
 $("form#calenderform").submit(function(e)
 {
-$('.ishowload').css('display','block');
+    $('.ishowload').css('display','block');
    var formObj = $(this);
 
    if(window.FormData !== undefined)  // for HTML5 browsers
