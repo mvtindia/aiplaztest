@@ -329,11 +329,11 @@ $sql = mysqli_query($connect,'INSERT INTO `place` ( `p_name`, `p_contact`, `p_lo
      error_log("we have a problem");
 }
 $email = $_SESSION['email'];
-error_log($email);
+
 $url = 'https://api.sendgrid.com/';
 $subject = 'Earn money with your listed place on 2finda.com';
 $body = 
-"Dear Vin M.,<br><br>
+"Dear " . $fname . " " . $lname . ",<br><br>
 We’re really happy you’ve joined 2finda.com as a host. So, what do you do now?<br>
 
 Read our general tips on being a successful host.<br>
@@ -371,7 +371,7 @@ error_log(curl_error($session));
 curl_close($session);
 //error_log("sqlcode: " + $sql);
 $_SESSION['placeids']=mysqli_insert_id($connect);
-echo $_SESSION['placeids'];
+
 //error_log("placeid");
 //error_log($_SESSION['placeids']);
 
@@ -876,6 +876,7 @@ else
 {
 $sql = mysqli_query($connect,"INSERT `calenderdata` SET `placeid`='".$placeid."', `p_p_n`='".$ppn."', 
 `p_p_h`='".$pph."', `date1`='".$date1."', `date2`='".$date2."', `ctimestampdate` = '".date('Y-m-d')."'" );
+error_log(mysqli_error($con));
 //echo $_SESSION['placeids']=mysqli_insert_id($connect);
 echo ',,,'; 
 if($sql>0){
