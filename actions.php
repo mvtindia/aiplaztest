@@ -867,7 +867,8 @@ $date1=$_POST['date1'];
 $date2 = $_POST['date2'];
 $pph = $_POST['p_p_h'];
 $ppn = $_POST['p_p_n'];
-error_log($date1);
+error_log($placeid);
+error_log($date2);
 if($_SESSION['u_id']=="")
 {
 echo "login";
