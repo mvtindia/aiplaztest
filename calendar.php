@@ -84,43 +84,27 @@
         {text:"Delete", onclick: function() { dp.events.remove(this.source); } }
     ]});*/
 
-    // event movijng
-    dp.onEventMoved = function (args) {
-        dp.message("Moved: " + args.e.text());
-    };
+    
     
     dp.onBeforeHeaderRender = function(args) {
         args.header.areas = [{"action":"JavaScript","bottom":1,"w":17,"html":"<div><div><\/div><\/div>","css":"resource_action_menu","js":"(function(e) { alert(e.date);; })","top":0,"v":"Visible","right":1}];
     };
     
-    // event resizing
-    dp.onEventResized = function (args) {
-        dp.message("Resized: " + args.e.text());
-    };
+    
 
     // event creating
     dp.onTimeRangeSelected = function (args) {
         var name = prompt("New event name:", "Available");
         dp.clearSelection();
         args.placeid = <?php echo $_GET['placeid']; ?>;
-        args.idd = DayPilot.guid();
-
+        //args.idd = DayPilot.guid();
         if (!name) return;
-        var e = new DayPilot.Event({
-            start: args.start,
-            end: args.end,
-            id: args.idd,
-            resource: args.resource,
-            text: name
-        });
-        dp.events.add(e);
-        
-        args.text = name;
-        //console.log(args);
         DayPilot.request(
                         "cal_db.php", 
                         function(req) { // success
-                            //var response = eval("(" + req.responseText + ")");
+                            var resp = req.responseText;
+                            console.log('here');
+                            console.log(resp);
                             //if (response && response.result) {
                             //    dp.message("Created: " + response.message);
                             //}
@@ -130,6 +114,20 @@
                             dp.message("Saving failed");
                         }
         ); 
+
+        
+        var e = new DayPilot.Event({
+            start: args.start,
+            end: args.end,
+            id: DayPilot.guid(),
+            resource: args.resource,
+            text: name
+        });
+        dp.events.add(e);
+        
+        args.text = name;
+        //console.log(args);
+        
         //DayPilot.request(
           /*  $.ajax({
                 url:"cal_db.php",
@@ -162,10 +160,11 @@
         DayPilot.request(
             "cal_move.php", 
             function(req) { // success
-                var response = eval("(" + req.responseText + ")");
-                if (response && response.result) {
+                var response = JSON.parse(req);
+                //var response = eval("(" + req.responseText + ")");
+                //if (response && response.result) {
                     //dp.message("Moved: " + response.message);
-                }
+                //}
             },
             args,
             function(req) {  // error
@@ -204,13 +203,15 @@
         for(var i = 0; i < data.length; i++) {
             //data[i]['id'] = DayPilot.guid();
             //data[i]['text'] = 'Available';
+            //console.log(data[i]['id'].toString());
             
             var e = new DayPilot.Event(
             { 
                 start: new DayPilot.Date(data[i]['start']),
                 end: new DayPilot.Date(data[i]['end']),
-                id: DayPilot.guid(),
+                id: data[i]['id'].toString(),
                 text: data[i]['text'],
+                resource: data[i]['id']
              });                
             dp.events.add(e);
         }
