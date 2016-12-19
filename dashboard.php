@@ -3,6 +3,7 @@
 <head>
 	<title>Dashboard</title>
 	<?php include 'lib/top.php';?>
+  
 </head>
 
 <body>
@@ -144,8 +145,11 @@ $res = mysqli_fetch_array($q1); ?>
               <td> <a href="demo-venue.php?placeid=<?php echo $r21['place_id']; ?>" title="View"><button class="btn-success"><i class="fa fa-eye"></i>&nbsp;</button></a>
               <a href="calendar.php?placeid=<?php echo $r21['place_id']; ?>&placename=<?php echo $r21['space_name']; ?>"><button class="btn-success" title="Calendar"><i class="fa fa-calendar"></i>&nbsp;</button></a>
               <a href="edit-place.php?placeid=<?php echo $r21['place_id']; ?>"><button class="btn-primary" title="Edit"><i class="fa fa-pencil"></i>&nbsp;</button></a>
-              <a href="new-actions.php?delete_place=<?php echo $r21['place_id']; ?>"><button class="btn-danger" title="Delete"><i class="fa fa-trash"></i>&nbsp;</button></a>
+              <a href="new-actions.php?delete_place=<?php echo $r21['place_id']; ?>" id="btndelpl"><button class="btn-danger" title="Delete"><i class="fa fa-trash"></i>&nbsp;</button></a>
+              
             </tr>
+    
+    
             <?php
            }
            ?>           
@@ -775,6 +779,20 @@ else
 <!--========================center part close=================================-->
 <!--======footer======-->
 	<?php include 'lib/footer.php';?>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('a#btndelpl').click(function(e){
+      var r = confirm("Confirm deletion.");
+      if (r == false) {
+        e.preventDefault();
+        return false;
+      } else {
+        return true;
+      }
+    });
+  });
+  </script>
+  
 	
 <!--======footer close======-->
 </div><!--row close-->
@@ -790,14 +808,7 @@ else
 
 </style>
 </body>
-<script type="text/javascript">
-    //<!$(document).ready(function(){
-    //  $('#a7').click(function(){
-    //    $("#myModal4").find.$("#third-block").css('display','block');
-    //  });
-    //});-->
-    
-  </script>
+
 
 </html>
 
