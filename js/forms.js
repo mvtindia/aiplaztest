@@ -889,8 +889,13 @@ $('.onclcick_submit_price1').click(function(){
 
 //delete price calenderdata
 $('.onclick_delete_price').click(function(){
-var d_cal = $(this).val();
+    var d_cal = $(this).val();
     console.log(d_cal);
+    var r = confirm("Confirm deletion.");
+    if (r == false) {
+        return false;
+    } else {
+       
     $.ajax({
            url: 'actions.php?deletecalender_id='+d_cal,
            success: function(data){
@@ -910,7 +915,7 @@ var d_cal = $(this).val();
            contentType: false,
            processData: false
        });
-
+    }
 });
 //end here
 
