@@ -150,11 +150,11 @@
 
     
     dp.onTimeRangeDoubleClicked = function(args) {
-        alert("DoubleClick: start: " + args.start + " end: " + args.end + " resource: " + args.resource);
+        //alert("DoubleClick: start: " + args.start + " end: " + args.end + " resource: " + args.resource);
     };
     
     dp.onEventClick = function(args) {
-        alert("Available from " + args.e.start + "to " + args.e.end);
+        //alert("Available from " + args.e.start + " to " + args.e.end);
     };
 
     dp.onEventMoved = function (args) {
