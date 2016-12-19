@@ -887,25 +887,30 @@ $date1=$_POST['date1'];
 $date2 = $_POST['date2'];
 $pph = $_POST['p_p_h'];
 $ppn = $_POST['p_p_n'];
-error_log($placeid);
-error_log($date2);
+
 if($_SESSION['u_id']=="")
 {
 echo "login";
-}
-else
-{
-$sql = mysqli_query($connect,"INSERT `calenderdata` SET `placeid`='".$placeid."', `p_p_n`='".$ppn."', 
-`p_p_h`='".$pph."', `date1`='".$date1."', `date2`='".$date2."', `status` ='unbooked', `ctimestampdate` = '".date('Y-m-d')."'" );
-error_log(mysqli_error($con));
-//echo $_SESSION['placeids']=mysqli_insert_id($connect);
-echo ',,,'; 
-if($sql>0){
-  echo "success";
-}
-else{
+} else {
+$res = mysqli_query($connect,"select * from `calenderdata` where `placeid`='".$placeid."' and `date1`='".$date1."' and `date2`='".$date2."'");
+error_log(mysqli_num_rows($res));
+if (mysqli_num_rows($res)) {
   echo "error";
-}
+  echo ",,,";
+} else {
+  $sql = mysqli_query($connect,"INSERT `calenderdata` SET `placeid`='".$placeid."', `p_p_n`='".$ppn."', 
+`p_p_h`='".$pph."', `date1`='".$date1."', `date2`='".$date2."', `status` ='unbooked', `ctimestampdate` = '".date('Y-m-d')."'" );
+  
+  if($sql>0){
+    echo "success";
+  } else {
+    echo "error";
+  }
+  echo ",,,";
+}  
+  //error_log(mysqli_error($con));
+//echo $_SESSION['placeids']=mysqli_insert_id($connect);
+  
 }
 
 }//if isset

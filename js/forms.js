@@ -1027,14 +1027,16 @@ $("form#calenderform").submit(function(e)
            { 
             var datas=data.split(",,,");
 
+            if(datas[0]=="success"){    
+                $('.ishowload').css('display','none');
+                $("#pricetermss").css('display','none');
+                $("#calender-tab").css('display','block');
+                swal('Success','Updated Successfully','success');
+            } else {
+                $('.ishowload').css('display','none');
+                swal('Duplicate', 'Duplicate Entry', 'error');
+            }
 
-            // if(datas[0]=="success"){    
-            $('.ishowload').css('display','none');
-            $("#pricetermss").css('display','none');
-            $("#calender-tab").css('display','block');
-            swal('Success','Updated Successfully','success');
-              //$("#calender-tab").html(datas[1]);
-            
             $('#back2').click(function(){
                   $("#pricetermss").css('display','block');
                   $("#photovideo").css('display','none');
