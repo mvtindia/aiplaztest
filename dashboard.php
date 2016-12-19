@@ -94,7 +94,7 @@ $res = mysqli_fetch_array($q1); ?>
 <div class="col-md-3">
 <h3 class="text-center"><?php echo $res['fname']." ".$res['lname']; ?></h3>
 <p class="text-center">
-<a id="a7" class="color3">Edit Profile</a>
+<a id="a7" class="color3" data-toggle="modal" data-target="#myModal4">Edit Profile</a>
 </p>
 </div>
 <div class="col-md-7">
@@ -682,7 +682,50 @@ while($res2 = mysqli_fetch_array($q2)){
   </div>
 </div>
 <!-- change pwd modal box close -->
+<div id="myModal4" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="showload" style="display:none;">
+        <img class="showimg" src="img/loading.gif" style="margin:0 auto;display:block;">
+      </div>
+      <div class="hidecontent">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Update your profile</h4>
+        </div>
+        <div class="modal-body">
+          <div class="" id="third-block">
+  <form class="form-group" action="actions.php" id="updprof_form" method="POST">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <input type="text" class="form-control form-height40 bord-0" name="fname" placeholder="First Name" required/>
+            </div>
+            <div class="input-group mg-top20"> 
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <input type="text" class="form-control form-height40 bord-0" name="lname" placeholder="Last Name" required/>
+            </div>
+            <div class="input-group mg-top20">
+              <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+              <input type="text"  maxlength="15" class="form-control form-height40 bord-0 phone" name="contact" placeholder="Mobile" required/>
+            </div>  
+            <div class="text-center mg-top10">
+              <button type="submit" name="signup" id="signup" class="btn-4">Save</button>
+              <button type="button" class="btn-back">Back</button>
+            </div>
+  </form>
+          </div>
+        </div>
+        <div class="modal-footer" style="text-align: center;">
+       <!--  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+          <span class="showmsg" style="display:none;"></span>
+        </div>
+      </div>
+        <br>      
+    </div>
+  </div>
+</div>
 
 <!-- compose msg Modal box start -->
 <div id="compose" class="modal fade" role="dialog">
@@ -746,7 +789,16 @@ else
   }
 
 </style>
-</body>	
+</body>
+<script type="text/javascript">
+    //<!$(document).ready(function(){
+    //  $('#a7').click(function(){
+    //    $("#myModal4").find.$("#third-block").css('display','block');
+    //  });
+    //});-->
+    
+  </script>
+
 </html>
 
 <?php if(isset($_REQUEST['msg']))
@@ -756,6 +808,7 @@ else
     $(document).ready(function(){
       swal('Success','Record Deleted Successfully','success');
     });
+    
   </script>
   <?php
   } ?>

@@ -74,7 +74,25 @@ Your 2finda team';
 
 
 // signup form end
-
+if(isset($_REQUEST['updprof']))
+{
+  $fname = mysqli_real_escape_string($connect,$_REQUEST['fname']);
+  $lname = mysqli_real_escape_string($connect,$_REQUEST['lname']);
+  //$email = mysqli_real_escape_string($connect,$_REQUEST['email']);
+  
+  $contact = mysqli_real_escape_string($connect,$_REQUEST['contact']);
+   
+  $code = md5(uniqid(rand()));  
+  $q2 = mysqli_query($connect,'UPDATE `users` SET `fname` = "'.$fname.'", `lname` = "'.$lname.'", `contact` = "'.$contact.'" WHERE `uid` = "'.$_SESSION['u_id'].'"');
+  
+  if($q2)
+  {
+    echo 'done';
+  } else {
+    echo 'already';
+  }
+  
+  }
 
 // Login start Here
 if(isset($_REQUEST['login']))
@@ -349,9 +367,13 @@ Your 2finda team"
 ;
 $user='azure_4389271fb296cc51e6ae084dc9819730@azure.com';
 $pass='Book1234';
+$json_string = array(
+  'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
+);
 $params = array(
       'api_user' => $user,
       'api_key' => $pass,
+      //'x-smtpapi' => json_encode($json_string),
       'to' => $email,
       'subject' => $subject,
       'html' => $body,
