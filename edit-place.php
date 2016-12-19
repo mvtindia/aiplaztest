@@ -46,7 +46,7 @@ include('connect.php');?>
         <ul class="nav nav-tabs">
           <li class="active"><a data-toggle="tab" href="#home">Details</a></li>
           <li><a data-toggle="tab" href="#menu12">Photos & Videos</a></li>
-          <li><a data-toggle="tab" href="#menu13">Prices</a></li>
+          <!--<li><a data-toggle="tab" href="#menu13">Prices</a></li>-->
           <li><a data-toggle="tab" href="#menu14">Special Prices</a></li>
         </ul>
         <div class="tab-content">
