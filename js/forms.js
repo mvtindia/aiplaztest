@@ -1099,7 +1099,11 @@ $('#repeat').click(function(){
 			$('#date1').val($dater.getFullYear() + "-" + String("00" + ($dater.getMonth() + 1)).slice(-2) + "-" + String("0" + $dater.getDate()).slice(-2) + " " + String("0" + $dater.getHours()).slice(-2) + ":" + String("0" + $dater.getSeconds()).slice(-2));
 			$('#date2').val($dater2.getFullYear() + "-" + String("00" + ($dater2.getMonth() + 1)).slice(-2) + "-" + String("0" + $dater2.getDate()).slice(-2) + " " + String("0" + $dater2.getHours()).slice(-2) + ":" + String("0" + $dater2.getSeconds()).slice(-2));
                 	
-		}
+		} else {
+            swal('Repeat frequency', 'Please pick repeat frequency', 'error');
+            return false;
+
+        }
         $('form#calenderform').submit();
 });
 
