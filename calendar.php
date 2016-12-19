@@ -154,7 +154,7 @@
     };
     
     dp.onEventClick = function(args) {
-        alert("clicked: " + args.e.id());
+        alert("Available from " + args.start + "to " + args.end);
     };
 
     dp.onEventMoved = function (args) {
