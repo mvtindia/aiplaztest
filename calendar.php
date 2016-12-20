@@ -94,56 +94,37 @@
 
     // event creating
     dp.onTimeRangeSelected = function (args) {
-        var name = prompt("New event name:", "Available");
+        /*var name = prompt("New event name:", "Available");
         dp.clearSelection();
         args.placeid = <?php echo $_GET['placeid']; ?>;
         //args.idd = DayPilot.guid();
         if (!name) return;
-        DayPilot.request(
-                        "cal_db.php", 
-                        function(req) { // success
-                            var resp = req.responseText;
-                            console.log('here');
-                            console.log(resp);
-                            //if (response && response.result) {
-                            //    dp.message("Created: " + response.message);
-                            //}
-                        },
-                        args,
-                        function(req) {  // error
-                            dp.message("Saving failed");
-                        }
-        ); 
-
-        
+        var calid = "";
         var e = new DayPilot.Event({
             start: args.start,
             end: args.end,
-            id: DayPilot.guid(),
+            id: calid,
             resource: args.resource,
             text: name
         });
         dp.events.add(e);
+
+        DayPilot.request(
+                        "cal_db.php", 
+                        function(req) { // success
+                            calid = JSON.parse(req.response);                           
+                        },
+                        args,
+                        function(req) {  // error
+                            //dp.message("Saving failed");
+                            console.log("error");
+                        }
+        );
+        var calid2 = calid.toString();
         
-        args.text = name;
-        //console.log(args);
+        e.id(calid2);
+        dp.events.update(e);*/
         
-        //DayPilot.request(
-          /*  $.ajax({
-                url:"cal_db.php",
-                type:"POST",
-                data:args,
-                success:function(req){
-                    var response = eval("(" + req.responseText + ")");
-                    if (response && response.result) {
-                        dp.message("Created: " + response.message);
-                    }
-                },
-                error:function(req) {  // error
-                    dp.message("Saving failed");
-                }                    
-            });
-            */
     };
 
     
@@ -156,7 +137,7 @@
     };
 
     dp.onEventMoved = function (args) {
-        args.placeid = <?php echo $_GET['placeid']; ?>;
+        /*args.placeid = <?php echo $_GET['placeid']; ?>;
         DayPilot.request(
             "cal_move.php", 
             function(req) { // success
@@ -170,11 +151,11 @@
             function(req) {  // error
                 //dp.message("Saving failed");
             }
-        );        
+        ); */       
     };
 
     dp.onEventResized = function (args) {
-        args.placeid = <?php echo $_GET['placeid']; ?>;   
+        /*args.placeid = <?php echo $_GET['placeid']; ?>;   
         DayPilot.request(
             "cal_move.php", 
             function(req) { // success
@@ -187,7 +168,7 @@
             function(req) {  // error
                 //dp.message("Saving failed");
             }
-        );    
+        ); */   
     };
     
     dp.init();

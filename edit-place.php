@@ -6,6 +6,12 @@ include('connect.php');?>
 
   <title>Edit Place</title>
   <?php include 'lib/top.php';?>
+  <style>
+    .bootstrap-datetimepicker-widget {
+        font-size: 10px;
+	    width: 200px;
+    }
+  </style>
   
 </head>
 
@@ -47,7 +53,7 @@ include('connect.php');?>
           <li class="active"><a data-toggle="tab" href="#home">Details</a></li>
           <li><a data-toggle="tab" href="#menu12">Photos & Videos</a></li>
           <!--<li><a data-toggle="tab" href="#menu13">Prices</a></li>-->
-          <li><a data-toggle="tab" href="#menu14">Special Prices</a></li>
+          <li><a data-toggle="tab" href="#menu14">Scheduling and Prices</a></li>
         </ul>
         <div class="tab-content">
           <div id="home" class="tab-pane fade in active">
@@ -196,7 +202,7 @@ include('connect.php');?>
                   $query1=mysqli_query($connect,'SELECT * FROM `ammenities` where atype="additional" ');
                     while($match=mysqli_fetch_array($query1)){
                       if(in_array($match['aid'], $aid)){
-                ?>
+                ?>  
                 <div class="col-md-12">
                   <input type="checkbox" name="add_ammenties[]" value="<?php echo $match['aid'];?>" checked>&nbsp;<?php echo $match['aname'];?>
                 </div>
@@ -204,7 +210,7 @@ include('connect.php');?>
                 <div class="col-md-12">
                   <input type="checkbox" name="add_ammenties[]"  value="<?php echo $match['aid'];?>" >&nbsp;<?php echo $match['aname'];?>
                 </div>
-                <?php } }//while?>?>
+                <?php } }//while?>
               </div>
               <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <label for="space">Description *</label>
@@ -441,10 +447,60 @@ if($match=mysqli_fetch_array($query)){
    </form>
     </div>
     <div id="menu14" class="tab-pane fade">
-          <div class="" id="hide-photo" >
+        <div class="" id="hide-photo" >
  
-   
-    <div class="col-md-12 tellus-data for_claender_data" style="border-bottom: 0px solid rgb(252, 139, 17);border-left: 2px solid rgb(252, 139, 17);border-right: 2px solid rgb(252, 139, 17);">
+            <div id="calender-tab" style="display:block;">
+  <form id="calenderform" method="post" enctype="multipart/form-data" >
+                            <input type="hidden" class="placeid" name="placeid" value="<?php echo $_REQUEST['placeid']?>" id="placeid">
+                            <div class="tellus-data col-lg-12 col-sm-12 col-md-12 col-xs-12 pd-lr-0" ><!--id="calendar-tab"-->
+                                <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>
+                                <div class="frm-field-mar">
+		                     
+          	                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker6' style="float: left;">
+                                       
+                		                <input type='text' class="form-control" name="date1" id="date1" placeholder="From" data-date-format="YYYY-MM-DD HH:mm" />
+                		                <span class="input-group-addon">
+                    			            <span class="glyphicon glyphicon-calendar"></span>
+                		                </span>
+            	                    </div>
+               	                    <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker7' style="float: left;">
+                                        
+                		                <input type='text' class="form-control" name="date2" id="date2" placeholder="To" data-date-format="YYYY-MM-DD HH:mm"/>
+                		                <span class="input-group-addon">
+                    			            <span class="glyphicon glyphicon-calendar"></span>
+                		                </span>
+            	                    </div>
+				
+    		                        <div class="form-group col-lg-5 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                    <label for="space">Price Per Hour</label>
+                                        <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$$$" name="p_p_h">
+                                    </div>
+                                    <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                    <label for="space">Price Per Day</label>
+                                        <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$$$" name="p_p_n">
+                                    </div>
+                                    <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                	                    <button id="savetime" type="submit" name="savetime" class="btn btn-default cus-save-but">Add Availability</button>
+                                        <button id="repeat" type="button" name="repeat" class="btn btn-default cus-save-but">Repeat</button>
+		                            </div>
+                                    <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                                        <select class="form-control selectpicker" id="timing" name="timing">
+                                            <option value="">Select Repeat Frequency</option>
+                                            <option value="d">Daily</option>
+                                            <option value="w">Weekly</option>
+                                        </select>
+                                    </div>
+		                            <div class="col-md-12 text-center"style="margin-bottom: 11px;">
+			                                                    	
+			                            <a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
+		                            </div>
+                                    <div class="clearfix"></div>
+    	                        </div><!--frm-field-mar--> 
+                            </div>
+</form>
+<div class="clearfix"></div>
+        </div>
+        <div class="col-md-12 tellus-data for_claender_data" style="border-bottom: 0px solid rgb(252, 139, 17);border-left: 2px solid rgb(252, 139, 17);border-right: 2px solid rgb(252, 139, 17);">
       <?php  $sql9 = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$pid."'");
       if(mysqli_num_rows($sql9)>0)
       { 
@@ -509,11 +565,11 @@ if($match=mysqli_fetch_array($query)){
           ?>
                <div class="row"style="padding: 11px 0px 1px 0px;
     border-bottom: 2px solid rgb(252, 139, 17);">
-          <div class="col-md-12 form-group">
-            <button id="add_cal_price" class="btn-success btn">Add</button>
-            <a href="dashboard.php" class="btn-warning btn">My DashBoard</a>
+          <!--div class="col-md-12 form-group">
+            <!--<button id="add_cal_price" class="btn-success btn">Add</button>-->
+            <!--<a href="dashboard.php" class="btn-warning btn">My DashBoard</a>-->
             <!--<a href="edit-place.php?placeid=17" class="btn-info btn">Update Details</a>-->
-          </div></div>
+          <!--</div>--></div>
           <?php
       }
       else{
@@ -527,7 +583,7 @@ if($match=mysqli_fetch_array($query)){
   </div>
         </div> 
         <div class="col-md-12" id="cal_data_cl" style="display: none;padding: 11px 0px 1px 0px; border-bottom: 2px solid rgb(252, 139, 17);">
-    <?php include_once('calender.php'); ?>
+    <?php //include_once('calender.php'); ?>
   </div>
     </div>
     </div>
@@ -791,46 +847,33 @@ p {
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
      <script src="bootstrap/js/bootstrap.js"></script> -->
-   
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
-   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-   <script src="http://www.jqueryscript.net/demo/jQuery-jQuery-UI-Based-Date-Range-Picker-Plugin/jquery.comiseo.daterangepicker.js"></script>
-   
-   
-        <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
-      
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>   
+<script src="js/forms.js"></script>
+<script src="js/forms2.js"></script>
+<script src="sm/dist/sweetalert2.min.js"></script>
+<script src="bm/js/fileinput.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery.mask.js"></script>
+<script src="js/nouislider.js"></script>
 
 
-    <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
- 
-    <script type="text/javascript" src="bm/js/plugins/canvas-to-blob.min.js"></script>
-    <script src="bm/js/fileinput.min.js" type="text/javascript"></script>
-    <script src="js/custom-calendar.js"></script>
-     
-    <script type="text/javascript" src="js/jquery.mask.js"></script>
-
-  
-     
-     <script src="sm/dist/sweetalert2.min.js"></script>
-
-     <script src="js/nouislider.js"></script>
-
-     
-    <script type="text/javascript" src="js/jquery.mask.js"></script>
-    <script src="js/custom.js"></script>
-   
-   
-      <script src="js/forms.js"></script>
-
-      <script src="js/forms2.js"></script>
-    <script src="js/forms-map.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!--<script src="js/forms-map.js"></script>
+    Include all compiled plugins (below), or include individual files as needed -->
    
    <script src="js/star-rating.min.js"></script>
   <!--<script src="js/bootstrap-select.js"></script> -->
   
   <script src="js/wow.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker6').datetimepicker();
+            $('#datetimepicker7').datetimepicker();
+        });
+    </script>
 
    <script>
          var placeSearch, autocomplete;

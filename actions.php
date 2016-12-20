@@ -452,20 +452,18 @@ $types = $_FILES['inputvideos']['type'];
 		$path = "images/placephotos/".$inputphotos[$i];
 		$ext = strtolower(pathinfo($inputphotos[$i], PATHINFO_EXTENSION));
 		if (in_array($ext, $supported_image))
+    {
+            $imageInformation = getimagesize($tmpphotos[$i]);
+            $imageWidth = $imageInformation[0]; //Contains the Width of the Image
+            $imageHeight = $imageInformation[1]; //Contains the Height of the Image
+            if($imageWidth >= '100' && $imageHeight >='100' )
             {
-              $imageInformation = getimagesize($tmpphotos[$i]);
-             $imageWidth = $imageInformation[0]; //Contains the Width of the Image
-             $imageHeight = $imageInformation[1]; //Contains the Height of the Image
-              if($imageWidth >= '100' && $imageHeight >='100' )
-              {
                 $photos .= $inputphotos[$i].",";
                 move_uploaded_file($tmpphotos[$i], $path);
-              }
-              else
-              {
-                  $err_msg = $inputphotos[$i];
-              }      
-			       }
+            } else {
+                $err_msg = $inputphotos[$i];
+            }      
+		}
 	}
 	$photos=rtrim($photos,",");
 	for ($j=0; $j < count($inputvideos); $j++)
@@ -483,20 +481,17 @@ $videos=rtrim($videos,",");
 $videotype=rtrim($type,",");
 if($err_msg=='')
 {
-$query=mysqli_query($connect,'update place set photo="'.$photos.'" , video="'.$videos.'" , video_type="'.$videotype.'" where place_id="'.$placeid.'"');
-if($query>0){
-  echo "success";
-   echo">>>";
-}
-else{
-	echo "error";
-  echo">>>";
-}
-}
-else
-{
+  $query=mysqli_query($connect,'update place set photo="'.$photos.'" , video="'.$videos.'" , video_type="'.$videotype.'" where place_id="'.$placeid.'"');
+  if($query>0){
+    echo "success";
+    echo">>>";
+  } else {
+	  echo "error";
+    echo">>>";  
+  }
+} else {
   echo"wrong_exe";  
-   echo">>>";
+  echo">>>";
   echo $err_msg;
 }
 }//isset photo
@@ -788,8 +783,9 @@ $(document).ready(function() {
 
 
 //edit place
-if(isset($_POST['eplace']))
+if(isset($_REQUEST['eplace']))
 {
+  
  // echo "working";
 $pid=$_POST['placeid'];
 $name = $_POST['name'];
@@ -859,7 +855,7 @@ $fire_alaram = $_POST['fire_alaram'];
 $gas_valve = $_POST['gas_valve'];
 $emergency = $_POST['emergency'];
 $capacity = $_POST['capacity'];
-
+error_log("ducks");
 if($_SESSION['u_id']=="")
 {
 echo "login";
