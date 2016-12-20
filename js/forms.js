@@ -1015,11 +1015,25 @@ $("form#calenderform").submit(function(e)
 {
     $('.ishowload').css('display','block');
    var formObj = $(this);
-
+   
    if(window.FormData !== undefined)  // for HTML5 browsers
    {
 
        var formData = new FormData(this);
+       for ( var pair of formData.entries()) {
+           if (pair[0] == 'date1') {
+               var dt1 = pair[1];
+           }
+           if (pair[0] == 'date2') {
+               var dt2 = pair[1];
+           }
+       }
+       if (dt2 < dt1) {
+           swal("Failure!", "End date is earlier than start date.", "error");
+           $('.ishowload').css('display','none');
+           return false;
+       }
+        
        $.ajax({
            url: 'actions.php?savetime=303',
            type: 'POST',
