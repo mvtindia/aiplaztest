@@ -394,13 +394,17 @@ echo '</pre>'; ?>
                 		                </span>
             	                    </div>
 				
-    		                        <div class="form-group col-lg-5 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
+    		                        <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
                 	                    <label for="space">Price Per Hour</label>
-                                        <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$$$" name="p_p_h">
+                                        <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="p_p_h">
                                     </div>
-                                    <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
+                                    <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
                 	                    <label for="space">Price Per Day</label>
-                                        <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$$$" name="p_p_n">
+                                        <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="p_p_n">
+                                    </div>
+                                    <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                    <label for="space">Price Per Week</label>
+                                        <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="w_p_p_n">
                                     </div>
                                     <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
                 	                    <button id="savetime" type="submit" name="savetime" class="btn btn-default cus-save-but">Add Availability</button>

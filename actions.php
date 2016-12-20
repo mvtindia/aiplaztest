@@ -883,6 +883,7 @@ $date1=$_POST['date1'];
 $date2 = $_POST['date2'];
 $pph = $_POST['p_p_h'];
 $ppn = $_POST['p_p_n'];
+$wppn = $_POST['w_p_p_n'];
 
 if($_SESSION['u_id']=="")
 {
@@ -894,7 +895,7 @@ if (mysqli_num_rows($res)) {
   echo "error";
   echo ",,,";
 } else {
-  $sql = mysqli_query($connect,"INSERT `calenderdata` SET `placeid`='".$placeid."', `p_p_n`='".$ppn."', 
+  $sql = mysqli_query($connect,"INSERT `calenderdata` SET `placeid`='".$placeid."', `p_p_n`='".$ppn."', `w_p_p_n`='".$wppn."',
 `p_p_h`='".$pph."', `date1`='".$date1."', `date2`='".$date2."', `status` ='unbooked', `ctimestampdate` = '".date('Y-m-d')."'" );
   
   if($sql>0){
