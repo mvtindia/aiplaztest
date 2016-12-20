@@ -716,7 +716,7 @@ while($res2 = mysqli_fetch_array($q2)){
             </div>  
             <div class="text-center mg-top10">
               <button type="submit" name="signup" id="signup" class="btn-4">Save</button>
-              <button type="button" class="btn-back">Back</button>
+              <button type="button" class="btn-back" data-dismiss="modal">Back</button>
             </div>
   </form>
           </div>
