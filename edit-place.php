@@ -125,7 +125,7 @@ include('connect.php');?>
                         if($row['property_typeid']==$match['pid']){?>
                           <option value="<?php echo $match['pid'];?>" selected><?php echo $match['ptype'];?></option>
                     <?php } else { ?>
-                          <option value="<?php echo $match['pid'];?>" selected><?php echo $match['ptype'];?></option>
+                          <option value="<?php echo $match['pid'];?>"><?php echo $match['ptype'];?></option>
                     <?php } }//while ?>
                   </select>
                 </div>
