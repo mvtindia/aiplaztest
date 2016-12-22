@@ -377,7 +377,7 @@ include_once('connect.php');?>
                         
                     </form>
                     <div class="clearfix"></div>
-                    <form id="calenderform" method="POST">
+                    <form id="calenderform" method="POST" enctype="multipart/form-data" >
                     <div id="calender-tab" style="display:none;">
                         <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
                         <div class="tellus-data col-lg-12 col-sm-12 col-md-12 col-xs-12 pd-lr-0" >
@@ -419,7 +419,7 @@ include_once('connect.php');?>
                                                 </select>
                                 </div>
 		                        <div class="col-md-12 text-center"style="margin-bottom: 11px;">
-			                                    <button id="back" type="button" name="place" class="btn btn-default cus-save-but">Back</button>                       	
+			                                    <!--<button id="back" type="button" name="place" class="btn btn-default cus-save-but">Back</button>-->                       	
 			                                    <a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
 		                        </div>
                                 <div class="clearfix"></div>
