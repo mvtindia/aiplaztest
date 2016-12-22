@@ -377,9 +377,10 @@ include_once('connect.php');?>
                         
                     </form>
                     <div class="clearfix"></div>
-                    <h4 style="color: red;">*You will receive a confirmation email, but in the meantime, please add available times for your place.</h4>
+                    
                     <form id="calenderform" method="POST" enctype="multipart/form-data" >
                     <div id="calender-tab" style="display:none;">
+                        <h4 style="color: red;">*You will receive a confirmation email, but in the meantime, please add available times for your place.</h4>
                         <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
                         <div class="tellus-data col-lg-12 col-sm-12 col-md-12 col-xs-12 pd-lr-0" >
                             <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>
@@ -398,15 +399,29 @@ include_once('connect.php');?>
             	                </div>
     		                    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
                 	                            <label for="space">Price Per Hour</label>
-                                                <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="p_p_h">
+                                                <input type="number" required class="form-control" id="priceph" placeholder="Enter $$" name="p_p_h">
                                 </div>
+                                
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
                 	                            <label for="space">Price Per Day</label>
-                                                <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="p_p_n">
+                                                <input type="number" required class="form-control" id="pricepd" placeholder="Enter $$" name="p_p_n">
                                 </div>
+                                
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
                 	                            <label for="space">Price Per Week</label>
-                                                <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="w_p_p_n">
+                                                <input type="number" required class="form-control" id="pricepw" placeholder="Enter $$" name="w_p_p_n">
+                                </div> 
+                                <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                            <label for="space">Price Per Hour(minus service fee)</label>
+                                                <input type="text"  class="form-control" id="netpph" placeholder="Enter $$">
+                                </div>
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
+                                                <label for="space">Price Per Day(minus service fee)</label>
+                                                <input type="text"  class="form-control" id="netppd" placeholder="Enter $$">
+                                </div>                            
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                            <label for="space">Price Per Week(minus service fee)</label>
+                                                <input type="text"  class="form-control" id="netppw" placeholder="Enter $$">
                                 </div>
                                 <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
                 	                            <button id="savetime" type="submit" name="savetime" class="btn btn-default cus-save-but">Add Availability</button>
@@ -588,6 +603,21 @@ $(document).ready(function() {
         
         dp.update();
     });
+
+    $("#priceph").change(function() {
+        $newval = Number($("#priceph").val()) * .95;
+        $("#netpph").val(String($newval));
+    })
+
+    $("#pricepd").change(function() {
+        $newval = Number($("#pricepd").val()) * .95;
+        $("#netppd").val(String($newval));
+    })
+
+    $("#pricepw").change(function() {
+        $newval = Number($("#pricepw").val()) * .95;
+        $("#netppw").val(String($newval));
+    })
 });
         
 </script>
