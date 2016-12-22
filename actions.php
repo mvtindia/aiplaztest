@@ -353,7 +353,7 @@ $inputvideos = $_FILES['inputvideos']['name'];
 $tmpvideos = $_FILES['inputvideos']['tmp_name'];
 
 $types = $_FILES['inputvideos']['type'];
-error_log('$types ' . $types);
+
 	for ($i=0; $i < count($inputphotos) ; $i++)
 	{ 
 		$path = "images/placephotos/".$inputphotos[$i];
@@ -432,12 +432,12 @@ Your 2finda team"
 ;
 $user='azure_4389271fb296cc51e6ae084dc9819730@azure.com';
 $pass='Book1234';
-/*$json_string = array(
-  'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
-);*/
 $json_string = array(
-  'to' => array($email), 'category' => 'test_category'
+  'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
 );
+/*$json_string = array(
+  'to' => array($email), 'category' => 'test_category'
+);*/
 $params = array(
       'api_user' => $user,
       'api_key' => $pass,
