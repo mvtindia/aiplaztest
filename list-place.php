@@ -377,7 +377,7 @@ include_once('connect.php');?>
                         
                     </form>
                     <div class="clearfix"></div>
-                    <form id="calenderform">
+                    <form id="calenderform" method="POST">
                     <div id="calender-tab" style="display:none;">
                         <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
                         <div class="tellus-data col-lg-12 col-sm-12 col-md-12 col-xs-12 pd-lr-0" >
