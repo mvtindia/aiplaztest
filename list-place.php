@@ -377,6 +377,7 @@ include_once('connect.php');?>
                         
                     </form>
                     <div class="clearfix"></div>
+                    <h4 style="color: red;">*You will receive a confirmation email, but in the meantime, please add available times for your place.</h4>
                     <form id="calenderform" method="POST" enctype="multipart/form-data" >
                     <div id="calender-tab" style="display:none;">
                         <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
