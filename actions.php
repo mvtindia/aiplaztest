@@ -333,120 +333,27 @@ $gas_valve = $_POST['gas_valve'];
 $emergency = $_POST['emergency'];
 $capacity = $_POST['capacity'];
 
-if(!isset($_SESSION['u_id']))
-{
-echo "login";
-}
-else
-{
-//$sql = mysqli_query($connect,"INSERT INTO `place` (`user_id`, `p_name`, `timestampdate`) VALUES ('" . mysql_real_escape_string($_SESSION['u_id'] . "','test user', NOW()));
-
-try {
-$sql = mysqli_query($connect,'INSERT INTO `place` ( `p_name`, `p_contact`, `p_location`, `p_address`, `p_country`, `p_city`, `p_code`, `p_state`, `space_name`, `property_typeid`, `can_be_usedid`, `accomodates`, `place_area`, `ammenties_id`, `add_ammenties`, `details`, `rules_doid`, `rules_donotid`, `timestampdate`, `saftyid`, `fire_extinguisher`, `fire_alarm`, `gas_valve`, `exit_extinguisher`,`capacity`,`user_id`,`areatype`) VALUES ("'.$name.'", "'.$contact.'", "'.$location.'", "'.$address.'","'.$country.'" ,"'.$city.'" ,"'.$postcode.'","'.$state.'", "'.$space_name.'", "'.$property.'", "'.$canbe.'", "'.$accomodates.'", "'.$area.'", "'.$commonammenties.'", "'.$add_ammenties.'", "'.$details.'", "'.$ruledo.'", "'.$ruledonot.'", "'.date('Y-m-d').'", "'.$safety.'", "'.$fire_extinguisher.'", "'.$fire_alaram.'", "'.$gas_valve.'", "'.$emergency.'","'.$capacity.'", "'.$_SESSION['u_id'].'","'.$areatype.'")');
-} catch (Exception $e) {
-     error_log("we have a problem");
-}
-$email = $_SESSION['email'];
-
-$url = 'https://api.sendgrid.com/';
-$subject = 'Earn money with your listed place on 2finda.com';
-$body = 
-"Dear " . $fname . " " . $lname . ",<br><br>
-We’re really happy you’ve joined 2finda.com as a host. So, what do you do now?<br>
-
-Read our general tips on being a successful host.<br>
-Find out more about staying safe on 2finda.<br>
-The higher your place appears on our result pages, the more likely you are to receive booking requests. To optimise your place visibility, make sure you have:
-<br>- A detailed description
-<br>- A competitive price
-<br>- Great photos
-<br>- An updated calendar<br>
-To update everything and anything, just click here.<br><br>
-Kind regards,<br><br>
-Your 2finda team"
-;
-$user='azure_4389271fb296cc51e6ae084dc9819730@azure.com';
-$pass='Book1234';
-$json_string = array(
-  'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
-);
-$params = array(
-      'api_user' => $user,
-      'api_key' => $pass,
-      //'x-smtpapi' => json_encode($json_string),
-      'to' => $email,
-      'subject' => $subject,
-      'html' => $body,
-      //'text' => 'I am the text parameter',
-      'from' => 'info@2finda.com',
-);
-    
-$request = $url.'api/mail.send.json';
-$session = curl_init($request);
-curl_setopt ($session, CURLOPT_POST, true);
-curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
-curl_setopt($session, CURLOPT_HEADER, false);
-curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
-$response = curl_exec($session);
-error_log(curl_error($session));
-curl_close($session);
-
-echo $_SESSION['placeids']=mysqli_insert_id($connect);
-
-echo ',,,'; 
-if($sql>0){
-  echo "success";
-}
-else{
-  echo "error";
-}
-}
-
-}//if isset
-
- 
-
-if(isset($_REQUEST['photo']))
-{
-	    $supported_image = array(
+$supported_image = array(
                                               'jpg',
                                               'jpeg',
                                               'png',
                                               'gif',
                                             );
 
-	     $supported_videos = array(
+$supported_videos = array(
                                               'mp4',
                                               'webm',
                                               'mov',
                                             );
 
-$placeid=$_POST['placeid'];
-$pi2="$placeid";
-error_log($pi2);
+
 $inputphotos = $_FILES['inputphotos']['name'];
 $tmpphotos = $_FILES['inputphotos']['tmp_name'];
-
-// //for 
-// $imageInformation = getimagesize($_FILES['inputphotos']['tmp_name']);
-// $imageWidth = $imageInformation[0]; //Contains the Width of the Image
-// $imageHeight = $imageInformation[1]; //Contains the Height of the Image
-// if($imageWidth >= '1000' && $imageHeight >='700' )
-// {
-  
-// }
-// else
-// {
-
-// }
-// //end
-
-
 $inputvideos = $_FILES['inputvideos']['name'];
 $tmpvideos = $_FILES['inputvideos']['tmp_name'];
-$types = $_FILES['inputvideos']['type'];
 
+$types = $_FILES['inputvideos']['type'];
+error_log('$types ' . $types);
 	for ($i=0; $i < count($inputphotos) ; $i++)
 	{ 
 		$path = "images/placephotos/".$inputphotos[$i];
@@ -479,7 +386,104 @@ $types = $_FILES['inputvideos']['type'];
 	}
 $videos=rtrim($videos,",");
 $videotype=rtrim($type,",");
-if($err_msg=='')
+
+if(!isset($_SESSION['u_id']))
+{
+echo "login";
+} else if ($err_msg=='') {
+try {
+$sql = mysqli_query($connect,'INSERT INTO `place` ( `p_name`, `p_contact`, `p_location`, `p_address`, `p_country`, `p_city`, `p_code`, `p_state`, `space_name`, `property_typeid`, `can_be_usedid`, `accomodates`, `place_area`, `ammenties_id`, `add_ammenties`, `details`, `photo`, `video`, video_type, `rules_doid`, `rules_donotid`, `timestampdate`, `saftyid`, `fire_extinguisher`, `fire_alarm`, `gas_valve`, `exit_extinguisher`,`capacity`,`user_id`,`areatype`) VALUES ("'.$name.'", "'.$contact.'", "'.$location.'", "'.$address.'","'.$country.'" ,"'.$city.'" ,"'.$postcode.'","'.$state.'", "'.$space_name.'", "'.$property.'", "'.$canbe.'", "'.$accomodates.'", "'.$area.'", "'.$commonammenties.'", "'.$add_ammenties.'", "'.$details.'", "'.$photos.'", "'.$videos.'", "'.$videotype.'", "'.$ruledo.'", "'.$ruledonot.'", "'.date('Y-m-d').'", "'.$safety.'", "'.$fire_extinguisher.'", "'.$fire_alaram.'", "'.$gas_valve.'", "'.$emergency.'","'.$capacity.'", "'.$_SESSION['u_id'].'","'.$areatype.'")');
+
+if($sql>0){
+    echo "success";
+    
+} else {
+	  echo "error";
+     
+}
+
+} catch (Exception $e) {
+     error_log("we have a problem");
+}
+} else {
+  echo"wrong_exe";  
+  echo">>>";
+  echo $err_msg;
+}
+
+$email = $_SESSION['email'];
+
+$url = 'https://api.sendgrid.com/';
+$subject = 'Earn money with your listed place on 2finda.com';
+$body = 
+"Dear " . $fname . " " . $lname . ",<br><br>
+We’re really happy you’ve joined 2finda.com as a host. So, what do you do now?<br>
+
+Read our general tips on being a successful host.<br>
+Find out more about staying safe on 2finda.<br>
+The higher your place appears on our result pages, the more likely you are to receive booking requests. To optimise your place visibility, make sure you have:
+<br>- A detailed description
+<br>- A competitive price
+<br>- Great photos
+<br>- An updated calendar<br>
+To update everything and anything, just click here.<br><br>
+Kind regards,<br><br>
+Your 2finda team"
+;
+$user='azure_4389271fb296cc51e6ae084dc9819730@azure.com';
+$pass='Book1234';
+/*$json_string = array(
+  'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
+);*/
+$json_string = array(
+  'to' => array($email), 'category' => 'test_category'
+);
+$params = array(
+      'api_user' => $user,
+      'api_key' => $pass,
+      //'x-smtpapi' => json_encode($json_string),
+      'to' => $email,
+      'subject' => $subject,
+      'html' => $body,
+      //'text' => 'I am the text parameter',
+      'from' => 'info@2finda.com',
+);
+    
+$request = $url.'api/mail.send.json';
+$session = curl_init($request);
+curl_setopt ($session, CURLOPT_POST, true);
+curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
+curl_setopt($session, CURLOPT_HEADER, false);
+curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+$response = curl_exec($session);
+error_log(curl_error($session));
+curl_close($session);
+
+echo ',,,'; 
+echo $_SESSION['placeids']=mysqli_insert_id($connect);
+
+}
+
+
+
+// //for 
+// $imageInformation = getimagesize($_FILES['inputphotos']['tmp_name']);
+// $imageWidth = $imageInformation[0]; //Contains the Width of the Image
+// $imageHeight = $imageInformation[1]; //Contains the Height of the Image
+// if($imageWidth >= '1000' && $imageHeight >='700' )
+// {
+  
+// }
+// else
+// {
+
+// }
+// //end
+
+
+
+/*if($err_msg=='')
 {
   $query=mysqli_query($connect,'update place set photo="'.$photos.'" , video="'.$videos.'" , video_type="'.$videotype.'" where place_id="'.$placeid.'"');
   if($query>0){
@@ -494,7 +498,7 @@ if($err_msg=='')
   echo">>>";
   echo $err_msg;
 }
-}//isset photo
+}*///isset photo
 
 //price
 if(isset($_REQUEST['priceterms']))

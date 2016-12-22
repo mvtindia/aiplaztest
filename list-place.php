@@ -81,30 +81,32 @@ include_once('connect.php');?>
 <!-- details start -->
                     <div class="tellus-data" id="details">
                         <div class="had-frm">Your Details</div>
-                        <form class="pd-bottom20" role="form" id="add_place" method="POST">
-                            <div class="frm-field-mar">
+                    <form class="pd-bottom20" role="form" id="add_place" method="POST">
+                        <div class="frm-field-mar">
                                 <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
-
+                                
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">     
                                     <label for="space">Name*</label>
-                                    <input type="text" class="form-control" id="price" placeholder="Name" name="name" required>
+                                    <input type="text" class="form-control" id="name" placeholder="Name" name="name" required>
+                                    <div class="help-block with-errors"></div>
                                 </div>
 
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label for="space">Contact Number*</label>
                                     <input type="text" class="form-control phone" id="price" placeholder="Contact" name="contact" required>
+                                    <div class="help-block with-errors"></div>
                                 </div>
-                            </div><!--frm-field-mar-->
+                        </div><!--frm-field-mar-->
   <!--=======================================-->
-                            <div class="clearfix"></div>
-
-                            <div class="had-frm-sec">Your Place Location...</div>
-                            <div class="frm-field-mar ">
+                        <div class="clearfix"></div>
+                        <div class="had-frm-sec">Your Place Location...</div>
+                        <div class="frm-field-mar ">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0">
 	                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label for="space">Address*</label>
 	                                    <div id="locationField" class="col-md-12 col-lg-12 col-sm-12 col-xs-12 pd-lr-0">
                                             <input class="form-control" id="autocomplete" name="address" placeholder="Enter your address" onFocus="geolocate()" type="text" required>
+                                            <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
 
@@ -138,56 +140,64 @@ include_once('connect.php');?>
                                         <input class="field form-control mg-top5" name="country" id="country" disabled="true">
                                     </div>
 	                            </div>
-                            </div>
+                        </div>
 
-                            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
   <!--=====================================-->
 
-                            <div class="had-frm-sec">Your Place Details</div>
-	                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="had-frm-sec">Your Place Details</div>
+	                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <label for="space">Space Title*</label>
                                 <input type="text" class="form-control" id="price" placeholder="Space title" name="space_name" required>
-                            </div>
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label for="email">Property type*</label>
-                                <select class="form-control" id="sel1" name="property"required >
+                                <select class="form-control" id="sel1" name="property" required >
                                     <option value="">Select Property type</option>
                                     <?php $query=mysqli_query($connect,'Select * from property');
                                         while($match=mysqli_fetch_array($query)){?>
                                             <option value="<?php echo $match['pid'];?>"><?php echo $match['ptype'];?></option>
                                     <?php }//while ?>
                                 </select>
-                            </div>
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label for="space">Capacity*</label>
-                                <input type="number" class="form-control" name="capacity"required>
-                            </div>
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 sample-only">
+                                <input type="number" class="form-control" name="capacity" required>
+                                <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 sample-only">
                                 <label class="wid100" for="space">Can be used for*</label>
-                                <select id="select1" class="wid100" multiple="multiple" name="canbe[]">
+                                <select id="select1" class="wid100" multiple="multiple" name="canbe[]" required>
      <!--  <option value="" hidden>Select Uses</option> -->
                                     <?php $query=mysqli_query($connect,'Select * from usedfor');
                                         while($match=mysqli_fetch_array($query)){?>
                                             <option value="<?php echo $match['ufid'];?>"><?php echo $match['ufname'];?></option>
                                     <?php }//while ?>
                                 </select>
+                                <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-md-12 col-sm-12 col-xs-12 pd-lr-0">  
+                                <label for="space">Area*</label>
                             </div>
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="col-md-12 col-sm-12 col-xs-12 pd-lr-0">  <label for="space">Area*</label></div>
-                                <div class="col-md-6 pd-l-0">
+                            <div class="col-md-6 pd-l-0">
                                     <input type="text" class="form-control" id="accomodates" placeholder="Area" name="area" required="">
-                                </div>
-                                <div class="col-md-6 pd-r-0">
+                                    <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="col-md-6 pd-r-0">
                                     <select class="form-control" name="areatype"><option>Select Area Type</option>
                                         <?php $query=mysqli_query($connect,'Select * from area');
                                             while($match=mysqli_fetch_array($query)){?>
                                                 <option value="<?php echo $match['areaid'];?>"><?php echo $match['areatype'];?></option>
                                         <?php } ?>
                                     </select>
-                                </div>
+                                    <div class="help-block with-errors"></div>
                             </div>
+                        </div>
 
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label class="wid100" for="space">Common Ammenities</label>
                                 <select class="form-control" id="select6" name="commonammenties[]" multiple >
                                     <?php $query=mysqli_query($connect,'Select * from ammenities where atype="common"');
@@ -199,9 +209,9 @@ include_once('connect.php');?>
                                             </div>
                                     <?php }?>
                                 </select>
-                            </div>
+                        </div>
 
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label class="wid100" for="space">Additional Ammenities</label>
                                 <select class="form-control" id="select5" name="add_ammenties[]" multiple >
                                     <?php $query=mysqli_query($connect,'Select * from ammenities where atype="additional"');
@@ -212,20 +222,20 @@ include_once('connect.php');?>
                                             </div>
                                     <?php }?>
                                 </select>
-                            </div>
+                        </div>
 
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <label for="space">Description</label>
-                                <textarea  class="form-control" id="accomodates"  placeholder="Description" name="details" ></textarea>
-                            </div>
+                                <textarea  class="form-control" id="description"  placeholder="Description" name="details" ></textarea>
+                        </div>
 
-                            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
 
   <!--=====================================-->
 
-                            <div class="had-frm-sec">Rules</div>
-                            <div class="frm-field-mar">
-                                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="had-frm-sec">Rules</div>
+                        <div class="frm-field-mar">
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label for="space">Do's</label>
                                     <select class="form-control" id="select3" name="ruledo[]" multiple >
 	<!-- <option>Select Options</option> -->
@@ -234,8 +244,8 @@ include_once('connect.php');?>
                                                 <option value="<?php echo $match['rid'];?>"><?php echo $match['rname'];?></option>
                                         <?php } ?>
                                     </select>
-                                </div>
-                                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label for="space">Don'ts</label>
                                     <select class="form-control" id="select4" name="ruledonot[]" multiple>
 	<!-- <option>Select Options</option> -->
@@ -244,13 +254,13 @@ include_once('connect.php');?>
                                                 <option value="<?php echo $match['rid'];?>"><?php echo $match['rname'];?></option>
                                         <?php } ?>
                                     </select>
-                                </div>
+                            </div>
                             
-                                <div class="clearfix"></div>
-                            </div><!--frm-field-mar-->
+                            <div class="clearfix"></div>
+                        </div><!--frm-field-mar-->
 
-                            <div class="had-frm-sec">Safety</div>
-                            <div class="frm-field-mar">
+                        <div class="had-frm-sec">Safety</div>
+                        <div class="frm-field-mar">
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 sample-only">
                                     <label class="wid100" for="space">Safety Checklist</label>
                                     <select id="select2" class="wid100" multiple="multiple" name="safety[]">
@@ -280,56 +290,153 @@ include_once('connect.php');?>
                                     <label for="space">Emergency exit instruction</label>
 	                                <textarea class="form-control" id="accomodates" placeholder="Enter Instructions" name="emergency"></textarea>
                                 </div>
+                                <!--<div class="col-md-12 text-center p-x-2" style="margin-bottom: 11px;">
+                                    <button id="movon1" type="button">Save & Continue</button>
+                                </div>-->
                                 <div class="clearfix"></div>
-                            </div><!--frm-field-mar-->
+                        </div><!--frm-field-mar-->
   <!--=====================================-->
 
+                        <div class="frm-field-mar" id="pandv">
+                            <div class="had-frm-sec">Photos & Videos</div>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"><b>Upload great photos & Videos of your place *</b></div>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                                <label class="custom-upload uploadphoto">ADD PHOTOS</label>
+                                <div class="upphoto form-group" style="display:none;">
+                                        <input id="input-7" name="inputphotos[]" data-show-upload="false" multiple type="file" class="file file-loading form-control-file" >
+                                        <p style="font-size: 12px"> Please Upload Photos of (jpg/jpeg/png/gif) formats </p>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <label class="custom-upload uploadvideo">ADD Videos</label>
+                            </div>
+                            <div class="upvideo form-group" style="display:none;">
+                                    <input id="input-8" name="inputvideos[]" data-show-upload="false" multiple type="file" class="file file-loading form-control-file">
+                                    <p style="font-size: 12px"> Please Upload Videos of (webm/mp4) Formats with max size upto 10 MB</p>
+                            </div>
                             <div class="but-align form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <!-- <button id="show-photo" type="submit" name="place" class="btn btn-default cus-save-but">Save & continue</button> -->
                                 <button type="submit" name="place" class="btn btn-default cus-save-but">Save & continue</button>
                             </div>
-                        </form>
                             <div class="clearfix"></div>
                         </div>
+                        <!--</form>-->
+                        
+                        <!--<div class="frm-field-mar" id="calender-tab">
+                            <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>
+          	                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker6' style="float: left;">
+                		                        <input type='text' class="form-control" name="date1" id="date1" placeholder="From" data-date-format="YYYY-MM-DD HH:mm" />
+                		                        <span class="input-group-addon">
+                    			                    <span class="glyphicon glyphicon-calendar"></span>
+                		                        </span>
+            	                </div>
+               	                <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker7' style="float: left;">
+                		                        <input type='text' class="form-control" name="date2" id="date2" placeholder="To" data-date-format="YYYY-MM-DD HH:mm"/>
+                		                        <span class="input-group-addon">
+                    			                    <span class="glyphicon glyphicon-calendar"></span>
+                		                        </span>
+            	                </div>
+    		                    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                            <label for="space">Price Per Hour</label>
+                                                <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="p_p_h">
+                                </div>
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                            <label for="space">Price Per Day</label>
+                                                <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="p_p_n">
+                                </div>
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                            <label for="space">Price Per Week</label>
+                                                <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="w_p_p_n">
+                                </div>
+                                <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                	                            <button id="savetime" type="submit" name="savetime" class="btn btn-default cus-save-but">Add Availability</button>
+                                                <button id="repeat" type="button" name="repeat" class="btn btn-default cus-save-but">Repeat</button>
+		                        </div>
+                                <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                                                <select class="form-control selectpicker" id="timing" name="timing">
+                                                    <option value="">Select Repeat Frequency</option>
+                                                    <option value="d">Daily</option>
+                                                    <option value="w">Weekly</option>
+                                                </select>
+                                </div>
+		                        <div class="col-md-12 text-center"style="margin-bottom: 11px;">
+			                                    <button id="back" type="button" name="place" class="btn btn-default cus-save-but">Back</button>                       	
+			                                    <a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
+		                        </div>
+                                <div class="clearfix"></div>
+    	                </div>frm-field-mar--> 
+                    </div>
+                    
 <!-- details end -->
 
   <!--==========================Photos AND Videos TAB STARTS=======================-->
-                    <form id="photovideo" method="post" enctype="multipart/form-data" style="">
-                        <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
-                        <div class="frm-field-mar" id="hide-photo" >
-                            <div class="tellus-data col-md-12 col-xs-12 col-sm-12 pd-lr-0">
-                                <div class="had-frm-sec"  >Photos & Videos</div>
-                                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"><b>Upload great photos & Videos of your place *</b></div>
-                                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
-                                    <label class="custom-upload uploadphoto">ADD PHOTOS</label>
-                                    <div class="upphoto" style="display:none;">
-                                        <input id="input-7" name="inputphotos[]" data-show-upload="false" multiple type="file" class="file file-loading" >
-                                        <p style="font-size: 12px"> Please Upload Photos of (jpg/jpeg/png/gif) formats </p>
-                                    </div>
-                                </div>
-                                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <label class="custom-upload uploadvideo">ADD Videos</label>
-                                </div>
-                                <div class="upvideo" style="display:none;">
-                                    <input id="input-8" name="inputvideos[]" data-show-upload="false" multiple type="file" class="file file-loading">
-                                    <p style="font-size: 12px"> Please Upload Videos of (webm/mp4) Formats with max size upto 10 MB</p>
-                                </div>
-                                <div class="col-md-12 text-center p-x-2" style="margin-bottom: 11px;">
-                                    <button id="back" type="button" name="place" class="btn btn-default cus-save-but">Back</button>
-                                    <button id="show-price" type="submit" name="photo" class="btn btn-default cus-save-but">Save & Continue</button>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div> <!--frm-field-mar-->
+                    <!--<div id="calender-tab" style="display:none; background-color: #fff;">-->
+                 
+                    
+                    <!--<form id="photovideo" method="post" enctype="multipart/form-data" style="">-->
+                        <!--<input type="hidden" class="placeid" name="placeid" value="" id="placeid">-->
+                        
                     </form>
-  
+                    <div class="clearfix"></div>
+                    <form id="calenderform">
+                    <div id="calender-tab" style="display:none;">
+                        <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
+                        <div class="tellus-data col-lg-12 col-sm-12 col-md-12 col-xs-12 pd-lr-0" >
+                            <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>
+                            <div class="frm-field-mar">
+          	                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker6' style="float: left;">
+                		                        <input type='text' class="form-control" name="date1" id="date1" placeholder="From" data-date-format="YYYY-MM-DD HH:mm" />
+                		                        <span class="input-group-addon">
+                    			                    <span class="glyphicon glyphicon-calendar"></span>
+                		                        </span>
+            	                </div>
+               	                <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker7' style="float: left;">
+                		                        <input type='text' class="form-control" name="date2" id="date2" placeholder="To" data-date-format="YYYY-MM-DD HH:mm"/>
+                		                        <span class="input-group-addon">
+                    			                    <span class="glyphicon glyphicon-calendar"></span>
+                		                        </span>
+            	                </div>
+    		                    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                            <label for="space">Price Per Hour</label>
+                                                <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="p_p_h">
+                                </div>
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                            <label for="space">Price Per Day</label>
+                                                <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="p_p_n">
+                                </div>
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                            <label for="space">Price Per Week</label>
+                                                <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="w_p_p_n">
+                                </div>
+                                <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                	                            <button id="savetime" type="submit" name="savetime" class="btn btn-default cus-save-but">Add Availability</button>
+                                                <button id="repeat" type="button" name="repeat" class="btn btn-default cus-save-but">Repeat</button>
+		                        </div>
+                                <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                                                <select class="form-control selectpicker" id="timing" name="timing">
+                                                    <option value="">Select Repeat Frequency</option>
+                                                    <option value="d">Daily</option>
+                                                    <option value="w">Weekly</option>
+                                                </select>
+                                </div>
+		                        <div class="col-md-12 text-center"style="margin-bottom: 11px;">
+			                                    <button id="back" type="button" name="place" class="btn btn-default cus-save-but">Back</button>                       	
+			                                    <a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
+		                        </div>
+                                <div class="clearfix"></div>
+    	                    </div><!--frm-field-mar--> 
+                        </div>
+                                </form>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                    
   <!--============================Photos AND Videos TAB CLOSE============================-->
 
   <!--==========================PRICE AND TERMS TAB STARTS=======================-->
-                        <form id="pricetermss" method="post" enctype="multipart/form-data" >
-                        <div class="tellus-data" id="hide-price" style="overflow: auto;">
-                            <div class="had-frm-sec" >Price & Terms</div>
-                            <div class="frm-field-mar">
+                        <!--<form id="pricetermss" method="post" enctype="multipart/form-data" >
+                    <div class="tellus-data" id="hide-price" style="overflow: auto;">
+                        <div class="had-frm-sec" >Price & Terms</div>
+                        <div class="frm-field-mar">
                                 <?php //include_once('demo.php');?>
                                 <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
                                 <!--<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -346,7 +453,7 @@ var_dump($_SESSION);
 echo '</pre>'; ?>
 -->
 
-                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                          <!--      <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <label for="space">Price Per Hour</label>
                                     <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$$$" name="p_p_h">
                                 </div>
@@ -359,79 +466,20 @@ echo '</pre>'; ?>
                                     <button id="back1" type="button" name="place" class="btn btn-default cus-save-but">Back</button>
                                     <button id="next2" type="submit" name="priceterms" class="btn btn-default cus-save-but">Save and continue</button>
                                 </div>
-                            </div><!--frm-field-mar-->
-                        </div><!-- tell us -->
-                    </form>
+                        </div><!--frm-field-mar-->
+                   <!-- </div><!-- tell us -->
+                   <!-- </form>
 
-                        <div class="clearfix"></div>
+                    <div class="clearfix"></div>
 
 
   <!--============================Price AND TERMS TAB CLOSE============================-->
 
-
-  <!--==========================Calendar TAB STARTS=======================-->
-                    
-                    
-                        <div id="calender-tab" style="display:none;">
-  <form id="calenderform" method="post" enctype="multipart/form-data" >
-                            <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
-                            <div class="tellus-data col-lg-12 col-sm-12 col-md-12 col-xs-12 pd-lr-0" ><!--id="calendar-tab"-->
-                                <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>
-                                <div class="frm-field-mar">
-		                     
-          	                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker6' style="float: left;">
-                                       
-                		                <input type='text' class="form-control" name="date1" id="date1" placeholder="From" data-date-format="YYYY-MM-DD HH:mm" />
-                		                <span class="input-group-addon">
-                    			            <span class="glyphicon glyphicon-calendar"></span>
-                		                </span>
-            	                    </div>
-               	                    <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker7' style="float: left;">
-                                        
-                		                <input type='text' class="form-control" name="date2" id="date2" placeholder="To" data-date-format="YYYY-MM-DD HH:mm"/>
-                		                <span class="input-group-addon">
-                    			            <span class="glyphicon glyphicon-calendar"></span>
-                		                </span>
-            	                    </div>
-				
-    		                        <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
-                	                    <label for="space">Price Per Hour</label>
-                                        <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="p_p_h">
-                                    </div>
-                                    <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
-                	                    <label for="space">Price Per Day</label>
-                                        <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="p_p_n">
-                                    </div>
-                                    <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
-                	                    <label for="space">Price Per Week</label>
-                                        <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="w_p_p_n">
-                                    </div>
-                                    <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
-                	                    <button id="savetime" type="submit" name="savetime" class="btn btn-default cus-save-but">Add Availability</button>
-                                        <button id="repeat" type="button" name="repeat" class="btn btn-default cus-save-but">Repeat</button>
-		                            </div>
-                                    <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
-                                        <select class="form-control selectpicker" id="timing" name="timing">
-                                            <option value="">Select Repeat Frequency</option>
-                                            <option value="d">Daily</option>
-                                            <option value="w">Weekly</option>
-                                        </select>
-                                    </div>
-		                            <div class="col-md-12 text-center"style="margin-bottom: 11px;">
-			                            <button id="back2" type="button" name="place" class="btn btn-default cus-save-but">Back</button>                        	
-			                            <a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
-		                            </div>
-                                    <div class="clearfix"></div>
-    	                        </div><!--frm-field-mar--> 
-                            </div>
-</form>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div> <!-- details -->
+                   <!-- </div>-->  <!--details -->
                     <!-- below is ok -->
-                    <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-                        <div class="tellus-data">
-                            <div class="had-frm">Why list your place?</div>
+                <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                    <div class="tellus-data">
+                        <div class="had-frm">Why list your place?</div>
                             <div class="safe-lst">
                                 <div class="col-lg-2 col-sm-2 col-md-2 col-xs-2">
                                     <img class="img-responsive" src="img/save.png">

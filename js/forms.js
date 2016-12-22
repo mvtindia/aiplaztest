@@ -64,6 +64,7 @@ $('.uploadvideo').click(function(){
 
  // signup form start
 
+
 $("#signup_form").submit(function(e)
 {
     var formObj = $(this);
@@ -374,9 +375,20 @@ $("#change_pass").submit(function(e)
     e.unbind();
 }); 
     
+$("#movon1").click(function(e) {
+    $("#add_place").validator();
+    if (e.isDefaultPrevented()) {
+        alert("here");
+        return false;
+    } else {
+        $("#details").css('display','none');
+        $("div#pandv").css('display','block');
+        $("div#calender-tab").css('display','block');
+    }
+});
 
 /* add place form start */
-     $('#add_place').submit(function() {
+     $('form#add_place').submit(function() {
       $('.ishowload').css('display','block');
        var formData = new FormData(this);
        //console_log($formData[0]);
@@ -389,16 +401,16 @@ $("#change_pass").submit(function(e)
            contentType: false,
            processData: false,
            success: function(data){
-               $('.ishowload').css('display','none');
-            var datas=data.split(",,,");
-              //console.log(datas);
-              if(datas[1]=='success')
+              $('.ishowload').css('display','none');
+              var datas=data.split(",,,");
+              console.log(datas);
+              if(datas[0]=='success')
               {       
-              $('.placeid').val(datas[0]);
-              $("#photovideo").css('display','block');
+              $('.placeid').val(datas[1]);
+              $("#calender-tab").css('display','block');
               $("#details").css('display','none');
               }
-              else if(datas[1]=='error')
+              else if(datas[0]=='error')
               {
                   swal({ title: 'Error', text: 'Something Went Wrong.', timer: 2000
 });
@@ -493,8 +505,6 @@ $("form#photovideo").submit(function(e)
  
     }     
 });
-
-
 
 
  $('#back2').click(function(){

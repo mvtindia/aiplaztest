@@ -670,7 +670,7 @@ echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-contro
             </div>
             <div class="col-md-2 text-center">
             <?php 
-				$wpph = ($row9['w_p_p_h'] ? $row9['w_p_p_h'] : $match['w_p_p_h']);
+				$wpph = ($row9['w_p_p_n'] ? $row9['w_p_p_n'] : $match['w_p_p_n']);
 				echo "$" . $wpph; 
 			?>
             </div>
