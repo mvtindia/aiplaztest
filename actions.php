@@ -108,6 +108,8 @@ if(isset($_REQUEST['login']))
       $row = mysqli_fetch_array($q2);
       $_SESSION['u_id'] = $row['uid'];
       $_SESSION['email'] = $row['email'];
+      $_SESSION['fname'] = $row['fname'];
+      $_SESSION['lname'] = $row['lname'];
       echo 'done';
   }
   else
@@ -412,7 +414,8 @@ if($sql>0){
 }
 
 $email = $_SESSION['email'];
-
+$fname = $_SESSION['fname'];
+$lname = $_SESSION['lname'];
 $url = 'https://api.sendgrid.com/';
 $subject = 'Earn money with your listed place on 2finda.com';
 $body = 
@@ -432,12 +435,12 @@ Your 2finda team"
 ;
 $user='azure_4389271fb296cc51e6ae084dc9819730@azure.com';
 $pass='Book1234';
-$json_string = array(
-  'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
-);
 /*$json_string = array(
-  'to' => array($email), 'category' => 'test_category'
+  'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
 );*/
+$json_string = array(
+  'to' => array($email), 'category' => 'test_category'
+);
 $params = array(
       'api_user' => $user,
       'api_key' => $pass,
