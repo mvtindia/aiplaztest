@@ -176,8 +176,9 @@ if(isset($_REQUEST['place']))
   if(!isset($_SESSION['u_id']))
   {
     echo "login";
-  } else if ($err_msg==='') {
+  } else if ($err_msg=='') {
     try {
+      error_log("before place insert");
       $sql = mysqli_query($connect,'INSERT INTO `place` ( `p_name`, `p_contact`, `p_location`, `p_address`, `p_country`, `p_city`, `p_code`, `p_state`, `space_name`, `property_typeid`, `can_be_usedid`, `accomodates`, `place_area`, `ammenties_id`, `add_ammenties`, `details`, `photo`, `video`, video_type, `rules_doid`, `rules_donotid`, `timestampdate`, `saftyid`, `fire_extinguisher`, `fire_alarm`, `gas_valve`, `exit_extinguisher`,`capacity`,`user_id`,`areatype`) VALUES ("'.$name.'", "'.$contact.'", "'.$location.'", "'.$address.'","'.$country.'" ,"'.$city.'" ,"'.$postcode.'","'.$state.'", "'.$space_name.'", "'.$property.'", "'.$canbe.'", "'.$accomodates.'", "'.$area.'", "'.$commonammenties.'", "'.$add_ammenties.'", "'.$details.'", "'.$photos.'", "'.$videos.'", "'.$videotype.'", "'.$ruledo.'", "'.$ruledonot.'", "'.date('Y-m-d').'", "'.$safety.'", "'.$fire_extinguisher.'", "'.$fire_alaram.'", "'.$gas_valve.'", "'.$emergency.'","'.$capacity.'", "'.$_SESSION['u_id'].'","'.$areatype.'")');
 
       if($sql>0){
@@ -244,7 +245,7 @@ if(isset($_REQUEST['place']))
   curl_close($session);
   echo ',,,'; 
   echo $_SESSION['placeids']=mysqli_insert_id($connect);
-  
+  mysqli_close($connect);
 }
 
 // signup form end
@@ -403,9 +404,9 @@ if(isset($_REQUEST['change_pass']))
     {
         $row1 = mysqli_fetch_array($sql);
         $cupass = $row1['pwd'];
-        if($cupass === md5($cpass))
+        if($cupass == md5($cpass))
         {
-           if(md5($npass) === md5($cfpass))
+           if(md5($npass) == md5($cfpass))
           {    
               $q2 = mysqli_query($connect,'UPDATE `users` SET pwd="'.md5($cfpass).'" WHERE uid="'.$_SESSION['u_id'].'"');
               if($q2>0)
@@ -509,7 +510,7 @@ $fire_alaram = $_POST['fire_alaram'];
 $gas_valve = $_POST['gas_valve'];
 $emergency = $_POST['emergency'];
 $capacity = $_POST['capacity'];
-if($_SESSION['u_id']==="")
+if($_SESSION['u_id']=="")
 {
 echo "login";
 }
@@ -538,7 +539,7 @@ if(isset($_REQUEST['savetime']))
  $ppn = $_POST['p_p_n'];
  $wppn = $_POST['w_p_p_n'];
 
- if($_SESSION['u_id']==="")
+ if($_SESSION['u_id']=="")
  {
   echo "login";
  } else {
@@ -560,7 +561,7 @@ if(isset($_REQUEST['savetime']))
  }
 }//if isset
 //del pic from list places edit
-if(isset($_REQUEST['delpic'])==='el_del'){
+if(isset($_REQUEST['delpic'])=='el_del'){
      $pid=$_REQUEST['pid'];
       $pg=$_REQUEST['pg'];
 
@@ -582,7 +583,7 @@ if(isset($_REQUEST['delpic'])==='el_del'){
 
 
 //del pic from list places edit
-if(isset($_REQUEST['sdelpic'])==='el_del'){
+if(isset($_REQUEST['sdelpic'])=='el_del'){
      $pid=$_REQUEST['pid'];
       $pg=$_REQUEST['pg'];
 
@@ -604,7 +605,7 @@ if(isset($_REQUEST['sdelpic'])==='el_del'){
 
 
 //del video from list places edit
-if(isset($_REQUEST['delvideo'])==='vdel'){
+if(isset($_REQUEST['delvideo'])=='vdel'){
       $pid=$_REQUEST['vpid'];
       $pg1=$_REQUEST['vpg1'];
       $pg2=$_REQUEST['vpg2'];
@@ -630,7 +631,7 @@ if(isset($_REQUEST['delvideo'])==='vdel'){
 
 
 //del video from list services edit
-if(isset($_REQUEST['sdelvideo'])==='vdel'){
+if(isset($_REQUEST['sdelvideo'])=='vdel'){
       $pid=$_REQUEST['vpid'];
       $pg1=$_REQUEST['vpg1'];
       $pg2=$_REQUEST['vpg2'];
@@ -655,7 +656,7 @@ if(isset($_REQUEST['sdelvideo'])==='vdel'){
 }//isset
 
 //edit places photos
-if(isset($_REQUEST['checkgal'])==='addgal'){
+if(isset($_REQUEST['checkgal'])=='addgal'){
 
      $sid=$_REQUEST['sid'];
       //$pid=$_REQUEST['pid'];
@@ -793,7 +794,7 @@ if(isset($_REQUEST['qephoto']))
 $videos=rtrim($videos,",");
 $videotype=rtrim($type,",");
 
-if($err_msg==='')
+if($err_msg=='')
 {
   $query=mysqli_query($connect,'update place set photo="'.$newpg.'" , video="'.$newpg1.'" , video_type="'.$newpg2.'" where place_id="'.$placeid.'"');
   if($query>0){
