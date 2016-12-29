@@ -386,13 +386,25 @@ include_once('connect.php');?>
                             <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>
                             <div class="frm-field-mar">
           	                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker6' style="float: left;">
-                		                        <input type='text' class="form-control" name="date1" id="date1" placeholder="From" data-date-format="YYYY-MM-DD HH:mm" />
+                		                        <input type='text' class="form-control" name="from-date1a" id="date1a" placeholder="From" data-date-format="YYYY-MM-DD" />
                 		                        <span class="input-group-addon">
                     			                    <span class="glyphicon glyphicon-calendar"></span>
                 		                        </span>
             	                </div>
-               	                <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker7' style="float: left;">
-                		                        <input type='text' class="form-control" name="date2" id="date2" placeholder="To" data-date-format="YYYY-MM-DD HH:mm"/>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" name="from-date1b" id='datetimepicker7' style="float: left;">
+                		                        <input type='text' class="form-control" name="from-date1b" id="date1b" placeholder="From" data-date-format="HH:mm" />
+                		                        <span class="input-group-addon">
+                    			                    <span class="glyphicon glyphicon-calendar"></span>
+                		                        </span>
+            	                </div>
+               	                <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker8' style="float: left;">
+                		                        <input type='text' class="form-control" name="to-date2a" id="date2a" placeholder="To" data-date-format="YYYY-MM-DD"/>
+                		                        <span class="input-group-addon">
+                    			                    <span class="glyphicon glyphicon-calendar"></span>
+                		                        </span>
+            	                </div>
+                                <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker9' style="float: left;">
+                		                        <input type='text' class="form-control" name="to-date2b" id="date2b" placeholder="To" data-date-format="HH:mm"/>
                 		                        <span class="input-group-addon">
                     			                    <span class="glyphicon glyphicon-calendar"></span>
                 		                        </span>
@@ -562,6 +574,12 @@ $(function () {
             $('#datetimepicker7').datetimepicker({
                
             });
+            $('#datetimepicker8').datetimepicker({
+               
+            });
+            $('#datetimepicker9').datetimepicker({
+               
+            });
 });
 </script>
 </html>
@@ -607,17 +625,23 @@ $(document).ready(function() {
     $("#priceph").change(function() {
         $newval = Number($("#priceph").val()) * .95;
         $("#netpph").val(String($newval));
-    })
+    });
+
+    $("#priceph").change(function() {
+        $newval = Number($("#priceph").val()) * .95;
+        $("#netpph").val(String($newval));
+    });
 
     $("#pricepd").change(function() {
         $newval = Number($("#pricepd").val()) * .95;
         $("#netppd").val(String($newval));
-    })
+    });
 
     $("#pricepw").change(function() {
         $newval = Number($("#pricepw").val()) * .95;
         $("#netppw").val(String($newval));
-    })
+    });
+
 });
         
 </script>

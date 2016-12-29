@@ -886,8 +886,10 @@ if(isset($_REQUEST['savetime']))
 {
  // echo "working";
 $placeid = $_POST['placeid'];
-$date1=$_POST['date1'];
-$date2 = $_POST['date2'];
+$date1=$_POST['from-date1a'] . " " . $_POST['from-date1b'];
+$date2 = $_POST['to-date2a'] . " " . $_POST['to-date2b'];
+error_log($date1 . $date2);
+
 $pph = $_POST['p_p_h'];
 $ppn = $_POST['p_p_n'];
 $wppn = $_POST['w_p_p_n'];
