@@ -435,12 +435,12 @@ Your 2finda team"
 ;
 $user='azure_4389271fb296cc51e6ae084dc9819730@azure.com';
 $pass='Book1234';
-/*$json_string = array(
-  'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
-);*/
 $json_string = array(
-  'to' => array($email), 'category' => 'test_category'
+  'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
 );
+/*$json_string = array(
+  'to' => array($email), 'category' => 'test_category'
+);*/
 $params = array(
       'api_user' => $user,
       'api_key' => $pass,
