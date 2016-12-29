@@ -63,7 +63,7 @@ Your 2finda team';
   } else {
     echo 'already';
   }
-  mysqli_close($connect);
+  
 }
 
 // Add place Start Here
@@ -244,7 +244,7 @@ if(isset($_REQUEST['place']))
   curl_close($session);
   echo ',,,'; 
   echo $_SESSION['placeids']=mysqli_insert_id($connect);
-  mysqli_close($connect);
+  
 }
 
 // signup form end
