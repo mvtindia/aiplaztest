@@ -17,7 +17,7 @@ if(isset($_REQUEST['value']))
    
   if(mysqli_num_rows($q1) <= 0) {
     $code = md5(uniqid(rand()));  
-    $q2 = mysqli_query($connect,'INSERT INTO `users`(`fname`, `lname`, `email`, `pwd`, `contact`, `activation_link`, `a_status`) VALUES ("'.$fname.'","'.$lname.'","'.$email.'","'.$pwd.'","'.$contact.'","'.$code.'",999)');
+    $q2 = mysqli_query($connect,'INSERT INTO `users`(`fname`, `lname`, `email`, `pwd`, `contact`, `activation_link`, `a_status`) VALUES ("'.$fname.'","'.$lname.'","'.$email.'","'.$pwd.'","'.$contact.'","'.$code.'",999)', MYSQLI_ASYNC);
   
     if($q2)
     {
@@ -44,7 +44,7 @@ Your 2finda team';
       'html' => $body,
       //'text' => 'I am the text parameter',
       'from' => 'info@2finda.com',
-    );
+      );
     
     $request = $url.'api/mail.send.json';
     $session = curl_init($request);
@@ -69,6 +69,7 @@ Your 2finda team';
 // Add place Start Here
 if(isset($_REQUEST['place']))
 {
+  error_log(time());
   $name = $_POST['name'];
   $contact = $_POST['contact'];
 //$postal = $_POST['postal'];
@@ -194,7 +195,7 @@ if(isset($_REQUEST['place']))
     echo">>>";
     echo $err_msg;
   }
-
+error_log(time());
   $email = $_SESSION['email'];
   $fname = $_SESSION['fname'];
   $lname = $_SESSION['lname'];
@@ -246,6 +247,7 @@ if(isset($_REQUEST['place']))
   echo ',,,'; 
   echo $_SESSION['placeids']=mysqli_insert_id($connect);
   mysqli_close($connect);
+  error_log(time());
 }
 
 // signup form end
