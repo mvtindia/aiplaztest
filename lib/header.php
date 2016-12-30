@@ -4,13 +4,14 @@ include_once('connect.php');
 require_once('fbConfig.php');
 //require_once('user.php');
 session_start();
+error_log("in header");
 if(!isset($_SESSION['u_id']))
 {
   if ($fbUser) {
     
-    error_log("after fbuser check");
+    //error_log("after fbuser check");
     $fbUserProfile = $facebook->api('/me?fields=id,first_name,last_name,email');
-    error_log($fbUserProfile['id']);
+    //error_log($fbUserProfile['id']);
     $query1 = mysqli_query($connect, "SELECT * FROM `users` WHERE `fuid` = '".$fbUserProfile['id']."' AND `a_status` = 0");
     //Initialize User class
     //$user = new User();
@@ -91,7 +92,10 @@ Your 2finda team';
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav pull-right-cus" >
         <li id="one"><a href="searchlst.php" >Book a Space</a></li><!--btn-custom-->
+        
         <li id="two"><a href="list-place.php">List a Space</a></li>
+
+        
         <!--<li id="three"><a href="list-service.php">List a Service</a></li>-->
     <?php 
     if(isset($_SESSION['u_id']))
