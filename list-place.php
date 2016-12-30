@@ -436,7 +436,7 @@ include_once('connect.php');?>
                                                 <input type="text"  class="form-control" id="netppw" placeholder="Enter $$">
                                 </div>
                                 <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
-                	                            <button id="savetime" type="submit" name="savetime" class="btn btn-default cus-save-but">Add Availability</button>
+                	                            <button id="savetime" type="button" name="savetime" class="btn btn-default cus-save-but">Add Availability</button>
                                                 <button id="repeat" type="button" name="repeat" class="btn btn-default cus-save-but">Repeat</button>
 		                        </div>
                                 <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
@@ -596,15 +596,26 @@ $(document).ready(function() {
     if (filename === "") filename = "index.html";
     $(".menu a[href='" + filename + "']").addClass("selected");
 
+    $('#savetime').click(function(){
+			var dt1 = new Date($("#date1a").val() + " " + $("#date1b").val());
+			var dt2 = new Date($("#date2a").val() + " " + $("#date2b").val());
+			if (dt1 > dt2) {
+			    swal("Failure!", "End date is earlier than start date.", "error");
+                $('.ishowload').css('display','none');
+                return false;
+            } else {
+                $("#calenderform").submit();
+            }
+	});
+
     $( "#mvdtf" ).click(function() {
-        //alert("hello");
         event.preventDefault();
         var i = dae.valueOf() + (604800000 * x);
         dae = new Date( i);
         dp.startDate = dae.getFullYear() + "-" + ("0" + (dae.getMonth() + 1)).slice(-2) + "-" + ("0" + dae.getDate()).slice(-2);
         
         $('.ishowload').css('display','none');
-        $("#pricetermss").css('display','none');
+        //$("#pricetermss").css('display','none');
         $("#calender-tab").css('display','block')
         dp.update();
     });
@@ -616,7 +627,7 @@ $(document).ready(function() {
         dp.startDate = dae.getFullYear() + "-" + ("0" + (dae.getMonth() + 1)).slice(-2) + "-" + ("0" + dae.getDate()).slice(-2);
         
         $('.ishowload').css('display','none');
-        $("#pricetermss").css('display','none');
+        //$("#pricetermss").css('display','none');
         $("#calender-tab").css('display','block')
         
         dp.update();
