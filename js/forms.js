@@ -388,10 +388,10 @@ $("#movon1").click(function(e) {
 });
 
 /* add place form start */
-     $('form#add_place').submit(function() {
+     $('form#add_place').submit(function(e) {
       $('.ishowload').css('display','block');
        var formData = new FormData(this);
-       //console_log($formData[0]);
+       
        $.ajax({
            url: 'actions.php?place=001',
            type: 'POST',
@@ -406,9 +406,9 @@ $("#movon1").click(function(e) {
               console.log(datas);
               if(datas[0]=='success')
               {       
-              $('.placeid').val(datas[1]);
-              $("#calender-tab").css('display','block');
-              $("#details").css('display','none');
+                $('.placeid').val(datas[1]);
+                $("#calender-tab").css('display','block');
+                $("#details").css('display','none');
               }
               else if(datas[0]=='error')
               {
@@ -423,7 +423,7 @@ $("#movon1").click(function(e) {
              }
            
        });
-       return false;
+       e.preventDefault(); //Prevent Default action.
    });
 
 // photo n videos form submit ajax
@@ -1023,7 +1023,7 @@ $("form#epricetermss").submit(function(e)
 
 $("form#calenderform").submit(function(e)
 {
-    $('.ishowload').css('display','block');
+   $('.ishowload').css('display','block');
    var formObj = $(this);
    
    if(window.FormData !== undefined)  // for HTML5 browsers
@@ -1074,8 +1074,6 @@ $("form#calenderform").submit(function(e)
 
                 });
 
-                
-
            },
       });
        e.preventDefault();
@@ -1083,7 +1081,6 @@ $("form#calenderform").submit(function(e)
   }
   else  //for olden browsers
    {
-       console.log("after the else");
        //generate a random id
        var  iframeId = 'unique' + (new Date().getTime());
 
