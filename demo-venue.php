@@ -53,30 +53,29 @@ if($match=mysqli_fetch_array($query))
       <!-- Wrapper for slides -->
       <div class="carousel-inner hg-500" role="listbox">
 	
-		<?php if(!empty($match['photo']))
+		<?php 
+		if(!empty($match['photo']))
 		{
 		 	$photo=explode(",", $match['photo']);
-	  for ($i=0; $i <count($photo) ; $i++)
-	   { 
-	  	if($photo[$i]=="")
-	  	{
-	  		continue;
-	  	}
-	  	if($i=="0")
-	  	{
+	  		for ($i=0; $i <count($photo) ; $i++)
+	   		{ 
+	  			if($photo[$i]=="")
+	  			{
+	  				continue;
+	  			}
+	  			if($i=="0")
+	  			{
   		?>
-	  <style>
-	.slide<?php echo$i; ?> {
+	<style>
+		.slide<?php echo $i; ?> {
 		background: url("images/placephotos/<?php echo $photo[$i]; ?>");
 		padding-top:100px !important;
-	background-position:center;
-	background-size:cover;
-}
-        </style>
-              <div class="item slide<?php echo$i; ?> active">
-          <div class="carousel-caption">
-				
-          </div>
+		background-position:center;
+		background-size:cover;
+		}
+    </style>
+        <div class="item slide<?php echo$i; ?> active">
+        <div class="carousel-caption"></div>
         </div> <!-- /.item -->
 	  	<?php
 	  	}else
@@ -99,8 +98,9 @@ if($match=mysqli_fetch_array($query))
 	  	}
 	
 	  }
-	}
-	  	?>
+	} else {
+	  	?><style> .slide { background-color: #202935; } </style>
+	<?php } ?>
           <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
