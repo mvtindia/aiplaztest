@@ -551,7 +551,7 @@ if(isset($_REQUEST['savetime']))
       echo ",,,";
     } else {
       $sql = mysqli_query($connect,"INSERT `calenderdata` SET `placeid`='".$placeid."', `p_p_n`='".$ppn."', `w_p_p_n`='".$wppn."',
-`p_p_h`='".$pph."', `date1`='".$date1."', `date2`='".$date2."', `status` ='unbooked', `ctimestampdate` = '".date('Y-m-d')."'" );
+`p_p_h`='".$pph."', `date1`='".$date1."', `date2`='".$date2."', `status` ='Available', `ctimestampdate` = '".date('Y-m-d')."'" );
   
       if($sql>0){
         echo "success";

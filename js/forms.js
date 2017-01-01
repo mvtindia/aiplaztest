@@ -1109,6 +1109,7 @@ $("form#calenderform").submit(function(e)
 });
 
 $('#repeat').click(function(){
+        if (formVal()) {
     	if ($('#timing').val() == 'd') {
 			$dater = new Date($('#date1a').val() + " 00:00");
 			$dater2 = new Date($('#date2a').val() + " 00:00");
@@ -1128,15 +1129,16 @@ $('#repeat').click(function(){
 			
 			$('#date1a').val($dater.getFullYear() + "-" + String("0" + ($dater.getMonth() + 1)).slice(-2)  + "-" + String("0" + $dater.getDate()).slice(-2));
             $('#date2a').val($dater2.getFullYear() + "-" + String("0" + ($dater2.getMonth() + 1)).slice(-2) + "-" + String("0" + $dater2.getDate()).slice(-2));
-            $('#date1b').val(String("0" + $dater.getHours()).slice(-2) + ":" + String("0" + $dater.getSeconds()).slice(-2));
-			$('#date2b').val(String("0" + $dater2.getHours()).slice(-2) + ":" + String("0" + $dater2.getSeconds()).slice(-2));
+            //$('#date1b').val(String("0" + $dater.getHours()).slice(-2) + ":" + String("0" + $dater.getSeconds()).slice(-2));
+			//$('#date2b').val(String("0" + $dater2.getHours()).slice(-2) + ":" + String("0" + $dater2.getSeconds()).slice(-2));
                 	
 		} else {
             swal('Repeat frequency', 'Please pick repeat frequency', 'error');
             return false;
 
-        }
+        } 
         $('form#calenderform').submit();
+        }
 });
 
 $('#add_cal_price').click(function(){

@@ -555,6 +555,114 @@ echo '</pre>'; ?>
 </div><!--container-fluid close-->
 
 <!-- <script src="js/forms-map.js"></script> -->
+<script>
+function formVal() {
+                    var mess = "Please Enter Missing Information.";
+
+    				var fn=document.getElementById('date1a').value;
+    				if(fn == ""){
+        				
+        				document.getElementById('date1a').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('date1a').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+
+					var fn1=document.getElementById('date1b').value;
+    				if(fn1 == ""){
+        				
+        				document.getElementById('date1b').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('date1b').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+
+					var fn2=document.getElementById('date2a').value;
+    				if(fn2 == ""){
+        				
+        				document.getElementById('date2a').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('date2a').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+
+					var fn2=document.getElementById('date2b').value;
+    				if(fn2 == ""){
+        				
+        				document.getElementById('date2b').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('date2b').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+					var fn1=document.getElementById('priceph').value;
+    				if(fn1 == ""){
+        				
+        				document.getElementById('priceph').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('priceph').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+
+					var fn2=document.getElementById('pricepd').value;
+    				if(fn2 == ""){
+        				
+        				document.getElementById('pricepd').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('pricepd').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+
+					var fn2=document.getElementById('pricepw').value;
+    				if(fn2 == ""){
+        				
+        				document.getElementById('pricepw').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('pricepw').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+                    
+                    var dt1 = new Date($("#date1a").val() + " " + $("#date1b").val());
+			        var dt2 = new Date($("#date2a").val() + " " + $("#date2b").val());
+                    var dt3 = new Date();
+			        if (dt1 >= dt2) {
+				        document.getElementById('date1a').style.borderColor = "red";
+				        document.getElementById('date1b').style.borderColor = "red";
+				        document.getElementById('date2a').style.borderColor = "red";
+				        document.getElementById('date2b').style.borderColor = "red";
+				        $("#span1a").html("From Date is Greater than or Equal to To Date.");
+				        $("#span1a").css('display', 'block');
+				        return false;
+                    } else if (dt1 < dt3) {
+                        document.getElementById('date1a').style.borderColor = "red";
+                        $("#span1a").html("From Date is in the Past.");
+				        $("#span1a").css('display', 'block');
+                        return false;
+                    }
+                    return true;
+    }
+</script>
+
 <?php include 'lib/footer.php'; //if isset
 ?>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0ceT-_kjPt8INNEKoVX9axkv3zw3miBY&signed_in=true&libraries=places&callback=initAutocomplete"
@@ -598,110 +706,13 @@ $(document).ready(function() {
     $(".menu a[href='" + filename + "']").addClass("selected");
 
     $('#savetime').click(function(){
-                    var mess = "Please Enter Missing Information.";
-
-    				var fn=document.getElementById('date1a').value;
-    				if(fn == ""){
-        				
-        				document.getElementById('date1a').style.borderColor = "red";
-						$("#span1a").html(mess);
-						$("#span1a").css('display', 'block');
-        				return false;
-    				}else{
-        				document.getElementById('date1a').style.borderColor = "green";
-						$("#span1a").css('display', 'none');
-    				}
-
-					var fn1=document.getElementById('date1b').value;
-    				if(fn1 == ""){
-        				//alert('Please Enter First Name');
-        				document.getElementById('date1b').style.borderColor = "red";
-						$("#span1a").html(mess);
-						$("#span1a").css('display', 'block');
-        				return false;
-    				}else{
-        				document.getElementById('date1b').style.borderColor = "green";
-						$("#span1a").css('display', 'none');
-    				}
-
-					var fn2=document.getElementById('date2a').value;
-    				if(fn2 == ""){
-        				//alert('Please Enter First Name');
-        				document.getElementById('date2a').style.borderColor = "red";
-						$("#span1a").html(mess);
-						$("#span1a").css('display', 'block');
-        				return false;
-    				}else{
-        				document.getElementById('date2a').style.borderColor = "green";
-						$("#span1a").css('display', 'none');
-    				}
-
-					var fn2=document.getElementById('date2b').value;
-    				if(fn2 == ""){
-        				//alert('Please Enter First Name');
-        				document.getElementById('date2b').style.borderColor = "red";
-						$("#span1a").html(mess);
-						$("#span1a").css('display', 'block');
-        				return false;
-    				}else{
-        				document.getElementById('date2b').style.borderColor = "green";
-						$("#span1a").css('display', 'none');
-    				}
-					var fn1=document.getElementById('priceph').value;
-    				if(fn1 == ""){
-        				//alert('Please Enter First Name');
-        				document.getElementById('priceph').style.borderColor = "red";
-						$("#span1a").html(mess);
-						$("#span1a").css('display', 'block');
-        				return false;
-    				}else{
-        				document.getElementById('priceph').style.borderColor = "green";
-						$("#span1a").css('display', 'none');
-    				}
-
-					var fn2=document.getElementById('pricepd').value;
-    				if(fn2 == ""){
-        				//alert('Please Enter First Name');
-        				document.getElementById('pricepd').style.borderColor = "red";
-						$("#span1a").html(mess);
-						$("#span1a").css('display', 'block');
-        				return false;
-    				}else{
-        				document.getElementById('pricepd').style.borderColor = "green";
-						$("#span1a").css('display', 'none');
-    				}
-
-					var fn2=document.getElementById('pricepw').value;
-    				if(fn2 == ""){
-        				//alert('Please Enter First Name');
-        				document.getElementById('pricepw').style.borderColor = "red";
-						$("#span1a").html(mess);
-						$("#span1a").css('display', 'block');
-        				return false;
-    				}else{
-        				document.getElementById('pricepw').style.borderColor = "green";
-						$("#span1a").css('display', 'none');
-    				}
-                    
-                    var dt1 = new Date($("#date1a").val() + " " + $("#date1b").val());
-			        var dt2 = new Date($("#date2a").val() + " " + $("#date2b").val());
-                    var dt3 = new Date();
-			        if (dt1 >= dt2) {
-				        document.getElementById('date1a').style.borderColor = "red";
-				        document.getElementById('date1b').style.borderColor = "red";
-				        document.getElementById('date2a').style.borderColor = "red";
-				        document.getElementById('date2b').style.borderColor = "red";
-				        $("#span1a").html("From Date is Greater than or Equal to To Date.");
-				        $("#span1a").css('display', 'block');
-				        return false;
-                    } else if (dt1 < dt3) {
-                        document.getElementById('date1a').style.borderColor = "red";
-                        $("#span1a").html("From Date is in the Past.");
-				        $("#span1a").css('display', 'block');
+                    if (formVal()) {
+                        $("form#calenderform").submit();
+                    } else {
                         return false;
                     }
-                    $("form#calenderform").submit();
 	});
+
 
     $( "#mvdtf" ).click(function() {
         event.preventDefault();
@@ -742,6 +753,8 @@ $(document).ready(function() {
         $newval = Number($("#pricepw").val()) * .95;
         $("#netppw").val(String($newval));
     });
+
+    
 
 });
         
