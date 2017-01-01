@@ -80,11 +80,11 @@ $("#signup_form").submit(function(e)
         cache: false,
         processData:false,
         success: function(data, textStatus, jqXHR)
-    {   
+        {   
         console.log(data);
         if(data == 'already')
         {
-            swal("Failure!", "Email Id already Exist!", "error");
+            swal("Failure!", "Oops! The email ID you entered already exists. Please try to log in with the ID or change your password if you have forgotten it.", "error");
         }
         else if(data == 'done')
         {
@@ -100,10 +100,10 @@ $("#signup_form").submit(function(e)
                     $("#second-block").css('display','block');
                   }, 2000);
         }
-    },
+        },
         error: function(jqXHR, textStatus, errorThrown) 
      {
-        swal("Failure!", "Email Id already Exist!", "error");
+        swal("Failure!", "Oops! The email ID you entered already exists. Please try to log in with the ID or change your password if you have forgotten it.", "error");
      }          
     });
     e.preventDefault(); //Prevent Default action. 
@@ -389,10 +389,10 @@ $("#movon1").click(function(e) {
 
 /* add place form start */
      $('form#add_place').submit(function(e) {
-      $('.ishowload').css('display','block');
-       var formData = new FormData(this);
+        $('.ishowload').css('display','block');
+        var formData = new FormData(this);
        
-       $.ajax({
+        $.ajax({
            url: 'actions.php?place=001',
            type: 'POST',
            data: formData,
@@ -423,6 +423,7 @@ $("#movon1").click(function(e) {
              }
            
        });
+       
        e.preventDefault(); //Prevent Default action.
    });
 
@@ -1030,7 +1031,7 @@ $("form#calenderform").submit(function(e)
    {
 
        var formData = new FormData(this);
-       for ( var pair of formData.entries()) {
+       /*for ( var pair of formData ) {
            if (pair[0] == 'date1') {
                var dt1 = pair[1];
            }
@@ -1042,7 +1043,7 @@ $("form#calenderform").submit(function(e)
            swal("Failure!", "End date is earlier than start date.", "error");
            $('.ishowload').css('display','none');
            return false;
-       }
+       }*/
         
        $.ajax({
            url: 'actions.php?savetime=303',
@@ -1109,21 +1110,26 @@ $("form#calenderform").submit(function(e)
 
 $('#repeat').click(function(){
     	if ($('#timing').val() == 'd') {
-			$dater = new Date($('#date1').val());
-			$dater2 = new Date($('#date2').val());
+			$dater = new Date($('#date1a').val() + " 00:00");
+			$dater2 = new Date($('#date2a').val() + " 00:00");
 			$dater.setDate($dater.getDate() + 1);
 			$dater2.setDate($dater2.getDate() + 1);
-			$('#date1').val($dater.getFullYear() + "-" + String("0" + ($dater.getMonth() + 1)).slice(-2)  + "-" + String("0" + $dater.getDate()).slice(-2) + " " + String("0" + $dater.getHours()).slice(-2) + ":" + String("0" + $dater.getSeconds()).slice(-2));
-			$('#date2').val($dater2.getFullYear() + "-" + String("0" + ($dater2.getMonth() + 1)).slice(-2) + "-" + String("0" + $dater2.getDate()).slice(-2) + " " + String("0" + $dater2.getHours()).slice(-2) + ":" + String("0" + $dater2.getSeconds()).slice(-2));
-                	
+
+            $('#date1a').val($dater.getFullYear() + "-" + String("0" + ($dater.getMonth() + 1)).slice(-2)  + "-" + String("0" + $dater.getDate()).slice(-2));
+            $('#date2a').val($dater2.getFullYear() + "-" + String("0" + ($dater2.getMonth() + 1)).slice(-2) + "-" + String("0" + $dater2.getDate()).slice(-2));
+            //$('#date1b').val(String("0" + $dater.getHours()).slice(-2) + ":" + String("0" + $dater.getSeconds()).slice(-2));
+			//$('#date2b').val(String("0" + $dater2.getHours()).slice(-2) + ":" + String("0" + $dater2.getSeconds()).slice(-2));
+                	    	
 		} else if ($('#timing').val() == 'w') {
-			$dater = new Date($('#date1').val());
-			$dater2 = new Date($('#date2').val());
+			$dater = new Date($('#date1a').val() + " 00:00");
+			$dater2 = new Date($('#date2a').val() + " 00:00");
 			$dater.setDate($dater.getDate() + 7);
 			$dater2.setDate($dater2.getDate() + 7);
 			
-			$('#date1').val($dater.getFullYear() + "-" + String("00" + ($dater.getMonth() + 1)).slice(-2) + "-" + String("0" + $dater.getDate()).slice(-2) + " " + String("0" + $dater.getHours()).slice(-2) + ":" + String("0" + $dater.getSeconds()).slice(-2));
-			$('#date2').val($dater2.getFullYear() + "-" + String("00" + ($dater2.getMonth() + 1)).slice(-2) + "-" + String("0" + $dater2.getDate()).slice(-2) + " " + String("0" + $dater2.getHours()).slice(-2) + ":" + String("0" + $dater2.getSeconds()).slice(-2));
+			$('#date1a').val($dater.getFullYear() + "-" + String("0" + ($dater.getMonth() + 1)).slice(-2)  + "-" + String("0" + $dater.getDate()).slice(-2));
+            $('#date2a').val($dater2.getFullYear() + "-" + String("0" + ($dater2.getMonth() + 1)).slice(-2) + "-" + String("0" + $dater2.getDate()).slice(-2));
+            $('#date1b').val(String("0" + $dater.getHours()).slice(-2) + ":" + String("0" + $dater.getSeconds()).slice(-2));
+			$('#date2b').val(String("0" + $dater2.getHours()).slice(-2) + ":" + String("0" + $dater2.getSeconds()).slice(-2));
                 	
 		} else {
             swal('Repeat frequency', 'Please pick repeat frequency', 'error');

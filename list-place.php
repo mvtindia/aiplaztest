@@ -386,25 +386,25 @@ include_once('connect.php');?>
                             <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>
                             <div class="frm-field-mar">
           	                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker6' style="float: left;">
-                		                        <input type='text' class="form-control" name="from-date1a" id="date1a" placeholder="From" data-date-format="YYYY-MM-DD" />
+                		                        <input type='text' class="form-control" name="from-date1a" id="date1a" required placeholder="From" data-date-format="YYYY-MM-DD" />
                 		                        <span class="input-group-addon">
                     			                    <span class="glyphicon glyphicon-calendar"></span>
                 		                        </span>
             	                </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" name="from-date1b" id='datetimepicker7' style="float: left;">
-                		                        <input type='text' class="form-control" name="from-date1b" id="date1b" placeholder="From" data-date-format="HH:mm" />
+                		                        <input type='text' class="form-control" name="from-date1b" id="date1b" required placeholder="From" data-date-format="HH:mm" />
                 		                        <span class="input-group-addon">
                     			                    <span class="glyphicon glyphicon-calendar"></span>
                 		                        </span>
             	                </div>
                	                <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker8' style="float: left;">
-                		                        <input type='text' class="form-control" name="to-date2a" id="date2a" placeholder="To" data-date-format="YYYY-MM-DD"/>
+                		                        <input type='text' class="form-control" name="to-date2a" id="date2a" required placeholder="To" data-date-format="YYYY-MM-DD"/>
                 		                        <span class="input-group-addon">
                     			                    <span class="glyphicon glyphicon-calendar"></span>
                 		                        </span>
             	                </div>
                                 <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker9' style="float: left;">
-                		                        <input type='text' class="form-control" name="to-date2b" id="date2b" placeholder="To" data-date-format="HH:mm"/>
+                		                        <input type='text' class="form-control" name="to-date2b" id="date2b" required placeholder="To" data-date-format="HH:mm"/>
                 		                        <span class="input-group-addon">
                     			                    <span class="glyphicon glyphicon-calendar"></span>
                 		                        </span>
@@ -438,6 +438,7 @@ include_once('connect.php');?>
                                 <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
                 	                            <button id="savetime" type="button" name="savetime" class="btn btn-default cus-save-but">Add Availability</button>
                                                 <button id="repeat" type="button" name="repeat" class="btn btn-default cus-save-but">Repeat</button>
+                                                <span id="span1a" style="display:none; color: red;">Please enter missing values.</span>
 		                        </div>
                                 <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
                                                 <select class="form-control selectpicker" id="timing" name="timing">
@@ -597,15 +598,103 @@ $(document).ready(function() {
     $(".menu a[href='" + filename + "']").addClass("selected");
 
     $('#savetime').click(function(){
-			var dt1 = new Date($("#date1a").val() + " " + $("#date1b").val());
-			var dt2 = new Date($("#date2a").val() + " " + $("#date2b").val());
-			if (dt1 > dt2) {
-			    swal("Failure!", "End date is earlier than start date.", "error");
-                $('.ishowload').css('display','none');
-                return false;
-            } else {
-                $("#calenderform").submit();
-            }
+                    var mess = "Please Enter Missing Information.";
+
+    				var fn=document.getElementById('date1a').value;
+    				if(fn == ""){
+        				
+        				document.getElementById('date1a').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('date1a').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+
+					var fn1=document.getElementById('date1b').value;
+    				if(fn1 == ""){
+        				//alert('Please Enter First Name');
+        				document.getElementById('date1b').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('date1b').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+
+					var fn2=document.getElementById('date2a').value;
+    				if(fn2 == ""){
+        				//alert('Please Enter First Name');
+        				document.getElementById('date2a').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('date2a').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+
+					var fn2=document.getElementById('date2b').value;
+    				if(fn2 == ""){
+        				//alert('Please Enter First Name');
+        				document.getElementById('date2b').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('date2b').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+					var fn1=document.getElementById('priceph').value;
+    				if(fn1 == ""){
+        				//alert('Please Enter First Name');
+        				document.getElementById('priceph').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('priceph').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+
+					var fn2=document.getElementById('pricepd').value;
+    				if(fn2 == ""){
+        				//alert('Please Enter First Name');
+        				document.getElementById('pricepd').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('pricepd').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+
+					var fn2=document.getElementById('pricepw').value;
+    				if(fn2 == ""){
+        				//alert('Please Enter First Name');
+        				document.getElementById('pricepw').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('pricepw').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+                    
+                    var dt1 = new Date($("#date1a").val() + " " + $("#date1b").val());
+			        var dt2 = new Date($("#date2a").val() + " " + $("#date2b").val());
+			        if (dt1 >= dt2) {
+				        document.getElementById('date1a').style.borderColor = "red";
+				        document.getElementById('date1b').style.borderColor = "red";
+				        document.getElementById('date2a').style.borderColor = "red";
+				        document.getElementById('date2b').style.borderColor = "red";
+				        $("#span1a").html("From Date is Greater than or Equal to To Date.");
+				        $("#span1a").css('display', 'block');
+				        return false;
+			        }
+                    $("form#calenderform").submit();
 	});
 
     $( "#mvdtf" ).click(function() {
@@ -631,11 +720,6 @@ $(document).ready(function() {
         $("#calender-tab").css('display','block')
         
         dp.update();
-    });
-
-    $("#priceph").change(function() {
-        $newval = Number($("#priceph").val()) * .95;
-        $("#netpph").val(String($newval));
     });
 
     $("#priceph").change(function() {
