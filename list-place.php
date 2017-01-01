@@ -685,6 +685,7 @@ $(document).ready(function() {
                     
                     var dt1 = new Date($("#date1a").val() + " " + $("#date1b").val());
 			        var dt2 = new Date($("#date2a").val() + " " + $("#date2b").val());
+                    var dt3 = new Date();
 			        if (dt1 >= dt2) {
 				        document.getElementById('date1a').style.borderColor = "red";
 				        document.getElementById('date1b').style.borderColor = "red";
@@ -693,7 +694,12 @@ $(document).ready(function() {
 				        $("#span1a").html("From Date is Greater than or Equal to To Date.");
 				        $("#span1a").css('display', 'block');
 				        return false;
-			        }
+                    } else if (dt1 < dt3) {
+                        document.getElementById('date1a').style.borderColor = "red";
+                        $("#span1a").html("From Date is in the Past.");
+				        $("#span1a").css('display', 'block');
+                        return false;
+                    }
                     $("form#calenderform").submit();
 	});
 
