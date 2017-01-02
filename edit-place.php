@@ -455,43 +455,70 @@ if($match=mysqli_fetch_array($query)){
                             <div class="tellus-data col-lg-12 col-sm-12 col-md-12 col-xs-12 pd-lr-0" ><!--id="calendar-tab"-->
                                 <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>
                                 <div class="frm-field-mar">
-		                     
           	                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker6' style="float: left;">
-                                       
-                		                <input type='text' class="form-control" name="date1" id="date1" placeholder="From" data-date-format="YYYY-MM-DD HH:mm" />
-                		                <span class="input-group-addon">
-                    			            <span class="glyphicon glyphicon-calendar"></span>
-                		                </span>
-            	                    </div>
-               	                    <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker7' style="float: left;">
-                                        
-                		                <input type='text' class="form-control" name="date2" id="date2" placeholder="To" data-date-format="YYYY-MM-DD HH:mm"/>
-                		                <span class="input-group-addon">
-                    			            <span class="glyphicon glyphicon-calendar"></span>
-                		                </span>
-            	                    </div>
+                		                        <input type='text' class="form-control" name="from-date1a" id="date1a" required placeholder="From" data-date-format="YYYY-MM-DD" />
+                		                        <span class="input-group-addon">
+                    			                    <span class="glyphicon glyphicon-calendar"></span>
+                		                        </span>
+            	                  </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" name="from-date1b" id='datetimepicker7' style="float: left;">
+                		                        <input type='text' class="form-control" name="from-date1b" id="date1b" required placeholder="From" data-date-format="HH:mm" />
+                		                        <span class="input-group-addon">
+                    			                    <span class="glyphicon glyphicon-calendar"></span>
+                		                        </span>
+            	                  </div>
+               	                <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker8' style="float: left;">
+                		                        <input type='text' class="form-control" name="to-date2a" id="date2a" required placeholder="To" data-date-format="YYYY-MM-DD"/>
+                		                        <span class="input-group-addon">
+                    			                    <span class="glyphicon glyphicon-calendar"></span>
+                		                        </span>
+            	                  </div>
+                                <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker9' style="float: left;">
+                		                        <input type='text' class="form-control" name="to-date2b" id="date2b" required placeholder="To" data-date-format="HH:mm"/>
+                		                        <span class="input-group-addon">
+                    			                    <span class="glyphicon glyphicon-calendar"></span>
+                		                        </span>
+            	                  </div>
 				
-    		                        <div class="form-group col-lg-5 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
-                	                    <label for="space">Price Per Hour</label>
-                                        <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$$$" name="p_p_h">
-                                    </div>
-                                    <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
-                	                    <label for="space">Price Per Day</label>
-                                        <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$$$" name="p_p_n">
-                                    </div>
-                                    <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
-                	                    <button id="savetime" type="submit" name="savetime" class="btn btn-default cus-save-but">Add Availability</button>
-                                        <button id="repeat" type="button" name="repeat" class="btn btn-default cus-save-but">Repeat</button>
+    		                            		                    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                            <label for="space">Price Per Hour</label>
+                                                <input type="number" required class="form-control" id="priceph" placeholder="Enter $$" name="p_p_h">
+                                </div>
+                                
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                            <label for="space">Price Per Day</label>
+                                                <input type="number" required class="form-control" id="pricepd" placeholder="Enter $$" name="p_p_n">
+                                </div>
+                                
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                            <label for="space">Price Per Week</label>
+                                                <input type="number" required class="form-control" id="pricepw" placeholder="Enter $$" name="w_p_p_n">
+                                </div> 
+                                <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                            <label for="space">Price Per Hour(minus service fee)</label>
+                                                <input type="text"  class="form-control" id="netpph" placeholder="Enter $$">
+                                </div>
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
+                                                <label for="space">Price Per Day(minus service fee)</label>
+                                                <input type="text"  class="form-control" id="netppd" placeholder="Enter $$">
+                                </div>                            
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
+                	                            <label for="space">Price Per Week(minus service fee)</label>
+                                                <input type="text"  class="form-control" id="netppw" placeholder="Enter $$">
+                                </div>
+                                <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                	                            <button id="savetime" type="button" name="savetime" class="btn btn-default cus-save-but">Add Availability</button>
+                                                <button id="repeat" type="button" name="repeat" class="btn btn-default cus-save-but">Repeat</button>
+                                                <span id="span1a" style="display:none; color: red;">Please enter missing values.</span>
 		                            </div>
-                                    <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
                                         <select class="form-control selectpicker" id="timing" name="timing">
                                             <option value="">Select Repeat Frequency</option>
                                             <option value="d">Daily</option>
                                             <option value="w">Weekly</option>
                                         </select>
-                                    </div>
-		                            <div class="col-md-12 text-center"style="margin-bottom: 11px;">
-			                                                    	
+                                </div>
+		                            <div class="col-md-12 text-center"style="margin-bottom: 11px;">                                   	
 			                            <a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
 		                            </div>
                                     <div class="clearfix"></div>
@@ -748,6 +775,8 @@ p {
   </div>
 
   <div class="hide1" id="fourth-block">
+  
+  
 <form class="form-group" id="change_price">
     <div class="input-group" id="change_price">
       <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -872,6 +901,31 @@ p {
         $(function () {
             $('#datetimepicker6').datetimepicker();
             $('#datetimepicker7').datetimepicker();
+            $('#datetimepicker8').datetimepicker();
+            $('#datetimepicker9').datetimepicker();
+        });
+        $(document).ready(function() {
+        $("#priceph").change(function() {
+            $newval = Number($("#priceph").val()) * .95;
+            $("#netpph").val(String($newval));
+        });
+
+        $("#pricepd").change(function() {
+          $newval = Number($("#pricepd").val()) * .95;
+          $("#netppd").val(String($newval));
+        });
+
+        $("#pricepw").change(function() {
+          $newval = Number($("#pricepw").val()) * .95;
+          $("#netppw").val(String($newval));
+        });
+        $('#savetime').click(function(){
+                    if (formVal()) {
+                        $("form#calenderform").submit();
+                    } else {
+                        return false;
+                    }
+	      });
         });
     </script>
 
@@ -936,6 +990,113 @@ p {
           });
         }
       }
+
+
+      function formVal() {
+                    var mess = "Please Enter Missing Information.";
+
+    				var fn=document.getElementById('date1a').value;
+    				if(fn == ""){
+        				
+        				document.getElementById('date1a').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('date1a').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+
+					var fn1=document.getElementById('date1b').value;
+    				if(fn1 == ""){
+        				
+        				document.getElementById('date1b').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('date1b').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+
+					var fn2=document.getElementById('date2a').value;
+    				if(fn2 == ""){
+        				
+        				document.getElementById('date2a').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('date2a').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+
+					var fn2=document.getElementById('date2b').value;
+    				if(fn2 == ""){
+        				
+        				document.getElementById('date2b').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('date2b').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+					var fn1=document.getElementById('priceph').value;
+    				if(fn1 == ""){
+        				
+        				document.getElementById('priceph').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('priceph').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+
+					var fn2=document.getElementById('pricepd').value;
+    				if(fn2 == ""){
+        				
+        				document.getElementById('pricepd').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('pricepd').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+
+					var fn2=document.getElementById('pricepw').value;
+    				if(fn2 == ""){
+        				
+        				document.getElementById('pricepw').style.borderColor = "red";
+						$("#span1a").html(mess);
+						$("#span1a").css('display', 'block');
+        				return false;
+    				}else{
+        				document.getElementById('pricepw').style.borderColor = "green";
+						$("#span1a").css('display', 'none');
+    				}
+                    
+                    var dt1 = new Date($("#date1a").val() + " " + $("#date1b").val());
+			        var dt2 = new Date($("#date2a").val() + " " + $("#date2b").val());
+                    var dt3 = new Date();
+			        if (dt1 >= dt2) {
+				        document.getElementById('date1a').style.borderColor = "red";
+				        document.getElementById('date1b').style.borderColor = "red";
+				        document.getElementById('date2a').style.borderColor = "red";
+				        document.getElementById('date2b').style.borderColor = "red";
+				        $("#span1a").html("From Date is Greater than or Equal to To Date.");
+				        $("#span1a").css('display', 'block');
+				        return false;
+                    } else if (dt1 < dt3) {
+                        document.getElementById('date1a').style.borderColor = "red";
+                        $("#span1a").html("From Date is in the Past.");
+				        $("#span1a").css('display', 'block');
+                        return false;
+                    }
+                    return true;
+    }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0ceT-_kjPt8INNEKoVX9axkv3zw3miBY&signed_in=true&libraries=places&callback=initAutocomplete"
         async defer></script>
