@@ -1,5 +1,10 @@
 <?php session_start();
-include('connect.php');?>
+include('connect.php');
+if(!isset($_SESSION['u_id'])) {
+  header( 'Location: http://' . $_SERVER['SERVER_NAME'] ) ;
+}
+?> 
+?>
 <!doctype html>
 <html>
 <head>
