@@ -37,10 +37,13 @@ if (isset($_REQUEST['placeid'])) {
 </div><!--menu-had close-->
 <?php 
 $placeid=$_REQUEST['placeid'];
-
-$query=mysqli_query($connect,'Select * from place where place_id="'.$placeid.'"');
+$date1=$_REQUEST['checkin'] . " 00:00";
+$date2=$_REQUEST['checkout'] . " 23:59";
+error_log($date1 . " " . $date2);
+$query=mysqli_query($connect,'Select * from place a, calenderdata b where place_id="'.$placeid.'" and a.place_id = b.placeid and b.date1 >="'.$date1.'" and b.date2 <= "'.$date2.'"');
 if($match=mysqli_fetch_array($query))
 	{
+		error_log("after fetch");
 		?>
 <!--==============menu header close=========================-->
 
@@ -54,9 +57,9 @@ if($match=mysqli_fetch_array($query))
       <div class="carousel-inner hg-500" role="listbox">
 	
 		<?php 
-		if(!empty($match['photo']))
+		if(!empty($match['a.photo']))
 		{
-		 	$photo=explode(",", $match['photo']);
+		 	$photo=explode(",", $match['a.photo']);
 	  		for ($i=0; $i <count($photo) ; $i++)
 	   		{ 
 	  			if($photo[$i]=="")
@@ -698,7 +701,10 @@ echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-contro
 </div>
 
 <?php 
-}
+} else {
+?>
+	<div style="height: 250px;"></div>
+<?php } 
 
 	  //if isset ?>
 <!--======footer======-->
