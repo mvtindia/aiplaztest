@@ -148,8 +148,7 @@ $res = mysqli_fetch_array($q1); ?>
               <a href="new-actions.php?delete_place=<?php echo $r21['place_id']; ?>" id="btndelpl"><button class="btn-danger" title="Delete"><i class="fa fa-trash"></i>&nbsp;</button></a>
               
             </tr>
-    
-    
+     
             <?php
            }
            ?>           
@@ -302,10 +301,6 @@ $res = mysqli_fetch_array($q1); ?>
 <!-- Enquries Block close -->
 
 
-
-
-
-
 <!-- Services Block -->
 <div id="b7" class="welcome col-md-12 col-sm-12 col-xs-12 pd-lr-0 mg-top20 border1 tab_in_dash" style="display: none;">
 <div class="col-md-12 col-sm-12 col-xs-12 backcolor3 pd-top10">
@@ -371,9 +366,6 @@ $res = mysqli_fetch_array($q1); ?>
 
 </div>
 <!-- =========Services Block close=============== -->
-
-
-
 
 
 
@@ -642,9 +634,6 @@ while($res2 = mysqli_fetch_array($q2)){
 
 </div>
 <!----=========Edit Profile Block close===============-->
-
-
-
 
 
 
