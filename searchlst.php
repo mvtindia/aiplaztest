@@ -1,5 +1,11 @@
 <?php include_once('connect.php');
 //if(isset($_REQUEST['searching'])) { 
+  if (isset($_POST['chin'])) {
+    $chinvar = date_format(date_create($_POST['chin']), 'Y-m-d');
+  }
+  if (isset($_POST['chout'])) {
+    $choutvar = date_format(date_create($_POST['chout']), 'Y-m-d');
+  }
   if(!empty($_REQUEST['place_loc'])){
     $place_loc = $_REQUEST['place_loc'];
   } else {
@@ -306,9 +312,9 @@ echo $final1; ?>" name="chout" class="form-control" placeholder="To">
                     $marker_location .= $r21['p_city'].",".$r21['p_state'].",".$r21['p_country'].">>>";
 //echo "block1";
               ?>
-
+<?php error_log($chinvar) ?>
               <div class="col-md-6 col-sm-6 col-xs-12 pd-lr-4">
-                <a href="demo-venue2.php?placeid=<?php echo $r21['place_id']; ?>&checkin=<?php echo $st; ?>&checkout=<?php echo $et; ?>">
+                <a href="demo-venue2.php?placeid=<?php echo $r21['place_id']; ?>&checkin=<?php if (isset($chinvar)) {echo $chinvar;} else { echo $st; } ?>&checkout=<?php if (isset($choutvar)) {echo $choutvar;} else { echo $et; } ?>">
                 <div class="border-box">
                   <div id="myCarousel<?php echo $r21['place_id']; ?>" class="carousel slide" data-ride="carousel">
 

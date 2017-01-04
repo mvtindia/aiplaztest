@@ -81,7 +81,7 @@ $r17=mysqli_fetch_array($q17);
     <label for="space">Checkin</label>
   </div>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-    <input readonly="" type="text" value="<?php echo $r17['checkin']; ?>" class="form-control" id="" placeholder="2-10-12">
+    <input readonly="" type="text" value="<?php echo $r17['checkin'] . " " . $r17['ftime']; ?>" class="form-control" id="" placeholder="2-10-12">
   </div>
   
   </div>
@@ -92,7 +92,7 @@ $r17=mysqli_fetch_array($q17);
     <label for="space">Checkout</label>
   </div>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-    <input readonly="" type="text" value="<?php echo $r17['checkout']; ?>" class="form-control" id="" placeholder="5-10-12">
+    <input readonly="" type="text" value="<?php echo $r17['checkout'] . " " . $r17['ltime'];; ?>" class="form-control" id="" placeholder="5-10-12">
   </div>
   
   </div>
@@ -171,9 +171,9 @@ $r17=mysqli_fetch_array($q17);
         <button type="submit" id="paypal_data" name="paypal_insertion"  style="background: transparent;border: none; padding: 0px;">Pay online</button>
       </label>
       
-      <label class="btn btn-success hotel-btn">
+      <!--<label class="btn btn-success hotel-btn">
         <button type="button" required="" class="hotel-btn"  name="method" value="hotel" style="background: transparent;border: none; padding: 0px;">Pay at Hotel</button>
-      </label>
+      </label>-->
       <label class="btn btn-success ">
         <button type="button" required="" class="cancel-btn btn-danger"  name="method"style="background: transparent;border: none; padding: 0px;" value="<?php echo $r17['bookid']; ?>">Cancel Booking</button>
       </label>

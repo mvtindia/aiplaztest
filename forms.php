@@ -132,20 +132,20 @@ if(isset($_REQUEST['replying']))
           $sql4 = mysqli_query($connect,"SELECT * FROM place WHERE place_id='".$placeid."'");
           $row4 = mysqli_fetch_array($sql4);
          
-          $message ="Dear ".$row['fname']." ".$row['lname'].", You have Received this mail from Bookmyspace. \n\n Your Booking Request for".$row4['space_name']." has Been Generated\n\n";
+          $message ="Dear ".$row['fname']." ".$row['lname'].", You have Received this mail from 2finda.com. \n\n Your Booking Request for".$row4['space_name']." has Been Generated\n\n";
 
       $headers = 'From: no-reply@vismaadlabs.org' . "\r\n" .
           'Reply-To: no-reply@vismaadlabs.org' . "\r\n" .
           'X-Mailer: PHP/' . phpversion();
-      $mail = mail($row['email'], 'Bookmyspace [Booking Info]', $message, $headers);
+      $mail = mail($row['email'], '2finda.com [Booking Info]', $message, $headers);
    $sql5 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$row4['user_id']."'");
           $row5 = mysqli_fetch_array($sql5);
-            $message2 ="Dear ".$row5['fname']." ".$row5['lname'].", You have Received this mail from Bookmyspace. \n\n Your Place ".$row4['space_name']." has Been Booked by ".$row['fname']." ".$row['lname']."\n\n";
+            $message2 ="Dear ".$row5['fname']." ".$row5['lname'].", You have Received this mail from 2finda.com. \n\n Your Place ".$row4['space_name']." has Been Booked by ".$row['fname']." ".$row['lname']."\n\n";
 
       $headers2 = 'From: no-reply@vismaadlabs.org' . "\r\n" .
           'Reply-To: no-reply@vismaadlabs.org' . "\r\n" .
           'X-Mailer: PHP/' . phpversion();
-      $mail2 = mail($row5['email'], 'Bookmyspace [Booking Info]]', $message2, $headers2);
+      $mail2 = mail($row5['email'], '2finda.com [Booking Info]]', $message2, $headers2);
       echo "ok";
       echo ">>>";
       echo $last_id;
@@ -155,12 +155,12 @@ if(isset($_REQUEST['replying']))
   {
     $encrypt=md5($row['email'].time());
      $sql3 = mysqli_query($connect,"UPDATE   users SET activation_link='".$encrypt."' WHERE uid='".$_SESSION['u_id']."'");
-   $message ="Dear ".$row['fname']." ".$row['lname'].", You have Received this mail from Bookmyspace. \n\n Your Request has been Generated. Click on the following Link to Confirm Your Booking \n\n.'http://vismaadlabs.org/bookmyspace/forms.php?activatelink=".$encrypt."&bookid=".$last_id."'\n\n";
+   $message ="Dear ".$row['fname']." ".$row['lname'].", You have Received this mail from 2finda.com. \n\n Your Request has been Generated. Click on the following Link to Confirm Your Booking \n\n.'http://vismaadlabs.org/2finda.com/forms.php?activatelink=".$encrypt."&bookid=".$last_id."'\n\n";
 
       $headers = 'From: no-reply@vismaadlabs.org' . "\r\n" .
           'Reply-To: no-reply@vismaadlabs.org' . "\r\n" .
           'X-Mailer: PHP/' . phpversion();
-      $mail = mail($row['email'], 'Bookmyspace [Sent Enquiry]', $message, $headers);
+      $mail = mail($row['email'], '2finda.com [Sent Enquiry]', $message, $headers);
       echo"not_activate";
   }
     }
@@ -305,11 +305,11 @@ if(isset($_REQUEST['replying']))
       $row4 = mysqli_fetch_array($sql4);
       $body ="Dear ".$row['fname']." ".$row['lname'].", You have Received this mail from 2finda.com. \n\n Your Booking Request for".$row4['space_name']." has Been Generated\n\n";
 
-      //$mail = mail($row['email'], 'Bookmyspace [Booking Info]', $message, $headers);
+      //$mail = mail($row['email'], '2finda.com [Booking Info]', $message, $headers);
       //$sql5 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$row4['user_id']."'");
       //$row5 = mysqli_fetch_array($sql5);
       //$body2 ="Dear ".$row5['fname']." ".$row5['lname'].", You have Received this mail from 2finda.com. \n\n Your Place ".$row4['space_name']." has Been Booked by ".$row['fname']." ".$row['lname']."\n\n";
-      //$mail2 = mail($row5['email'], 'Bookmyspace [Booking Info]]', $message2, $headers2);
+      //$mail2 = mail($row5['email'], '2finda.com [Booking Info]]', $message2, $headers2);
       
       error_log("email " . $row['email']);
       error_log($sguser);
@@ -357,12 +357,12 @@ if(isset($_REQUEST['replying']))
   {
     $encrypt=md5($row['email'].time());
      $sql3 = mysqli_query($connect,"UPDATE   users SET activation_link='".$encrypt."' WHERE uid='".$_SESSION['u_id']."'");
-   $message ="Dear ".$row['fname']." ".$row['lname'].", You have Received this mail from 2finda.com. \n\n Your Request has been Generated. Click on the following Link to Confirm Your Booking \n\n.'http://vismaadlabs.org/bookmyspace/forms.php?activatelink=".$encrypt."&bookid=".$last_id."'\n\n";
+   $message ="Dear ".$row['fname']." ".$row['lname'].", You have Received this mail from 2finda.com. \n\n Your Request has been Generated. Click on the following Link to Confirm Your Booking \n\n.'http://vismaadlabs.org/2finda.com/forms.php?activatelink=".$encrypt."&bookid=".$last_id."'\n\n";
 
       $headers = 'From: no-reply@vismaadlabs.org' . "\r\n" .
           'Reply-To: no-reply@vismaadlabs.org' . "\r\n" .
           'X-Mailer: PHP/' . phpversion();
-      $mail = mail($row['email'], 'Bookmyspace [Sent Enquiry]', $message, $headers);
+      $mail = mail($row['email'], '2finda.com [Sent Enquiry]', $message, $headers);
       echo"not_activate";
   }
     }
@@ -758,7 +758,7 @@ if($sql>0)
   <div class="col-md-6">
   <input class="form-control date21" required type="text" id="datevalue2" name="pdate2" readonly>
   <!-- <input class="form-control placeid" type="hidden" name="placeid" placeholder="dd/mm/yy"> -->
- <!--  <input class="form-control" type="hidden" name="ppath" value="http://localhost/nf/bookmyspace"> --></div>
+ <!--  <input class="form-control" type="hidden" name="ppath" value="http://localhost/nf/2finda.com"> --></div>
   </div>
  <!--  <div class="col-md-12 mg-top10">
   <div class="col-md-6">
@@ -1144,12 +1144,12 @@ if(isset($_SESSION['u_id']))
     if($q>0){
       echo "success";
 
-      $message ="Dear ".$ename.", You have Received this mail from Bookmyspace. \n\n Your Enquiry has been sent successfully. Soon We will come to you. \n\n";
+      $message ="Dear ".$ename.", You have Received this mail from 2finda.com. \n\n Your Enquiry has been sent successfully. Soon We will come to you. \n\n";
 
       $headers = 'From: no-reply@vismaadlabs.org' . "\r\n" .
           'Reply-To: no-reply@vismaadlabs.org' . "\r\n" .
           'X-Mailer: PHP/' . phpversion();
-      $mail = mail($eemail, 'Bookmyspace [Sent Enquiry]', $message, $headers);
+      $mail = mail($eemail, '2finda.com [Sent Enquiry]', $message, $headers);
     }
     else{
       echo "error";
@@ -1161,31 +1161,44 @@ if(isset($_SESSION['u_id']))
 if(isset($_GET['cancel_booking']))
 {
   $val = $_GET['cancel_booking'];
-  $sql2 = mysqli_query($connect,"SELECT * FROM booking WHERE bookid='".$val."'");
-  $row = mysqli_fetch_array($sql2);
+  /*$sql2 = mysqli_query($connect,"SELECT * FROM booking WHERE bookid='".$val."'");
+  $row = mysqli_fetch_array($sql2);*/
   $sql= mysqli_query($connect,"DELETE FROM booking WHERE bookid='".$val."'");
   if($sql)
   {
-    $sql4 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$row['userid']."'");
+    $sql4 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$_SESSION['u_id']."'");
     $row4 = mysqli_fetch_array($sql4);
     $sql3 = mysqli_query($connect,"SELECT * FROM place WHERE place_id='".$row['placeid']."'");
     $row3 = mysqli_fetch_array($sql3);
 //mail sending here
-$message ="Dear ".$row4['fname']." ".$row4['lname'].", You have Received this mail from Bookmyspace. \n\n Your Booking Request for".$row3['space_name']." has Been Cancelled\n\n";
-      $headers = 'From: no-reply@vismaadlabs.org' . "\r\n" .
-          'Reply-To: no-reply@vismaadlabs.org' . "\r\n" .
-          'X-Mailer: PHP/' . phpversion();
-      $mail = mail($row4['email'], 'Bookmyspace [Booking Info]', $message, $headers);
-   $sql5 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$row3['user_id']."'");
-          $row5 = mysqli_fetch_array($sql5);
-            $message2 ="Dear ".$row5['fname']." ".$row5['lname'].", You have Received this mail from Bookmyspace. \n\n Your Place ".$row3['space_name']." has Been Cancelled by ".$row4['fname']." ".$row4['lname']."\n\n";
-
-      $headers2 = 'From: no-reply@vismaadlabs.org' . "\r\n" .
-          'Reply-To: no-reply@vismaadlabs.org' . "\r\n" .
-          'X-Mailer: PHP/' . phpversion();
-      $mail2 = mail($row5['email'], 'Bookmyspace [Booking Info]]', $message2, $headers2);
-      echo "ok";
-  $sql= mysqli_query($connect,"DELETE FROM booking WHERE bookid='".$val."'");
+    include('email.php');
+    $body ="Dear ".$row4['fname']." ".$row4['lname'].", You have Received this mail from 2finda.com. \n\n Your Booking Request for".$row3['space_name']." has Been Cancelled\n\n";
+    $subject = '2finda.com [Booking Info]';
+    $params = array(
+        'api_user' => $sguser,
+        'api_key' => $sgpass,
+        'to' => $row4['email'],
+        'subject' => $subject,
+        'html' => $body,
+        //'text' => 'I am the text parameter',
+        'from' => 'info@2finda.com',
+      );
+    $session = curl_init($sgrequest);
+    curl_setopt ($session, CURLOPT_POST, true);
+    curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
+    curl_setopt($session, CURLOPT_HEADER, false);
+    curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+    $response = curl_exec($session);
+    curl_close($session);
+    echo "ok";
+    /*$mail = mail($row4['email'], '2finda.com [Booking Info]', $message, $headers);
+    $sql5 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$row3['user_id']."'");
+    $row5 = mysqli_fetch_array($sql5);
+    $message2 ="Dear ".$row5['fname']." ".$row5['lname'].", You have Received this mail from 2finda.com. \n\n Your Place ".$row3['space_name']." has Been Cancelled by ".$row4['fname']." ".$row4['lname']."\n\n";
+    $mail2 = mail($row5['email'], '2finda.com [Booking Info]]', $message2, $headers2);
+    echo "ok";
+    $sql= mysqli_query($connect,"DELETE FROM booking WHERE bookid='".$val."'");*/
   }
   else
   {
@@ -1209,13 +1222,13 @@ if(isset($_GET['bookid_cancel']))
     $sql3 = mysqli_query($connect,"SELECT * FROM place WHERE place_id='".$row['placeid']."'");
     $row3 = mysqli_fetch_array($sql3);
 //mail sending here
-    $body ="Dear ".$row4['fname']." ".$row4['lname'].", You have Received this mail from Bookmyspace. \n\n Your Booking Request for".$row3['space_name']." has Been Cancelled\n\n";
-    $mail = mail($row4['email'], 'Bookmyspace [Booking Info]', $message, $headers);
+    $body ="Dear ".$row4['fname']." ".$row4['lname'].", You have Received this mail from 2finda.com. \n\n Your Booking Request for".$row3['space_name']." has Been Cancelled\n\n";
+    $mail = mail($row4['email'], '2finda.com [Booking Info]', $message, $headers);
     $sql5 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$row3['user_id']."'");
     $row5 = mysqli_fetch_array($sql5);
-    $body2 ="Dear ".$row5['fname']." ".$row5['lname'].", You have Received this mail from Bookmyspace. \n\n Your Place ".$row3['space_name']." has Been Cancelled by ".$row4['fname']." ".$row4['lname']."\n\n";
+    $body2 ="Dear ".$row5['fname']." ".$row5['lname'].", You have Received this mail from 2finda.com. \n\n Your Place ".$row3['space_name']." has Been Cancelled by ".$row4['fname']." ".$row4['lname']."\n\n";
 
-    $mail2 = mail($row5['email'], 'Bookmyspace [Booking Info]]', $message2, $headers2);
+    $mail2 = mail($row5['email'], '2finda.com [Booking Info]]', $message2, $headers2);
     $url = 'https://api.sendgrid.com/';
     $subject = '2finda Booking Information';
     $user='azure_4389271fb296cc51e6ae084dc9819730@azure.com';
