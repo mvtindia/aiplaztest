@@ -146,7 +146,7 @@ if(!isset($_SESSION['u_id'])) {
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" >
                   <label for="space">Accomodates *</label>
-                  <input type="text" class="form-control" id="accomodates" placeholder="Accomodates" value="<?php echo $row['p_country'];?>" name="accomodates" required>
+                  <input type="text" class="form-control" id="accomodates" placeholder="Accomodates" value="<?php echo $row['accomodates'];?>" name="accomodates" required>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 sample-only">
                   <label class="wid100" for="space">Can be used for *</label>
