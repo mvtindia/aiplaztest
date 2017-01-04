@@ -216,7 +216,7 @@ $(".book_form2_hour").submit(function(e)
     var formURL = formObj.attr("action");
     var formData = new FormData(this);
     $.ajax({
-        url: 'forms.php?book_button_hour=101',
+        url: 'forms.php?book_now_hour=101',
         type: 'POST',
         data:  formData,
         mimeType:"multipart/form-data",
@@ -241,8 +241,8 @@ $(".book_form2_hour").submit(function(e)
         }
         else if(data1[0] == 'ok')
         {     
-      swal("Success!", "Your Booking order Has Been Placed", "success");   
-      	window.location.href="booking-form.php?booking_id="+data1[1];
+      		swal("Success!", "Your Booking order Has Been Placed", "success");   
+      		window.location.href="booking-form.php?booking_id="+data1[1];
         }
     },
      error: function(jqXHR, textStatus, errorThrown) 

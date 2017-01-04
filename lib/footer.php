@@ -14,9 +14,11 @@ if(mysqli_num_rows($sql_footer2)>0)
 {        
             $days="";
             $newdays = "";
-            $start    = new DateTime($row_footer['checkin']);
+            //$start    = new DateTime($row_footer['checkin']);
+            $start    = date_create($row_footer['checkin']);
             $end_date = $row_footer['checkout'];
-            $end      = new DateTime($row_footer['checkout']);
+            //$end      = new DateTime($row_footer['checkout']);
+            $end      = date_create($row_footer['checkout']);
             $interval = new DateInterval('P1D'); // 1 day interval
             $period   = new DatePeriod($start, $interval, $end);
             foreach ($period as $day)
@@ -73,9 +75,10 @@ if(mysqli_num_rows($sql_footer2)>0)
 {        
             $days="";
             $newdays = "";
-            $start    = new DateTime($row_footer['checkin']);
+            //$start    = new DateTime($row_footer['checkin']);
+            $start    = date_create($row_footer['checkin']);
             $end_date = $row_footer['checkout'];
-            $end      = new DateTime($row_footer['checkout']);
+            $end      = date_create($row_footer['checkout']);
             $interval = new DateInterval('P1D'); // 1 day interval
             $period   = new DatePeriod($start, $interval, $end);
             foreach ($period as $day)
@@ -125,9 +128,9 @@ if(mysqli_num_rows($sql_footer)>0)
 {        
             $days="";
             $newdays = "";
-            $start    = new DateTime($row_footer['date1']);
+            $start    = date_create($row_footer['date1']);
             $end_date = $row_footer['date2'];
-            $end      = new DateTime($row_footer['date2']);
+            $end      = date_create($row_footer['date2']);
             $interval = new DateInterval('P1D'); // 1 day interval
             $period   = new DatePeriod($start, $interval, $end);
             foreach ($period as $day)
@@ -204,7 +207,7 @@ else
               </div>
           </div>
           <div class="hide1" id="second-block">
-  <form class="form-group" id="login">
+  <form class="form-group" id="login" method="POST">
   
             <div class="input-group" id="login">
               <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -368,13 +371,15 @@ else
 <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
 
 <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
-<script src="js/forms.js"></script>
+<script type="text/javascript" src="js/validator.js"></script>
+
 <script type="text/javascript" src="bm/js/plugins/canvas-to-blob.min.js"></script>
 <script src="bm/js/fileinput.min.js" type="text/javascript"></script>
 <script src="js/custom-calendar.js"></script>
 <script type="text/javascript" src="js/jquery.mask.js"></script>
 <script src="sm/dist/sweetalert2.min.js"></script>
 <script src="js/nouislider.js"></script>
+<script src="js/forms.js"></script>
 <script src="js/custom.js"></script>
 <script src="js/forms2.js"></script>
 
@@ -410,10 +415,23 @@ else
                return [true, '', ''];
         }
   });
-    });
-  </script>
   
-    <script>
+    });
+  $(function() {
+    var arrDisabledDates = {};
+    <?php echo $assign_values;  echo $assign_values2; ?> 
+    var today = new Date();
+    $( "#hourdatepicker" ).datepicker({  
+        minDate: today,
+      beforeShowDay: function (dt) {
+            var bDisable = arrDisabledDates[dt];
+            if (bDisable)
+               return [false, '', ''];
+            else
+               return [true, '', ''];
+        }
+    });
+  });
   $(function() {
 
      var arrDisabledDates = {};

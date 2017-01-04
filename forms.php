@@ -182,27 +182,32 @@ if(isset($_REQUEST['replying']))
 
   if(isset($_REQUEST['book_now_hour']))
   {
+    
     if(isset($_SESSION['u_id']))
     {   
-
+        
         $sql = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$_SESSION['u_id']."' ");
         $row= mysqli_fetch_array($sql);
-        if($_REQUEST['hours']=="")
+        if($_POST['hours']=="")
         {
           $hours=0;
         }
         else
         {
-            $hours = $_REQUEST['hours'];
+            $hours = $_POST['hours'];
         }
-        $start_time = $_REQUEST['time1'];
-        $start_time12 = $_REQUEST['time1'];
-        $end_time = $_REQUEST['time2'];
+        
+        $start_time = $_POST['time1'];
+        $start_time12 = $_POST['time1'];
+        $end_time = $_POST['time2'];
         $strStart = '2013-06-19 '.$start_time; 
         $strEnd   = '06/19/13 '.$end_time; 
-        $dteStart = new DateTime($strStart); 
-        $dteEnd   = new DateTime($strEnd); 
-        $dteDiff  = $dteStart->diff($dteEnd);
+        //$dteStart = new DateTime($strStart); 
+        //$dteEnd   = new DateTime($strEnd); 
+        $dteStart = date_create($strStart);
+        $dteEnd   = date_create($strEnd);
+        $dteDiff  = date_diff($dteStart, $dteEnd); 
+        //$dteDiff  = $dteStart->diff($dteEnd);
        $counter = $dteDiff->format("%H");
        $time_array= $start_time;
        for($i=0;$i<$counter;$i++)
@@ -212,23 +217,24 @@ if(isset($_REQUEST['replying']))
               $start_time = date_format($dateTime, 'H:i');
               $time_array = $time_array.$start_time.",";
        }
+       
        $time_array = rtrim($time_array,',');
        $time_array = explode(',',$time_array);
-        $package = $_REQUEST['package'];
-        $price = $_REQUEST['price'];
-        $checkin = date('Y-m-d', strtotime($_REQUEST['checkin']));
-        if($_REQUEST['checkout']=="")
+        $package = $_POST['package'];
+        $price = $_POST['price'];
+        $checkin = date('Y-m-d', strtotime($_POST['checkin']));
+        if($_POST['checkout']=="")
         {
-           $checkout = date('Y-m-d', strtotime($_REQUEST['checkin']));
+           $checkout = date('Y-m-d', strtotime($_POST['checkin']));
         }
         else
         {
-          $checkout = date('Y-m-d', strtotime($_REQUEST['checkout'])); 
+          $checkout = date('Y-m-d', strtotime($_POST['checkout'])); 
         }
        
-        $placeid = $_REQUEST['myplaceid'];
-        $guests = $_REQUEST['guests'];
-        $totalprice = $_REQUEST['totalprice'];
+        $placeid = $_POST['myplaceid'];
+        $guests = $_POST['guests'];
+        $totalprice = $_POST['totalprice'];
         $query_status="0";
         $sql = mysqli_query($connect,"SELECT * FROM  `booking` WHERE`placeid`='".$placeid."' and `userid`='".$_SESSION['u_id']."'and `checkin`='".$checkin."'and `checkout`='".$checkout."'");
         if(mysqli_num_rows($sql)>0)
@@ -250,9 +256,10 @@ if(isset($_REQUEST['replying']))
                 }
                 $fStart = '2013-06-19 '.$ftime; 
                 $lEnd   = '06/19/13 '.$ltime; 
-                $dteStart = new DateTime($fStart); 
-                $dteEnd   = new DateTime($lEnd); 
-                $dteDiff2  = $dteStart->diff($dteEnd);
+                $dteStart = date_create($fStart); 
+                $dteEnd   = date_create($lEnd); 
+                //$dteDiff2  = $dteStart->diff($dteEnd);
+                $dteDiff2  = date_diff($dteStart, $dteEnd);
                 $counter2 = $dteDiff2->format("%H");
                 $time_array2= $ftime;
                 for($i=0;$i<$counter2;$i++)
@@ -278,32 +285,69 @@ if(isset($_REQUEST['replying']))
         {
             $query_status="0";
         }
+        error_log($query_status);
+        error_log($checkin . " " . $checkout . " " . $totalprice . " " . $placeid . " " . $package);
         //start 
         if($query_status=="0")
         {
     $q = mysqli_query($connect,"INSERT INTO `booking`(`placeid`, `userid`, `package`, `price`, `checkin`, `checkout`, `hours`, `guests`, `online`, `hotel`,`ftime`,`ltime`) VALUES ('".$placeid."','".$_SESSION['u_id']."','".$package."','".$price."','".$checkin."','".$checkout."','".$hours."','".$guests."','".$totalprice."','".$totalprice."','".$start_time12."','".$end_time."')");
     $last_id = $connect->insert_id;
+    error_log("last id: " . $last_id);
     if($q)
     {
-     if($row['a_status']=="1")
+     include('email.php');
+     if($row['a_status']== 0)
     {    
+      
+      $subject = '2finda Booking Information';
 
-          $sql4 = mysqli_query($connect,"SELECT * FROM place WHERE place_id='".$placeid."'");
-          $row4 = mysqli_fetch_array($sql4);
-          $message ="Dear ".$row['fname']." ".$row['lname'].", You have Received this mail from Bookmyspace. \n\n Your Booking Request for".$row4['space_name']." has Been Generated\n\n";
+      $sql4 = mysqli_query($connect,"SELECT * FROM place WHERE place_id='".$placeid."'");
+      $row4 = mysqli_fetch_array($sql4);
+      $body ="Dear ".$row['fname']." ".$row['lname'].", You have Received this mail from 2finda.com. \n\n Your Booking Request for".$row4['space_name']." has Been Generated\n\n";
 
-      $headers = 'From: no-reply@vismaadlabs.org' . "\r\n" .
-          'Reply-To: no-reply@vismaadlabs.org' . "\r\n" .
-          'X-Mailer: PHP/' . phpversion();
-      $mail = mail($row['email'], 'Bookmyspace [Booking Info]', $message, $headers);
-   $sql5 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$row4['user_id']."'");
-          $row5 = mysqli_fetch_array($sql5);
-            $message2 ="Dear ".$row5['fname']." ".$row5['lname'].", You have Received this mail from Bookmyspace. \n\n Your Place ".$row4['space_name']." has Been Booked by ".$row['fname']." ".$row['lname']."\n\n";
+      //$mail = mail($row['email'], 'Bookmyspace [Booking Info]', $message, $headers);
+      //$sql5 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$row4['user_id']."'");
+      //$row5 = mysqli_fetch_array($sql5);
+      //$body2 ="Dear ".$row5['fname']." ".$row5['lname'].", You have Received this mail from 2finda.com. \n\n Your Place ".$row4['space_name']." has Been Booked by ".$row['fname']." ".$row['lname']."\n\n";
+      //$mail2 = mail($row5['email'], 'Bookmyspace [Booking Info]]', $message2, $headers2);
+      
+      error_log("email " . $row['email']);
+      error_log($sguser);
+      $params = array(
+        'api_user' => $sguser,
+        'api_key' => $sgpass,
+        'to' => $row['email'],
+        'subject' => $subject,
+        'html' => $body,
+        //'text' => 'I am the text parameter',
+        'from' => 'info@2finda.com',
+      );
+      $session = curl_init($sgrequest);
+      curl_setopt ($session, CURLOPT_POST, true);
+      curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
+      curl_setopt($session, CURLOPT_HEADER, false);
+      curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+      $response = curl_exec($session);
+      curl_close($session);
 
-      $headers2 = 'From: no-reply@vismaadlabs.org' . "\r\n" .
-          'Reply-To: no-reply@vismaadlabs.org' . "\r\n" .
-          'X-Mailer: PHP/' . phpversion();
-      $mail2 = mail($row5['email'], 'Bookmyspace [Booking Info]]', $message2, $headers2);
+      /*$params = array(
+        'api_user' => $user,
+        'api_key' => $pass,
+        'to' => $email,
+        'subject' => $subject,
+        'html' => $body,
+        //'text' => 'I am the text parameter',
+        'from' => 'info@2finda.com',
+      );
+      $session = curl_init($request);
+      curl_setopt ($session, CURLOPT_POST, true);
+      curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
+      curl_setopt($session, CURLOPT_HEADER, false);
+      curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+      $response = curl_exec($session);
+      curl_close($session);*/
       echo "ok";
       echo ">>>";
       echo $last_id;
@@ -313,7 +357,7 @@ if(isset($_REQUEST['replying']))
   {
     $encrypt=md5($row['email'].time());
      $sql3 = mysqli_query($connect,"UPDATE   users SET activation_link='".$encrypt."' WHERE uid='".$_SESSION['u_id']."'");
-   $message ="Dear ".$row['fname']." ".$row['lname'].", You have Received this mail from Bookmyspace. \n\n Your Request has been Generated. Click on the following Link to Confirm Your Booking \n\n.'http://vismaadlabs.org/bookmyspace/forms.php?activatelink=".$encrypt."&bookid=".$last_id."'\n\n";
+   $message ="Dear ".$row['fname']." ".$row['lname'].", You have Received this mail from 2finda.com. \n\n Your Request has been Generated. Click on the following Link to Confirm Your Booking \n\n.'http://vismaadlabs.org/bookmyspace/forms.php?activatelink=".$encrypt."&bookid=".$last_id."'\n\n";
 
       $headers = 'From: no-reply@vismaadlabs.org' . "\r\n" .
           'Reply-To: no-reply@vismaadlabs.org' . "\r\n" .
@@ -470,13 +514,13 @@ echo"not";
     $days1 = "";
     $dtz = new DateTimeZone('America/Chicago');
     try {
-      $st1    = new DateTime($datefirst, $dtz);
+      $st1    = create_date($datefirst, $dtz);
     } catch (Exception $e) {
       error_log($e->getMessage());
     }
 
     try {
-      $et1    = new DateTime($datelast, $dtz);
+      $et1    = create_date($datelast, $dtz);
     } catch (Exception $e) {
       error_log($e->getMessage());
     }
@@ -1160,24 +1204,40 @@ if(isset($_GET['bookid_cancel']))
   $sql= mysqli_query($connect,"DELETE FROM booking WHERE bookid='".$val."'");
   if($sql)
   {
-    $sql4 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$row['userid']."'");
+    /*$sql4 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$row['userid']."'");
     $row4 = mysqli_fetch_array($sql4);
     $sql3 = mysqli_query($connect,"SELECT * FROM place WHERE place_id='".$row['placeid']."'");
     $row3 = mysqli_fetch_array($sql3);
 //mail sending here
-$message ="Dear ".$row4['fname']." ".$row4['lname'].", You have Received this mail from Bookmyspace. \n\n Your Booking Request for".$row3['space_name']." has Been Cancelled\n\n";
-      $headers = 'From: no-reply@vismaadlabs.org' . "\r\n" .
-          'Reply-To: no-reply@vismaadlabs.org' . "\r\n" .
-          'X-Mailer: PHP/' . phpversion();
-      $mail = mail($row4['email'], 'Bookmyspace [Booking Info]', $message, $headers);
-   $sql5 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$row3['user_id']."'");
-          $row5 = mysqli_fetch_array($sql5);
-            $message2 ="Dear ".$row5['fname']." ".$row5['lname'].", You have Received this mail from Bookmyspace. \n\n Your Place ".$row3['space_name']." has Been Cancelled by ".$row4['fname']." ".$row4['lname']."\n\n";
+    $body ="Dear ".$row4['fname']." ".$row4['lname'].", You have Received this mail from Bookmyspace. \n\n Your Booking Request for".$row3['space_name']." has Been Cancelled\n\n";
+    $mail = mail($row4['email'], 'Bookmyspace [Booking Info]', $message, $headers);
+    $sql5 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$row3['user_id']."'");
+    $row5 = mysqli_fetch_array($sql5);
+    $body2 ="Dear ".$row5['fname']." ".$row5['lname'].", You have Received this mail from Bookmyspace. \n\n Your Place ".$row3['space_name']." has Been Cancelled by ".$row4['fname']." ".$row4['lname']."\n\n";
 
-      $headers2 = 'From: no-reply@vismaadlabs.org' . "\r\n" .
-          'Reply-To: no-reply@vismaadlabs.org' . "\r\n" .
-          'X-Mailer: PHP/' . phpversion();
-      $mail2 = mail($row5['email'], 'Bookmyspace [Booking Info]]', $message2, $headers2);
+    $mail2 = mail($row5['email'], 'Bookmyspace [Booking Info]]', $message2, $headers2);
+    $url = 'https://api.sendgrid.com/';
+    $subject = '2finda Booking Information';
+    $user='azure_4389271fb296cc51e6ae084dc9819730@azure.com';
+    $pass='Book1234';
+    $params = array(
+      'api_user' => $user,
+      'api_key' => $pass,
+      'to' => $email,
+      'subject' => $subject,
+      'html' => $body,
+      //'text' => 'I am the text parameter',
+      'from' => 'info@2finda.com',
+    );
+    $request = $url.'api/mail.send.json';
+    $session = curl_init($request);
+    curl_setopt ($session, CURLOPT_POST, true);
+    curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
+    curl_setopt($session, CURLOPT_HEADER, false);
+    curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+    $response = curl_exec($session);
+    curl_close($session);*/
       echo "ok";
     //end here
   header('location:paypal_status.php?msg=002');
