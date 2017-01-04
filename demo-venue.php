@@ -1,4 +1,5 @@
 <?php include_once('connect.php');
+
 if (isset($_REQUEST['placeid'])) {
 ?>
 <!doctype html>
@@ -59,7 +60,7 @@ if($match=mysqli_fetch_array($query))
 		if(!empty($match['photo']))
 		{
 		 	$photo=explode(",", $match['photo']);
-	  		for ($i=0; $i <count($photo) ; $i++)
+	  	for ($i=0; $i <count($photo) ; $i++)
 	   		{ 
 	  			if($photo[$i]=="")
 	  			{
@@ -68,108 +69,100 @@ if($match=mysqli_fetch_array($query))
 	  			if($i=="0")
 	  			{
   		?>
-	<style>
-		.slide<?php echo $i; ?> {
-		background: url("images/placephotos/<?php echo $photo[$i]; ?>");
-		padding-top:100px !important;
-		background-position:center;
-		background-size:cover;
-		}
-    </style>
-        <div class="item slide<?php echo$i; ?> active">
-        <div class="carousel-caption"></div>
-        </div> <!-- /.item -->
+						<style>
+							.slide<?php echo $i; ?> {
+								background: url("images/placephotos/<?php echo $photo[$i]; ?>");
+								padding-top:100px !important;
+								background-position:center;
+								background-size:cover;
+							}
+    				</style>
+        		<div class="item slide<?php echo$i; ?> active">
+        			<div class="carousel-caption"></div>
+        		</div> <!-- /.item -->
 	  	<?php
-	  	}else
-	  	{
+	  			} else {
 	  		  	?>
-	  <style>
-	.slide<?php echo$i; ?> {
-		background: url("images/placephotos/<?php echo $photo[$i]; ?>");
-		padding-top:100px !important;
-	background-position:center;
-	background-size:cover;
-}
-        </style>
-              <div class="item slide<?php echo$i; ?>">
-          <div class="carousel-caption">
-				
-          </div>
+	  				<style>
+							.slide<?php echo$i; ?> {
+							background: url("images/placephotos/<?php echo $photo[$i]; ?>");
+							padding-top:100px !important;
+							background-position:center;
+							background-size:cover;
+						}
+    				</style>
+            <div class="item slide<?php echo$i; ?>">
+          		<div class="carousel-caption">
+          	</div>
         </div> <!-- /.item -->
 	  	<?php
-	  	}
-	
-	  }
-	} else {
-	  	?><style> .slide { background-color: #202935; } </style>
-	<?php } ?>
-          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+	  			}
+	  		}
+		} else {
+	  	?>
+							<style> .slide { background-color: #202935; } </style>
+	<?php 
+		} 
+		?>
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    	<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    	<span class="sr-only">Previous</span>
+  	</a>
+  	<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    	<span class="sr-only">Next</span>
+  	</a>
+		</div><!-- /.carousel-inner -->
+	</div><!-- /.carousel -->
 
-      </div><!-- /.carousel-inner -->
-
-
-    
-    </div><!-- /.carousel -->
 	<div class="col-md-12 col-sm-12 col-xs-12 h-name">
-	<div class="col-md-6 col-sm-6">
-	  <h3 class="h-1"><?php echo $match['space_name'].",".$match['p_address'];?></h3>
-	  <div class="col-md-6 col-sm-6 mg-media">
-	  <i class="fa fa-users fa-2x"></i>&nbsp;&nbsp;
-	  <span class="s1"><?php echo $match['capacity']; ?></span>
-	  </div>
+		<div class="col-md-6 col-sm-6">
+	  	<h3 class="h-1"><?php echo $match['space_name'].",".$match['p_address'];?></h3>
+	  	<div class="col-md-6 col-sm-6 mg-media">
+	  		<i class="fa fa-users fa-2x"></i>&nbsp;&nbsp;
+	  		<span class="s1"><?php echo $match['capacity']; ?></span>
+	  	</div>
 	  </div>
 	  <div class="col-md-6 col-sm-6">
-  <div class="absolute-center">
-    <ul class="social-icons text-center">
-      <li>
-        <a target="_blank" href="http://facebook.com">
-          <i class="fa fa-facebook color1"></i>
-        </a>
-      </li>
-
-      <li>
-        <a target="_blank" href="http://twitter.com">
-          <i class="fa fa-twitter color1"></i>
-        </a>
-      </li>
-
-      <li>
-        <a target="_blank" href="#">
-          <i class="fa fa-instagram color1"></i>
-        </a>
-      </li>
-	   <li>
-        <a target="_blank" href="#">
-          <i class="fa fa-google-plus color1"></i>
-        </a>
-      </li>
-
-    </ul>
-
-	  </div>
+  		<div class="absolute-center">
+    		<ul class="social-icons text-center">
+      		<li>
+        		<a target="_blank" href="http://facebook.com">
+          		<i class="fa fa-facebook color1"></i>
+        		</a>
+      		</li>
+      		<li>
+        		<a target="_blank" href="http://twitter.com">
+          		<i class="fa fa-twitter color1"></i>
+        		</a>
+      		</li>
+      		<li>
+        		<a target="_blank" href="#">
+          		<i class="fa fa-instagram color1"></i>
+        		</a>
+      		</li>
+	   			<li>
+        		<a target="_blank" href="#">
+          		<i class="fa fa-google-plus color1"></i>
+        		</a>
+      		</li>
+    		</ul>
+	  	</div>
 	  </div>
 	  
-	  </div>
-
+	</div>
 
 </div><!-- /.container -->
 
 <!--===================slider close==========================-->
 <div class="col">
-<div class="container col-inner">
-<div class="col-md-6">
+	<div class="container col-inner">
+		<div class="col-md-6">
 
 <!--========================================Left Side=====================================-->
-<div class="col-md-12">
-<h2 class="color1"><?php echo $match['space_name'];?></h2>
-<p>
+			<div class="col-md-12">
+				<h2 class="color1"><?php echo $match['space_name'];?></h2>
+				<p>
 <?php echo $match['p_address']; ?>
 <!-- Kapila Matrix, Koregaon Park, Pune. 411001 --></p>
 <div class="col-md-5">
@@ -251,8 +244,6 @@ if($match=mysqli_fetch_array($query))
 	  	if($rq = mysqli_fetch_array($qq))
 	  	{echo " ".$rq['areatype'];}
 	  		?>
-
-
 
 	  </p>
 	   <h5 class="color1 mg-top20">Accomodates</h5>
@@ -617,7 +608,7 @@ if($match1=mysqli_fetch_array($query1)){
 
 <div class="row bg-row">
     <div class="col-md-6 col-sm-6 col-xs-6">
-        <input type="hidden" class="ppnight" value="<?php echo $match[2]; ?>">
+        <input type="hidden" class="ppnight" value="<?php //echo $match[2]; ?>">
 
 
      <?php
@@ -627,13 +618,13 @@ if($match1=mysqli_fetch_array($query1)){
 <?php //switch ($country) {
             ?>
 <?php    //case "United States":  $currency= "&#36;"?>
-         <h4>	&#36; <span class="night_rupee"><?php echo $match[2]; ?></span></h4>
+         <h4>	&#36; <span class="night_rupee"><?php //echo $match[2]; ?></span></h4>
 <?php        //break; case "United Kingdom":  $currency= "&163;"?>
-       <h4>&#163; <span class="night_rupee"><?php echo $match[2]; ?></span></h4> </h4>
+       <h4>&#163; <span class="night_rupee"><?php //echo $match[2]; ?></span></h4> </h4>
  <?php       //break; case "India": $currency= "&#8377;"?>
-        <h4>&#8377; <span class="night_rupee"><?php echo $match[2]; ?></span></h4> </h4>
+        <h4>&#8377; <span class="night_rupee"><?php //echo $match[2]; ?></span></h4> </h4>
 
-<?php }  ?>
+<?php //}  ?>
 
     </div>
     <div class="col-md-6 col-sm-6 col-xs-6">
@@ -643,22 +634,22 @@ if($match1=mysqli_fetch_array($query1)){
 <div class="col-md-4 pd-lr-6">
 
 <div class="input-group mg-top20"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-    <input type="text" id="datepicker" name="checkin" value="<?php if(isset($_REQUEST['checkin'])) { echo $_REQUEST['checkin']; } else { echo date('m/d/Y'); } ?>" placeholder="CheckIn" class="form-control bord-0"> </div>
+    <input type="text" id="datepicker" name="checkin" value="<?php //if(isset($_REQUEST['checkin'])) { echo $_REQUEST['checkin']; } else { echo date('m/d/Y'); } ?>" placeholder="CheckIn" class="form-control bord-0"> </div>
 
 </div>
 <div class="col-md-4 pd-lr-6">
 <div class="input-group mg-top20">
     
     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-	<input type="text" id="datepicker1" name="checkout" value="<?php if(isset($_REQUEST['checkout'])) { echo $_REQUEST['checkout']; } else { $datetime = new DateTime('today');
-echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-control bord-0">
+	<input type="text" id="datepicker1" name="checkout" value="<?php //if(isset($_REQUEST['checkout'])) { echo $_REQUEST['checkout']; } else { $datetime = new DateTime('today');
+//echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-control bord-0">
 </div>
 
 </div>
 <div class="col-md-4 pd-lr-6">
 <div class="input-group mg-top20">
     <span class="input-group-addon"><i class="fa fa-users"></i></span>
-	<input name="guests" type="number" min="1" max="<?php echo $match['capacity']; ?>" placeholder="Guests" value="1" class="form-control bord-0">
+	<input name="guests" type="number" min="1" max="<?php //echo $match['capacity']; ?>" placeholder="Guests" value="1" class="form-control bord-0">
 </div>
 
 </div>
@@ -666,10 +657,10 @@ echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-contro
 <div class="errormessage">
 <div class="row">
 <div class="col-md-6 col-sm-6 col-xs-7">
-<h5><?php echo $currency ?> <span class="price_cal"><?php echo $match['p_p_n']; ?></span> x <span class="calculated">1 Night</span></h5>
+<h5><?php //echo $currency ?> <span class="price_cal"><?php //echo $match['p_p_n']; ?></span> x <span class="calculated">1 Night</span></h5>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span><?php echo $currency ?> </span><span class="total_price"><?php echo $match['p_p_n']; ?> </span></h5>
+<h5 class="text-right"><span><?php // echo $currency ?> </span><span class="total_price"><?php //echo $match['p_p_n']; ?> </span></h5>
 </div>
 </div>
 <div class="row" id="forappend">
@@ -679,15 +670,15 @@ echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-contro
 <h5>Total</h5>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span><?php echo $currency ?> </span><span class="total_price_cal"><?php echo $match['p_p_n']; ?> </span></h5>
+<h5 class="text-right"><span><?php // echo $currency ?> </span><span class="total_price_cal"><?php //echo $match['p_p_n']; ?> </span></h5>
 </div>
 </div>
 </div>
 <div class="errormessage22"></div>
 <input name="package" value="night" type="hidden" />
-<input name="price" value="<?php echo $match['p_p_n']; ?>" id="price_per_week" type="hidden" />
-<input name="myplaceid" value="<?php echo $placeid; ?>" type="hidden" />
-<input name="totalprice" class="totalprice" value="<?php echo $match['p_p_n']; ?>" type="hidden" />
+<input name="price" value="<?php //echo $match['p_p_n']; ?>" id="price_per_week" type="hidden" />
+<input name="myplaceid" value="<?php //echo $placeid; ?>" type="hidden" />
+<input name="totalprice" class="totalprice" value="<?php //echo $match['p_p_n']; ?>" type="hidden" />
 <div class="text-center">
 	<button type="submit" id="book_button"  name="book_now" class="btn-4">Book Now</button>
 </div>
@@ -701,9 +692,7 @@ echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-contro
 </div>
 	  <?php }
 
-	   }
-	   else
-	  {
+	   } else {
 	 ?>
 	 <div class="col-md-6 custom2"style="display: block;border-bottom: 0px solid #1BBC9B;border-left: 2px solid #1BBC9B;border-right: 2px solid #1BBC9B;padding-bottom: 0px;">
       <?php  $sql9 = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$placeid."'");
@@ -1046,7 +1035,7 @@ $('#basic').change(function(){
 	</div>
 </body>	
 </html>
-<?php //} ?>
+<?php } ?>
 
 <script>
 	/*$(document).ready(function(){
