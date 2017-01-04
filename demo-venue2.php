@@ -42,8 +42,8 @@ $placeid=$_REQUEST['placeid'];
 $date1=$_REQUEST['checkin'] . " 00:00";
 $date2=$_REQUEST['checkout'] . " 23:59";
 
-//$query=mysqli_query($connect,'Select * from calenderdata inner join place on calenderdata.placeid = place.place_id where calenderdata.placeid="'.$placeid.'" and calenderdata.date1 >="'.$date1.'" and calenderdata.date2 <= "'.$date2.'"');
-$query=mysqli_query($connect,'Select * from place where place_id="'.$placeid.'"');
+$query=mysqli_query($connect,'Select * from calenderdata inner join place on calenderdata.placeid = place.place_id where calenderdata.placeid="'.$placeid.'" and calenderdata.date1 >="'.$date1.'" and calenderdata.date2 <= "'.$date2.'"');
+
 //if rows place table
 if($match=mysqli_fetch_array($query))
 	{

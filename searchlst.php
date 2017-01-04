@@ -308,7 +308,7 @@ echo $final1; ?>" name="chout" class="form-control" placeholder="To">
               ?>
 
               <div class="col-md-6 col-sm-6 col-xs-12 pd-lr-4">
-                <a href="demo-venue.php?placeid=<?php echo $r21['place_id']; ?>&checkin=<?php echo $st; ?>&checkout=<?php echo $et; ?>">
+                <a href="demo-venue2.php?placeid=<?php echo $r21['place_id']; ?>&checkin=<?php echo $st; ?>&checkout=<?php echo $et; ?>">
                 <div class="border-box">
                   <div id="myCarousel<?php echo $r21['place_id']; ?>" class="carousel slide" data-ride="carousel">
 
