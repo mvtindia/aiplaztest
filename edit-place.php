@@ -618,10 +618,12 @@ if($match=mysqli_fetch_array($query)){
         $he = 1;
         while($row9 = mysqli_fetch_array($sql9))
         {
+          $fromdt = date_format(date_create($row9['date1']), 'Y-m-d g:s a');
+          $todt = date_format(date_create($row9['date2']), 'Y-m-d g:s a');
           ?><div class="row for_re" style="padding: 11px 0px 1px 0px;
     border-bottom: 2px solid rgb(252, 139, 17);">
-            <div class="col-md-3 text-center"><?php echo $row9['date1'] ?></div>
-            <div class="col-md-3 text-center"><?php echo $row9['date2'] ?></div>
+            <div class="col-md-3 text-center"><?php echo $fromdt ?></div>
+            <div class="col-md-3 text-center"><?php echo $todt ?></div>
           
             <?php /*if(($row9['p_p_n']=="")&&($row9['p_p_h']=="")&&($row9['w_p_p_n']==""))
             {*/
