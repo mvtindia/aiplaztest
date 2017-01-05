@@ -7,26 +7,6 @@ include_once('connect.php');?>
 <title>List a Place</title>
   
 
-<!-- Optional theme -->
-
-  <!--
- 
-  <link type="text/css" rel="stylesheet" href="helpers/demo.css?v=2542" />
-  <link type="text/css" rel="stylesheet" href="helpers/media/layout.css?v=2542" />
-  <link type="text/css" rel="stylesheet" href="helpers/media/elements.css?v=2542" />
-
-  <link type="text/css" rel="stylesheet" href="themes/month_white.css?v=2542" />    
-  <link type="text/css" rel="stylesheet" href="themes/month_green.css?v=2542" />    
-  <link type="text/css" rel="stylesheet" href="themes/month_transparent.css?v=2542" />    
-  <link type="text/css" rel="stylesheet" href="themes/month_traditional.css?v=2542" />
-  <link type="text/css" rel="stylesheet" href="themes/areas.css?v=2542" />       
-  <link type="text/css" rel="stylesheet" href="themes/navigator_8.css?v=2542" />
-  <link type="text/css" rel="stylesheet" href="themes/calendar_traditional.css?v=2542" />
-  <link type="text/css" rel="stylesheet" href="themes/navigator_white.css?v=2542" />    
-        
-  <link type="text/css" rel="stylesheet" href="themes/calendar_transparent.css?v=2542" />    
-  <link type="text/css" rel="stylesheet" href="themes/calendar_white.css?v=2542" />    
-  <link type="text/css" rel="stylesheet" href="themes/calendar_green.css?v=2542" /> -->
 	<?php include 'lib/top.php';?>
   <style>
     .bootstrap-datetimepicker-widget {
@@ -314,12 +294,27 @@ include_once('connect.php');?>
                                     <input id="input-8" name="inputvideos[]" data-show-upload="false" multiple type="file" class="file file-loading form-control-file">
                                     <p style="font-size: 12px"> Please Upload Videos of (webm/mp4) Formats with max size upto 10 MB</p>
                             </div>
+                            <!--<div class="but-align form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <button type="submit" name="place" class="btn btn-default cus-save-but">Save & continue</button>
+                            </div>-->
+                            <div class="clearfix"></div>
+                        </div>
+                        <!--</form>-->
+                        <div class="frm-field-mar" id="pandv">
+                            <div class="had-frm-sec">Documents</div>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"><b>Upload your documents *</b></div>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                                <label class="custom-upload uploadphoto">ADD DOCUMENT</label>
+                                <div class="upphoto form-group" style="display:none;">
+                                        <input id="input-7" name="inputdocs[]" data-show-upload="false" multiple type="file" class="file file-loading form-control-file" >
+                                        <p style="font-size: 12px"> Please Upload Documents of (txt/doc/docx) formats </p>
+                                </div>
+                            </div>
                             <div class="but-align form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <button type="submit" name="place" class="btn btn-default cus-save-but">Save & continue</button>
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                        <!--</form>-->
                         
                         <!--<div class="frm-field-mar" id="calender-tab">
                             <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>

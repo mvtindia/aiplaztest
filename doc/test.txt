@@ -1,0 +1,20 @@
+include('email.php');
+    $body ="Dear ".$row4['fname']." ".$row4['lname'].", You have Received this mail from 2finda.com. \n\n Your Booking Request for".$row3['space_name']." has Been Cancelled\n\n";
+    $subject = '2finda.com [Booking Info]';
+    $params = array(
+        'api_user' => $sguser,
+        'api_key' => $sgpass,
+        'to' => $row4['email'],
+        'subject' => $subject,
+        'html' => $body,
+        //'text' => 'I am the text parameter',
+        'from' => 'info@2finda.com',
+      );
+    $session = curl_init($sgrequest);
+    curl_setopt ($session, CURLOPT_POST, true);
+    curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
+    curl_setopt($session, CURLOPT_HEADER, false);
+    curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+    $response = curl_exec($session);
+    curl_close($session);

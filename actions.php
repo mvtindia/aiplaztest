@@ -21,7 +21,7 @@ if(isset($_REQUEST['value']))
   
     if($q2)
     {
-    
+      include('email.php');
       $id = mysqli_insert_id($connect);
       $key = base64_encode($id);
       $id = $key;
@@ -32,13 +32,11 @@ To confirm your 2finda account, simply click on the following link: http://' . $
 
 Your 2finda team';
 
-      $url = 'https://api.sendgrid.com/';
       $subject = 'Confirm Registration';
-      $user='azure_4389271fb296cc51e6ae084dc9819730@azure.com';
-      $pass='Book1234';
+    
       $params = array(
-      'api_user' => $user,
-      'api_key' => $pass,
+      'api_user' => $sguser,
+      'api_key' => $sgpass,
       'to' => $email,
       'subject' => $subject,
       'html' => $body,
@@ -46,8 +44,8 @@ Your 2finda team';
       'from' => 'info@2finda.com',
       );
     
-    $request = $url.'api/mail.send.json';
-    $session = curl_init($request);
+    
+    $session = curl_init($sgrequest);
     curl_setopt ($session, CURLOPT_POST, true);
     curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
     curl_setopt($session, CURLOPT_HEADER, false);
@@ -69,7 +67,7 @@ Your 2finda team';
 // Add place Start Here
 if(isset($_REQUEST['place']))
 {
-  error_log(time());
+  
   $name = $_POST['name'];
   $contact = $_POST['contact'];
 //$postal = $_POST['postal'];
@@ -137,11 +135,18 @@ if(isset($_REQUEST['place']))
                                               'webm',
                                               'mov',
                                             );
+  $supported_docs = array(
+                                              'txt',
+                                              'doc',
+                                              'docx',
+                                            );                                          
   $inputphotos = $_FILES['inputphotos']['name'];
   $tmpphotos = $_FILES['inputphotos']['tmp_name'];
   $inputvideos = $_FILES['inputvideos']['name'];
   $tmpvideos = $_FILES['inputvideos']['tmp_name'];
   $types = $_FILES['inputvideos']['type'];
+  $inputdocs = $_FILES['inputdocs']['name'];
+  $tmpdocs = $_FILES['inputdocs']['tmp_name'];
 	for ($i=0; $i < count($inputphotos) ; $i++)
 	{ 
 		$path = "images/placephotos/".$inputphotos[$i];
@@ -174,13 +179,25 @@ if(isset($_REQUEST['place']))
 	}
   $videos=rtrim($videos,",");
   $videotype=rtrim($type,",");
+  for ($j=0; $j < count($inputdocs); $j++)
+	{ 
+		$path1 = "doc/".$inputdocs[$j];
+		$ext1 = strtolower(pathinfo($inputdocs[$j], PATHINFO_EXTENSION));
+		if (in_array($ext1, $supported_docs))
+	   {
+				$docs .=$inputdocs[$j].",";
+				move_uploaded_file($tmpdocs[$j], $path1);
+			}
+	}
+  $docs=rtrim($docs,",");
+
   if(!isset($_SESSION['u_id']))
   {
     echo "login";
   } else if ($err_msg=='') {
     try {
       error_log("before place insert");
-      $sql = mysqli_query($connect,'INSERT INTO `place` ( `p_name`, `p_contact`, `p_location`, `p_address`, `p_country`, `p_city`, `p_code`, `p_state`, `space_name`, `property_typeid`, `can_be_usedid`, `accomodates`, `place_area`, `ammenties_id`, `add_ammenties`, `details`, `photo`, `video`, video_type, `rules_doid`, `rules_donotid`, `timestampdate`, `saftyid`, `fire_extinguisher`, `fire_alarm`, `gas_valve`, `exit_extinguisher`,`capacity`,`user_id`,`areatype`) VALUES ("'.$name.'", "'.$contact.'", "'.$location.'", "'.$address.'","'.$country.'" ,"'.$city.'" ,"'.$postcode.'","'.$state.'", "'.$space_name.'", "'.$property.'", "'.$canbe.'", "'.$accomodates.'", "'.$area.'", "'.$commonammenties.'", "'.$add_ammenties.'", "'.$details.'", "'.$photos.'", "'.$videos.'", "'.$videotype.'", "'.$ruledo.'", "'.$ruledonot.'", "'.date('Y-m-d').'", "'.$safety.'", "'.$fire_extinguisher.'", "'.$fire_alaram.'", "'.$gas_valve.'", "'.$emergency.'","'.$capacity.'", "'.$_SESSION['u_id'].'","'.$areatype.'")');
+      $sql = mysqli_query($connect,'INSERT INTO `place` ( `p_name`, `p_contact`, `p_location`, `p_address`, `p_country`, `p_city`, `p_code`, `p_state`, `space_name`, `property_typeid`, `can_be_usedid`, `accomodates`, `place_area`, `ammenties_id`, `add_ammenties`, `details`, `photo`, `video`, `video_type`, `document`, `rules_doid`, `rules_donotid`, `timestampdate`, `saftyid`, `fire_extinguisher`, `fire_alarm`, `gas_valve`, `exit_extinguisher`,`capacity`,`user_id`,`areatype`) VALUES ("'.$name.'", "'.$contact.'", "'.$location.'", "'.$address.'","'.$country.'" ,"'.$city.'" ,"'.$postcode.'","'.$state.'", "'.$space_name.'", "'.$property.'", "'.$canbe.'", "'.$accomodates.'", "'.$area.'", "'.$commonammenties.'", "'.$add_ammenties.'", "'.$details.'", "'.$photos.'", "'.$videos.'", "'.$videotype.'", "'.$docs.'", "'.$ruledo.'", "'.$ruledonot.'", "'.date('Y-m-d').'", "'.$safety.'", "'.$fire_extinguisher.'", "'.$fire_alaram.'", "'.$gas_valve.'", "'.$emergency.'","'.$capacity.'", "'.$_SESSION['u_id'].'","'.$areatype.'")');
 
       if($sql>0){
         echo "success";
@@ -195,11 +212,11 @@ if(isset($_REQUEST['place']))
     echo">>>";
     echo $err_msg;
   }
-error_log(time());
+
   $email = $_SESSION['email'];
   $fname = $_SESSION['fname'];
   $lname = $_SESSION['lname'];
-  $url = 'https://api.sendgrid.com/';
+  include('email.php');
   $subject = 'Earn money with your listed place on 2finda.com';
   
   $body = 
@@ -216,8 +233,7 @@ error_log(time());
   Kind regards,<br><br>
   Your 2finda team";
 
-  $user='azure_4389271fb296cc51e6ae084dc9819730@azure.com';
-  $pass='Book1234';
+  
 /*$json_string = array(
   'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
 );*/
@@ -225,8 +241,8 @@ error_log(time());
     'to' => array($email), 'category' => 'test_category'
   );
   $params = array(
-      'api_user' => $user,
-      'api_key' => $pass,
+      'api_user' => $sguser,
+      'api_key' => $sgpass,
       //'x-smtpapi' => json_encode($json_string),
       'to' => $email,
       'subject' => $subject,
@@ -235,8 +251,8 @@ error_log(time());
       'from' => 'info@2finda.com',
   );
     
-  $request = $url.'api/mail.send.json';
-  $session = curl_init($request);
+  
+  $session = curl_init($sgrequest);
   curl_setopt ($session, CURLOPT_POST, true);
   curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
   curl_setopt($session, CURLOPT_HEADER, false);
@@ -545,7 +561,7 @@ if(isset($_REQUEST['savetime']))
  {
   echo "login";
  } else {
-  $res = mysqli_query($connect,"select * from `calenderdata` where `placeid`='".$placeid."' and `date1`='".$date1."' and `date2`='".$date2."'");
+  $res = mysqli_query($connect,"select * from `calenderdata` where `placeid`='".$placeid."' and ((`date1`<='".$date1."' and `date2`>='".$date1."')||(`date1`<='".$date2."' and `date2`>='".$date2."')||(`date1`>='".$date1."' and `date2`<='".$date2."'))");
     if (mysqli_num_rows($res)) {
       echo "error";
       echo ",,,";

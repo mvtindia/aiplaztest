@@ -339,7 +339,25 @@ if($match1=mysqli_fetch_array($query1)){
 	  
 	  
 	  <!---==========================Video section Ends=======================-->	  
+	   <!---==========================Doc section=======================-->
+	 
+	  <div class="row">
+	  <h4 class="color1 col-md-12 col-sm-12  mg-top20">Document(s)</h4>
+	  <div class="col-md-12 col-sm-12 ">
+	   <?php if(!empty($match['document'])) { 
+	  $doc=explode(",", $match['document']);
+	  for ($i=0; $i <count($doc) ; $i++) {
+	  if($doc[$i]==""){
+	  		continue;
+	  	} 
+	  		echo '<div class="col-md-4 col-sm-4  mg-media"><a href="doc/'.$doc[$i].'">Document</a></div>';
+	  }?>
+	  <?php }else{echo "-";} ?>
+	  </div>
+	  </div>
 	  
+	  
+	  <!---==========================Doc section Ends=======================-->	  
 	  <!---==========================Rules section=======================-->
 	  	  <div class="row">
 		  <div class="col-md-12">

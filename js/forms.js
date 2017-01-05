@@ -107,7 +107,7 @@ $("#signup_form").submit(function(e)
      }          
     });
     e.preventDefault(); //Prevent Default action. 
-    e.unbind();
+    //e.unbind();
 }); 
     
 $("#updprof_form").submit(function(e)
@@ -150,7 +150,7 @@ $("#updprof_form").submit(function(e)
      }          
     });
     e.preventDefault(); //Prevent Default action. 
-    e.unbind();
+    //e.unbind();
 }); 
 
 // signup form end
@@ -206,7 +206,7 @@ $("#login").submit(function(e)
             },
        });
         e.preventDefault();
-        e.unbind();
+        //e.unbind();
    }
    else  //for olden browsers
     {
@@ -275,7 +275,7 @@ $("#upload_profile").submit(function(e)
      }          
     });
     e.preventDefault(); //Prevent Default action. 
-    e.unbind();
+    //e.unbind();
 }); 
 
 //end here
@@ -317,7 +317,7 @@ $("#updatedata").submit(function(e)
      }          
     });
     e.preventDefault(); //Prevent Default action. 
-    e.unbind();
+    //e.unbind();
 }); 
 
 //end  here
@@ -372,20 +372,8 @@ $("#change_pass").submit(function(e)
      }          
     });
     e.preventDefault(); //Prevent Default action. 
-    e.unbind();
+    //e.unbind();
 }); 
-    
-$("#movon1").click(function(e) {
-    $("#add_place").validator();
-    if (e.isDefaultPrevented()) {
-        alert("here");
-        return false;
-    } else {
-        $("#details").css('display','none');
-        $("div#pandv").css('display','block');
-        $("div#calender-tab").css('display','block');
-    }
-});
 
 /* add place form start */
      $('form#add_place').submit(function(e) {
@@ -477,7 +465,7 @@ $("form#photovideo").submit(function(e)
             },
        });
         e.preventDefault();
-        e.unbind();
+        //e.unbind();
    }
    else  //for olden browsers
     {
@@ -570,7 +558,7 @@ $('.ishowload').css('display','block');
            },
       });
        e.preventDefault();
-       e.unbind();
+       //e.unbind();
   }
   else  //for olden browsers
    {
@@ -801,7 +789,7 @@ $("form#ephotovideo").submit(function(e)
             },
        });
         e.preventDefault();
-        e.unbind();
+        //e.unbind();
    }
    else  //for olden browsers
     {
@@ -991,7 +979,7 @@ $("form#epricetermss").submit(function(e)
             },
        });
         e.preventDefault();
-        e.unbind();
+        //e.unbind();
    }
    else  //for olden browsers
     {
@@ -1064,7 +1052,7 @@ $("form#calenderform").submit(function(e)
                 swal('Success','Updated Successfully','success');
             } else {
                 $('.ishowload').css('display','none');
-                swal('Duplicate', 'Duplicate Entry', 'error');
+                swal('Invalid Entry', 'Some or all of time period has been entered.', 'error');
             }
 
             $('#back2').click(function(){
@@ -1078,7 +1066,7 @@ $("form#calenderform").submit(function(e)
            },
       });
        e.preventDefault();
-       e.unbind();
+       //e.unbind();
   }
   else  //for olden browsers
    {
@@ -1178,7 +1166,7 @@ $(".enquiry_form").submit(function(e)
      }          
     });
     e.preventDefault(); //Prevent Default action. 
-    e.unbind();
+    //e.unbind();
 }); 
 
 // reviews n ratings form
@@ -1216,7 +1204,7 @@ $("#place_ratings").submit(function(e)
             },
        });
         e.preventDefault();
-        e.unbind();
+        //e.unbind();
    }
    else  //for olden browsers
     {
