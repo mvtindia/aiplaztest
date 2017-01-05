@@ -740,6 +740,27 @@ $('.svcross-hover').click(function(){
        });
  });
 
+ $('.dcross-hover').click(function(){
+  $(this).css('display','none');
+  $(this).prev().css("cssText", "display: none !important;");
+  var pid=$(this).data('pid');
+  var pg=$('#pg3').val();
+  var plid=$('#placeid1').val();
+
+   $.ajax({
+           url: 'actions.php?deldoc=el_del&pid='+pid+'&pg='+pg+'&plid='+plid,
+           success: function(data){
+            console.log(data);
+           if(data=="success"){  
+              window.location.href="edit-place.php?placeid="+plid+"&unique1=20";
+           } 
+           },
+           cache: false,
+           contentType: false,
+           processData: false
+       });
+ });
+
 // update photo n videos form submit ajax
 
 
@@ -768,6 +789,7 @@ $("form#ephotovideo").submit(function(e)
                  $('.ishowload').css('display','none');
               $("#epricetermss").css('display','block');
              $("#ephotovideo").css('display','block');
+             $("form#ephotovideo").trigger('reset');
              swal('Success','Updated Successfully','success');
              }
              else if(data1[0]=='wrong_exe')
@@ -819,6 +841,74 @@ $("form#ephotovideo").submit(function(e)
     }     
 });
 
+$("form#edoc").submit(function(e)
+{
+    var formObj = $(this);
+    var plid=$('#placeid1').val();
+    if(window.FormData !== undefined)  // for HTML5 browsers
+    {
+        $('.ishowload').css('display','block');
+        var formData = new FormData(this);
+        $.ajax({
+            url: 'actions.php?qedoc=123',
+            type: 'POST',
+            data:  formData,
+            mimeType:"multipart/form-data",
+            contentType: false,
+            cache: false,
+            processData:false,
+            success: function(data, textStatus, jqXHR)
+            {
+              
+              var data1 = data.split(">>>");
+              console.log(data1[0]);
+             if(data1[0]=="success"){
+                $('.ishowload').css('display','none');              
+                $("#edoc").css('display','block');
+                $("form#edoc").trigger('reset');
+                //window.location.href="edit-place.php?placeid="+plid+"&unique1=20";
+                swal('Success','Updated Successfully','success');
+                
+             } else {
+                swal('Error','Wrong Extension','error');
+                $('.ishowload').css('display','none');
+                $('.container-fluid').css('display','block');
+                
+                $("#edoc").css('display','block');
+             }
+             //console.log(data);
+            },
+       });
+        e.preventDefault();
+        //e.unbind();
+   }
+   else  //for olden browsers
+    {
+        //generate a random id
+        var  iframeId = 'unique' + (new Date().getTime());
+ 
+        //create an empty iframe
+        var iframe = $('<iframe src="javascript:false;" name="'+iframeId+'" />');
+ 
+        //hide it
+        iframe.hide();
+ 
+        //set form target to iframe
+        formObj.attr('target',iframeId);
+ 
+        //Add iframe to body
+        iframe.appendTo('body');
+        iframe.load(function(e)
+        {
+            var doc = getDoc(iframe[0]);
+            var docRoot = doc.body ? doc.body : doc.documentElement;
+            var data = docRoot.innerHTML;
+            //data is returned from server.
+ 
+        });
+ 
+    } 
+});
 
 //calender price  update
 

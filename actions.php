@@ -599,6 +599,26 @@ if(isset($_REQUEST['delpic'])=='el_del'){
                       }
 }//isset
 
+//del pic from list places edit
+if(isset($_REQUEST['deldoc'])=='el_del'){
+    $pid=$_REQUEST['pid'];
+    $pg=$_REQUEST['pg'];
+    $alldocs=explode(',', $pg);
+    
+    array_splice($alldocs,$pid,1);
+      
+    $newpg=implode(',',$alldocs);
+    $newpg;
+    $plid=$_REQUEST['plid'];
+     //echo 'UPDATE `place` SET `photo`="'.$newpg.'" where place_id="'.$plid.'"';
+    $query1=mysqli_query($connect,'UPDATE `place` SET `document`="'.$newpg.'" where place_id="'.$plid.'"');
+    if($query1>0){
+          echo 'success';                  
+    }else{
+          echo 'error';
+    }
+}//isset
+
 
 //del pic from list places edit
 if(isset($_REQUEST['sdelpic'])=='el_del'){
@@ -746,8 +766,10 @@ if(isset($_REQUEST['qephoto']))
     
       $inp=implode(',', $inputphotos);
       if(!empty($pg)){
+       
        $newpg=$pg.",".$inp;
       }else{
+        
        $newpg=$inp;
       }
 
@@ -829,6 +851,88 @@ if($err_msg=='')
 }
 }//isset photo
 
+if(isset($_REQUEST['qedoc']))
+{
+  //echo "working";
+      $supported_docs = array(
+                                              'txt',
+                                              'doc',
+                                              'docx',
+                                              'pdf'
+                                            );
+
+      $placeid=$_POST['placeid1'];
+      $pg=$_POST['pg3'];
+      $inputdocs = $_FILES['inputdocs']['name'];
+      $tmpdocs = $_FILES['inputdocs']['tmp_name'];
+
+    
+      $inp=implode(',', $inputdocs);
+      if(!empty($pg)){
+       $newpg=$pg.",".$inp;
+      }else{
+       $newpg=$inp;
+      }
+
+//echo "newpg:".$newpg;
+
+     /* $pg1=$_POST['pg1'];
+      $pg2=$_POST['pg2'];
+      
+      if(!empty($pg1)){
+       $newpg1=$pg1.",".$inp1;
+      }else{
+       $newpg1=$inp1;
+      }
+
+      if(!empty($pg2)){
+       $newpg2=$pg2.",".$inp2;
+      }else{
+       $newpg2=$inp2;
+      }*/
+
+//echo "<br>newpg1:".$newpg1;
+//echo "<br>newpg2:".$newpg2;
+
+
+      for ($i=0; $i < count($inputdocs) ; $i++)
+      { 
+    $path = "doc/".$inputdocs[$i];
+    $ext = strtolower(pathinfo($inputdocs[$i], PATHINFO_EXTENSION));
+    if (in_array($ext, $supported_image))
+            {
+              $imageInformation = getimagesize($tmpdocs[$i]);
+             $imageWidth = $imageInformation[0]; //Contains the Width of the Image
+             $imageHeight = $imageInformation[1]; //Contains the Height of the Image
+              if($imageWidth >= '200' && $imageHeight >='500' )
+              {
+                $docs .= $inputdocs[$i].",";
+                move_uploaded_file($tmpdocs[$i], $path);
+              }
+              else
+              {
+                  $err_msg = $inputdocs[$i];
+              } 
+      }
+      }
+  $docs=rtrim($docs,",");
+
+if($err_msg=='')
+{
+  $query=mysqli_query($connect,'update place set document="'.$newpg.'" where place_id="'.$placeid.'"');
+  if($query>0){
+    echo "success";
+    echo">>>";
+  } else {
+    echo "error";
+    echo">>>";
+  }
+} else {
+  echo"wrong_exe";  
+  echo">>>";
+  echo $err_msg;
+}
+}//isset photo
 //update place price
 
 if(isset($_POST['qeprice_place']))

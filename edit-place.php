@@ -4,7 +4,7 @@ if(!isset($_SESSION['u_id'])) {
   header( 'Location: http://' . $_SERVER['SERVER_NAME'] ) ;
 }
 ?> 
-?>
+
 <!doctype html>
 <html>
 <head>
@@ -57,6 +57,7 @@ if(!isset($_SESSION['u_id'])) {
         <ul class="nav nav-tabs">
           <li class="active"><a data-toggle="tab" href="#home">Details</a></li>
           <li><a data-toggle="tab" href="#menu12">Photos & Videos</a></li>
+          <li><a data-toggle="tab" href="#menu15">Documents</a></li>
           <!--<li><a data-toggle="tab" href="#menu13">Prices</a></li>-->
           <li><a data-toggle="tab" href="#menu14">Scheduling and Prices</a></li>
         </ul>
@@ -406,6 +407,55 @@ if($match=mysqli_fetch_array($query)){
   </form>
   <!--=====================================-->
     </div>
+    <div id="menu15" class="tab-pane fade">
+  <!--==========================Photos AND Videos TAB STARTS=======================-->
+ <form id="edoc" method="post" enctype="multipart/form-data" style="">
+
+  <div class="" id="hide-photo" >
+    <div class="tellus-data col-md-12 col-sm-12 col-xs-12 pd-lr-0">
+   <div class="had-frm-sec"  >Documents</div>
+  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"><b>Upload documents *</b></div>
+  <div class="mphotos col-md-9" style="">
+                       <input type="hidden" name="pg3" id="pg3" value="<?php echo $row['document'];?>">
+ 
+    <?php  
+    if(!empty($row['document'])){
+      $doc=explode(",",$row['document']);
+      $query=mysqli_query($connect,'Select * from place where place_id="'.$pid.'"');
+      if($match=mysqli_fetch_array($query)){
+        for ($k=0; $k < count($doc); $k++) { 
+          if($doc[$k]=="")
+          {
+            continue;
+          } 
+          //echo '<div style="width: 60%;"><a href="doc/'.$doc[$k].'" class="img-responsive mimages">Document</a>';
+          echo '<div style="width: 60%; display:inline;"><a href="doc/'.$doc[$k].'" target="newtab" class=""><i class="fa fa-paperclip cross-hover">'.$doc[$k].'</i></a>';
+          echo ' <i class="fa fa-trash-o dcross-hover"  data-pid="'.$k.'"></i></div><div class="clearfix"></div>';
+        }//for
+  }
+  }?>
+  </div>
+  <input type="hidden" name="placeid1" value="<?php echo $pid; ?>" id="placeid1">
+
+   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >     
+<label class="custom-upload uploadphoto">ADD DOCUMENTS</label>
+<div class="upphoto" style="display:none;">
+   <input id="input-9" name="inputdocs[]" data-show-upload="false" multiple type="file" class="file file-loading" >
+    <p style="font-size: 12px"> Please Upload Documents of (txt/doc/docx) formats</p>
+</div>
+</div>
+
+   <div class="col-md-12 text-center form-group">
+
+  <button id="show-price" type="submit" name="qephoto" class="btn btn-default cus-save-but">Save & Continue</button>
+  </div>
+
+  <div class="clearfix"></div>
+   </div>
+  </div> <!--frm-field-mar-->
+  </form>
+  <!--=====================================-->
+    </div>
     <div id="menu13" class="tab-pane fade">
 <!--==========================PRICE AND TERMS TAB STARTS=======================-->
   <form id="epricetermss" method="post" enctype="multipart/form-data" >
@@ -538,10 +588,10 @@ if($match=mysqli_fetch_array($query)){
       { 
         ?>
         <div class="row" style="background: rgb(252, 139, 17);
-    padding: 13px 0px;
+    padding: 18px 0px;
     color: white;
     font-weight: bolder;
-    font-size: 19px;">
+    font-size: 13px;">
     <style>
 .full-green-theme.range-calendar, .full-green-theme .range-calendar {
     background-color: #FC8B11 !important;
@@ -557,18 +607,18 @@ if($match=mysqli_fetch_array($query)){
     border-bottom-color: transparent;
 }
     </style>
-          <div class="col-md-3">From</div>
-          <div class="col-md-3">To</div>
-          <div class="col-md-1">ppn</div>
-          <div class="col-md-1">pph</div>
-          <div class="col-md-1">ppw</div>
-          <div class="col-md-3">Action</div>
+          <div class="col-md-3" style="text-align: center;">From</div>
+          <div class="col-md-3" style="text-align: center;">To</div>
+          <div class="col-md-1">Price/<br>Hour</div>
+          <div class="col-md-1">Price/<br>Day</div>
+          <div class="col-md-1">Price/<br>Week</div>
+          <div class="col-md-3" style="text-align: center;">Action</div>
         </div>
         <?php
         $he = 1;
         while($row9 = mysqli_fetch_array($sql9))
         {
-          ?><div class="row for_re" style="    padding: 11px 0px 1px 0px;
+          ?><div class="row for_re" style="padding: 11px 0px 1px 0px;
     border-bottom: 2px solid rgb(252, 139, 17);">
             <div class="col-md-3 text-center"><?php echo $row9['date1'] ?></div>
             <div class="col-md-3 text-center"><?php echo $row9['date2'] ?></div>
@@ -583,8 +633,8 @@ if($match=mysqli_fetch_array($query)){
               //{
 
                ?>
-            <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="p_p_n" value="<?php echo $row9['p_p_n'] ? $row9['p_p_n'] : '0';  ?>"></div>
             <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="p_p_h" value="<?php echo $row9['p_p_h']  ? $row9['p_p_h'] : '0';  ?>"></div>
+            <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="p_p_n" value="<?php echo $row9['p_p_n'] ? $row9['p_p_n'] : '0';  ?>"></div>       
             <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="w_p_p_n" value="<?php echo $row9['w_p_p_n']  ? $row9['w_p_p_n'] : '0'; ?>"></div>
             <?php //} ?>
             <div class="col-md-3 text-center"><button name="calender_price_update" id="he<?php echo $he; ?>" class="btn btn-success onclick_submit_price " value="<?php echo $row9['calid'] ?>" ><i class="fa fa-floppy-o"></i></button>
