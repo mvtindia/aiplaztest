@@ -1,8 +1,8 @@
 <?php
 session_start();
 include_once('connect.php');
-//require_once('swift_required.php');
 require('lib/SendGrid.php');
+include_once('email.php');
 
 // signup form start
 
@@ -21,15 +21,15 @@ if(isset($_REQUEST['value']))
   
     if($q2)
     {
-      include('email.php');
+      
       $id = mysqli_insert_id($connect);
       $key = base64_encode($id);
       $id = $key;
     
-      $body = 'Hi ' . $fname . ',
+      $body = 'Hi ' . $fname . ',<br>
 
 To confirm your 2finda account, simply click on the following link: http://' . $_SERVER['SERVER_NAME'] . '/verify.php?id=' . $id . '&code=' . $code . '
-
+<br>
 Your 2finda team';
 
       $subject = 'Confirm Registration';
@@ -216,7 +216,7 @@ if(isset($_REQUEST['place']))
   $email = $_SESSION['email'];
   $fname = $_SESSION['fname'];
   $lname = $_SESSION['lname'];
-  include('email.php');
+  
   $subject = 'Earn money with your listed place on 2finda.com';
   
   $body = 
@@ -234,12 +234,12 @@ if(isset($_REQUEST['place']))
   Your 2finda team";
 
   
-/*$json_string = array(
-  'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
-);*/
   $json_string = array(
-    'to' => array($email), 'category' => 'test_category'
+  'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
   );
+  /*$json_string = array(
+    'to' => array($email), 'category' => 'test_category'
+  );*/
   $params = array(
       'api_user' => $sguser,
       'api_key' => $sgpass,
