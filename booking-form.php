@@ -293,21 +293,22 @@ var handler = StripeCheckout.configure({
     // Get the token ID to your server-side code for use.
   }
 });
-
+$tots = <?php echo $r17['hotel'] ?> * 100;
 document.getElementById('payonline').addEventListener('click', function(e) {
   // Open Checkout with further options:
   handler.open({
     name: 'testStripe',
     description: '2 widgets',
-    amount: <?php echo $r17['hotel'] ?>
+    amount: $tots
   });
-  window.location.href="searchlst.php";
+  
   e.preventDefault();
 });
 
 // Close Checkout on page navigation:
 window.addEventListener('popstate', function() {
   handler.close();
+  window.location.href="index.php";
 });
 </script>
 
