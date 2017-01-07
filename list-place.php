@@ -66,8 +66,13 @@ include_once('connect.php');?>
                                 <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
                                 
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">     
-                                    <label for="space">Name*</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Name" name="name" required>
+                                    <label for="space">First Name*</label>
+                                    <input type="text" class="form-control" id="fname" placeholder="Name" name="fname" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">     
+                                    <label for="space">Last Name*</label>
+                                    <input type="text" class="form-control" id="lname" placeholder="Name" name="lname" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
 

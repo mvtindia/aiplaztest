@@ -68,7 +68,8 @@ Your 2finda team';
 if(isset($_REQUEST['place']))
 {
   
-  $name = $_POST['name'];
+  $fname = $_POST['fname'];
+  $lname = $_POST['lname'];
   $contact = $_POST['contact'];
 //$postal = $_POST['postal'];
   $location = $_POST['location'];
@@ -197,7 +198,8 @@ if(isset($_REQUEST['place']))
   } else if ($err_msg=='') {
     try {
       error_log("before place insert");
-      $sql = mysqli_query($connect,'INSERT INTO `place` ( `p_name`, `p_contact`, `p_location`, `p_address`, `p_country`, `p_city`, `p_code`, `p_state`, `space_name`, `property_typeid`, `can_be_usedid`, `accomodates`, `place_area`, `ammenties_id`, `add_ammenties`, `details`, `photo`, `video`, `video_type`, `document`, `rules_doid`, `rules_donotid`, `timestampdate`, `saftyid`, `fire_extinguisher`, `fire_alarm`, `gas_valve`, `exit_extinguisher`,`capacity`,`user_id`,`areatype`) VALUES ("'.$name.'", "'.$contact.'", "'.$location.'", "'.$address.'","'.$country.'" ,"'.$city.'" ,"'.$postcode.'","'.$state.'", "'.$space_name.'", "'.$property.'", "'.$canbe.'", "'.$accomodates.'", "'.$area.'", "'.$commonammenties.'", "'.$add_ammenties.'", "'.$details.'", "'.$photos.'", "'.$videos.'", "'.$videotype.'", "'.$docs.'", "'.$ruledo.'", "'.$ruledonot.'", "'.date('Y-m-d').'", "'.$safety.'", "'.$fire_extinguisher.'", "'.$fire_alaram.'", "'.$gas_valve.'", "'.$emergency.'","'.$capacity.'", "'.$_SESSION['u_id'].'","'.$areatype.'")');
+      $fullname = $fname . " " . $lname;
+      $sql = mysqli_query($connect,'INSERT INTO `place` ( `p_name`, `p_contact`, `p_location`, `p_address`, `p_country`, `p_city`, `p_code`, `p_state`, `space_name`, `property_typeid`, `can_be_usedid`, `accomodates`, `place_area`, `ammenties_id`, `add_ammenties`, `details`, `photo`, `video`, `video_type`, `document`, `rules_doid`, `rules_donotid`, `timestampdate`, `saftyid`, `fire_extinguisher`, `fire_alarm`, `gas_valve`, `exit_extinguisher`,`capacity`,`user_id`,`areatype`) VALUES ("'.$fullname.'", "'.$contact.'", "'.$location.'", "'.$address.'","'.$country.'" ,"'.$city.'" ,"'.$postcode.'","'.$state.'", "'.$space_name.'", "'.$property.'", "'.$canbe.'", "'.$accomodates.'", "'.$area.'", "'.$commonammenties.'", "'.$add_ammenties.'", "'.$details.'", "'.$photos.'", "'.$videos.'", "'.$videotype.'", "'.$docs.'", "'.$ruledo.'", "'.$ruledonot.'", "'.date('Y-m-d').'", "'.$safety.'", "'.$fire_extinguisher.'", "'.$fire_alaram.'", "'.$gas_valve.'", "'.$emergency.'","'.$capacity.'", "'.$_SESSION['u_id'].'","'.$areatype.'")');
 
       if($sql>0){
         echo "success";
