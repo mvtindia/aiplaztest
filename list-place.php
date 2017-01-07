@@ -307,7 +307,7 @@ include_once('connect.php');?>
                                 <label class="custom-upload uploadphoto">ADD DOCUMENT</label>
                                 <div class="upphoto form-group" style="display:none;">
                                         <input id="input-7" name="inputdocs[]" data-show-upload="false" multiple type="file" class="file file-loading form-control-file" >
-                                        <p style="font-size: 12px"> Please Upload Documents of (txt/doc/docx) formats </p>
+                                        <p style="font-size: 12px"> Please Upload Documents of (txt/pdf/doc/docx) formats </p>
                                 </div>
                             </div>
                             <div class="but-align form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

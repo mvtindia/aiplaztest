@@ -441,7 +441,7 @@ if($match=mysqli_fetch_array($query)){
 <label class="custom-upload uploadphoto">ADD DOCUMENTS</label>
 <div class="upphoto" style="display:none;">
    <input id="input-9" name="inputdocs[]" data-show-upload="false" multiple type="file" class="file file-loading" >
-    <p style="font-size: 12px"> Please Upload Documents of (txt/doc/docx) formats</p>
+    <p style="font-size: 12px"> Please Upload Documents of (pdf/txt/doc/docx) formats</p>
 </div>
 </div>
 
