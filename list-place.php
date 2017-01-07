@@ -406,17 +406,17 @@ include_once('connect.php');?>
             	                </div>
     		                    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
                 	                            <label for="space">Price Per Hour</label>
-                                                <input type="number" required class="form-control" id="priceph" placeholder="Enter $$" name="p_p_h">
+                                                <input type="number"  class="form-control" id="priceph" placeholder="Enter $$" name="p_p_h">
                                 </div>
                                 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
                 	                            <label for="space">Price Per Day</label>
-                                                <input type="number" required class="form-control" id="pricepd" placeholder="Enter $$" name="p_p_n">
+                                                <input type="number"  class="form-control" id="pricepd" placeholder="Enter $$" name="p_p_n">
                                 </div>
                                 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
                 	                            <label for="space">Price Per Week</label>
-                                                <input type="number" required class="form-control" id="pricepw" placeholder="Enter $$" name="w_p_p_n">
+                                                <input type="number" class="form-control" id="pricepw" placeholder="Enter $$" name="w_p_p_n">
                                 </div> 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
                 	                            <label for="space">Price Per Hour(minus service fee)</label>
@@ -602,19 +602,24 @@ function formVal() {
 						$("#span1a").css('display', 'none');
     				}
 					var fn1=document.getElementById('priceph').value;
-    				if(fn1 == ""){
+                    var fn2=document.getElementById('pricepd').value;
+                    var fn3=document.getElementById('pricepw').value;
+                    var mess2 = "Please Enter Pricing Information.";
+    				if(fn1 == "" && fn2 == "" && fn3 == ""){
         				
-        				document.getElementById('priceph').style.borderColor = "red";
-						$("#span1a").html(mess);
+        				//document.getElementById('priceph').style.borderColor = "red";
+						$("#span1a").html(mess2);
 						$("#span1a").css('display', 'block');
         				return false;
     				}else{
         				document.getElementById('priceph').style.borderColor = "green";
+                        document.getElementById('pricepd').style.borderColor = "green";
+                        document.getElementById('pricepw').style.borderColor = "green";
 						$("#span1a").css('display', 'none');
     				}
 
-					var fn2=document.getElementById('pricepd').value;
-    				if(fn2 == ""){
+					
+    				/*if(fn2 == ""){
         				
         				document.getElementById('pricepd').style.borderColor = "red";
 						$("#span1a").html(mess);
@@ -625,7 +630,7 @@ function formVal() {
 						$("#span1a").css('display', 'none');
     				}
 
-					var fn2=document.getElementById('pricepw').value;
+					
     				if(fn2 == ""){
         				
         				document.getElementById('pricepw').style.borderColor = "red";
@@ -635,7 +640,7 @@ function formVal() {
     				}else{
         				document.getElementById('pricepw').style.borderColor = "green";
 						$("#span1a").css('display', 'none');
-    				}
+    				}*/
                     
                     var dt1 = new Date($("#date1a").val() + " " + $("#date1b").val());
 			        var dt2 = new Date($("#date2a").val() + " " + $("#date2b").val());
