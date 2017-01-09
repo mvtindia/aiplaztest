@@ -67,12 +67,12 @@ include_once('connect.php');?>
                                 
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">     
                                     <label for="space">First Name*</label>
-                                    <input type="text" class="form-control" id="fname" placeholder="Name" value=<?php echo $_SESSION['fname'] ?> name="fname" required>
+                                    <input type="text" class="form-control" id="fname" placeholder="Name" value="<?php echo $_SESSION['fname'] ?>" name="fname" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">     
                                     <label for="space">Last Name*</label>
-                                    <input type="text" class="form-control" id="lname" placeholder="Name" value=<?php echo $_SESSION['lname'] ?> name="lname" required>
+                                    <input type="text" class="form-control" id="lname" placeholder="Name" value="<?php echo $_SESSION['lname'] ?>" name="lname" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
 
