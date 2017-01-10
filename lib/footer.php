@@ -1,8 +1,11 @@
 <!--==================Signup Modal box==============-->
   <!-- Modal -->
     <?php
+if (isset($_GET['placeid'])){
+  $placeid = $_GET['placeid'];
+}
 
- $placeid = $_GET['placeid'];
+ 
 
 //booking disable for hours
  $sql_footer2 = mysqli_query($connect,"SELECT * FROM booking WHERE placeid='".$placeid."'");
@@ -211,7 +214,7 @@ else
   
             <div class="input-group" id="login">
               <span class="input-group-addon"><i class="fa fa-user"></i></span>
-              <input type="email" class="form-control form-height40 bord-0"  name="email" reuired placeholder="Email Id"/>
+              <input type="email" class="form-control form-height40 bord-0"  name="email" required placeholder="Email Id"/>
             </div>
 
             <div class="input-group mg-top20">
@@ -223,6 +226,7 @@ else
               <button type="submit" class="btn-3" name="login">Login</button>
               <button type="button" class="btn-back">Back</button>
             </div>
+            <div>If you forgot your password, click <a class="link-1" href="#" onClick="link1();">here</a> to reset.</div>
   </form>
           </div>
   
@@ -267,7 +271,26 @@ else
 
       
   </form>
+          <br>      
+<div class="container">
+<p> By signing up, you agree to our <a href="lib/terms.php" target="_blank">Terms And Conditions</a> </p>
+</div>
   </div>
+  <div class="hide1" id="fourth-block">
+  <form class="form-group" id="reset" method="POST">
+  
+            <div class="input-group" id="login">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <input type="email" class="form-control form-height40 bord-0"  name="rsemail" required placeholder="Email address"/>
+            </div>
+
+            <div class="text-center mg-top10">
+              <button type="submit" class="btn-5" name="reset">Reset My Password</button>
+              <button type="button" class="btn-back">Back</button>
+            </div><br>
+            <div id="reset_msg" style="display: none; color: red;">You will receive an email with a link to reset your password.</div>
+  </form>
+          </div>
   
       </div>
       <div class="modal-footer" style="text-align: center;">
@@ -275,12 +298,7 @@ else
         <span class="showmsg" style="display:none;"></span>
       </div>
     </div>
-        <br>      
-<div class="container">
-<p> By signing up, you agree to our <a href="lib/terms.php" target="_blank">Terms And Conditions</a> </p>
-    
-      
-</div>
+
  </div>
   </div>
 </div>
@@ -1149,6 +1167,9 @@ $('.picking').change(function(){
      
 <script>
 // When the DOM is ready, run this function
+<?php if (isset($_PUT['rsemail'])) { ?>
+        $('#fourth-block').css('display','block');
+<?php } ?>
 $(document).ready(function() {
   //Set the carousel options
   $('#quote-carousel').carousel({
