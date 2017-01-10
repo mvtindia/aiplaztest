@@ -118,8 +118,81 @@ $(document).ready(function() {
      }          
     });
     e.preventDefault(); //Prevent Default action. 
-    e.unbind();
-}); 
+    //e.unbind();
+});
+
+$("form#reset").submit(function(e)
+{
+	var formObj = $(this);
+    var formURL = formObj.attr("action");
+	var formData = new FormData(this);
+	$.ajax({
+        url: 'forms.php?reset=101',
+        type: 'POST',
+        data:  formData,
+        mimeType:"multipart/form-data",
+        contentType: false,
+        cache: false,
+        processData:false,
+    success: function(data, textStatus, jqXHR)
+    {   
+        //console.log(data);
+        //data1 = data.split('>>>');
+        if(data == 'ok')
+        {
+		   $('#reset_msg').css('display','block');
+		   	//$('.link-1').click();        
+        }
+        else if(data == 'not')
+        {
+        	// $('.signlog').click();
+        	swal("Failure!", "Cannot find that email address", "error");
+        }
+    },
+     error: function(jqXHR, textStatus, errorThrown) 
+     {
+        swal("Failure!", "Email Id already Exist!", "error");
+     }          
+    });
+	e.preventDefault();
+});
+
+$("form#reset_pass").submit(function(e)
+{
+	var formObj = $(this);
+    var formURL = formObj.attr("action");
+	var formData = new FormData(this);
+	$.ajax({
+        url: 'forms.php?rspass=101',
+        type: 'POST',
+        data:  formData,
+        mimeType:"multipart/form-data",
+        contentType: false,
+        cache: false,
+        processData:false,
+    success: function(data, textStatus, jqXHR)
+    {   
+        //console.log(data);
+        //data1 = data.split('>>>');
+        if(data == 'ok')
+        {
+			$('#reset_msg').css('display','block');
+		   	$('.link-1').click();         
+        }
+        else if(data == 'no match')
+        {
+        	// $('.signlog').click();
+        	swal("Failure!", "Passwords do not match.", "error");
+        } else {
+			swal("Oops!", "We are having technical problems. Please try again later.", "error");
+		}
+    },
+     error: function(jqXHR, textStatus, errorThrown) 
+     {
+        swal("Failure!", "Passwords do not match.", "error");
+     }          
+    });
+});
 
 
 //paypal Insertion Start HEre
@@ -648,7 +721,8 @@ jQuery(this).addClass('active');
        
      	$(".btn-3").click(function(){
 		$("#first-block").css('display','none');
-		$("#third-block").css('display','none');
+		$("#third-block").css('display','none');		
+		$("#fourth-block").css('display','none');
 		$("#second-block").css('display','block');
 
 });
@@ -657,15 +731,19 @@ jQuery(this).addClass('active');
 
 		$("#first-block").css('display','none');
 		$("#second-block").css('display','none');
+		$("#fourth-block").css('display','none');
 		$("#third-block").css('display','block');
-
 });
+
+
 
 
 
 $('.btn-back').click(function(){
 	$("#second-block").css('display','none');
 	$("#third-block").css('display','none');
+	$("#fourth-block").css('display','none');
+	$("#reset-msg").css('display', 'none');
 	$("#first-block").css('display','block');
 });
 
@@ -697,6 +775,15 @@ $('a').click(function(){
 	jQuery('.same-class').click(function(){
  jQuery('.same-class').removeClass('active');
  jQuery(this).addClass('active');
+});
+
+jQuery('a.link-1').click(function() {
+
+		$("#first-block").css('display','none');
+		$("#second-block").css('display','none');
+		$("#third-block").css('display','none');
+		$("#fourth-block").css('display','block');
+
 });
 
 

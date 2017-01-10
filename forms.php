@@ -349,6 +349,7 @@ if(isset($_REQUEST['replying']))
       curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
       $response = curl_exec($session);
       curl_close($session);
+      error_log("spota");
       echo "ok";
       echo ">>>";
       echo $last_id;
@@ -1451,4 +1452,68 @@ else
 }
 
 }//if isset
+
+if (isset($_REQUEST['reset'])) {
+  
+  if (isset($_POST['rsemail'])) {
+    
+    $sql2 = mysqli_query($connect,"SELECT * FROM  `users` where email='".$_POST['rsemail']."' and a_status = 0");
+   
+    $row2 = mysqli_fetch_array($sql2);
+    $pword = base64_decode($row2['pwd']);
+    error_log($pword);
+    if ($row2) {
+    $key =  base64_encode($row2['uid']);
+    $body = 'Hi ' . $row2['fname'] . ',<br>
+
+To reset your 2finda account password, simply click on the following link: http://' . $_SERVER['SERVER_NAME'] . 
+'/change_password.php?id=' . $key . '
+<br>
+Your 2finda team';
+
+      $subject = 'Password Reset';
+    
+      $params = array(
+      'api_user' => $sguser,
+      'api_key' => $sgpass,
+      'to' => $_POST['rsemail'],
+      'subject' => $subject,
+      'html' => $body,
+      //'text' => 'I am the text parameter',
+      'from' => 'info@2finda.com',
+      );
+    
+    
+    $session = curl_init($sgrequest);
+    curl_setopt ($session, CURLOPT_POST, true);
+    curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
+    curl_setopt($session, CURLOPT_HEADER, false);
+    curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+    $response = curl_exec($session);
+    curl_close($session);
+    echo "ok";
+  } else {
+    echo "not";
+  }
+  }
+}
+
+if (isset($_REQUEST['rspass'])) {
+    if ($_POST['newpassword'] == $_POST['confpassword']) {
+      $id = $_POST['userid'];
+      $newpwd = md5($_POST['confpassword']);
+      error_log($id);
+      $sql2 = mysqli_query($connect,"UPDATE `users` set `pwd` = '".$newpwd."' where uid = '".$id."'");
+    
+      if ($sql2) {
+        echo "ok";
+      } else {
+        echo "not";
+      }
+
+    } else {
+      echo "no match";
+    }
+}
 ?>

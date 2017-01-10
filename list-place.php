@@ -424,16 +424,16 @@ include_once('connect.php');?>
                                                 <input type="number" class="form-control" id="pricepw" placeholder="Enter $$" name="w_p_p_n">
                                 </div> 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
-                	                            <label for="space">Price Per Hour(minus service fee)</label>
-                                                <input type="text"  class="form-control" id="netpph" placeholder="Enter $$">
+                                                <b>My Takehome (per hour):</b> <span id="netpph"></span>
+                                                
                                 </div>
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
-                                                <label for="space">Price Per Day(minus service fee)</label>
-                                                <input type="text"  class="form-control" id="netppd" placeholder="Enter $$">
+                                                <b>My Takehome (per day):</b> <span id="netppd"></span>
+                                                <!--<input type="text"  class="form-control" id="netppd" placeholder="Enter $$">-->
                                 </div>                            
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
-                	                            <label for="space">Price Per Week(minus service fee)</label>
-                                                <input type="text"  class="form-control" id="netppw" placeholder="Enter $$">
+                                                <b>My Takehome (per week):</b> <span id="netppw"></span>
+                                                <!--<input type="text"  class="form-control" id="netppw" placeholder="Enter $$">-->
                                 </div>
                                 <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
                 	                            <button id="savetime" type="button" name="savetime" class="btn btn-default cus-save-but">Add Availability</button>
@@ -746,17 +746,17 @@ $(document).ready(function() {
 
     $("#priceph").change(function() {
         $newval = Number($("#priceph").val()) * .95;
-        $("#netpph").val(String($newval));
+        $("#netpph").html("$" + String($newval));
     });
 
     $("#pricepd").change(function() {
         $newval = Number($("#pricepd").val()) * .95;
-        $("#netppd").val(String($newval));
+        $("#netppd").html("$" + String($newval));
     });
 
     $("#pricepw").change(function() {
         $newval = Number($("#pricepw").val()) * .95;
-        $("#netppw").val(String($newval));
+        $("#netppw").html("$" + String($newval));
     });
 
     

@@ -84,7 +84,7 @@ $("#signup_form").submit(function(e)
         console.log(data);
         if(data == 'already')
         {
-            swal("Failure!", "Oops! The email ID you entered already exists. Please try to log in with the ID or change your password if you have forgotten it.", "error");
+            swal("Oops!", "The email ID you entered already exists. Please try to log in with the ID or change your password if you have forgotten it.", "error");
         }
         else if(data == 'done')
         {
@@ -400,13 +400,14 @@ $("#change_pass").submit(function(e)
               }
               else if(datas[0]=='error')
               {
-                  swal({ title: 'Error', text: 'Something Went Wrong.', timer: 2000
-});
+                  swal({ title: 'Error', text: 'Something Went Wrong.', timer: 2000});
               }
                else if(datas[0]=='login')
               {
-                  swal({ title: 'Login First', text: 'You Have to login', timer: 2000
-});
+                  $('.signlog').click();
+                  //$("#details").css('display','none');
+
+                  //swal({ title: 'Login First', text: 'You Have to login', timer: 2000});
               }
              }
            
@@ -866,6 +867,7 @@ $("form#edoc").submit(function(e)
                 $('.ishowload').css('display','none');              
                 $("#edoc").css('display','block');
                 $("form#edoc").trigger('reset');
+                location.reload();
                 //window.location.href="edit-place.php?placeid="+plid+"&unique1=20";
                 swal('Success','Updated Successfully','success');
                 
