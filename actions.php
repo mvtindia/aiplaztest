@@ -17,7 +17,7 @@ if(isset($_REQUEST['value']))
    
   if(mysqli_num_rows($q1) <= 0) {
     $code = md5(uniqid(rand()));  
-    $q2 = mysqli_query($connect,'INSERT INTO `users`(`fname`, `lname`, `email`, `pwd`, `contact`, `activation_link`, `a_status`) VALUES ("'.$fname.'","'.$lname.'","'.$email.'","'.$pwd.'","'.$contact.'","'.$code.'",999)', MYSQLI_ASYNC);
+    $q2 = mysqli_query($connect,'INSERT INTO `users`(`fname`, `lname`, `email`, `pwd`, `contact`, `activation_link`, `a_status`) VALUES ("'.$fname.'","'.$lname.'","'.$email.'","'.$pwd.'","'.$contact.'","'.$code.'",999)');
   
     if($q2)
     {
@@ -28,7 +28,7 @@ if(isset($_REQUEST['value']))
     
       $body = 'Hi ' . $fname . ',<br>
 
-To confirm your 2finda account, simply click on the following link: http://' . $_SERVER['SERVER_NAME'] . '/verify.php?id=' . $id . '&code=' . $code . '
+To confirm your 2finda account, simply click or copy this link to a browser: http://' . $_SERVER['SERVER_NAME'] . '/verify.php?id=' . $id . '&code=' . $code . '
 <br>
 Your 2finda team';
 
