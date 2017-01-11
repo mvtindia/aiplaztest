@@ -800,15 +800,3 @@ else
 
 
 </html>
-
-<?php if(isset($_REQUEST['msg']))
-{
-  ?>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      swal('Success','Record Deleted Successfully','success');
-    });
-    
-  </script>
-  <?php
-  } ?>
