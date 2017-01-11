@@ -34,13 +34,15 @@ $(document).ready(function(){
               if(check==true){
                 var marker_addresses=$('#marker_addresses').val();
                 var marker_location=$('#marker_location').val();
+                var marker_placeids=$('#marker_placeids').val();
                 var nloc=marker_location.split(">>>");
                 var nadd=marker_addresses.split(">>>");
+                var npla=marker_placeids.split(">>>");
                 inday = new Array(nadd.length);
                 locationsarrayvalue = new Array(nadd.length);
-                for (var i = 0,j=0; i < nadd.length; i++,j++) {
+                for (var i = 0,j=0,k=0; i < nadd.length; i++,j++,k++) {
                   nadd[j]= nadd[j].replace(/,/g, "");
-                  inday[i] = [nloc[i],nadd[j],'loc'];
+                  inday[i] = [nloc[i],nadd[j],npla[k]];
                 }  
               }
               
@@ -85,7 +87,8 @@ google.maps.event.addDomListener(window, "load", initialize);
 function geocodeAddress(locations, i) {
   var title = locations[i][0];
   var address = locations[i][1];
-  var url = locations[i][2];
+  //var url = locations[i][2];
+  var url = 'demo-venue2.php?placeid=' + locations[i][2];
   geocoder.geocode({
       'address': locations[i][1]
     },
@@ -114,7 +117,10 @@ function geocodeAddress(locations, i) {
 
 function infoWindow(marker, map, title, address, url) {
   google.maps.event.addListener(marker, 'click', function() {
-    var html = "<div><h3>" + title + "</h3><p>" + address + "<br></div><a href='" + url + "'>View location</a></p>";
+    //var placeid=1521;
+    var html = "<div><h3>" + title + "</h3><p>" + address + "<br></div><a href=" + url + ">View location</a></p>";
+    map.setZoom(8);
+    map.setCenter(marker.getPosition());
     iw = new google.maps.InfoWindow({
       content: html,
       maxWidth: 350

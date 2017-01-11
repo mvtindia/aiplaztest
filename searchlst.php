@@ -67,8 +67,8 @@
   }
   $chinvarpl = date('Y-m-d HH:mm', strtotime($chinvar . "-1 days"));
   $choutvarpl = date('Y-m-d HH:mm', strtotime($choutvar . "+1 days"));
-  error_log($chinvar);
-  error_log($choutvar);
+  //error_log($chinvar);
+  //error_log($choutvar);
 //echo "select * from place where p_address like '%".$place_loc."%' and capacity >= '".$guests."' and ((p_p_h between ".$minbud." and ".$maxbud.") or (p_p_n between ".$minbud." and ".$maxbud.") or (w_p_p_n between ".$minbud." and ".$maxbud."))";
  $q21 = mysqli_query($connect,"select distinct a.place_id, a.p_address, a.p_city, a.p_state, a.p_country, a.postal_code, 
  a.photo, a.space_name, a.capacity, a.p_p_h, a.p_p_n from place a, calenderdata b where place_id = placeid and 
@@ -316,6 +316,7 @@ echo $final1; ?>" name="chout" class="form-control" placeholder="To">
                     $images = explode(',',$r21['photo']);
                     $marker_addresses .= $r21['p_address'].">>>";
                     $marker_location .= $r21['p_city'].",".$r21['p_state'].",".$r21['p_country'].">>>";
+                    $marker_placeids .= $r21['place_id'].">>>";
 //echo "block1";
               ?>
 <?php error_log($chinvar) ?>
@@ -432,6 +433,7 @@ $que = mysqli_query($connect,"select * from calenderdata where placeid=".$r21['p
 
               <input type="hidden" name="marker_addresses" id="marker_addresses" value="<?php echo rtrim($marker_addresses,">>>");?>" placeholder="">
               <input type="hidden" name="marker_location" id="marker_location" value="<?php echo rtrim($marker_location,">>>");?>" placeholder="">
+              <input type="hidden" name="marker_placeids" id="marker_placeids" value="<?php echo rtrim($marker_placeids,">>>");?>" placeholder="">
             </div>
 
 	          <?php include 'lib/footer.php';?>
@@ -449,7 +451,7 @@ $que = mysqli_query($connect,"select * from calenderdata where placeid=".$r21['p
 
 </div><!--container-fluid close-->
 </body>
-</script>
+
 <?php 
    //if(!isset($_SESSION['u_id'])) {
 ?>
