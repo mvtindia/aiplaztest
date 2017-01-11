@@ -42,7 +42,7 @@ $(document).ready(function() {
         processData:false,
     success: function(data, textStatus, jqXHR)
     {   
-        console.log(data);
+        //console.log(data);
        var j = data.trim(" ");
         if(j == 'ok')
         {   	
@@ -93,7 +93,7 @@ $(document).ready(function() {
         processData:false,
     success: function(data, textStatus, jqXHR)
     {   
-        console.log(data);
+        //console.log(data);
         data1 = data.split('>>>');
         if(data1[0] == 'ok')
         {
@@ -207,7 +207,7 @@ $("#paypal_data").click(function(e)
         processData:false,
     success: function(data, textStatus, jqXHR)
     {   
-        console.log(data);
+        //console.log(data);
        var j = data.trim(" ");
         if(j == 'ok')
         {   	
@@ -248,7 +248,7 @@ $(".book_form").submit(function(e)
         processData:false,
     success: function(data, textStatus, jqXHR)
     {   
-        console.log(data);
+        //console.log(data);
         data1 = data.split(">>>");
         if(data1[0] == 'not_activate')
         {
@@ -298,7 +298,7 @@ $(".book_form2_hour").submit(function(e)
         processData:false,
     success: function(data, textStatus, jqXHR)
     {   
-        console.log(data);
+        //console.log(data);
         data1 = data.split(">>>");
         if(data1[0] == 'not_activate')
         {
@@ -375,7 +375,7 @@ $('.carousel-inner div:first-child').addClass('active');
 			url: 'forms2.php?date_val1='+date_val1+'&date_val2='+date_val2+'&placeid='+placeid,
 			success: function(data)
 			{	
-				console.log('my data - '+data);
+				//console.log('my data - '+data);
 				// console.log("<h5>&#8377; <span class="price_cal">'.$match['p_p_n'].'</span> x <span class="calculated">1 Night</span></h5>");
 				data1 = data.split('>>>');
 				if(data1[3]=='0')
@@ -383,9 +383,9 @@ $('.carousel-inner div:first-child').addClass('active');
 					$('#book_button').css('display','block');
 					$('.errormessage22').css('display','none');
 					$('.errormessage').css('display','block');
-				console.log(data1[0]);
-				console.log(data1[1]);
-				console.log(data1[2]);
+				//console.log(data1[0]);
+				//console.log(data1[1]);
+				//console.log(data1[2]);
 				if(data1[1]=='0')
 				{
 					var specific_price2=0;
@@ -396,7 +396,7 @@ $('.carousel-inner div:first-child').addClass('active');
 				specific_price1 = specific_price.split(',');
 				var specific_price2=0;
 				var counter = specific_price1.length;
-				console.log('counter'+counter);
+				//console.log('counter'+counter);
 				for(var i=0; i<counter; i++)
 				{
 					if(specific_price1[i]=="")
@@ -412,14 +412,14 @@ $('.carousel-inner div:first-child').addClass('active');
 				var r_days = parseInt(regular_price)-parseInt(counts);
 				var total = parseInt(price_cal)*parseInt(r_days);
 				var grand_total = parseInt(total)+parseInt(specific_price2);
-				console.log("grand_total"+grand_total);
+				//console.log("grand_total"+grand_total);
 				var avg_p = parseInt(grand_total)/parseInt(regular_price);
 				avg_p = Math.round(avg_p);
 				$.ajax({
 				url:'forms2.php?taxesid=00',
 				success: function(taxes)
 				{
-					console.log(taxes);
+					//console.log(taxes);
 					var texes1 = taxes.split('===');
 					if(texes1[0]==0)
 					{
@@ -438,10 +438,10 @@ $('.carousel-inner div:first-child').addClass('active');
 							tax_data =tax_data+'<div class="col-md-6 col-sm-6 col-xs-7 "><h5>&#8377; <span class=""></span> <span class="">'+title[j]	+'</span></h5></div><div class="col-md-6 col-sm-6 col-xs-5"><h5 class="text-right"><span>&#8377; </span><span class="">'+final+'</span></h5></div>';
 							tax_value = parseInt(tax_value)+parseInt(final);
 						}
-						console.log("tax value"+tax_value)
+						//console.log("tax value"+tax_value)
 						$('#forappend').html(tax_data);
 						var final_total = parseInt(tax_value)+parseInt(grand_total);
-						console.log("final"+final_total);
+						//console.log("final"+final_total);
 					}
 					$('#price_per_week').val(avg_p);
 					$('.night_rupee').html(avg_p);
@@ -473,7 +473,7 @@ $('.carousel-inner div:first-child').addClass('active');
 			url: 'forms2.php?date_val1='+date_val1+'&date_val2='+date_val2+'&placeid='+placeid,
 			success: function(data)
 			{
-				console.log('mydata-'+data);
+				//console.log('mydata-'+data);
 				// console.log("<h5>&#8377; <span class="price_cal">'.$match['p_p_n'].'</span> x <span class="calculated">1 Night</span></h5>");
 			data1 = data.split('>>>');
 			if(data1[3]=="0")
@@ -481,9 +481,9 @@ $('.carousel-inner div:first-child').addClass('active');
 				$('#book_button').css('display','block');
 					$('.errormessage22').css('display','none');
 					$('.errormessage').css('display','block');
-				console.log(data1[0]);
-				console.log(data1[1]);
-				console.log(data1[2]);
+				//console.log(data1[0]);
+				//console.log(data1[1]);
+				//console.log(data1[2]);
 				if(data1[1]=='0')
 				{
 					var specific_price2=0;
@@ -494,7 +494,7 @@ $('.carousel-inner div:first-child').addClass('active');
 				specific_price1 = specific_price.split(',');
 				var specific_price2=0;
 				var counter = specific_price1.length;
-				console.log('counter'+counter);
+				//console.log('counter'+counter);
 				for(var i=0; i<counter; i++)
 				{
 					if(specific_price1[i]=="")
@@ -510,14 +510,14 @@ $('.carousel-inner div:first-child').addClass('active');
 				var r_days = parseInt(regular_price)-parseInt(counts);
 				var total = parseInt(price_cal)*parseInt(r_days);
 				var grand_total = parseInt(total)+parseInt(specific_price2);
-				console.log("grand_total"+grand_total);
+				//console.log("grand_total"+grand_total);
 				var avg_p = parseInt(grand_total)/parseInt(regular_price);
 				avg_p = Math.round(avg_p);
 				$.ajax({
 				url:'forms2.php?taxesid=00',
 				success: function(taxes)
 				{
-					console.log(taxes);
+					//console.log(taxes);
 					var texes1 = taxes.split('===');
 					if(texes1[0]==0)
 					{
@@ -536,10 +536,10 @@ $('.carousel-inner div:first-child').addClass('active');
 							tax_data =tax_data+'<div class="col-md-6 col-sm-6 col-xs-7 "><h5>&#8377; <span class=""></span> <span class="">'+title[j]	+'</span></h5></div><div class="col-md-6 col-sm-6 col-xs-5"><h5 class="text-right"><span>&#8377; </span><span class="">'+final+'</span></h5></div>';
 							tax_value = parseInt(tax_value)+parseInt(final);
 						}
-						console.log("tax value"+tax_value)
+						//console.log("tax value"+tax_value)
 						$('#forappend').html(tax_data);
 						var final_total = parseInt(tax_value)+parseInt(grand_total);
-						console.log("final"+final_total);
+						//console.log("final"+final_total);
 					}
 					$('#price_per_week').val(avg_p);
 					$('.night_rupee').html(avg_p);
@@ -751,11 +751,10 @@ $('.btn-back').click(function(){
 
 $('a').click(function(){
 	var nid= $(this).attr('class');
-	console.log(nid);
+	//console.log(nid);
 	var coun ="1";
 	$('.tab_in_dash').each(function(){
-		var id = $(this).attr('id');
-		console.log(id);	
+		var id = $(this).attr('id');	
 
 		if(id==nid)
 		{
@@ -928,6 +927,7 @@ function loadDatePicker()
 var select = document.getElementById('input-select');
 
 // Append the option elements
+if (select) {
 for ( var i = 1; i <= 50000; i++ ){
 
 	var option = document.createElement("option");
@@ -969,7 +969,7 @@ inputNumber.addEventListener('change', function(){
 	html5Slider.noUiSlider.set([null, this.value]);
 });
 
-
+}
 
 
 
@@ -977,7 +977,7 @@ inputNumber.addEventListener('change', function(){
 
 
 var select1 = document.getElementById('input1-select');
-
+if (select1) {
 // Append the option elements
 for ( var i = -20; i <= 40; i++ ){
 
@@ -1018,7 +1018,7 @@ input1Number.addEventListener('change', function(){
 	html6Slider.noUiSlider.set([null, this.value]);
 });
 
-
+}
 
 
 $(function() {
