@@ -10,8 +10,9 @@ if(empty($_GET['id']) && empty($_GET['code']))
 if(isset($_GET['id']) && isset($_GET['code']))
 {
     $id = base64_decode($_GET['id']);
+    error_log(base64_encode(418));
     $code = $_GET['code'];
- 
+    error_log($id);
     $statusY = 0;
     $statusN = 999;
 
@@ -25,8 +26,7 @@ if(isset($_GET['id']) && isset($_GET['code']))
                 //$q2 =   mysqli_query($connect,'UPDATE `users` SET fname="'.$fname.'",lname="'.$lname.'",contact="'.$contact.'",dob="'.$dob.'",city="'.$city.'" WHERE uid="'.$_SESSION['u_id'].'"');
                 $msg = "
                     <div class='alert alert-success'>
-                    <button class='close' data-dismiss='alert'>&times;</button>
-                    <strong>WoW !</strong>  Your Account is Now Activated : <a href='index.php'>Login here</a>
+                    Your Account is Now Activated! Please log in.
                     </div>
                 ";
             }
@@ -35,7 +35,7 @@ if(isset($_GET['id']) && isset($_GET['code']))
                 $msg = "
                     <div class='alert alert-error'>
                     <button class='close' data-dismiss='alert'>&times;</button>
-                    <strong>sorry !</strong>  Your Account is allready Activated : <a href='index.php'>Login here</a>
+                    <strong>sorry !</strong>  Your Account is already Activated : <a href='index.php'>Login here</a>
                     </div>
                 ";
             }
@@ -63,14 +63,37 @@ if(isset($_GET['id']) && isset($_GET['code']))
 
 <div class="container-fluid"><!--container-fluid start-->
     <div class="row">
+
         <div class="menu-had2">
                 <?php include 'lib/header.php';?>
         </div><!--menu-had close-->
         <div class="banner-txt">    
             <h1>Confirm Registration</h1>
         </div>
-        <div class="container"  >
-            <?php if(isset($msg)) { echo $msg; } ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-md-6 col-xs-10" style="margin: 0 385px;">
+                    <?php if(isset($msg)) { echo $msg; } ?>
+        
+                   <form class="pd-bottom20" id="login" method="POST">
+  
+                    <div class="input-group" id="login">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="email" class="form-control form-height40 bord-0"  name="email" required placeholder="Email Id"/>
+                    </div>
+
+                    <div class="input-group mg-top20">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        <input type="password" class="form-control form-height40 bord-0" name="password" required placeholder="Password"/>
+                        <input type="hidden" class="urlval" >
+                    </div>
+                    <div class="text-center mg-top10">
+                        <button type="submit" class="btn-3" name="login">Login</button>
+                    </div>
+
+                   </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>         
