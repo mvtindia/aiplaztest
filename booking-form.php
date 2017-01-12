@@ -3,12 +3,14 @@ session_start();
 include_once('connect.php');
 // if(isset($_SESSION['u_id'])
 // {
-  $paypal_url='https://www.paypal.com/cgi-bin/webscr'; // Test Paypal API URL
+$paypal_url='https://www.paypal.com/cgi-bin/webscr'; // Test Paypal API URL
 $paypal_id='bluestar.jeet@gmail.com'; // Business email ID
-$book = $_REQUEST['booking_id'];
+$book = $_POST['bookid'];
+error_log("book: " . $book);
 $q17 = mysqli_query($connect,'Select * from users,booking where uid="'.$_SESSION['u_id'].'" and uid=userid and bookid="'.$book.'"');
 if(mysqli_num_rows($q17)>0)
 {
+  error_log("I made it");
 $r17=mysqli_fetch_array($q17);
 
 // $q18 = mysqli_query($connect,"select * from booking where bookid=".$book);
@@ -119,7 +121,7 @@ $r17=mysqli_fetch_array($q17);
     <label for="space">Number of persons</label>
   </div>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-    <input readonly="" type="text" value="<?php echo $r17['guests ']; ?>" class="form-control" id="" placeholder="1">
+    <input readonly="" type="text" value="<?php echo $r17['guests'] ?>" class="form-control" id="" placeholder="1">
   </div>
   
   </div>
@@ -144,13 +146,13 @@ $r17=mysqli_fetch_array($q17);
   </div>
   </div>
   
-       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-top10">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-top10">
       <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
-    <label for="space">Location</label>
-  </div>
-   <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-    <input readonly="" type="text" value="<?php echo $r17['city']; ?>" class="form-control" id="" placeholder="Location">
-  </div>
+        <label for="space">Location</label>
+      </div>
+      <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
+        <input readonly="" type="text" value="<?php echo $_POST['theplace'] ?>" class="form-control" id="" placeholder="Location">
+      </div>
   </div>
   
   
