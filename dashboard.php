@@ -132,7 +132,7 @@ $res = mysqli_fetch_array($q1); ?>
 		    <tbody>
            <?php 
            $se = 1 ;
-           $q21 = mysqli_query($connect,"select * from place where user_id=".$_SESSION['u_id']);
+           $q21 = mysqli_query($connect,"select * from place where user_id=".$_SESSION['u_id']." order by place_id desc");
            while($r21 = mysqli_fetch_array($q21)) 
            {
             ?>
