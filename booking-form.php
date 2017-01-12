@@ -75,7 +75,7 @@ $r17=mysqli_fetch_array($q17);
     <label for="space">Price Per <?php echo $r17['package']; ?></label>
   </div>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-    <input readonly="" type="text" value="<?php echo $r17['price']; ?>" class="form-control" id="" placeholder="2000/-">
+    <input readonly="" type="text" value="$<?php echo $r17['price']; ?>" class="form-control" id="" placeholder="2000/-">
   </div>
   </div>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-top10">
@@ -109,7 +109,7 @@ $r17=mysqli_fetch_array($q17);
     <label for="space">Total Price</label>
   </div>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-    <input readonly="" id="amount" type="text" name="total_price" value="<?php echo $r17['hotel'] ?>" class="form-control" id="" >
+    <input readonly="" id="amount" type="text" name="total_price" value="$<?php echo $r17['hotel'] ?>" class="form-control" id="" >
   </div>
   
   </div>
