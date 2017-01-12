@@ -314,8 +314,10 @@ $(".book_form2_hour").submit(function(e)
         }
         else if(data1[0] == 'ok')
         {     
-      		swal("Success!", "Your Booking order Has Been Placed", "success");   
-      		window.location.href="booking-form.php?booking_id="+data1[1];
+      		//swal("Success!", "Your Booking order Has Been Placed", "success");   
+      		//window.location.href="booking-form.php?booking_id="+data1[1];
+			$('#bookid').val(data1[1]);
+			$('#gotobook').submit();
         }
     },
      error: function(jqXHR, textStatus, errorThrown) 

@@ -565,7 +565,7 @@ if($match1=mysqli_fetch_array($query1)){
 <div class="col-md-4 pd-lr-6">
 <div class="input-group mg-top20">
     <span class="input-group-addon"><i class="fa fa-users"></i></span>
-	<input type="number" min="1" max="'.$match['capacity'].'" name="guests" placeholder="Guests" value="1" class="form-control bord-0">
+	<input type="number" min="1" max="'.$match['capacity'].'" name="guests" placeholder="Guests" value="<?php echo $_REQUEST['guests']?>" class="form-control bord-0">
 </div>
 
 
@@ -599,10 +599,18 @@ if($match1=mysqli_fetch_array($query1)){
 <input name="myplaceid" value="<?php echo $match['place_id']?>" type="hidden" />
 <input name="totalprice" class="totalprice" value="" type="hidden" />
 <input name="checkout" value="" type="hidden" />
-<div class="text-center">
 
+
+<div class="text-center">
 	<button type="submit" style="display:block;" id="book_button"  name="book_now_hour" class="btn-4">Book Now</button>
 </div> </form>
+<div style="display: none;">
+<form id="gotobook" action="booking-form.php" method="post">
+<input name="theplace" value="<?php echo $match['space_name'].",".$match['p_address'];?>" type="hidden" />
+<input id="bookid" name="bookid"  type="hidden" />
+
+</form>
+</div>
 
 </div>  <!--my div end -->	
 <!--<form class="book_form"  method="post">

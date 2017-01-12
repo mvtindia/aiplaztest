@@ -8,6 +8,7 @@
   }
   if(!empty($_REQUEST['place_loc'])){
     $place_loc = $_REQUEST['place_loc'];
+    error_log($place_loc);
   } else {
     $place_loc = "";
   }
@@ -238,7 +239,7 @@ echo $final1; ?>" name="chout" class="form-control" placeholder="To">
                 <p>Guests</p>
               </div>
               <div class="col-md-4" style="padding-left:0px">
-                <input type="text" value="<?php echo $guests; ?> Guests" name="guests" class="form-control" />
+                <input type="text" value="<?php echo $guests; ?>" name="guests" class="form-control" />
               </div>
 
               <div class="col-md-2">
@@ -321,7 +322,7 @@ echo $final1; ?>" name="chout" class="form-control" placeholder="To">
               ?>
 <?php error_log($chinvar) ?>
               <div class="col-md-6 col-sm-6 col-xs-12 pd-lr-4">
-                <a href="demo-venue2.php?placeid=<?php echo $r21['place_id']; ?>&checkin=<?php if (isset($chinvar)) {echo $chinvar;} else { echo $st; } ?>&checkout=<?php if (isset($choutvar)) {echo $choutvar;} else { echo $et; } ?>">
+                <a href="demo-venue2.php?placeid=<?php echo $r21['place_id']; ?>&checkin=<?php if (isset($chinvar)) {echo $chinvar;} else { echo $st; } ?>&checkout=<?php if (isset($choutvar)) {echo $choutvar;} else { echo $et; } ?>&guests=<?php echo $_POST['guests']?>">
                 <div class="border-box">
                   <div id="myCarousel<?php echo $r21['place_id']; ?>" class="carousel slide" data-ride="carousel">
 

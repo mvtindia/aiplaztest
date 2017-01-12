@@ -235,6 +235,7 @@ if(isset($_REQUEST['replying']))
        
         $placeid = $_POST['myplaceid'];
         $guests = $_POST['guests'];
+        error_log($guests);
         $totalprice = $_POST['totalprice'];
         $query_status="0";
         $sql = mysqli_query($connect,"SELECT * FROM  `booking` WHERE`placeid`='".$placeid."' and `userid`='".$_SESSION['u_id']."'and `checkin`='".$checkin."'and `checkout`='".$checkout."'");
