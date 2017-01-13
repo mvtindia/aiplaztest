@@ -3,6 +3,9 @@ include('connect.php');
 if(!isset($_SESSION['u_id'])) {
   header( 'Location: http://' . $_SERVER['SERVER_NAME'] ) ;
 }
+$fees = mysqli_query($connect,"select * from fees where feefor='s'");
+$feeres = mysqli_fetch_array($fees);
+$sfee = $feeres['percentage'] * .01;
 ?> 
 
 <!doctype html>
@@ -548,6 +551,7 @@ if($match=mysqli_fetch_array($query)){
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
                 	                            <label for="space">Price Per Week</label>
                                                 <input type="number" required class="form-control" id="pricepw" placeholder="Enter $$" name="w_p_p_n">
+                                                <input type="hidden" class="sfee" value=<?php echo $sfee ?>>
                                 </div> 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
                 	                            <label for="space">Price Per Hour(minus service fee)</label>
@@ -831,9 +835,7 @@ p {
 </form>
   </div>
 
-  <div class="hide1" id="fourth-block">
-  
-  
+  <div class="hide1" id="fourth-block"> 
 <form class="form-group" id="change_price">
     <div class="input-group" id="change_price">
       <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -962,20 +964,25 @@ p {
             $('#datetimepicker9').datetimepicker();
         });
         $(document).ready(function() {
+        $sfee = $('.sfee').val();
         $("#priceph").change(function() {
-            $newval = Number($("#priceph").val()) * .95;
-            $("#netpph").val(String($newval));
+            $prh = Number($("#priceph").val());
+            $newval = $prh - ($prh * $sfee)
+            $("#netpph").val("$" + String($newval));
         });
 
         $("#pricepd").change(function() {
-          $newval = Number($("#pricepd").val()) * .95;
-          $("#netppd").val(String($newval));
+          $prd = Number($("#pricepd").val());
+          $newval = $prd - ($prd * $sfee)
+          $("#netppd").val("$" + String($newval));
         });
 
         $("#pricepw").change(function() {
-          $newval = Number($("#pricepw").val()) * .95;
-          $("#netppw").val(String($newval));
+          $prw = Number($("#pricepw").val());
+          $newval = $prw - ($prw * $sfee);
+          $("#netppw").val("$" + String($newval));
         });
+
         $('#savetime').click(function(){
                     if (formVal()) {
                         $("form#calenderform").submit();
