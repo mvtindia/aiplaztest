@@ -497,6 +497,9 @@ if($match1=mysqli_fetch_array($query1)){
 		  
 	   if(!empty($match[2]) || !empty($match[3]) || !empty($match[4])) 
 	   {
+		 $fees = mysqli_query($connect,"select * from fees where feefor='b'");
+		 $feeres = mysqli_fetch_array($fees);
+		 $fee = $feeres['percentage'] * .01;
 	    ?>
 	  <div class="col-md-6 custom2">
 	  <div class="price-table-demo ">
@@ -577,19 +580,26 @@ if($match1=mysqli_fetch_array($query1)){
 <h5>$ <span class="price_cal"><?php echo $match[3] ?></span> x <span class="calculated">1 Hour</span></h5>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>$ </span><span class="total_price"><?php echo $match[3] ?> </span></h5>
+<h5 class="text-right"><span>$ </span><span class="initprice"><?php echo $match[3] ?> </span></h5>
 </div>
 </div>
 	<div class="row" id="forappend"></div>
 <div class="row">
-<div class="col-md-6 col-sm-6 col-xs-7">
-<h5>Total</h5>
-</div>
-<div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>$ </span><span class="total_price_cal"><?php echo $match[3] ?> </span></h5>
-</div>
-</div>
+	<div class="col-md-6 col-sm-6 col-xs-7">
+		<h5>Plus Commission</h5>
 	</div>
+	<div class="col-md-6 col-sm-6 col-xs-5">
+		<h5 class="text-right"><span class="total_price_cal">$<?php echo ($match[3] * $fee) ?></span></h5>
+	</div>
+	
+		<div class="col-md-6 col-sm-6 col-xs-7">
+			<h5>Total</h5>
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-5">
+			<h5 class="text-right"><span>$ </span><span class="total_price"><?php echo ($match[3] + ($match[3] * $fee)) ?> </span></h5>
+		</div>
+	
+</div>
 	<div class="errormessage22"></div>
 <input name="package" value="hours" type="hidden"/>
 <input type="text" name="time1" id="time1" value="00:00" hidden>
@@ -599,6 +609,7 @@ if($match1=mysqli_fetch_array($query1)){
 <input name="myplaceid" value="<?php echo $match['place_id']?>" type="hidden" />
 <input name="totalprice" class="totalprice" value="" type="hidden" />
 <input name="checkout" value="" type="hidden" />
+<input name="bfee" class="bfee" value=<?php echo $fee ?> type="hidden" />
 
 
 <div class="text-center">
@@ -817,6 +828,7 @@ $('#basic').change(function(){
     var date_val2 = $('#hourdatepicker').val();
     var price_cal = $('.ppnight').val();
     var placeid = $('.placeid_val').val();
+	var fee = $('.bfee').val();
     console.log("datedata"+date_val2)
     if(endtime!='')
     {
@@ -914,9 +926,10 @@ $('#basic').change(function(){
         $('#price_per_week').val(per_hours);
         $('.night_rupee').html(per_hours);
         $('.price_cal').html(per_hours);
-        $('.total_price_cal').html(final_total);
+		$('.initprice').html(final_total);
+        $('.total_price_cal').html(final_total * fee);
         $('.totalprice').val(final_total);
-        $('.total_price').html(price);
+        $('.total_price').html(final_total + (final_total * fee));
         $('.calculated').html(hours+' hours');
       }
     });
@@ -936,12 +949,14 @@ $('#basic').change(function(){
     	minTime:new_end,
     	maxTime:'23:59',
     });
-    	$('#basic2').change(function(){
-            var starttime = $('#basic').val();
-            var endtime = $('#basic2').val();
+
+    $('#basic2').change(function(){
+    var starttime = $('#basic').val();
+	var endtime = $('#basic2').val();
     var date_val2 = $('#hourdatepicker').val();
     var price_cal = $('.ppnight').val();
     var placeid = $('.placeid_val').val();
+	var fee = $('.bfee').val();
     console.log("datedata"+date_val2)
     $.ajax({
       url: 'forms2.php?hoursdate_val1='+date_val2+'&placeid='+placeid+'&pervalues=hour&start_time='+starttime+'&end_time='+endtime,
@@ -1030,16 +1045,17 @@ $('#basic').change(function(){
         $('.calculated').html(hours+' hours');
         }
         });*/
-				var final_total = price;
-				 $('#time1').val(starttime);
-           $('#time2').val(endtime);
-          $('#total_hour').val(hours);
-          $('#price_per_week').val(per_hours);
-          $('.night_rupee').html(per_hours);
-          $('.price_cal').html(per_hours);
-        $('.total_price_cal').html(final_total);
-        $('.totalprice').val(final_total);
-        $('.total_price').html(price);
+		var final_total = price;
+		$('#time1').val(starttime);
+        $('#time2').val(endtime);
+        $('#total_hour').val(hours);
+        $('#price_per_week').val(per_hours);
+        $('.night_rupee').html(per_hours);
+        $('.price_cal').html(per_hours);
+		$('.initprice').html(final_total);
+		$('.total_price_cal').html((final_total * fee));
+		$('.totalprice').val(final_total);
+        $('.total_price').html(final_total + (final_total * fee));
         $('.calculated').html(hours+' hours');
       }
     });

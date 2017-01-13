@@ -1,5 +1,8 @@
 <?php session_start();
-include_once('connect.php');?>
+include_once('connect.php');
+$fees = mysqli_query($connect,"select * from fees where feefor='s'");
+$feeres = mysqli_fetch_array($fees);
+$sfee = $feeres['percentage'] * .01; ?>
 <!doctype html>
 <html>
 <head>
@@ -422,6 +425,7 @@ include_once('connect.php');?>
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
                 	                            <label for="space">Price Per Week</label>
                                                 <input type="number" class="form-control" id="pricepw" placeholder="Enter $$" name="w_p_p_n">
+                                                <input type="hidden" class="sfee" value=<?php echo $sfee ?>>
                                 </div> 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
                                                 <b>My Takehome (per hour):</b> <span id="netpph"></span>
@@ -743,19 +747,22 @@ $(document).ready(function() {
         
         dp.update();
     });
-
+    $sfee = $('.sfee').val();
     $("#priceph").change(function() {
-        $newval = Number($("#priceph").val()) * .95;
+        $prh = Number($("#priceph").val());
+        $newval = $prh - ($prh * $sfee)
         $("#netpph").html("$" + String($newval));
     });
 
     $("#pricepd").change(function() {
-        $newval = Number($("#pricepd").val()) * .95;
+        $prd = Number($("#pricepd").val());
+        $newval = $prd - ($prd * $sfee)
         $("#netppd").html("$" + String($newval));
     });
 
     $("#pricepw").change(function() {
-        $newval = Number($("#pricepw").val()) * .95;
+        $prw = Number($("#pricepw").val());
+        $newval = $prw - ($prw * $sfee);
         $("#netppw").html("$" + String($newval));
     });
 
