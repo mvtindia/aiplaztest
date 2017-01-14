@@ -84,9 +84,16 @@ $("#signup_form").submit(function(e)
         console.log(data);
         if(data == 'already')
         {
-            swal("Oops!", "The email ID you entered already exists. Please try to log in with the ID or change your password if you have forgotten it.", "error");
-        }
-        else if(data == 'done')
+            $("#first-block").css('display','none');
+            $("#third-block").css('display','none');
+            $(".showmsg").css('display','none');
+            $("#second-block").css('display','block');
+
+            swal({
+                title: "Oos!",
+                html: "The email ID you entered already exists. Please try to login with the ID or change your password if you have forgotten it."                
+            });
+        } else if(data == 'done')
         {
             $("#signup_form")[0].reset();
             $('.showmsg').css('display','block');
