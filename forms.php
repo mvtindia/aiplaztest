@@ -292,115 +292,106 @@ if(isset($_REQUEST['replying']))
         //start 
         if($query_status=="0")
         {
-    $q = mysqli_query($connect,"INSERT INTO `booking`(`placeid`, `userid`, `package`, `price`, `checkin`, `checkout`, `hours`, `guests`, `online`, `hotel`,`ftime`,`ltime`) VALUES ('".$placeid."','".$_SESSION['u_id']."','".$package."','".$price."','".$checkin."','".$checkout."','".$hours."','".$guests."','".$totalprice."','".$totalprice."','".$start_time12."','".$end_time."')");
-    $last_id = $connect->insert_id;
-    error_log("last id: " . $last_id);
-    if($q)
-    {
-     if($row['a_status']== 0)
-    {    
+          $q = mysqli_query($connect,"INSERT INTO `booking`(`placeid`, `userid`, `package`, `price`, `checkin`, `checkout`, `hours`, `guests`, `online`, `hotel`,`ftime`,`ltime`) VALUES ('".$placeid."','".$_SESSION['u_id']."','".$package."','".$price."','".$checkin."','".$checkout."','".$hours."','".$guests."','".$totalprice."','".$totalprice."','".$start_time12."','".$end_time."')");
+          $last_id = $connect->insert_id;
+          error_log("last id: " . $last_id);
+          if($q)
+          {
+            if($row['a_status']== 0)
+              {    
       
-      $subject = '2finda Booking Information';
+                $subject = '2finda Booking Information';
 
-      $sql4 = mysqli_query($connect,"SELECT * FROM place WHERE place_id='".$placeid."'");
-      $row4 = mysqli_fetch_array($sql4);
-      $body ="Dear ".$row['fname']." ".$row['lname'].",<br><br> You have Received this mail from 2finda.com. 
-      <br><br> Your Booking Request for ".$row4['space_name']." has Been Generated<br>";
+                $sql4 = mysqli_query($connect,"SELECT * FROM place WHERE place_id='".$placeid."'");
+                $row4 = mysqli_fetch_array($sql4);
+                $body ="Dear ".$row['fname']." ".$row['lname'].",<br><br> You have Received this mail from 2finda.com. 
+                <br><br> Your Booking Request for ".$row4['space_name']." has Been Generated<br>";
 
-      //$mail = mail($row['email'], '2finda.com [Booking Info]', $message, $headers);
-      $sql5 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$row4['user_id']."'");
-      $row5 = mysqli_fetch_array($sql5);
-      $body2 ="Dear ".$row5['fname']." ".$row5['lname'].",<br> 
-      You have Received this mail from 2finda.com. <br><br> Your Place ".$row4['space_name']." has Been Booked 
-      by ".$row['fname']." ".$row['lname']."<br>";
-      //$mail2 = mail($row5['email'], '2finda.com [Booking Info]]', $message2, $headers2);
-      
-      $params = array(
-        'api_user' => $sguser,
-        'api_key' => $sgpass,
-        'to' => $row['email'],
-        'subject' => $subject,
-        'html' => $body,
-        //'text' => 'I am the text parameter',
-        'from' => 'info@2finda.com',
-      );
-      $session = curl_init($sgrequest);
-      curl_setopt ($session, CURLOPT_POST, true);
-      curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
-      curl_setopt($session, CURLOPT_HEADER, false);
-      curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
-      $response = curl_exec($session);
-      curl_close($session);
+                //$mail = mail($row['email'], '2finda.com [Booking Info]', $message, $headers);
+                $sql5 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$row4['user_id']."'");
+                $row5 = mysqli_fetch_array($sql5);
+                $body2 ="Dear ".$row5['fname']." ".$row5['lname'].",<br> 
+                You have Received this mail from 2finda.com. <br><br> Your Place ".$row4['space_name']." has Been Booked 
+                by ".$row['fname']." ".$row['lname']."<br>";
+                //$mail2 = mail($row5['email'], '2finda.com [Booking Info]]', $message2, $headers2);
+        
+                $params = array(
+                  'api_user' => $sguser,
+                  'api_key' => $sgpass,
+                  'to' => $row['email'],
+                  'subject' => $subject,
+                  'html' => $body,
+                  //'text' => 'I am the text parameter',
+                  'from' => 'info@2finda.com',
+                );
+                $session = curl_init($sgrequest);
+                curl_setopt ($session, CURLOPT_POST, true);
+                curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
+                curl_setopt($session, CURLOPT_HEADER, false);
+                curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+                $response = curl_exec($session);
+                curl_close($session);
 
-      $params = array(
-        'api_user' => $sguser,
-        'api_key' => $sgpass,
-        'to' => $row5['email'],
-        'subject' => $subject,
-        'html' => $body2,
-        //'text' => 'I am the text parameter',
-        'from' => 'info@2finda.com',
-      );
-      $session = curl_init($sgrequest);
-      curl_setopt ($session, CURLOPT_POST, true);
-      curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
-      curl_setopt($session, CURLOPT_HEADER, false);
-      curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
-      $response = curl_exec($session);
-      curl_close($session);
-      error_log("spota");
-      echo "ok";
-      echo ">>>";
-      echo $last_id;
-      // echo "<script> window.location.href='booking-form.php?booking_id=".$last_id."';</script>";
-    }
-  else
-  {
-      $encrypt=md5($row['email'].time());
-      $sql3 = mysqli_query($connect,"UPDATE   users SET activation_link='".$encrypt."' WHERE uid='".$_SESSION['u_id']."'");
-      $subject = "2finda.com [Sent Enquiry]";
-      $message ="Dear ".$row['fname']." ".$row['lname'].", <br>You have Received this mail from 2finda.com. 
-      <br><br> Your Request has been Generated. Click on the following Link to Confirm Your Booking.
-      ".$encrypt."&bookid=".$last_id."<br>";
-      $params = array(
-        'api_user' => $sguser,
-        'api_key' => $sgpass,
-        'to' => $row5['email'],
-        'subject' => $subject,
-        'html' => $body2,
-        //'text' => 'I am the text parameter',
-        'from' => 'info@2finda.com',
-      );
-      $session = curl_init($sgrequest);
-      curl_setopt ($session, CURLOPT_POST, true);
-      curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
-      curl_setopt($session, CURLOPT_HEADER, false);
-      curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
-      $response = curl_exec($session);
-      curl_close($session);
-      echo"not_activate";
-  }
-    }
-    else
-    { 
-    echo"not_inserted";
-    }
+                $params = array(
+                  'api_user' => $sguser,
+                  'api_key' => $sgpass,
+                  'to' => $row5['email'],
+                  'subject' => $subject,
+                  'html' => $body2,
+                  //'text' => 'I am the text parameter',
+                  'from' => 'info@2finda.com',
+                );
+                $session = curl_init($sgrequest);
+                curl_setopt ($session, CURLOPT_POST, true);
+                curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
+                curl_setopt($session, CURLOPT_HEADER, false);
+                curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+                $response = curl_exec($session);
+                curl_close($session);
+                error_log("spota");
+                echo "ok";
+                echo ">>>";
+                echo $last_id;
+                // echo "<script> window.location.href='booking-form.php?booking_id=".$last_id."';</script>";
+              } else {
+                $encrypt=md5($row['email'].time());
+                $sql3 = mysqli_query($connect,"UPDATE   users SET activation_link='".$encrypt."' WHERE uid='".$_SESSION['u_id']."'");
+                $subject = "2finda.com [Sent Enquiry]";
+                $message ="Dear ".$row['fname']." ".$row['lname'].", <br>You have Received this mail from 2finda.com. 
+                <br><br> Your Request has been Generated. Click on the following Link to Confirm Your Booking.
+                ".$encrypt."&bookid=".$last_id."<br>";
+                $params = array(
+                  'api_user' => $sguser,
+                  'api_key' => $sgpass,
+                  'to' => $row5['email'],
+                  'subject' => $subject,
+                  'html' => $body2,
+                  //'text' => 'I am the text parameter',
+                  'from' => 'info@2finda.com',
+                );
+                $session = curl_init($sgrequest);
+                curl_setopt ($session, CURLOPT_POST, true);
+                curl_setopt ($session, CURLOPT_POSTFIELDS, $params);
+                curl_setopt($session, CURLOPT_HEADER, false);
+                curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+                $response = curl_exec($session);
+                curl_close($session);
+                echo"not_activate";
+              }
+          } else { 
+            echo"not_inserted";
+          }
         //end
-        }
-        else
-        {
-           echo "Already";
-        }
-
-       }
-  else
-  {
-    echo"not_login";
+      } else {
+        echo "Already";
+      }
+    } else {
+      echo"not_login";
+    }
   }
-}
 
 //end here
 
