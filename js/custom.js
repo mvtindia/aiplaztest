@@ -288,6 +288,7 @@ $(".book_form2_hour").submit(function(e)
     var formObj = $(this);
     var formURL = formObj.attr("action");
     var formData = new FormData(this);
+	$("#book_button").attr("disabled", true);
     $.ajax({
         url: 'forms.php?book_now_hour=101',
         type: 'POST',
@@ -315,9 +316,9 @@ $(".book_form2_hour").submit(function(e)
         else if(data1[0] == 'ok')
         {     
       		//swal("Success!", "Your Booking order Has Been Placed", "success");   
-      		//window.location.href="booking-form.php?booking_id="+data1[1];
+      		//window.location.href="booking-form.php?bookid="+data1[1];
 			$('#bookid').val(data1[1]);
-			$('#gotobook').submit();
+			$('#bk-btn').click();
         }
     },
      error: function(jqXHR, textStatus, errorThrown) 
@@ -326,7 +327,7 @@ $(".book_form2_hour").submit(function(e)
      }          
     });
     e.preventDefault(); //Prevent Default action. 
-    e.unbind();
+    //e.unbind();
 }); 
     
 
