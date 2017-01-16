@@ -39,14 +39,20 @@ if (isset($_REQUEST['placeid'])) {
 		</div><!--menu-had close-->
 <?php 
 $placeid=$_REQUEST['placeid'];
-$date1=$_REQUEST['checkin'] . " 00:00";
-$date2=$_REQUEST['checkout'] . " 23:59";
-
-$query=mysqli_query($connect,'Select * from calenderdata inner join place on calenderdata.placeid = place.place_id where calenderdata.placeid="'.$placeid.'"');
+$checkin=$_REQUEST['checkin'];
+$checkout=$_REQUEST['checkout'];
+//$date1=$_REQUEST['checkin'] . " 00:00";
+//$date2=$_REQUEST['checkout'] . " 23:59";
+$query=mysqli_query($connect,'Select * from place where place_id="'.$placeid.'"') ;
+//$query=mysqli_query($connect,'Select * from calenderdata inner join place on calenderdata.placeid = place.place_id 
+//where calenderdata.placeid="'.$placeid.'" and calenderdata.status="Available" and ((date1 >= "'.$date1.'" and date1 < "'.$date2.'")
+//|| (date1 <= "'.$date1.'" and date2 > "'.$date1.'")) order by date1') ;
 
 //if rows place table
 if($match=mysqli_fetch_array($query))
 	{
+		
+		//$query2=mysqli_query($connect,'Select * from booking where placeid="'.$placeid.'" and checkin = "'.$_REQUEST['checkin'].'"');
 		?>
 <!--==============menu header close=========================-->
 
@@ -495,9 +501,19 @@ if($match1=mysqli_fetch_array($query1)){
 	  <?php if($_SESSION['u_id'] != $match['user_id']) 
 	  {
 		  
-	   if(!empty($match[2]) || !empty($match[3]) || !empty($match[4])) 
+		  $sql9=mysqli_query($connect,'Select * from calenderdata  where placeid="'.$placeid.'" 
+		  and status="Available" and date1 >= "'.$checkin.'" and date2 <= "'.$checkout.'" order by date1') ;
+		  
+	  //$sql9 = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$placeid."'");
+      //if(mysqli_num_rows($sql9)>0)
+	  
+	  while($res9=mysqli_fetch_array($sql9))
+      { 
+	   if(!empty($res9[2]) || !empty($res9[3]) || !empty($res9[4])) 
 	   {
-		 $fees = mysqli_query($connect,"select * from fees where feefor='b'");
+		 $dt1time = date_format(date_create($res9['date1']), 'g:i a');
+		 $dt2time = date_format(date_create($res9['date2']), 'g:i a');
+		 $fees = mysqli_query($connect,"select * from fees where feefor='b'");	
 		 $feeres = mysqli_fetch_array($fees);
 		 $fee = $feeres['percentage'] * .01;
 	    ?>
@@ -506,19 +522,19 @@ if($match1=mysqli_fetch_array($query1)){
 	  <div class="row">
 	  	
 	  	<div class="col-md-12 col-sm-12 col-xs-12 pd-top20 pd-bottom20">
-	  	<?php if(!empty($match[3])) { ?>
+	  	<?php if(!empty($res9[3])) { ?>
 	  	<div class="col-md-4 col-sm-4 col-xs-4">
 			<input type="radio" value="hour" checked id="hour_label" class="per_val" name="types">
 			<label for="hour_label" style="cursor: pointer;">Per Hour</label>
 		</div>
 		<?php } 
-		if(!empty($match[2])) { ?>
+		if(!empty($res9[2])) { ?>
 		<!--<div class="col-md-4 col-sm-4 col-xs-4">
 			<input type="radio" value="night" id="night_label" class="per_val" name="types">
 			<label for="night_label" style="cursor: pointer;">Per Day</label>
 		</div>-->
 		<?php } 
-		if(!empty($match[4])) { ?>
+		if(!empty($res9[4])) { ?>
 		<!--<div class="col-md-4 col-sm-4 col-xs-4">
 			<input type="radio" value="week" id="week_label" class="per_val" name="types">
 			<label for="week_label" style="cursor: pointer;">Per Week</label>
@@ -527,7 +543,7 @@ if($match1=mysqli_fetch_array($query1)){
 		</div>
 
 	  </div>
-	  <?php if(!empty($match[3])) { ?>
+	  <?php if(!empty($res9[3])) { ?>
 
 
 
@@ -541,7 +557,7 @@ if($match1=mysqli_fetch_array($query1)){
 
 <div class="col-md-6 col-sm-6 col-xs-6">
 <input type="hidden" class="ppnight" value="">
-<h4>$<?php echo $match[3] ?></h4>
+<h4>$<?php echo $res9[3] ?></h4>
 <!--<h4>&#8377; <span class="night_rupee"></span>/-</h4>-->
 </div>
 <div class="col-md-6 col-sm-6 col-xs-6">
@@ -549,6 +565,49 @@ if($match1=mysqli_fetch_array($query1)){
 </div>
 </div>
 <div class="row mg-top15 ">
+<?php 
+$chckin = date_format(date_create($checkin), 'Y-m-d');
+
+$bresult = mysqli_query($connect, 'select * from `booking` where `placeid` = "'.$placeid.'" and `checkin` = "'.$chckin.'" order by `ftime` asc');
+?>
+<div> Available times for 
+<?php
+echo $chckin;
+echo " : ";
+
+$dt1time2 = date_format(date_create($res9['date1']), 'H:i');
+$dt2time2 = date_format(date_create($res9['date2']), 'H:i');
+$dt2time2a = $dt2time2;
+$i = 0;
+
+while ($bookres = mysqli_fetch_array($bresult)) {
+	$timeray1[$i] = $bookres['ftime'];
+	$timeray2[$i] = $bookres['ltime'];
+	$timehrs[$i] = $bookres['hours'];
+	
+	//if ($i == 0) {
+	if ($timeray1[$i] == $dt1time2) {
+			$dt1time2 = $timeray2[$i];
+	} else {
+			$dt2time2 = $timeray1[$i];
+			echo "<br>" . $dt1time2 . " to " . $dt2time2;
+			$dt1time2 = $timeray2[$i];
+	}
+		
+	//}
+	$i++;
+}
+//$i--;
+if ($timeray2[$i] != $dt2time2a)
+{
+	echo "<br>" . $timeray2[$i - 1] . " to " . $dt2time2a;
+}
+?>
+	
+	
+	<?php 
+		
+	 ?></div>
 <div class="col-md-4 pd-lr-6">
 <div class="input-group mg-top20">
     <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
@@ -568,7 +627,7 @@ if($match1=mysqli_fetch_array($query1)){
 <div class="col-md-4 pd-lr-6">
 <div class="input-group mg-top20">
     <span class="input-group-addon"><i class="fa fa-users"></i></span>
-	<input type="number" min="1" max="'.$match['capacity'].'" name="guests" placeholder="Guests" value="<?php echo $_REQUEST['guests']?>" class="form-control bord-0">
+	<input type="number" min="1" max="'.$res9['capacity'].'" name="guests" placeholder="Guests" value="<?php echo $_REQUEST['guests']?>" class="form-control bord-0">
 </div>
 
 
@@ -577,10 +636,10 @@ if($match1=mysqli_fetch_array($query1)){
 <div class="errormessage">
 <div class="row">
 <div class="col-md-6 col-sm-6 col-xs-7 pricecel">
-<h5>$ <span class="price_cal"><?php echo $match[3] ?></span> x <span class="calculated">1 Hour</span></h5>
+<h5>$ <span class="price_cal"><?php echo $res9[3] ?></span> x <span class="calculated">1 Hour</span></h5>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>$ </span><span class="initprice"><?php echo $match[3] ?> </span></h5>
+<h5 class="text-right"><span>$ </span><span class="initprice"><?php echo $res9[3] ?> </span></h5>
 </div>
 </div>
 	<div class="row" id="forappend"></div>
@@ -589,14 +648,14 @@ if($match1=mysqli_fetch_array($query1)){
 		<h5>Plus Commission</h5>
 	</div>
 	<div class="col-md-6 col-sm-6 col-xs-5">
-		<h5 class="text-right"><span class="total_price_cal">$<?php echo ($match[3] * $fee) ?></span></h5>
+		<h5 class="text-right"><span class="total_price_cal">$<?php echo ($res9[3] * $fee) ?></span></h5>
 	</div>
 	
 		<div class="col-md-6 col-sm-6 col-xs-7">
 			<h5>Total</h5>
 		</div>
 		<div class="col-md-6 col-sm-6 col-xs-5">
-			<h5 class="text-right"><span>$ </span><span class="total_price"><?php echo ($match[3] + ($match[3] * $fee)) ?> </span></h5>
+			<h5 class="text-right"><span>$ </span><span class="total_price"><?php echo ($res9[3] + ($res9[3] * $fee)) ?> </span></h5>
 		</div>
 	
 </div>
@@ -604,9 +663,9 @@ if($match1=mysqli_fetch_array($query1)){
 <input name="package" value="hours" type="hidden"/>
 <input type="text" name="time1" id="time1" value="00:00" hidden>
 <input type="text" name="time2" id="time2" value="00:00" hidden>
-<input name="price" value="'.$match['p_p_h'].'" id="price_per_week" type="hidden" />
+<input name="price" value="'.$res9['p_p_h'].'" id="price_per_week" type="hidden" />
 <input name="hours" value="0" id="total_hour" type="hidden" />
-<input name="myplaceid" value="<?php echo $match['place_id']?>" type="hidden" />
+<input name="myplaceid" value="<?php echo $res9['place_id']?>" type="hidden" />
 <input name="totalprice" class="totalprice" value="" type="hidden" />
 <input name="checkout" value="" type="hidden" />
 <input name="bfee" class="bfee" value=<?php echo $fee ?> type="hidden" />
@@ -617,7 +676,7 @@ if($match1=mysqli_fetch_array($query1)){
 </div> </form>
 <div style="display: none;">
 <form id="gotobook" action="booking-form.php" method="post">
-<input name="theplace" value="<?php echo $match['space_name'].",".$match['p_address'];?>" type="hidden" />
+<input name="theplace" value="<?php echo $res9['space_name'].",".$res9['p_address'];?>" type="hidden" />
 <input id="bookid" name="bookid"  type="hidden" />
 
 </form>
@@ -712,9 +771,10 @@ if($match1=mysqli_fetch_array($query1)){
 </div>
 	  <?php }
 
-	   } else {
+	   } 
+	   //else {
 	 ?>
-	 <div class="col-md-6 custom2"style="display: block;border-bottom: 0px solid #1BBC9B;border-left: 2px solid #1BBC9B;border-right: 2px solid #1BBC9B;padding-bottom: 0px;">
+	 <!--<div class="col-md-6 custom2"style="display: block;border-bottom: 0px solid #1BBC9B;border-left: 2px solid #1BBC9B;border-right: 2px solid #1BBC9B;padding-bottom: 0px;">
       <div class="row" style="background: #1BBC9B;
     padding: 13px 0px;
     color: white;
@@ -726,8 +786,8 @@ if($match1=mysqli_fetch_array($query1)){
           <div class="col-md-2">Price/Hour</div>
           <div class="col-md-2">Price/Week</div>
         </div>
-	  <?php  $sql9 = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$placeid."'");
-      if(mysqli_num_rows($sql9)>0)
+	  <?php  //$sql9 = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$placeid."'");
+      //if(mysqli_num_rows($sql9)>0)
       { 
         ?>
         <!--<div class="row" style="background: #1BBC9B;
@@ -742,13 +802,13 @@ if($match1=mysqli_fetch_array($query1)){
           <div class="col-md-2">ppw</div>
         </div>-->
         <?php
-        $he = 1;
-        while($row9 = mysqli_fetch_array($sql9))
-        {
-          ?><div class="row for_re" style="    padding: 11px 0px 1px 0px;
+        //$he = 1;
+        //while($row9 = mysqli_fetch_array($sql9))
+        //{
+          ?><!--<div class="row for_re" style="    padding: 11px 0px 1px 0px;
     border-bottom: 2px solid #1BBC9B;">
-            <div class="col-md-3 text-center"><?php echo $row9['date1'] ?></div>
-            <div class="col-md-3 text-center"><?php echo $row9['date2'] ?></div>
+            <div class="col-md-3 text-center"><?php //echo $row9['date1'] ?></div>
+            <div class="col-md-3 text-center"><?php //echo $row9['date2'] ?></div>
             <?php /* if(($row9['p_p_n']=="")&&($row9['p_p_h']=="")&&($row9['w_p_p_n']==""))
             {
               ?>
@@ -760,38 +820,38 @@ if($match1=mysqli_fetch_array($query1)){
                ?>
             <div class="col-md-2 text-center">
             <?php
-			 	$ppn = ($row9['p_p_n'] ? $row9['p_p_n'] : $match['p_p_n']);
-				echo "$" . $ppn; 
+			 	//$ppn = ($row9['p_p_n'] ? $row9['p_p_n'] : $match['p_p_n']);
+				//echo "$" . $ppn; 
 			?>
             </div>
             <div class="col-md-2 text-center">
            	<?php 
-		   		$pph = ($row9['p_p_h'] ? $row9['p_p_h'] : $match['p_p_h']);
-				echo "$" . $pph;
+		   		//$pph = ($row9['p_p_h'] ? $row9['p_p_h'] : $match['p_p_h']);
+				//echo "$" . $pph;
 		  	?>
             </div>
             <div class="col-md-2 text-center">
             <?php 
-				$wpph = ($row9['w_p_p_n'] ? $row9['w_p_p_n'] : $match['w_p_p_n']);
-				echo "$" . $wpph; 
+				//$wpph = ($row9['w_p_p_n'] ? $row9['w_p_p_n'] : $match['w_p_p_n']);
+				//echo "$" . $wpph; 
 			?>
             </div>
             <?php //} ?>
             </div>
           <?php
-          $he++;
+          //$he++;
           }
       }
-      else{
-        echo '<div class="row"style="padding: 11px 0px 1px 0px;
-    border-bottom: 2px solid #1BBC9B;">
-    <div class="col-md-8"></div> 
-          </div>';
-        } ?>     
+      //else{
+        //echo '<div class="row"style="padding: 11px 0px 1px 0px;
+    //border-bottom: 2px solid #1BBC9B;">
+    //<div class="col-md-8"></div> 
+      //    </div>';
+        //} ?>     
 
   </div>
 	 <?php
-	  } ?> 
+	  //} ?> 
 
 <!--=======================================Right Side close============================-->
 </div>
@@ -811,17 +871,18 @@ if($match1=mysqli_fetch_array($query1)){
 	<script src="tm/jquery.timepicker.js"></script>
 <script>
 	
-    $(document).ready(function(){
+$(document).ready(function(){
    $('#basic').timepicker({
-	'timeFormat':'H:i',
-       show2400: true,
-	step: 60,
-	maxTime:'23:00',
-    'scrollDefaultNow': 'true',
+		'timeFormat':'H:i',
+       	show2400: true,
+		step: 60,
+		minTime:'<?php echo $dt1time ?>',
+		maxTime:'<?php echo $dt2time ?>',
+    	'scrollDefaultNow': 'true',
         'closeOnWindowScroll': 'true',
         'showDuration': true
-});
-$('#basic').change(function(){
+	});
+	$('#basic').change(function(){
 // start here 
     var starttime = $('#basic').val();
     var endtime = $('#basic2').val();
@@ -946,8 +1007,8 @@ $('#basic').change(function(){
     	'timeFormat':'H:i',
     	  show2400: true,
     	step: 60,
-    	minTime:new_end,
-    	maxTime:'23:59',
+    	minTime: new_end,
+		maxTime:'<?php echo $dt2time ?>',
     });
 
     $('#basic2').change(function(){

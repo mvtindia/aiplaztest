@@ -83,8 +83,8 @@ $r17=mysqli_fetch_array($q17);
     <label for="space">Checkin</label>
   </div>
   <?php
-    $dtin = date_format(date_create($r17['checkin'] . " " . $r17['ftime']), 'Y-m-d g:s a');
-    $dtout = date_format(date_create($r17['checkout'] . " " . $r17['ltime']), 'Y-m-d g:s a');
+    $dtin = date_format(date_create($r17['checkin'] . " " . $r17['ftime']), 'Y-m-d g:i a');
+    $dtout = date_format(date_create($r17['checkout'] . " " . $r17['ltime']), 'Y-m-d g:i a');
   ?>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
     <input readonly="" type="text" value="<?php echo $dtin; ?>" class="form-control" id="" placeholder="2-10-12">
