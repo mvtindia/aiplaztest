@@ -665,7 +665,7 @@ if ($timeray2[$i] != $dt2time2a)
 <input type="text" name="time2" id="time2" value="00:00" hidden>
 <input name="price" value="'.$res9['p_p_h'].'" id="price_per_week" type="hidden" />
 <input name="hours" value="0" id="total_hour" type="hidden" />
-<input name="myplaceid" value="<?php echo $res9['place_id']?>" type="hidden" />
+<input name="myplaceid" value="<?php echo $placeid ?>" type="hidden" />
 <input name="totalprice" class="totalprice" value="" type="hidden" />
 <input name="checkout" value="" type="hidden" />
 <input name="bfee" class="bfee" value=<?php echo $fee ?> type="hidden" />
@@ -675,11 +675,11 @@ if ($timeray2[$i] != $dt2time2a)
 	<button type="submit" style="display:block;" id="book_button"  name="book_now_hour" class="btn-4">Book Now</button>
 </div> </form>
 <div style="display: none;">
-<form id="gotobook" action="booking-form.php" method="post">
-<input name="theplace" value="<?php echo $res9['space_name'].",".$res9['p_address'];?>" type="hidden" />
-<input id="bookid" name="bookid"  type="hidden" />
-
-</form>
+	<form id="gotobook" action="booking-form.php" method="post">
+		<input name="theplace" value="<?php echo $match['space_name'].",".$match['p_address'];?>" type="hidden" />
+		<input id="bookid" name="bookid"  type="hidden" />
+		<button id="bk-btn" type="submit"></button
+	</form>
 </div>
 
 </div>  <!--my div end -->	
