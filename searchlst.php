@@ -203,7 +203,7 @@ else
               </div>
               <div class="col-md-2" style="padding-left:0px">
 <?php 
-if(!empty($_REQUEST['daterange']))
+if(!empty($_REQUEST['chin']))
 {
   $dates = explode(',',$_REQUEST['daterange']);
   $sep = explode(':', $dates[0]);
@@ -216,8 +216,8 @@ if(!empty($_REQUEST['daterange']))
 }
 
  ?>
-                <input  style="x`float:left" type="text" id="datepicker" value="<?php 
-echo $final; ?>" name="chin" class="form-control" placeholder="From">
+                <input  style="float:left" type="text" id="datepicker" 
+                value= "<?php if (isset($_REQUEST['chin'])) { echo $_REQUEST['chin']; } else { echo date('m/d/Y'); } ?>" name="chin" class="form-control" placeholder="From">
                 <!--<input style="width:50%;" type="text" id="datepicker1" value="<?php 
 //echo $final1; ?>" name="chout" class="form-control" placeholder="To">-->
               </div>
