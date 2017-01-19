@@ -579,7 +579,7 @@ $dt1time2 = date_format(date_create($res9['date1']), 'H:i');
 $dt2time2 = date_format(date_create($res9['date2']), 'H:i');
 $dt2time2a = $dt2time2;
 if (mysqli_num_rows($bresult) == 0) {
-	echo "<br>" . date_format($dt1time2, 'g;i a') . " to " . date_format($dt2time2, 'g:i a');
+	echo "<br>" . date_format(date_create($dt1time2), 'g;i a') . " to " . date_format(date_create($dt2time2), 'g:i a');
 } else {
 $i = 0;
 $timeray2 = array();
@@ -694,10 +694,6 @@ if (isset($timeray2[$i])) {
 </div>  <!--my div end -->	
 <!--<form class="book_form"  method="post">
 
-<div class="row bg-row">
-    <div class="col-md-6 col-sm-6 col-xs-6">
-        <input type="hidden" class="ppnight" value="<?php //echo $match[2]; ?>">
-
 
      <?php
 //$country = $match['p_country'] ;
@@ -762,14 +758,7 @@ if (isset($timeray2[$i])) {
 </div>
 </div>
 </div>
-<div class="errormessage22"></div>
-<input name="package" value="night" type="hidden" />
-<input name="price" value="<?php //echo $match['p_p_n']; ?>" id="price_per_week" type="hidden" />
-<input name="myplaceid" value="<?php //echo $placeid; ?>" type="hidden" />
-<input name="totalprice" class="totalprice" value="<?php //echo $match['p_p_n']; ?>" type="hidden" />
-<div class="text-center">
-	<button type="submit" id="book_button"  name="book_now" class="btn-4">Book Now</button>
-</div>
+
 </form>-->
 
 
@@ -827,26 +816,7 @@ if (isset($timeray2[$i])) {
               else
               {*/
                ?>
-            <div class="col-md-2 text-center">
-            <?php
-			 	//$ppn = ($row9['p_p_n'] ? $row9['p_p_n'] : $match['p_p_n']);
-				//echo "$" . $ppn; 
-			?>
-            </div>
-            <div class="col-md-2 text-center">
-           	<?php 
-		   		//$pph = ($row9['p_p_h'] ? $row9['p_p_h'] : $match['p_p_h']);
-				//echo "$" . $pph;
-		  	?>
-            </div>
-            <div class="col-md-2 text-center">
-            <?php 
-				//$wpph = ($row9['w_p_p_n'] ? $row9['w_p_p_n'] : $match['w_p_p_n']);
-				//echo "$" . $wpph; 
-			?>
-            </div>
-            <?php //} ?>
-            </div>
+            
           <?php
           //$he++;
           }
