@@ -578,7 +578,11 @@ echo " : ";
 $dt1time2 = date_format(date_create($res9['date1']), 'H:i');
 $dt2time2 = date_format(date_create($res9['date2']), 'H:i');
 $dt2time2a = $dt2time2;
+if (mysqli_num_rows($bresult) == 0) {
+	echo "<br>" . date_format($dt1time2, 'g;i a') . " to " . date_format($dt2time2, 'g:i a');
+} else {
 $i = 0;
+$timeray2 = array();
 
 while ($bookres = mysqli_fetch_array($bresult)) {
 	$timeray1[$i] = $bookres['ftime'];
@@ -590,17 +594,22 @@ while ($bookres = mysqli_fetch_array($bresult)) {
 			$dt1time2 = $timeray2[$i];
 	} else {
 			$dt2time2 = $timeray1[$i];
-			echo "<br>" . $dt1time2 . " to " . $dt2time2;
+			echo "<br>" . date_format(date_create($dt1time2), 'g:i a') . " to " . date_format(date_create($dt2time2), 'g:i a');
 			$dt1time2 = $timeray2[$i];
 	}
 		
 	//}
 	$i++;
 }
-//$i--;
-if ($timeray2[$i] != $dt2time2a)
-{
-	echo "<br>" . $timeray2[$i - 1] . " to " . $dt2time2a;
+$i--;
+error_log($timeray2[$i]);
+if (isset($timeray2[$i])) {
+	error_log($timeray2[$i]);
+	if ($timeray2[$i] != $dt2time2a)
+	{
+		echo "<br>" . date_format(date_create($timeray2[$i]), 'g:i a') . " to " . date_format(date_create($dt2time2a), 'g:i a');
+	}
+}
 }
 ?>
 	
@@ -645,7 +654,7 @@ if ($timeray2[$i] != $dt2time2a)
 	<div class="row" id="forappend"></div>
 <div class="row">
 	<div class="col-md-6 col-sm-6 col-xs-7">
-		<h5>Plus Commission</h5>
+		<h5>Convenience Fee</h5>
 	</div>
 	<div class="col-md-6 col-sm-6 col-xs-5">
 		<h5 class="text-right"><span class="total_price_cal">$<?php echo ($res9[3] * $fee) ?></span></h5>
@@ -666,7 +675,7 @@ if ($timeray2[$i] != $dt2time2a)
 <input name="price" value="'.$res9['p_p_h'].'" id="price_per_week" type="hidden" />
 <input name="hours" value="0" id="total_hour" type="hidden" />
 <input name="myplaceid" value="<?php echo $placeid ?>" type="hidden" />
-<input name="totalprice" class="totalprice" value="" type="hidden" />
+<input name="totalprice" class="totalprice" value="<?php echo ($res9[3] + ($res9[3] * $fee)) ?>" type="hidden" />
 <input name="checkout" value="" type="hidden" />
 <input name="bfee" class="bfee" value=<?php echo $fee ?> type="hidden" />
 
@@ -870,8 +879,28 @@ if ($timeray2[$i] != $dt2time2a)
 	<?php include 'lib/footer.php';?>
 	<script src="tm/jquery.timepicker.js"></script>
 <script>
-	
+function formVal() {
+                    var mess = "Please Enter Missing Information.";
+
+    				var fn=document.getElementById('basic').value;
+					var fo=document.getElementById('basic2').value;
+    				if(fn == "" || fn > fo){		
+        				document.getElementById('basic').style.borderColor = "red";
+						//$("#span1a").html(mess);
+					}else if (fo == "") {
+        				document.getElementById('basic2').style.borderColor = "red";
+					} else {
+						return true;
+    				}
+					return false;
+}
 $(document).ready(function(){
+
+   $('#book_button').click(function(e){
+	   if (!formVal()) {
+		   return false;
+	   }
+   });	
    $('#basic').timepicker({
 		'timeFormat':'H:i',
        	show2400: true,
@@ -980,21 +1009,22 @@ $(document).ready(function(){
         $('.calculated').html(hours+' hours');
         }
         });*/
-				var final_total = price;
-				$('#time1').val(starttime);
+
+		var final_total = price + (price * fee);
+		$('#time1').val(starttime);
         $('#time2').val(endtime);
         $('#total_hour').val(hours);
         $('#price_per_week').val(per_hours);
         $('.night_rupee').html(per_hours);
         $('.price_cal').html(per_hours);
-		$('.initprice').html(final_total);
-        $('.total_price_cal').html(final_total * fee);
-        $('.totalprice').val(final_total);
-        $('.total_price').html(final_total + (final_total * fee));
+		$('.initprice').html(price);
+        $('.total_price_cal').html(price * fee);
+		$('.totalprice').val(final_total);
+		$('.total_price').html(final_total);
         $('.calculated').html(hours+' hours');
       }
     });
-}
+} 
 }
 
 
@@ -1014,114 +1044,116 @@ $(document).ready(function(){
     $('#basic2').change(function(){
     var starttime = $('#basic').val();
 	var endtime = $('#basic2').val();
-    var date_val2 = $('#hourdatepicker').val();
-    var price_cal = $('.ppnight').val();
-    var placeid = $('.placeid_val').val();
-	var fee = $('.bfee').val();
-    console.log("datedata"+date_val2)
-    $.ajax({
-      url: 'forms2.php?hoursdate_val1='+date_val2+'&placeid='+placeid+'&pervalues=hour&start_time='+starttime+'&end_time='+endtime,
-      success: function(data)
-      {
-        //console.log('my data - '+data);
-        
-        data1 = data.split('>>>');
-        //console.log(data1[0]);
-        //console.log(data1[1]);
-        var j = data1[0].trim(' ');
-         var av = data1[2].trim(' ');
-        if(av=='1')
-        {
-           $('#book_button').css('display','none');
-          $('.errormessage22').css('display','block');
-          $('.errormessage22').html('<p>This Date is Not Available</p>');
-          $('.errormessage').css('display','none');
-        }
-        else
-        {
-         if(data1[1]=='00')
-        { 
-          $('#book_button').css('display','none');
-          $('.errormessage22').css('display','block');
-          $('.errormessage22').html('<p>Please Choose Valid Date</p>');
-          $('.errormessage').css('display','none');
-        }
-        else
-        { 
-          $('#book_button').css('display','block');
-              $('.errormessage22').css('display','none');
-          $('.errormessage').css('display','block');    
-          var hours=data1[1];
-        }
-        if(j=='0')
-        {
-        var per_hours =price_cal;
-          var price = parseInt(hours)*parseInt(price_cal);
-           console.log("defailt price"+price);
-        }
-        else
-        { 
-          // alert("please  time");
-          var per_hours =data1[0];
-          var price = parseInt(hours)*parseInt(data1[0]);
-        }
-      }
-        /*$.ajax({
-        url:'forms2.php?taxesid=00',
-        success: function(taxes)
-        {
-          console.log(taxes);
-          var texes1 = taxes.split('===');
-          if(texes1[0]==0)
-          {
+	if (starttime < endtime) {
+		var date_val2 = $('#hourdatepicker').val();
+		var price_cal = $('.ppnight').val();
+		var placeid = $('.placeid_val').val();
+		var fee = $('.bfee').val();
+		console.log("datedata"+date_val2)
+		$.ajax({
+		url: 'forms2.php?hoursdate_val1='+date_val2+'&placeid='+placeid+'&pervalues=hour&start_time='+starttime+'&end_time='+endtime,
+		success: function(data)
+		{
+			//console.log('my data - '+data);
+			
+			data1 = data.split('>>>');
+			//console.log(data1[0]);
+			//console.log(data1[1]);
+			var j = data1[0].trim(' ');
+			var av = data1[2].trim(' ');
+			if(av=='1')
+			{
+			$('#book_button').css('display','none');
+			$('.errormessage22').css('display','block');
+			$('.errormessage22').html('<p>This Date is Not Available</p>');
+			$('.errormessage').css('display','none');
+			}
+			else
+			{
+			if(data1[1]=='00')
+			{ 
+			$('#book_button').css('display','none');
+			$('.errormessage22').css('display','block');
+			$('.errormessage22').html('<p>Please Choose Valid Date</p>');
+			$('.errormessage').css('display','none');
+			}
+			else
+			{ 
+			$('#book_button').css('display','block');
+				$('.errormessage22').css('display','none');
+			$('.errormessage').css('display','block');    
+			var hours=data1[1];
+			}
+			if(j=='0')
+			{
+			var per_hours =price_cal;
+			var price = parseInt(hours)*parseInt(price_cal);
+			console.log("defailt price"+price);
+			}
+			else
+			{ 
+			// alert("please  time");
+			var per_hours =data1[0];
+			var price = parseInt(hours)*parseInt(data1[0]);
+			}
+		}
+			/*$.ajax({
+			url:'forms2.php?taxesid=00',
+			success: function(taxes)
+			{
+			console.log(taxes);
+			var texes1 = taxes.split('===');
+			if(texes1[0]==0)
+			{
 
-          }
-          else
-          { 
-            var texes2 = texes1[0].split(',');
-            var title = texes1[1].split(',');
-            var count = texes2.length;
-            var tax_data="";
-            var tax_value="0";
-            for(var j=0;j<count;j++)
-            {
-              var final = texes2[j];
-              tax_data =tax_data+'<div class="col-md-6 col-sm-6 col-xs-7 "><h5>&#8377; <span class=""></span> <span class="">'+title[j] +'</span></h5></div><div class="col-md-6 col-sm-6 col-xs-5"><h5 class="text-right"><span>&#8377; </span><span class="">'+final+'</span></h5></div>';
-              tax_value = parseInt(tax_value)+parseInt(final);
-            }
-            // console.log("tax value"+tax_value)
-            $('#forappend').html(tax_data);
-            var final_total = parseInt(tax_value)+parseInt(price);
-            console.log("final"+final_total);
-          }   
-          $('#time1').val(starttime);
-           $('#time2').val(endtime);
-          $('#total_hour').val(hours);
-          $('#price_per_week').val(per_hours);
-          $('.night_rupee').html(per_hours);
-          $('.price_cal').html(per_hours);
-        $('.total_price_cal').html(final_total);
-        $('.totalprice').val(final_total);
-        $('.total_price').html(price);
-        $('.calculated').html(hours+' hours');
-        }
-        });*/
-		var final_total = price;
-		$('#time1').val(starttime);
-        $('#time2').val(endtime);
-        $('#total_hour').val(hours);
-        $('#price_per_week').val(per_hours);
-        $('.night_rupee').html(per_hours);
-        $('.price_cal').html(per_hours);
-		$('.initprice').html(final_total);
-		$('.total_price_cal').html((final_total * fee));
-		$('.totalprice').val(final_total);
-        $('.total_price').html(final_total + (final_total * fee));
-        $('.calculated').html(hours+' hours');
-      }
-    });
-  });
-    })
+			}
+			else
+			{ 
+				var texes2 = texes1[0].split(',');
+				var title = texes1[1].split(',');
+				var count = texes2.length;
+				var tax_data="";
+				var tax_value="0";
+				for(var j=0;j<count;j++)
+				{
+				var final = texes2[j];
+				tax_data =tax_data+'<div class="col-md-6 col-sm-6 col-xs-7 "><h5>&#8377; <span class=""></span> <span class="">'+title[j] +'</span></h5></div><div class="col-md-6 col-sm-6 col-xs-5"><h5 class="text-right"><span>&#8377; </span><span class="">'+final+'</span></h5></div>';
+				tax_value = parseInt(tax_value)+parseInt(final);
+				}
+				// console.log("tax value"+tax_value)
+				$('#forappend').html(tax_data);
+				var final_total = parseInt(tax_value)+parseInt(price);
+				console.log("final"+final_total);
+			}   
+			$('#time1').val(starttime);
+			$('#time2').val(endtime);
+			$('#total_hour').val(hours);
+			$('#price_per_week').val(per_hours);
+			$('.night_rupee').html(per_hours);
+			$('.price_cal').html(per_hours);
+			$('.total_price_cal').html(final_total);
+			$('.totalprice').val(final_total);
+			$('.total_price').html(price);
+			$('.calculated').html(hours+' hours');
+			}
+			});*/
+			var final_total = price + (price * fee);
+			$('#time1').val(starttime);
+			$('#time2').val(endtime);
+			$('#total_hour').val(hours);
+			$('#price_per_week').val(per_hours);
+			$('.night_rupee').html(per_hours);
+			$('.price_cal').html(per_hours);
+			$('.initprice').html(price);
+			$('.total_price_cal').html(price * fee);
+			$('.totalprice').val(final_total);
+			$('.total_price').html(final_total);
+			$('.calculated').html(hours+' hours');
+		}
+	});
+	}  
+  	});
+});
 });
 </script>
 <!--======footer close======-->

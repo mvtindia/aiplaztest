@@ -5,7 +5,7 @@ include_once('connect.php');
 // {
 $paypal_url='https://www.paypal.com/cgi-bin/webscr'; // Test Paypal API URL
 $paypal_id='bluestar.jeet@gmail.com'; // Business email ID
-$book = $_POST['bookid'];
+$book = $_REQUEST['bookid'];
 error_log("book: " . $book);
 $q17 = mysqli_query($connect,'Select * from users,booking where uid="'.$_SESSION['u_id'].'" and uid=userid and bookid="'.$book.'"');
 if(mysqli_num_rows($q17)>0)
@@ -109,7 +109,7 @@ $r17=mysqli_fetch_array($q17);
     <label for="space">Total Price</label>
   </div>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-    <input readonly="" id="amount" type="text" name="total_price" value="$<?php echo $r17['hotel'] ?>" class="form-control" id="" >
+    <input readonly="" id="amount" type="text" name="total_price" value=$<?php echo $r17['hotel'] ?> class="form-control" id="" >
   </div>
   
   </div>
@@ -151,7 +151,7 @@ $r17=mysqli_fetch_array($q17);
         <label for="space">Location</label>
       </div>
       <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-        <input readonly="" type="text" value="<?php echo $_POST['theplace'] ?>" class="form-control" id="" placeholder="Location">
+        <input readonly="" type="text" value="<?php echo $_REQUEST['theplace'] ?>" class="form-control" id="" placeholder="Location">
       </div>
   </div>
   

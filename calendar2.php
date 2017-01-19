@@ -33,14 +33,14 @@
             <a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
         </div>
         <div class="container"  >
-            <button id="mvdtb">&#8592;</button><button id="mvdtf">&#8594;</button><a href="calendar2.php?<?php echo $_SERVER['QUERY_STRING'] ?>">Weekly</a>
-            <!--<div style="float:left; width: 150px;">
+            <!--<button id="mvdtb">&#8592;</button><button id="mvdtf">&#8594;</button>--><a href="calendar.php?<?php echo $_SERVER['QUERY_STRING'] ?>">Monthly</a>
+            <div style="float:left; width: 150px;">
                 <div id="nav"></div>
             </div>
 
-            <div style="margin-left: 150px;">-->
+            <div style="margin-left: 150px;">
                 <div id="dp"></div>
-            <!--</div>-->
+            </div>
 
         </div>
     </div>
@@ -48,23 +48,23 @@
 <?php include 'lib/footer.php';?>
 <script>
   //var dp = new DayPilot.Calendar("dp");
-  //var nav = new DayPilot.Navigator("nav");
-  //nav.showMonths = 3;
-  //nav.selectMode = "week";
+  var nav = new DayPilot.Navigator("nav");
+  nav.showMonths = 3;
+  nav.selectMode = "week";
   
-  //nav.onTimeRangeSelected = function(args) {
-  //      dp.startDate = args.start;
-  //      dp.update();
-  //};
+  nav.onTimeRangeSelected = function(args) {
+        dp.startDate = args.start;
+        dp.update();
+  };
 
-  // nav.init();
+  nav.init();
   var dae = new Date();
   var x = 30;
-  var dp = new DayPilot.Month("dp");
+  var dp = new DayPilot.Calendar("dp");
   function dayplt() {
     
     
-    dp.viewType = "Month";
+    dp.viewType = "Week";
     //dp.height = 800;
     // view
     
@@ -187,7 +187,6 @@
             }
         ); */   
     };
-
     dp.onBeforeEventRender = function(args) {
         var type = args.data.text;
         switch (type) {

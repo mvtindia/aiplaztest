@@ -2,10 +2,9 @@
 //if(isset($_REQUEST['searching'])) { 
   if (isset($_POST['chin'])) {
     $chinvar = date_format(date_create($_POST['chin']), 'Y-m-d 00:00:00');
+    $choutvar = date_format(date_create($_POST['chin']), 'Y-m-d 23:59:00');
   }
-  if (isset($_POST['chout'])) {
-    $choutvar = date_format(date_create($_POST['chout']), 'Y-m-d 23:59:00');
-  }
+  
   if(!empty($_REQUEST['place_loc'])){
     $place_loc = $_REQUEST['place_loc'];
     error_log($place_loc);
@@ -67,14 +66,13 @@
     $maxbud = 50000;
   }
   $chinvarpl = date('Y-m-d HH:mm', strtotime($chinvar . "-1 days"));
-  $choutvarpl = date('Y-m-d HH:mm', strtotime($choutvar . "+1 days"));
-  //error_log($chinvar);
-  //error_log($choutvar);
+
+  
 //echo "select * from place where p_address like '%".$place_loc."%' and capacity >= '".$guests."' and ((p_p_h between ".$minbud." and ".$maxbud.") or (p_p_n between ".$minbud." and ".$maxbud.") or (w_p_p_n between ".$minbud." and ".$maxbud."))";
  $q21 = mysqli_query($connect,"select distinct a.place_id, a.p_address, a.p_city, a.p_state, a.p_country, a.postal_code, 
  a.photo, a.space_name, a.capacity, a.p_p_h, a.p_p_n from place a, calenderdata b where place_id = placeid and 
  user_id != '".$_SESSION['u_id']."' and status = 'Available' and p_address like '%".$place_loc."%' and 
- capacity >= '".$guests."' and ((b.date1 >= '".$chinvar."' and b.date2 <= '".$choutvar."') || (b.date1 < '".$choutvar."' and b.date2 >= '".$choutvar."') || (b.date1 <= '".$chinvar."' and b.date2 > '".$chinvar."'))   and 
+ capacity >= '".$guests."' and b.date1 >= '".$chinvar."' and b.date2 <= '".$choutvar."' and 
  ((b.p_p_h between ".$minbud." and ".$maxbud.") or (b.p_p_n between ".$minbud." and ".$maxbud.")) order by a.place_id"); 
   //$q21 = mysqli_query($connect,"select * from place where p_address like '%".$place_loc."%' "); 
 ?>
@@ -203,7 +201,7 @@ else
               <div class="col-md-2">
                 <p>Date</p>
               </div>
-              <div class="col-md-4" style="padding-left:0px">
+              <div class="col-md-2" style="padding-left:0px">
 <?php 
 if(!empty($_REQUEST['daterange']))
 {
@@ -218,10 +216,10 @@ if(!empty($_REQUEST['daterange']))
 }
 
  ?>
-                <input  style="width:50%;float:left" type="text" id="datepicker" value="<?php 
+                <input  style="x`float:left" type="text" id="datepicker" value="<?php 
 echo $final; ?>" name="chin" class="form-control" placeholder="From">
-                <input style="width:50%;" type="text" id="datepicker1" value="<?php 
-echo $final1; ?>" name="chout" class="form-control" placeholder="To">
+                <!--<input style="width:50%;" type="text" id="datepicker1" value="<?php 
+//echo $final1; ?>" name="chout" class="form-control" placeholder="To">-->
               </div>
 
               <div class="col-md-2">
@@ -238,7 +236,7 @@ echo $final1; ?>" name="chout" class="form-control" placeholder="To">
               <div class="col-md-2">
                 <p>Guests</p>
               </div>
-              <div class="col-md-4" style="padding-left:0px">
+              <div class="col-md-2" style="padding-left:0px">
                 <input type="text" value="<?php echo $guests; ?>" name="guests" class="form-control" />
               </div>
 
@@ -322,7 +320,7 @@ echo $final1; ?>" name="chout" class="form-control" placeholder="To">
               ?>
 <?php error_log($chinvar) ?>
               <div class="col-md-6 col-sm-6 col-xs-12 pd-lr-4">
-                <a href="demo-venue2.php?placeid=<?php echo $r21['place_id']; ?>&checkin=<?php if (isset($chinvar)) {echo $chinvar;} else { echo $st; } ?>&checkout=<?php if (isset($choutvar)) {echo $choutvar;} else { echo $et; } ?>&guests=<?php echo $_POST['guests']?>">
+                <a href="demo-venue2.php?placeid=<?php echo $r21['place_id']; ?>&checkin=<?php if (isset($chinvar)) {echo $chinvar;} else { echo $st; } ?>&checkout=<?php if (isset($choutvar)) {echo $choutvar;} else { echo $st; } ?>&guests=<?php echo $_POST['guests']?>">
                 <div class="border-box">
                   <div id="myCarousel<?php echo $r21['place_id']; ?>" class="carousel slide" data-ride="carousel">
 
@@ -441,6 +439,18 @@ $que = mysqli_query($connect,"select * from calenderdata where placeid=".$r21['p
             <script src="js/forms-map.js"></script>
             <script>
               initAutocomplete();
+              $(document).ready(function(){
+                $('#datepicker1').change(function(){
+                  var starttime = $('#datepicker').val();
+                  var endtime = $('#datepicker1').val();
+                  
+                  if(endtime<starttime)
+                  {
+                    $('#datepicker1').val("");
+                    swal("Error", "End date is less than start date.", "error");
+                  }
+                });
+              });
             </script>
           </div>
           <div class="clearfix"></div>
