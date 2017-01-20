@@ -19,6 +19,10 @@ if (isset($_REQUEST['placeid'])) {
 		margin-left:-15px;
 		margin-right:-15px;
 	}
+	.baddt{
+		 background : red;
+		/*background-color: #DFFF00;*/
+	}
 	</style>
 </head>
 
@@ -579,7 +583,7 @@ $dt1time2 = date_format(date_create($res9['date1']), 'H:i');
 $dt2time2 = date_format(date_create($res9['date2']), 'H:i');
 $dt2time2a = $dt2time2;
 if (mysqli_num_rows($bresult) == 0) {
-	echo "<br>" . date_format(date_create($dt1time2), 'g;i a') . " to " . date_format(date_create($dt2time2), 'g:i a');
+	echo "<br>" . date_format(date_create($dt1time2), 'g:i a') . " to " . date_format(date_create($dt2time2), 'g:i a');
 } else {
 $i = 0;
 $timeray2 = array();
@@ -773,17 +777,7 @@ if (isset($timeray2[$i])) {
 	   //else {
 	 ?>
 	 <!--<div class="col-md-6 custom2"style="display: block;border-bottom: 0px solid #1BBC9B;border-left: 2px solid #1BBC9B;border-right: 2px solid #1BBC9B;padding-bottom: 0px;">
-      <div class="row" style="background: #1BBC9B;
-    padding: 13px 0px;
-    color: white;
-    font-weight: bolder;
-    font-size: 13px;">
-          <div class="col-md-3">From</div>
-          <div class="col-md-3">To</div>
-          <div class="col-md-2">Price/Day</div>
-          <div class="col-md-2">Price/Hour</div>
-          <div class="col-md-2">Price/Week</div>
-        </div>
+      
 	  <?php  //$sql9 = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$placeid."'");
       //if(mysqli_num_rows($sql9)>0)
       { 
@@ -852,8 +846,9 @@ if (isset($timeray2[$i])) {
 function formVal() {
                     var mess = "Please Enter Missing Information.";
 
-    				var fn=document.getElementById('basic').value;
-					var fo=document.getElementById('basic2').value;
+					var fn=new Date('2017-01-01' + " " + document.getElementById('basic').value);
+					var fo=new Date('2017-01-01' + " " + document.getElementById('basic2').value);
+					console.log(fn + " " + fo);
     				if(fn == "" || fn > fo){		
         				document.getElementById('basic').style.borderColor = "red";
 						//$("#span1a").html(mess);
@@ -872,14 +867,13 @@ $(document).ready(function(){
 	   }
    });	
    $('#basic').timepicker({
-		'timeFormat':'H:i',
-       	show2400: true,
+		'timeFormat':'g:i a',
 		step: 60,
 		minTime:'<?php echo $dt1time ?>',
 		maxTime:'<?php echo $dt2time ?>',
     	'scrollDefaultNow': 'true',
         'closeOnWindowScroll': 'true',
-        'showDuration': true
+        'showDuration': false
 	});
 	$('#basic').change(function(){
 // start here 
@@ -1004,8 +998,7 @@ $(document).ready(function(){
    var dd = new_end.setHours(new_end.getHours()+1);
 
     $('#basic2').timepicker({
-    	'timeFormat':'H:i',
-    	  show2400: true,
+    	'timeFormat':'g:i a',
     	step: 60,
     	minTime: new_end,
 		maxTime:'<?php echo $dt2time ?>',

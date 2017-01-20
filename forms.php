@@ -200,6 +200,7 @@ if(isset($_REQUEST['replying']))
         
         $start_time = $_POST['time1'];
         $start_time12 = $_POST['time1'];
+        error_log($start_time);
         $end_time = $_POST['time2'];
         $strStart = '2013-06-19 '.$start_time; 
         $strEnd   = '06/19/13 '.$end_time; 
@@ -289,6 +290,7 @@ if(isset($_REQUEST['replying']))
         }
         error_log($query_status);
         error_log($checkin . " " . $checkout . " " . $totalprice . " " . $placeid . " " . $package);
+        error_log($start_time . " " . $end_time);
         //start 
         if($query_status=="0")
         {
