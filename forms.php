@@ -199,9 +199,10 @@ if(isset($_REQUEST['replying']))
         }
         
         $start_time = $_POST['time1'];
-        $start_time12 = $_POST['time1'];
-        error_log($start_time);
+        $start_time12 = date_format(date_create($_POST['time1']), 'H:i');
+        //error_log($start_time);
         $end_time = $_POST['time2'];
+        $end_time12 = date_format(date_create($_POST['time2']), 'H:i');
         $strStart = '2013-06-19 '.$start_time; 
         $strEnd   = '06/19/13 '.$end_time; 
         //$dteStart = new DateTime($strStart); 
@@ -288,17 +289,22 @@ if(isset($_REQUEST['replying']))
         {
             $query_status="0";
         }
-        error_log($query_status);
-        error_log($checkin . " " . $checkout . " " . $totalprice . " " . $placeid . " " . $package);
-        error_log($start_time . " " . $end_time);
+        //error_log($query_status);
+        //error_log($checkin . " " . $checkout . " " . $totalprice . " " . $placeid . " " . $package);
+        //error_log($start_time . " " . $end_time);
         //start 
         if($query_status=="0")
         {
-          $q = mysqli_query($connect,"INSERT INTO `booking`(`placeid`, `userid`, `package`, `price`, `checkin`, `checkout`, `hours`, `guests`, `online`, `hotel`,`ftime`,`ltime`) VALUES ('".$placeid."','".$_SESSION['u_id']."','".$package."','".$price."','".$checkin."','".$checkout."','".$hours."','".$guests."','".$totalprice."','".$totalprice."','".$start_time12."','".$end_time."')");
+          $q = mysqli_query($connect,"INSERT INTO `booking`(`placeid`, `userid`, `package`, `price`, `checkin`, `checkout`, `hours`, `guests`, `online`, `hotel`,`ftime`,`ltime`) VALUES ('".$placeid."','".$_SESSION['u_id']."','".$package."','".$price."','".$checkin."','".$checkout."','".$hours."','".$guests."','".$totalprice."','".$totalprice."','".$start_time12."','".$end_time12."')");
           $last_id = $connect->insert_id;
-          error_log("last id: " . $last_id);
+          //error_log("last id: " . $last_id);
           if($q)
           {
+            $caldt1 = $checkin . " " . $start_time12;
+            $caldt2 = $checkout . " " . $end_time12;
+            error_log($caldt1 . " " . $caldt2);
+            $p = mysqli_query($connect,"INSERT INTO `calenderdata`(`placeid`, `date1`, `date2`, `status`) VALUES ('".$placeid."','".$caldt1."','".$caldt2."','Not Available')");
+            if ($p) {
             if($row['a_status']== 0)
               {    
       
@@ -382,10 +388,12 @@ if(isset($_REQUEST['replying']))
                 $response = curl_exec($session);
                 curl_close($session);
                 echo"not_activate";
-              }
+          }
+          } else { echo "not_inserted";}
           } else { 
             echo"not_inserted";
           }
+          //}
         //end
       } else {
         echo "Already";

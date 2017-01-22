@@ -228,6 +228,8 @@ if(isset($_GET['taxesid']))
    
 		 $start_time = $_REQUEST['start_time'];
 		 $end_time = $_REQUEST['end_time'];
+     $sttime= date_format(date_create($start_time), 'H:i');
+     $endtime= date_format(date_create($end_time), 'H:i');
 
 // Example 
 
@@ -260,12 +262,15 @@ if(isset($_GET['taxesid']))
 		{	    
           
       		$st = date('Y-m-d',strtotime($d1));
+          
        		$price="0";
            
 			while($rw = mysqli_fetch_array($sql))
       		{  
           $days=""; 
-          $newdays="";   
+          $newdays="";
+          $time1 = date_format(date_create($rw['date1']), 'H:i');
+          $time2 = date_format(date_create($rw['date2']), 'H:i');     
         		//$start    = new DateTime($rw['date1']);
             $start    = date_create($rw['date1']);
         		$end_date = $rw['date2'];
@@ -274,19 +279,23 @@ if(isset($_GET['taxesid']))
             
         		$interval = new DateInterval('P1D'); // 1 day interval
         		$period   = new DatePeriod($start, $interval, $end);
-            error_log("spotd");
+            
         		foreach ($period as $day)
         		{
            		 	// Do stuff with each $day...
            			$days .= $day->format('Y-m-d').',';
-        		}    
-        		$days = $days.$end_date.'<br>';
+        		}  
+            //error_log($days);  
+        		//$days = $days.$end_date.'<br>';
+            $days = $days.'<br>';
         		$newdays = explode('<br>', $days);
+            //error_log($newdays);  
         		
         		 $ppn_money = "";
 						
         		foreach ($newdays as $range) 
-        		{	
+        		{
+              
         			$ppn2 = "";
           			$ranges = explode(',',$range);
           			         	
@@ -300,6 +309,9 @@ if(isset($_GET['taxesid']))
                     }
                     elseif($rw['status']=="Not Available")
                     {
+                      error_log($time1 . "," . $time2 . "," . $sttime . "," . $endtime);
+                      if (($time1 <= $sttime && $time2 > $sttime) || ($time1 < $endtime && $time2 >= $endtime) ||
+                        ($time1 > $sttime && $time2 < $endtime) || ($time1 == $sttime && $time2 == $endtime))
                       $money=1;
                     }
                   } // if in array end
