@@ -506,14 +506,14 @@ if($match1=mysqli_fetch_array($query1)){
 	  {
 		  
 		  $sql9=mysqli_query($connect,'Select * from calenderdata  where placeid="'.$placeid.'" 
-		  and status="Available" and date1 >= "'.$checkin.'" and date2 <= "'.$checkout.'" order by date1') ;
+		  and status="Available" and date(date1) <= "'.$checkin.'" and date(date2) >= "'.$checkout.'" order by date1') ;
 		  
 	  //$sql9 = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$placeid."'");
       //if(mysqli_num_rows($sql9)>0)
 	  
 	  while($res9=mysqli_fetch_array($sql9))
       { 
-	   if(!empty($res9[2]) || !empty($res9[3]) || !empty($res9[4])) 
+	   if(!empty($res9[2]) || !empty($res9[3]))
 	   {
 		 $dt1time = date_format(date_create($res9['date1']), 'g:i a');
 		 $dt2time = date_format(date_create($res9['date2']), 'g:i a');
@@ -581,7 +581,7 @@ echo " : ";
 
 $dt1time2 = date_format(date_create($res9['date1']), 'H:i');
 $dt2time2 = date_format(date_create($res9['date2']), 'H:i');
-$dt2time2a = $dt2time2;
+$dt2time2a = date_format(date_create($res9['date2']), 'g:i a');;
 if (mysqli_num_rows($bresult) == 0) {
 	echo "<br>" . date_format(date_create($dt1time2), 'g:i a') . " to " . date_format(date_create($dt2time2), 'g:i a');
 } else {
@@ -606,9 +606,8 @@ while ($bookres = mysqli_fetch_array($bresult)) {
 	$i++;
 }
 $i--;
-error_log($timeray2[$i]);
+
 if (isset($timeray2[$i])) {
-	error_log($timeray2[$i]);
 	if ($timeray2[$i] != $dt2time2a)
 	{
 		echo "<br>" . date_format(date_create($timeray2[$i]), 'g:i a') . " to " . date_format(date_create($dt2time2a), 'g:i a');
@@ -691,7 +690,7 @@ if (isset($timeray2[$i])) {
 	<form id="gotobook" action="booking-form.php" method="post">
 		<input name="theplace" value="<?php echo $match['space_name'].",".$match['p_address'];?>" type="hidden" />
 		<input id="bookid" name="bookid"  type="hidden" />
-		<button id="bk-btn" type="submit"></button
+		<button id="bk-btn" type="submit">
 	</form>
 </div>
 
@@ -848,7 +847,7 @@ function formVal() {
 
 					var fn=new Date('2017-01-01' + " " + document.getElementById('basic').value);
 					var fo=new Date('2017-01-01' + " " + document.getElementById('basic2').value);
-					console.log(fn + " " + fo);
+					//console.log(fn + " " + fo);
     				if(fn == "" || fn > fo){		
         				document.getElementById('basic').style.borderColor = "red";
 						//$("#span1a").html(mess);
@@ -883,7 +882,7 @@ $(document).ready(function(){
     var price_cal = $('.ppnight').val();
     var placeid = $('.placeid_val').val();
 	var fee = $('.bfee').val();
-    console.log("datedata"+date_val2)
+    //console.log("datedata"+date_val2)
     if(endtime!='')
     {
     	if(endtime>starttime)
@@ -994,8 +993,9 @@ $(document).ready(function(){
 
 //end here 
 
-    var new_end = $(this).timepicker('getTime');
-   var dd = new_end.setHours(new_end.getHours()+1);
+	var new_end = $(this).timepicker('getTime');
+	console.log(new_end);
+   	var dd = new_end.setHours(new_end.getHours()+1);
 
     $('#basic2').timepicker({
     	'timeFormat':'g:i a',
@@ -1005,9 +1005,9 @@ $(document).ready(function(){
     });
 
     $('#basic2').change(function(){
-    var starttime = $('#basic').val();
-	var endtime = $('#basic2').val();
-	if (starttime < endtime) {
+    	var starttime = $('#basic').val();
+		var endtime = $('#basic2').val();
+	//if (starttime < endtime) {
 		var date_val2 = $('#hourdatepicker').val();
 		var price_cal = $('.ppnight').val();
 		var placeid = $('.placeid_val').val();
@@ -1114,7 +1114,7 @@ $(document).ready(function(){
 			$('.calculated').html(hours+' hours');
 		}
 	});
-	}  
+	//}  
   	});
 });
 });

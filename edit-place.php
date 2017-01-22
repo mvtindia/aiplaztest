@@ -538,7 +538,7 @@ if($match=mysqli_fetch_array($query)){
                 		                        </span>
             	                  </div>
 				
-    		                            		                    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
+    		                            		        <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
                 	                            <label for="space">Price Per Hour</label>
                                                 <input type="number" required class="form-control" id="priceph" placeholder="Enter $$" name="p_p_h">
                                 </div>
@@ -550,7 +550,7 @@ if($match=mysqli_fetch_array($query)){
                                 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
                 	                            <label for="space">Price Per Week</label>
-                                                <input type="number" required class="form-control" id="pricepw" placeholder="Enter $$" name="w_p_p_n">
+                                                <input type="number" class="form-control" id="pricepw" placeholder="Enter $$" name="w_p_p_n">
                                                 <input type="hidden" class="sfee" value=<?php echo $sfee ?>>
                                 </div> 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
@@ -1130,7 +1130,7 @@ p {
 						$("#span1a").css('display', 'none');
     				}
 
-					var fn2=document.getElementById('pricepw').value;
+					/*var fn2=document.getElementById('pricepw').value;
     				if(fn2 == ""){
         				
         				document.getElementById('pricepw').style.borderColor = "red";
@@ -1140,7 +1140,7 @@ p {
     				}else{
         				document.getElementById('pricepw').style.borderColor = "green";
 						$("#span1a").css('display', 'none');
-    				}
+    				}*/
                     
                     var dt1 = new Date($("#date1a").val() + " " + $("#date1b").val());
 			        var dt2 = new Date($("#date2a").val() + " " + $("#date2b").val());

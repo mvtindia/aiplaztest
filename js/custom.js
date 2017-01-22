@@ -285,7 +285,8 @@ $(".book_form").submit(function(e)
 
 $(".book_form2_hour").submit(function(e)
 {
-    var formObj = $(this);
+    //if ( ) {
+	var formObj = $(this);
     var formURL = formObj.attr("action");
     var formData = new FormData(this);
 	$("#book_button").attr("disabled", true);
@@ -307,11 +308,17 @@ $(".book_form2_hour").submit(function(e)
         }
         else if(data1[0] == 'not_login')
         {
+			$("#second-block").css('display','none');
+			$("#third-block").css('display','none');
+			$("#fourth-block").css('display','none');
+			$("#first-block").css('display','block');	
+			$('.urlval').val(window.location.href);
         	$('.signlog').click();
         }
         else if(data1[0] == 'Already')
         {
         	swal('Error','Booking Already Done','error');
+			$("#book_button").attr("disabled", false);
         }
         else if(data1[0] == 'ok')
         {     
@@ -326,7 +333,8 @@ $(".book_form2_hour").submit(function(e)
         swal("Failure!", "Email Id already Exist!", "error");
      }          
     });
-    e.preventDefault(); //Prevent Default action. 
+    e.preventDefault(); //Prevent Default action.
+	//} 
     //e.unbind();
 }); 
     

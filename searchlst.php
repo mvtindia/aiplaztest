@@ -1,8 +1,10 @@
 <?php include_once('connect.php');
 //if(isset($_REQUEST['searching'])) { 
   if (isset($_POST['chin'])) {
-    $chinvar = date_format(date_create($_POST['chin']), 'Y-m-d 00:00:00');
-    $choutvar = date_format(date_create($_POST['chin']), 'Y-m-d 23:59:00');
+    //$chinvar = date_format(date_create($_POST['chin']), 'Y-m-d 00:00:00');
+    //$choutvar = date_format(date_create($_POST['chin']), 'Y-m-d 23:59:00');
+    $chinvar = date_format(date_create($_POST['chin']), 'Y-m-d');
+    $choutvar = date_format(date_create($_POST['chin']), 'Y-m-d');
   }
   
   if(!empty($_REQUEST['place_loc'])){
@@ -72,7 +74,7 @@
  $q21 = mysqli_query($connect,"select distinct a.place_id, a.p_address, a.p_city, a.p_state, a.p_country, a.postal_code, 
  a.photo, a.space_name, a.capacity, a.p_p_h, a.p_p_n from place a, calenderdata b where place_id = placeid and 
  user_id != '".$_SESSION['u_id']."' and status = 'Available' and p_address like '%".$place_loc."%' and 
- capacity >= '".$guests."' and b.date1 >= '".$chinvar."' and b.date2 <= '".$choutvar."' and 
+ capacity >= '".$guests."' and date(b.date1) <= '".$chinvar."' and date(b.date2) >= '".$choutvar."' and 
  ((b.p_p_h between ".$minbud." and ".$maxbud.") or (b.p_p_n between ".$minbud." and ".$maxbud.")) order by a.place_id"); 
   //$q21 = mysqli_query($connect,"select * from place where p_address like '%".$place_loc."%' "); 
 ?>
