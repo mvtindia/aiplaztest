@@ -11,6 +11,7 @@ $sfee = $feeres['percentage'] * .01; ?>
   
 
 	<?php include 'lib/top.php';?>
+    <link href="tm/jquery.timepicker.css" rel="stylesheet">
   <style>
     .bootstrap-datetimepicker-widget {
         font-size: 10px;
@@ -396,9 +397,9 @@ $sfee = $feeres['percentage'] * .01; ?>
             	                </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" name="from-date1b" id='datetimepicker7' style="float: left;">
                 		                        <input type='text' class="form-control" name="from-date1b" id="date1b" required placeholder="From" data-date-format="HH:mm" />
-                		                        <span class="input-group-addon">
+                		                        <!--<span class="input-group-addon">
                     			                    <span class="glyphicon glyphicon-calendar"></span>
-                		                        </span>
+                		                        </span>-->
             	                </div>
                	                <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker8' style="float: left;">
                 		                        <input type='text' class="form-control" name="to-date2a" id="date2a" required placeholder="To" data-date-format="YYYY-MM-DD"/>
@@ -408,9 +409,9 @@ $sfee = $feeres['percentage'] * .01; ?>
             	                </div>
                                 <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker9' style="float: left;">
                 		                        <input type='text' class="form-control" name="to-date2b" id="date2b" required placeholder="To" data-date-format="HH:mm"/>
-                		                        <span class="input-group-addon">
+                		                        <!--<span class="input-group-addon">
                     			                    <span class="glyphicon glyphicon-calendar"></span>
-                		                        </span>
+                		                        </span>-->
             	                </div>
     		                    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
                 	                            <label for="space">Price Per Hour</label>
@@ -674,6 +675,7 @@ function formVal() {
 
 <?php include 'lib/footer.php'; //if isset
 ?>
+<script src="tm/jquery.timepicker.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0ceT-_kjPt8INNEKoVX9axkv3zw3miBY&signed_in=true&libraries=places&callback=initAutocomplete"
         async defer></script>
 </body>
@@ -689,15 +691,15 @@ $(function () {
             $('#datetimepicker6').datetimepicker({
                
             });
-            $('#datetimepicker7').datetimepicker({
+           // $('#datetimepicker7').datetimepicker({
                
-            });
+            //});
             $('#datetimepicker8').datetimepicker({
                
             });
-            $('#datetimepicker9').datetimepicker({
+            //$('#datetimepicker9').datetimepicker({
                
-            });
+            //});
 });
 </script>
 </html>
@@ -707,6 +709,25 @@ $(function () {
 
 
 $(document).ready(function() {
+
+    $('#date1b').timepicker({
+		          'timeFormat':'g:i a',
+		          step: 60,
+		          //minTime:'<?php //echo $dt1time ?>',
+		          //maxTime:'<?php //echo $dt2time ?>',
+    	        'scrollDefaultNow': 'true',
+              'closeOnWindowScroll': 'true',
+              'showDuration': false
+	      });
+        $('#date2b').timepicker({
+		          'timeFormat':'g:i a',
+		          step: 60,
+		          //minTime:'<?php //echo $dt1time ?>',
+		          //maxTime:'<?php //echo $dt2time ?>',
+    	        'scrollDefaultNow': 'true',
+              'closeOnWindowScroll': 'true',
+              'showDuration': false
+	      });
     
 
     var url = window.location.href;

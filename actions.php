@@ -493,27 +493,58 @@ if (isset($_REQUEST['eplace'])) {
 
 if (isset($_REQUEST['savetime'])) {
     // echo "working";
+    error_log("iamher");
     $placeid = $_POST['placeid'];
     $date1 = $_POST['from-date1a'] . " " . $_POST['from-date1b'];
-    $date2 = $_POST['to-date2a'] . " " . $_POST['to-date2b'];
+    $date1a = date_format(date_create($date1), 'Y-m-d H:i');
+    $date2 = $_POST['from-date1a'] . " " . $_POST['to-date2b'];
+    
+    $date3 = $_POST['to-date2a'] . " " . $_POST['from-date1b'];
+    $date4 = $_POST['to-date2a'] . " " . $_POST['to-date2b'];
+    $date4a = date_format(date_create($date4), 'Y-m-d H:i');
+    $date5 = $_POST['from-date1a'];
+    $date6 = $_POST['to-date2a'];
+    $date7 = date_format(date_create($_POST['from-date1b']), 'H:i') . ":00.000000";
+    $date8 = date_format(date_create($_POST['to-date2b']), 'H:i')  . ":00.000000";
     $pph = $_POST['p_p_h'];
     $ppn = $_POST['p_p_n'];
     $wppn = $_POST['w_p_p_n'];
 
+    $dt1 = date_create($_POST['from-date1a']);
+    $dt2 = date_create($_POST['to-date2a']);
+    $ddiff = date_diff($dt1, $dt2);
+    //$interval = new DateInterval('P1D'); // 1 day interval
+    //$period   = new DatePeriod($dt1, $interval, $dt2);
+    //error_log($date1 . " " . $date2);
+    //foreach ($period as $day) {
+        //error_log($ddiff);
+    //}
+    error_log($date5 . " " . $date6 . " " . $date7 . " " . $date8);
     if ($_SESSION['u_id'] == "") {
         echo "login";
     } else {
-        $res = mysqli_query($connect, "select * from `calenderdata` where `placeid`='" . $placeid . "' and ((`date1`<='" . $date1 . "' and `date2`>='" . $date1 . "')||(`date1`<='" . $date2 . "' and `date2`>='" . $date2 . "')||(`date1`>='" . $date1 . "' and `date2`<='" . $date2 . "'))");
+        $res = mysqli_query($connect, "select * from `calenderdata` where `placeid`='" . $placeid . "' and 
+        ((DATE(date1) <= '".$date5."' and DATE(date2) >=  '".$date5."')
+        or (DATE(date1) <=  '".$date6."' and DATE(date2) >=  '".$date6."')
+        or (DATE(date1) >  '".$date5."' and DATE(date2) <  '".$date6."')) and 
+        ((TIME(time1) <= '".$date7."' and TIME(time2) >  '".$date7."')
+        or (TIME(time1) <  '".$date8."' and TIME(time2) >=  '".$date8."')
+        or (TIME(time1) >  '".$date7."' and TIME(time2) <  '".$date8."')) 
+        ");
+        
         if (mysqli_num_rows($res)) {
+            
             echo "error";
             echo ",,,";
         } else {
+            
             $sql = mysqli_query($connect, "INSERT `calenderdata` SET `placeid`='" . $placeid . "', `p_p_n`='" . $ppn . "', `w_p_p_n`='" . $wppn . "',
-`p_p_h`='" . $pph . "', `date1`='" . $date1 . "', `date2`='" . $date2 . "', `status` ='Available', `ctimestampdate` = '" . date('Y-m-d') . "'");
-
+`p_p_h`='" . $pph . "', `date1`='" . $date1a . "', `date2`='" . $date4a . "', `time1`='".$date7."', `time2`='".$date8."', `status` ='Available', `ctimestampdate` = '" . date('Y-m-d') . "'");
+            
             if ($sql > 0) {
                 echo "success";
             } else {
+                error_log("hereis");
                 echo "error";
             }
             echo ",,,";

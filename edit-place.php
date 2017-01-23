@@ -492,7 +492,7 @@ if($match=mysqli_fetch_array($query)){
    <input type="text" required class="form-control" id="accomodates" value="<?php echo $row['w_p_p_n'];?>" placeholder="Enter price" name="w_p_p_n">
   </div>
 -->
-
+<link href="tm/jquery.timepicker.css" rel="stylesheet">
   <div class="col-md-12 text-center form-group">
 
   <button id="next2" type="submit" name="qeprice_place" class="btn btn-default cus-save-but">Save & continue</button>
@@ -514,28 +514,28 @@ if($match=mysqli_fetch_array($query)){
                                 <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>
                                 <div class="frm-field-mar">
           	                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker6' style="float: left;">
-                		                        <input type='text' class="form-control" name="from-date1a" id="date1a" required placeholder="From" data-date-format="YYYY-MM-DD" />
+                		                        <input type='text' class="form-control" name="from-date1a" id="date1a" required placeholder="From Day" data-date-format="YYYY-MM-DD" />
                 		                        <span class="input-group-addon">
                     			                    <span class="glyphicon glyphicon-calendar"></span>
                 		                        </span>
             	                  </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" name="from-date1b" id='datetimepicker7' style="float: left;">
-                		                        <input type='text' class="form-control" name="from-date1b" id="date1b" required placeholder="From" data-date-format="HH:mm" />
-                		                        <span class="input-group-addon">
+                		                        <input type='text' class="form-control" name="from-date1b" id="date1b" required placeholder="From Hour" data-date-format="hh:mm" />
+                		                        <!--<span class="input-group-addon">
                     			                    <span class="glyphicon glyphicon-calendar"></span>
-                		                        </span>
+                		                        </span>-->
             	                  </div>
                	                <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker8' style="float: left;">
-                		                        <input type='text' class="form-control" name="to-date2a" id="date2a" required placeholder="To" data-date-format="YYYY-MM-DD"/>
+                		                        <input type='text' class="form-control" name="to-date2a" id="date2a" required placeholder="To Day" data-date-format="YYYY-MM-DD"/>
                 		                        <span class="input-group-addon">
                     			                    <span class="glyphicon glyphicon-calendar"></span>
                 		                        </span>
             	                  </div>
                                 <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker9' style="float: left;">
-                		                        <input type='text' class="form-control" name="to-date2b" id="date2b" required placeholder="To" data-date-format="HH:mm"/>
-                		                        <span class="input-group-addon">
+                		                        <input type='text' class="form-control" name="to-date2b" id="date2b" required placeholder="To Hour" data-date-format="HH:mm"/>
+                		                        <!--<span class="input-group-addon">
                     			                    <span class="glyphicon glyphicon-calendar"></span>
-                		                        </span>
+                		                        </span>-->
             	                  </div>
 				
     		                            		        <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
@@ -550,7 +550,7 @@ if($match=mysqli_fetch_array($query)){
                                 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
                 	                            <label for="space">Price Per Week</label>
-                                                <input type="number" class="form-control" id="pricepw" placeholder="Enter $$" name="w_p_p_n">
+                                                <input type="number" class="form-control" id="pricepw"  value=0 placeholder="Enter $$" name="w_p_p_n">
                                                 <input type="hidden" class="sfee" value=<?php echo $sfee ?>>
                                 </div> 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
@@ -754,6 +754,7 @@ p {
  // include 'lib/footer.php'; //if isset 
 
   ?> -->
+  
   <div id="myModal2" class="modal fade" role="dialog">
 
   <div class="modal-dialog">
@@ -939,6 +940,7 @@ p {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="tm/jquery.timepicker.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>   
 <script src="js/forms.js"></script>
@@ -958,12 +960,31 @@ p {
   <script src="js/wow.js"></script>
     <script type="text/javascript">
         $(function () {
+            
             $('#datetimepicker6').datetimepicker();
-            $('#datetimepicker7').datetimepicker();
+            //$('#datetimepicker7').datetimepicker();
             $('#datetimepicker8').datetimepicker();
-            $('#datetimepicker9').datetimepicker();
+            //$('#datetimepicker9').datetimepicker();
         });
         $(document).ready(function() {
+          $('#date1b').timepicker({
+		          'timeFormat':'g:i a',
+		          step: 60,
+		          //minTime:'<?php //echo $dt1time ?>',
+		          //maxTime:'<?php //echo $dt2time ?>',
+    	        'scrollDefaultNow': 'true',
+              'closeOnWindowScroll': 'true',
+              'showDuration': false
+	      });
+        $('#date2b').timepicker({
+		          'timeFormat':'g:i a',
+		          step: 60,
+		          //minTime:'<?php //echo $dt1time ?>',
+		          //maxTime:'<?php //echo $dt2time ?>',
+    	        'scrollDefaultNow': 'true',
+              'closeOnWindowScroll': 'true',
+              'showDuration': false
+	      });
         $sfee = $('.sfee').val();
         $("#priceph").change(function() {
             $prh = Number($("#priceph").val());
