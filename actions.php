@@ -136,6 +136,7 @@ if (isset($_REQUEST['place'])) {
         'txt',
         'doc',
         'docx',
+        'pdf',
     );
     $inputphotos = $_FILES['inputphotos']['name'];
     $tmpphotos = $_FILES['inputphotos']['tmp_name'];
