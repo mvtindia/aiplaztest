@@ -529,17 +529,7 @@ if($match1=mysqli_fetch_array($query1)){
       if(mysqli_num_rows($sql9)>0)
       { 
         ?>
-        <!--<div class="row" style="background: #1BBC9B;
-    padding: 13px 0px;
-    color: white;
-    font-weight: bolder;
-    font-size: 19px;">
-          <div class="col-md-3">From</div>
-          <div class="col-md-3">To</div>
-          <div class="col-md-2">ppn</div>
-          <div class="col-md-2">pph</div>
-          <div class="col-md-2">ppw</div>
-        </div>-->
+        
         <?php
         $he = 1;
         while($row9 = mysqli_fetch_array($sql9))
@@ -587,7 +577,7 @@ if($match1=mysqli_fetch_array($query1)){
     <div class="col-md-8"></div> 
           </div>';
         } ?>     
-
+		<div><a href="edit-place.php?placeid=<?php echo $placeid ?>><button type="button"  style="background: transparent;border: none; padding: 0px;">Edit</button></a></div>
   </div>
 	 <?php
 	  //} ?> 
