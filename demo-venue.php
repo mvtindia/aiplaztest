@@ -350,7 +350,7 @@ if($match1=mysqli_fetch_array($query1)){
 	  if($doc[$i]==""){
 	  		continue;
 	  	} 
-	  		echo '<div class="col-md-4 col-sm-4  mg-media"><a href="doc/'.$doc[$i].'">$doc[$1]</a></div>';
+	  		echo '<div class="col-md-4 col-sm-4  mg-media"><a href="doc/'.$doc[$i].'">$doc[$i]</a></div>';
 	  }?>
 	  <?php }else{echo "-";} ?>
 	  </div>
