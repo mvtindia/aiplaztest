@@ -577,7 +577,7 @@ if($match1=mysqli_fetch_array($query1)){
     <div class="col-md-8"></div> 
           </div>';
         } ?>     
-		<div><a href="edit-place.php?placeid=<?php echo $placeid ?>"><button type="button"  style="background: transparent;border: none; padding: 0px;">Edit</button></a></div>
+		<div><a href="edit-place.php?placeid=<?php echo $placeid ?>"><button type="button" id="payonline" name="payonline" style="background: transparent;border: none; padding: 0px;">Edit</button></a></div>
   </div>
 	 <?php
 	  //} ?> 
