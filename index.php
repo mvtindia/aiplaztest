@@ -4,6 +4,7 @@
 
   <title>2finda</title>
   <?php include 'lib/top.php';?>
+
 <style>
 #carousel-example-generic{
   z-index:-1;
@@ -22,6 +23,7 @@ button.multiselect.dropdown-toggle.btn.btn-default
   height: 45px;
 }
 </style>
+
 </head>
 
 <body>
@@ -73,11 +75,11 @@ button.multiselect.dropdown-toggle.btn.btn-default
               <div class="">
                 <div class="row">
             <form action="searchlst.php" method="post" >
-                  <div class="col-md-2 pd-0">
+                  <div class="col-md-3 pd-0">
                     <div class="form-group">                        
                       <label class="sr-only">Location</label>
                           <!-- <input type="text" class="form-control bord" placeholder="City"> -->
-                      <input class="form-control bord" id="autocomplete" placeholder="Location" name="place_loc"  onFocus="geolocate()" type="text" required>
+                      <input class="form-control bord" id="autocomplete" placeholder="Location" name="place_loc" size="50"  onFocus="geolocate()" type="text" required>
                       <input type="hidden" name="my-lat" id="my-lat" value="" >
                       <input type="hidden" name="my-lng" id="my-lng" value="" >
                     </div>
@@ -95,10 +97,10 @@ button.multiselect.dropdown-toggle.btn.btn-default
                       </select> 
                     </div>
                   </div>
-                  <div class="col-md-4 pd-0">
+                  <div class="col-md-3 pd-0">
                     <div class="form-group">
                       <label class="sr-only">Check-In</label>
-                      <input class="daterange1" name="daterange" placeholder="Checkin-Checkout">
+                      <input class="daterange1" name="chin" style="height: 3.2em; width: 100%;border:1px solid #c0c0c0;padding: 0 10px;" placeholder="Date" data-date-format="yyyy/mm/dd">
                     </div>
                   </div>
                   <div class="col-md-2 pd-0">
@@ -300,12 +302,16 @@ button.multiselect.dropdown-toggle.btn.btn-default
 <!--======footer======-->
     <?php include 'lib/footer.php';?>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0ceT-_kjPt8INNEKoVX9axkv3zw3miBY&signed_in=true&libraries=places&callback=initAutocomplete" async defer></script>
-    <script src="js/forms-map.js"></script>
+    <!--<script src="js/forms-map.js"></script><--></-->
+    
 <!--======footer close======-->
+<script>
 
+</script>
 
   </div><!--row close-->
 </div><!--container-fluid close-->
 </body>
 
 </html>
+

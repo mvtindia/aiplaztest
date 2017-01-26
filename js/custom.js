@@ -348,9 +348,9 @@ $(".book_form2_hour").submit(function(e)
 	});
 
 	$('#drp_autogen0 .ui-button-text').html('Checkin Date - Checkout Date');
-
- $(".daterange1").daterangepicker({
-     presetRanges: [{
+var today = new Date();
+ $(".daterange1").datepicker({
+     /*presetRanges: [{
          text: 'Today',
          dateStart: function() { return moment() },
          dateEnd: function() { return moment() }
@@ -366,13 +366,15 @@ $(".book_form2_hour").submit(function(e)
          text: 'Next Week',
          dateStart: function() { return moment().add('weeks', 1).startOf('week') },
          dateEnd: function() { return moment().add('weeks', 1).endOf('week') }
-     }],
-     applyOnMenuSelect: false,
-     datepickerOptions: {
+     }],*/
+     //applyOnMenuSelect: false,
+     /*datepickerOptions: {
          minDate: 0,
          maxDate: null,
          numberOfMonths : 2
-     }
+     }*/
+	 minDate: today,
+	 format: 'yyyy/mm/dd',	
  });
 
 $('.carousel-inner div:first-child').addClass('active');
