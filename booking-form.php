@@ -53,7 +53,8 @@ $r17=mysqli_fetch_array($q17);
 <div class="row">
 <div class="col-lg-8 col-sm-8 col-md-8 col-xs-12">
 <div class="tellus-data col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0">
-<form  id="booking_form45" method="post" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0" >
+<!--<form  id="booking_form45" method="post" action="creditcard.php" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0" >-->
+<form  method="post" action="creditcard.php" id="bkform" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0" >
 <div class="had-frm">Your Details</div>
 <div class="frm-field-mar">
 
@@ -87,7 +88,7 @@ $r17=mysqli_fetch_array($q17);
     $dtout = date_format(date_create($r17['checkout'] . " " . $r17['ltime']), 'Y-m-d g:i a');
   ?>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-    <input readonly="" type="text" value="<?php echo $dtin; ?>" class="form-control" id="" placeholder="2-10-12">
+    <input readonly="" type="text" value="<?php echo $dtin; ?>" name="checkin" class="form-control" id="" placeholder="2-10-12">
   </div>
   
   </div>
@@ -98,7 +99,7 @@ $r17=mysqli_fetch_array($q17);
     <label for="space">Checkout</label>
   </div>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-    <input readonly="" type="text" value="<?php echo $dtout ?>" class="form-control" id="" placeholder="5-10-12">
+    <input readonly="" type="text" value="<?php echo $dtout ?>" name="checkout" class="form-control" id="" placeholder="5-10-12">
   </div>
   
   </div>
@@ -109,7 +110,7 @@ $r17=mysqli_fetch_array($q17);
     <label for="space">Total Price</label>
   </div>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-    <input readonly="" id="amount" type="text" name="total_price" value=$<?php echo $r17['hotel'] ?> class="form-control" id="" >
+    <input readonly="" id="amount" type="text" name="total_price" value=$<?php echo $r17['hotel'] ?> class="form-control" >
   </div>
   
   </div>
@@ -151,7 +152,7 @@ $r17=mysqli_fetch_array($q17);
         <label for="space">Location</label>
       </div>
       <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-        <input readonly="" type="text" value="<?php echo $_REQUEST['theplace'] ?>" class="form-control" id="" placeholder="Location">
+        <input readonly="" type="text" value="<?php echo $_REQUEST['theplace'] ?>" name="theplace" class="form-control" id="" placeholder="Location">
       </div>
   </div>
   
@@ -164,10 +165,6 @@ $r17=mysqli_fetch_array($q17);
     <input readonly="" type="text" value="<?php echo $r17['email']; ?>" class="form-control" id="" placeholder="Email">
   </div>
   </div>
-  
-  
-  
-  
 
   <!--=======================================-->
 
@@ -175,12 +172,8 @@ $r17=mysqli_fetch_array($q17);
   <div class="btn-group" data-toggle="buttons">
       <label class="btn btn-success">
         <!--<button type="button" id="paypal_data" name="paypal_insertion"  style="background: transparent;border: none; padding: 0px;">Pay online</button>-->   
-        <button type="button" id="payonline" name="payonline"  style="background: transparent;border: none; padding: 0px;">Pay online</button>
+        <button type="submit" id="payonline" name="payonline"  style="background: transparent;border: none; padding: 0px;">Pay online</button>
       </label>
-      
-      <!--<label class="btn btn-success hotel-btn">
-        <button type="button" required="" class="hotel-btn"  name="method" value="hotel" style="background: transparent;border: none; padding: 0px;">Pay at Hotel</button>
-      </label>-->
       
       <label class="btn btn-success ">
         <button type="button" required="" class="cancel-btn btn-danger"  name="method"style="background: transparent;border: none; padding: 0px;" value="<?php echo $r17['bookid']; ?>">Cancel Booking</button>
@@ -277,7 +270,7 @@ $r17=mysqli_fetch_array($q17);
 }
  else 
   { 
-    header('location:index.php');
+    header('location:searchlst.php');
    } 
 // else
 // {
@@ -286,7 +279,12 @@ $r17=mysqli_fetch_array($q17);
 
   ?>
   <script>
-var handler = StripeCheckout.configure({
+  $tots = <?php echo $r17['hotel'] ?> * 100;
+document.getElementById('payonline').addEventListener('click', function(e) {
+  $('form#bkform').submit();
+}); 
+  
+/*var handler = StripeCheckout.configure({
   key: 'pk_test_IdZ2U4nGUg0vVG2yu8eMgbbc',
   //image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
   locale: 'auto',
@@ -295,7 +293,7 @@ var handler = StripeCheckout.configure({
     // Get the token ID to your server-side code for use.
   }
 });
-$tots = <?php echo $r17['hotel'] ?> * 100;
+$tots = <?php //echo $r17['hotel'] ?> * 100;
 document.getElementById('payonline').addEventListener('click', function(e) {
   // Open Checkout with further options:
   handler.open({
@@ -308,10 +306,9 @@ document.getElementById('payonline').addEventListener('click', function(e) {
 });
 
 // Close Checkout on page navigation:
-window.addEventListener('popstate', function() {
+/*window.addEventListener('popstate', function() {
   handler.close();
-  window.location.href="index.php";
-});
+});*/
 </script>
 
 <!--======footer close======-->
