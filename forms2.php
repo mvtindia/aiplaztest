@@ -256,7 +256,7 @@ if(isset($_GET['taxesid']))
 
 
 
-		$sql = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$placeid."'");
+		$sql = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$placeid."' order by time1 asc");
     
 		if(mysqli_num_rows($sql)>0)
 		{	    
@@ -304,15 +304,21 @@ if(isset($_GET['taxesid']))
                   if(in_array($st, $ranges))
             			{  
                   if($rw['status']=="Available")
-                    { 
-               				$price = $rw['p_p_h'];
+                    {
+                      if (($time1 <= $sttime && $time2 > $sttime) || ($time1 < $endtime && $time2 >= $endtime) ||
+                        ($time1 > $sttime && $time2 < $endtime) || ($time1 == $sttime && $time2 == $endtime))
+                         {
+                           $price = $rw['p_p_h'];
+                         } else {
+                           $money=1;
+                         }
                     }
                     elseif($rw['status']=="Not Available")
                     {
                       error_log($time1 . "," . $time2 . "," . $sttime . "," . $endtime);
                       if (($time1 <= $sttime && $time2 > $sttime) || ($time1 < $endtime && $time2 >= $endtime) ||
                         ($time1 > $sttime && $time2 < $endtime) || ($time1 == $sttime && $time2 == $endtime))
-                      $money=1;
+                        { $money=1; }
                     }
                   } // if in array end
           			} // ik for end
