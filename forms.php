@@ -1253,9 +1253,10 @@ if(isset($_GET['cancel_booking']))
 if(isset($_GET['bookid_cancel']))
 {
   $val = $_GET['bookid_cancel'];
-  $sql2 = mysqli_query($connect,"SELECT * FROM booking WHERE bookid='".$val."'");
+  //$sql2 = mysqli_query($connect,"SELECT * FROM booking WHERE bookid='".$val."'");
   $row = mysqli_fetch_array($sql2);
   $sql= mysqli_query($connect,"DELETE FROM booking WHERE bookid='".$val."'");
+  
   if($sql)
   {
     /*$sql4 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$row['userid']."'");
