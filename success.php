@@ -3,7 +3,7 @@ session_start();
 include_once('connect.php');
 include_once('email.php');
 $uid = $_SESSION['u_id'];
-require __DIR__ . '/vendor/autoload.php';
+/*require __DIR__ . '/vendor/autoload.php';
 \Stripe\Stripe::setApiKey("sk_test_oVcdv8o1obp6jTmxLNRUeH9s");
 if (isset($_POST['stripeToken'])) {
     
@@ -82,14 +82,9 @@ if (isset($charge)) {
     $fname = $_SESSION['fname'];
     $lname = $_SESSION['lname'];
     $total_price = $_POST['total_price'] * .01;
-    $_SESSION['total_price'] = $total_price;
-    
     $theplace = $_POST['theplace'];
-    $_SESSION['theplace'] = $theplace;
     $checkin = $_POST['checkin'];
-    $_SESSION['checkin'] = $checkin;
     $checkout = $_POST['checkout'];
-    $_SESSION['checkout'] = $checkout;
 
     $subject = 'Your 2finda transaction';
 
@@ -104,9 +99,9 @@ if (isset($charge)) {
     $json_string = array(
         'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
     );
-    /* $json_string = array(
+     $json_string = array(
       'to' => array($email), 'category' => 'test_category'
-      ); */
+      ); 
     $params = array(
         'api_user' => $sguser,
         'api_key' => $sgpass,
@@ -126,10 +121,8 @@ if (isset($charge)) {
     $response = curl_exec($session);
     curl_close($session);
     mysqli_close($connect);
-    header('Location: success.php');
-    die();
   }
-}
+}*/
 // if(isset($_SESSION['u_id'])
 // {
 //$paypal_url='https://www.paypal.com/cgi-bin/webscr'; // Test Paypal API URL
@@ -144,13 +137,18 @@ if (isset($charge)) {
 
 // $q18 = mysqli_query($connect,"select * from booking where bookid=".$book);
 // $r18 = mysqli_fetch_array($q18);
+$amt = $_SESSION['total_price'];
+$checkin = $_SESSION['checkin'];
+$checkout = $_SESSION['checkout'];
+$theplace = $_SESSION['theplace'];
+$_SESSION['total_price'] = "";
 ?>
 
 <!doctype html>
 <html>
 <head>
 
-  <title>Credit card form</title>
+  <title>Transaction Success</title>
   <?php include 'lib/top.php';?>
   
 </head>
@@ -170,7 +168,7 @@ if (isset($charge)) {
 <div class="container">
 <div class="row">
 <div class="banner-txt">
- <h1> Booking is now very easy</h1>
+ <h1> Booking is completed</h1>
 
  </div>  
 </div><!--row close-->
@@ -182,117 +180,16 @@ if (isset($charge)) {
 <div class="row">
 <div class="col-lg-8 col-sm-8 col-md-8 col-xs-12">
 <div class="tellus-data col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0">
-<?php if (isset($charge) && $charge->status == 'succeeded') {
-?>
+
 <div style="font-weight: bold; padding: 10px 10px;">
 <div>
 <h2>Your transaction was successful!</h2>
 </div>
-<div>Amount: &#36;<?php echo $_POST['total_price'] * .01 ?></div>
-<div>Location: <?php echo $_POST['theplace']?></div>
-<div>Event Times: <?php echo $_POST['checkin'] . " to " . $_POST['checkout'] ?></div>
+<div>Amount: &#36;<?php echo $amt ?></div>
+<div>Location: <?php echo $theplace?></div>
+<div>Event Times: <?php echo $checkin . " to " . $checkout ?></div>
 <div>An email has been sent to you to you with your transaction details.</div>
 </div>
-<?php
- } else if (!isset($strres['stripe_cusid'])) {
-?>
-<form  method="POST" id="payment-form" class="form-horizontal">
-    <fieldset>
-      <legend>Payment</legend>
-      
-      <div class="form-group">
-        <label class="col-sm-3 control-label" for="card-number">Card Number</label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" data-stripe="number" id="card-number">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label" for="expiry-month">Expiration Date</label>
-        <div class="col-sm-9">
-          <div class="row">
-            <div class="col-xs-3">
-              <select class="form-control col-sm-2" data-stripe="exp_month" id="expiry-month">
-                <option>Month</option>
-                <option value="01">Jan (01)</option>
-                <option value="02">Feb (02)</option>
-                <option value="03">Mar (03)</option>
-                <option value="04">Apr (04)</option>
-                <option value="05">May (05)</option>
-                <option value="06">June (06)</option>
-                <option value="07">July (07)</option>
-                <option value="08">Aug (08)</option>
-                <option value="09">Sep (09)</option>
-                <option value="10">Oct (10)</option>
-                <option value="11">Nov (11)</option>
-                <option value="12">Dec (12)</option>
-              </select>
-            </div>
-            <div class="col-xs-3">
-              <select class="form-control" data-stripe="exp_year">
-                <option value="17">2017</option>
-                <option value="18">2018</option>
-                <option value="19">2019</option>
-                <option value="20">2020</option>
-                <option value="21">2021</option>
-                <option value="22">2022</option>
-                <option value="23">2023</option>
-                <option value="23">2024</option>
-                <option value="23">2025</option>
-                <option value="23">2026</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label" for="cvv">CVC</label>
-        <div class="col-sm-3">
-          <input type="text" class="form-control" data-stripe="cvc" id="cvv">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label" for="card-holder-name">Zip Code</label>
-        <div class="col-sm-3">
-          <input type="text" class="form-control" data-stripe="address_zip" id="card-holder-name">
-          <input type="hidden" name="total_price" value="<?php echo (ltrim($_POST['total_price'], '$') * 100)?>">
-          <input type="hidden" name="checkin" value="<?php echo $_POST['checkin']?>">
-          <input type="hidden" name="checkout" value="<?php echo $_POST['checkout']?>">
-          <input type="hidden" name="theplace" value="<?php echo $_POST['theplace']?>">
-
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <label class="col-sm-1 control-label" for="cvv">Save credit card information</label>
-        <div class="col-sm-1">
-          <input type="checkbox" class="form-control" name="newcustomer" value='yes'>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-9">
-          <button type="submit" class="btn btn-success submit">Pay Now</button>
-        </div>
-      </div>
-    </fieldset>
-  </form>
-  <?php } else {?>
-    <div style="font-weight: bold; padding: 10px 10px;">
-    <h2>Do you wish to complete your transaction?</h2>
-    <div>Amount: &#36;<?php echo $_POST['total_price'] ?></div>
-    <div>Location: <?php echo $_POST['theplace']?></div>
-    <div>Event Times: <?php echo $_POST['checkin'] . " to " . $_POST['checkout'] ?></div>
-    <form method="post">
-    <input type="hidden" name="stripeid" value="<?php echo $strres['stripe_cusid'] ?>">
-    <input type="hidden" name="customer" value="customer">
-    <input type="hidden" name="total_price" value="<?php echo (ltrim($_POST['total_price'], '$') * 100) ?>">
-    <input type="hidden" name="checkin" value="<?php echo $_POST['checkin'] ?>">
-    <input type="hidden" name="checkout" value="<?php echo $_POST['checkout'] ?>">
-    <input type="hidden" name="theplace" value="<?php echo $_POST['theplace'] ?>">
-    <button type="submit">Yes</button>
-    </form>
-    </div>
-  <?php } ?>
 </div>
 
   </div>
