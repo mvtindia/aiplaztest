@@ -687,7 +687,7 @@ function formVal() {
 </script>
 <?php } ?>
 <script type="text/javascript">
-$(function () {
+/*$(function () {
             $('#datetimepicker6').datetimepicker({
                
             });
@@ -700,7 +700,7 @@ $(function () {
             //$('#datetimepicker9').datetimepicker({
                
             //});
-});
+});*/
 </script>
 </html>
 
@@ -710,6 +710,24 @@ $(function () {
 
 $(document).ready(function() {
 
+    $('#date1a').datepicker({
+		          'dateFormat':'yy-mm-dd',
+		          step: 60,
+		          //minTime:'<?php //echo $dt1time ?>',
+		          //maxTime:'<?php //echo $dt2time ?>',
+    	        'scrollDefaultNow': 'true',
+              'closeOnWindowScroll': 'true',
+              'showDuration': false
+	});
+    $('#date2a').datepicker({
+		          'timeFormat':'yy-mm-dd',
+		          step: 60,
+		          //minTime:'<?php //echo $dt1time ?>',
+		          //maxTime:'<?php //echo $dt2time ?>',
+    	        'scrollDefaultNow': 'true',
+              'closeOnWindowScroll': 'true',
+              'showDuration': false
+	});
     $('#date1b').timepicker({
 		          'timeFormat':'g:i a',
 		          step: 60,
@@ -718,8 +736,8 @@ $(document).ready(function() {
     	        'scrollDefaultNow': 'true',
               'closeOnWindowScroll': 'true',
               'showDuration': false
-	      });
-        $('#date2b').timepicker({
+	});
+    $('#date2b').timepicker({
 		          'timeFormat':'g:i a',
 		          step: 60,
 		          //minTime:'<?php //echo $dt1time ?>',
@@ -727,7 +745,7 @@ $(document).ready(function() {
     	        'scrollDefaultNow': 'true',
               'closeOnWindowScroll': 'true',
               'showDuration': false
-	      });
+	});
     
 
     var url = window.location.href;

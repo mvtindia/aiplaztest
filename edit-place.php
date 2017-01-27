@@ -956,6 +956,7 @@ p {
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="tm/jquery.timepicker.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>   
 <script src="js/forms.js"></script>
 <script src="js/forms2.js"></script>
@@ -975,12 +976,30 @@ p {
     <script type="text/javascript">
         $(function () {
             
-            $('#datetimepicker6').datetimepicker();
+            //$('#datetimepicker6').datetimepicker();
             //$('#datetimepicker7').datetimepicker();
-            $('#datetimepicker8').datetimepicker();
+            //$('#datetimepicker8').datetimepicker();
             //$('#datetimepicker9').datetimepicker();
         });
         $(document).ready(function() {
+          $('#date1a').datepicker({
+		          'dateFormat':'yy-mm-dd',
+		          step: 60,
+		          //minTime:'<?php //echo $dt1time ?>',
+		          //maxTime:'<?php //echo $dt2time ?>',
+    	        'scrollDefaultNow': 'true',
+              'closeOnWindowScroll': 'true',
+              'showDuration': false
+	        });
+          $('#date2a').datepicker({
+		          'dateFormat':'yy-mm-dd',
+		          step: 60,
+		          //minTime:'<?php //echo $dt1time ?>',
+		          //maxTime:'<?php //echo $dt2time ?>',
+    	        'scrollDefaultNow': 'true',
+              'closeOnWindowScroll': 'true',
+              'showDuration': false
+	        });
           $('#date1b').timepicker({
 		          'timeFormat':'g:i a',
 		          step: 60,

@@ -150,7 +150,9 @@
     };
     
     dp.onEventClick = function(args) {
-        alert("Available from " + args.e.start + " to " + args.e.end);
+        dtst = new DayPilot.Date(args.e.data.start).toString("h:mm tt");
+        dtend = new DayPilot.Date(args.e.data.end).toString("h:mm tt");
+        alert("Time frame: " + dtst + " to " + dtend);
     };
 
     dp.onEventMoved = function (args) {
