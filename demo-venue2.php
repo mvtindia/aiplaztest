@@ -502,7 +502,8 @@ if($match1=mysqli_fetch_array($query1)){
 <!--==================================Right Side=================================-->
  <!-- right side -->
 	  
-	  <?php if($_SESSION['u_id'] != $match['user_id']) 
+	  <?php //if ($_SESSION['u_id'] != $match['user_id'])
+	  if ((!isset($_SESSION['u_id'])) || ($_SESSION['u_id'] != $match['user_id']))
 	  {
 		  
 		  $sql9=mysqli_query($connect,'Select * from calenderdata  where placeid="'.$placeid.'" 
@@ -906,9 +907,16 @@ foreach ($calrows as $crow2) {
 <script>
 function formVal() {
                     var mess = "Please Enter Missing Information.";
-
-					var fn=document.getElementById('basic').value;
-					var fo=document.getElementById('basic2').value;
+					if (document.getElementById('basic').value) {
+						var fn=Date(document.getElementById('basic').value);
+					} else {
+						var fn="";
+					}
+					if (document.getElementById('basic2').value) {
+						var fo=Date(document.getElementById('basic2').value);
+					} else {
+						var fo="";
+					}
 					//console.log(fn + " " + fo);
     				if(fn == "" || fn > fo){		
         				document.getElementById('basic').style.borderColor = "red";
