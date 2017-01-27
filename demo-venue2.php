@@ -506,32 +506,39 @@ if($match1=mysqli_fetch_array($query1)){
 	  {
 		  
 		  $sql9=mysqli_query($connect,'Select * from calenderdata  where placeid="'.$placeid.'" 
-		  and status="Available" and date(date1) <= "'.$checkin.'" and date(date2) >= "'.$checkout.'" order by date1') ;
+		  and status="Available" and date(date1) <= "'.$checkin.'" and date(date2) >= "'.$checkout.'" order by date1, time1') ;
 		  
 	  //$sql9 = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$placeid."'");
       //if(mysqli_num_rows($sql9)>0)
-	  
+	  $calrows = array();
+	  $res9 = array();
+	  $i = 0;
+	  //figure out available times
 	  while($res9=mysqli_fetch_array($sql9))
-      { 
+      {
+		  $calrows[$i] = $res9;
+		  $i++;
+	  } 
 	   if(!empty($res9[2]) || !empty($res9[3]))
 	   {
 		 $dt1time = date_format(date_create($res9['date1']), 'g:i a');
 		 $dt2time = date_format(date_create($res9['date2']), 'g:i a');
-		 $fees = mysqli_query($connect,"select * from fees where feefor='b'");	
-		 $feeres = mysqli_fetch_array($fees);
-		 $fee = $feeres['percentage'] * .01;
+	  }
+	  $fees = mysqli_query($connect,"select * from fees where feefor='b'");	
+	  $feeres = mysqli_fetch_array($fees);
+	  $fee = $feeres['percentage'] * .01;
 	    ?>
 	  <div class="col-md-6 custom2">
 	  <div class="price-table-demo ">
 	  <div class="row">
 	  	
 	  	<div class="col-md-12 col-sm-12 col-xs-12 pd-top20 pd-bottom20">
-	  	<?php if(!empty($res9[3])) { ?>
+	  	<?php //if(!empty($res9[3])) { ?>
 	  	<div class="col-md-4 col-sm-4 col-xs-4">
 			<input type="radio" value="hour" checked id="hour_label" class="per_val" name="types">
 			<label for="hour_label" style="cursor: pointer;">Per Hour</label>
 		</div>
-		<?php } 
+		<?php //} 
 		if(!empty($res9[2])) { ?>
 		<!--<div class="col-md-4 col-sm-4 col-xs-4">
 			<input type="radio" value="night" id="night_label" class="per_val" name="types">
@@ -547,7 +554,7 @@ if($match1=mysqli_fetch_array($query1)){
 		</div>
 
 	  </div>
-	  <?php if(!empty($res9[3])) { ?>
+	  <?php //	if(!empty($res9[3])) { ?>
 
 
 
@@ -573,46 +580,101 @@ if($match1=mysqli_fetch_array($query1)){
 $chckin = date_format(date_create($checkin), 'Y-m-d');
 
 $bresult = mysqli_query($connect, 'select * from `booking` where `placeid` = "'.$placeid.'" and `checkin` = "'.$chckin.'" order by `ftime` asc');
+$bookrows = array();
+$j = 0;
+while ($bookres = mysqli_fetch_array($bresult)) {
+	$bookrows[$j] = $bookres;
+	$j++;
+}
 ?>
 <div> Available times for 
 <?php
 echo $chckin;
 echo " : ";
 
-$dt1time2 = date_format(date_create($res9['date1']), 'H:i');
-$dt2time2 = date_format(date_create($res9['date2']), 'H:i');
-$dt2time2a = date_format(date_create($res9['date2']), 'g:i a');;
-if (mysqli_num_rows($bresult) == 0) {
-	echo "<br>" . date_format(date_create($dt1time2), 'g:i a') . " to " . date_format(date_create($dt2time2), 'g:i a');
-} else {
-$i = 0;
-$timeray2 = array();
 
-while ($bookres = mysqli_fetch_array($bresult)) {
-	$timeray1[$i] = $bookres['ftime'];
-	$timeray2[$i] = $bookres['ltime'];
-	$timehrs[$i] = $bookres['hours'];
+if (mysqli_num_rows($bresult) == 0) {
+	foreach ($calrows as $crow) {
+		echo "<br>" . date_format(date_create($crow['time1']), 'g:i a') . " to " . date_format(date_create($crow['time2']), 'g:i a');
+	}
 	
-	//if ($i == 0) {
-	if ($timeray1[$i] == $dt1time2) {
-			$dt1time2 = $timeray2[$i];
-	} else {
-			$dt2time2 = $timeray1[$i];
-			echo "<br>" . date_format(date_create($dt1time2), 'g:i a') . " to " . date_format(date_create($dt2time2), 'g:i a');
-			$dt1time2 = $timeray2[$i];
+} else {
+$k = 0;
+$l = 0;
+$timeray1 = array();
+$timeray2 = array();
+$calray1 = array();
+$calray2 = array();
+$dt1time2 = "";
+$dt2time2 = "";
+$dt1time2a = "";
+$dt2time2a = "";
+
+//while ($bookres = mysqli_fetch_array($bresult)) {
+foreach ($calrows as $crow2) {
+	$dt1time2 = date_format(date_create($crow2['date1']), 'H:i');
+	$dt2time2 = date_format(date_create($crow2['date2']), 'H:i');
+	$calray1[$k] = $dt1time2;
+	$calray2[$k] = $dt2time2;
+	//error_log($bookrows[0]['ftime'] . " " . $bookrows[1]['ftime']);
+	foreach ($bookrows as $brow) {
+		$timeray1[$l] = date_format(date_create($brow['ftime']), 'H:i');
+		$timeray2[$l] = date_format(date_create($brow['ltime']), 'H:i');
+		$timehrs[$l] = $brow['hours'];
+		
+		if ($timeray1[$l] >= $calray1[$k] and $timeray1[$l] < $calray2[$k]) {
+			error_log($timeray1[$l] . " " . $dt1time2);
+			if ($timeray1[$l] == $dt1time2) {
+					error_log('spota');
+					$dt1time2 = $timeray2[$l];
+			} else {
+					error_log('spotb');
+					$dt2time2 = $timeray1[$l];
+					if ($dt1time2 != $dt2time2) {
+						error_log('spotc');
+						echo "<br>" . date_format(date_create($dt1time2), 'g:i a') . " to " . date_format(date_create($dt2time2), 'g:i a');
+					}
+					$dt1time2 = $timeray2[$l];
+			}
+			
+		} else {
+			if (isset($timeray2[$l-1])) {
+				if ( $timeray2[$l-1] != $calray2[$k]) {
+					if ( $calray2[$k] < $calray2[$k-1] ) {
+						error_log('spotd');
+						//echo "<br>" . date_format(date_create($timeray2[$l-1]), 'g:i a') . " to " . date_format(date_create($calray2[$k]), 'g:i a');
+					} else {
+						error_log('spote');
+						//echo "<br>" . date_format(date_create($timeray2[$l-1]), 'g:i a') . " to " . date_format(date_create($calray2[$k-1]), 'g:i a');
+						echo "<br>" . date_format(date_create($calray1[$k]), 'g:i a') . " to " . date_format(date_create($calray2[$k]), 'g:i a');
+					}
+				}
+			} else if (isset($calray2[$k-1])) {
+				error_log('spotf');
+				echo "<br>" . date_format(date_create($timeray2[$l]), 'g:i a') . " to " . date_format(date_create($calray2[$k-1]), 'g:i a');
+				if ($calray1[$k] != $calray2[$k] ) {
+					echo "<br>" . date_format(date_create($calray1[$k]), 'g:i a') . " to " . date_format(date_create($calray2[$k]), 'g:i a');
+				}
+			}
+			$l++;
 	}
 		
-	//}
-	$i++;
 }
-$i--;
-
-if (isset($timeray2[$i])) {
-	if ($timeray2[$i] != $dt2time2a)
+	error_log($dt1time2 . " " . $calray2[$k]);
+	if ($dt1time2 != $calray2[$k])
 	{
-		echo "<br>" . date_format(date_create($timeray2[$i]), 'g:i a') . " to " . date_format(date_create($dt2time2a), 'g:i a');
+		echo "<br>" . date_format(date_create($dt1time2), 'g:i a') . " to " . date_format(date_create($calray2[$k]), 'g:i a');
 	}
+	$k++;
 }
+//}
+//$l--;
+//$k--;
+
+//if (isset($datetime2) {
+	//error_log($timeray2[$i] . " " . $dt2time2a);
+	
+//}
 }
 ?>
 	
@@ -767,12 +829,12 @@ if (isset($timeray2[$i])) {
 
 
 
-<?php } ?>
+<?php //} ?>
 	</div>
 </div>
-	  <?php }
+	  <?php //}
 
-	   } 
+	   //} 
 	   //else {
 	 ?>
 	 <!--<div class="col-md-6 custom2"style="display: block;border-bottom: 0px solid #1BBC9B;border-left: 2px solid #1BBC9B;border-right: 2px solid #1BBC9B;padding-bottom: 0px;">
@@ -845,31 +907,33 @@ if (isset($timeray2[$i])) {
 function formVal() {
                     var mess = "Please Enter Missing Information.";
 
-					var fn=new Date('2017-01-01' + " " + document.getElementById('basic').value);
-					var fo=new Date('2017-01-01' + " " + document.getElementById('basic2').value);
+					var fn=document.getElementById('basic').value;
+					var fo=document.getElementById('basic2').value;
 					//console.log(fn + " " + fo);
     				if(fn == "" || fn > fo){		
         				document.getElementById('basic').style.borderColor = "red";
+						return false;
 						//$("#span1a").html(mess);
 					}else if (fo == "") {
         				document.getElementById('basic2').style.borderColor = "red";
-					} else {
-						return true;
-    				}
-					return false;
+						return false;
+					}
+					return true;
 }
 $(document).ready(function(){
 
    $('#book_button').click(function(e){
 	   if (!formVal()) {
-		   return false;
+		   e.preventDefault();
+	   } else {
+		   return true;
 	   }
    });	
    $('#basic').timepicker({
 		'timeFormat':'g:i a',
 		step: 60,
-		minTime:'<?php echo $dt1time ?>',
-		maxTime:'<?php echo $dt2time ?>',
+		minTime:'<?php echo rtrim($calrows[0]['time1'], '00.000000') ?>',
+		//maxTime:'<?php echo $calrows[$i]['time2'] ?>',
     	'scrollDefaultNow': 'true',
         'closeOnWindowScroll': 'true',
         'showDuration': false
@@ -891,11 +955,11 @@ $(document).ready(function(){
       url: 'forms2.php?hoursdate_val1='+date_val2+'&placeid='+placeid+'&pervalues=hour&start_time='+starttime+'&end_time='+endtime,
       success: function(data)
       {
-        console.log('my data - '+data);
+        //console.log('my data - '+data);
         
         data1 = data.split('>>>');
-        console.log(data1[0]);
-        console.log(data1[1]);
+        //console.log(data1[0]);
+        //console.log(data1[1]);
         var j = data1[0].trim(' ');
          var av = data1[2].trim(' ');
         if(av=='1')
@@ -923,7 +987,7 @@ $(document).ready(function(){
         {
         var per_hours =price_cal;
           var price = parseInt(hours)*parseInt(price_cal);
-           console.log("defailt price"+price);
+           //console.log("defailt price"+price);
         }
         else
         { 
@@ -981,7 +1045,7 @@ $(document).ready(function(){
         $('.night_rupee').html(per_hours);
         $('.price_cal').html(per_hours);
 		$('.initprice').html(price);
-        $('.total_price_cal').html(price * fee);
+		$('.total_price_cal').html(Number(Math.round((price * fee)+'e2')+'e-2'));
 		$('.totalprice').val(final_total);
 		$('.total_price').html(final_total);
         $('.calculated').html(hours+' hours');
@@ -994,7 +1058,7 @@ $(document).ready(function(){
 //end here 
 
 	var new_end = $(this).timepicker('getTime');
-	console.log(new_end);
+	//console.log(new_end);
    	var dd = new_end.setHours(new_end.getHours()+1);
 
     $('#basic2').timepicker({
@@ -1012,7 +1076,7 @@ $(document).ready(function(){
 		var price_cal = $('.ppnight').val();
 		var placeid = $('.placeid_val').val();
 		var fee = $('.bfee').val();
-		console.log("datedata"+date_val2)
+		//console.log("datedata"+date_val2)
 		$.ajax({
 		url: 'forms2.php?hoursdate_val1='+date_val2+'&placeid='+placeid+'&pervalues=hour&start_time='+starttime+'&end_time='+endtime,
 		success: function(data)
@@ -1051,7 +1115,7 @@ $(document).ready(function(){
 			{
 			var per_hours =price_cal;
 			var price = parseInt(hours)*parseInt(price_cal);
-			console.log("defailt price"+price);
+			//console.log("defailt price"+price);
 			}
 			else
 			{ 
@@ -1108,7 +1172,7 @@ $(document).ready(function(){
 			$('.night_rupee').html(per_hours);
 			$('.price_cal').html(per_hours);
 			$('.initprice').html(price);
-			$('.total_price_cal').html(price * fee);
+			$('.total_price_cal').html(Number(Math.round((price * fee)+'e2')+'e-2'));
 			$('.totalprice').val(final_total);
 			$('.total_price').html(final_total);
 			$('.calculated').html(hours+' hours');
