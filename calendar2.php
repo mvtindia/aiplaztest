@@ -173,8 +173,8 @@
         ); */       
     };
 
-    dp.onEventResized = function (args) {
-        /*args.placeid = <?php echo $_GET['placeid']; ?>;   
+    /*dp.onEventResized = function (args) {
+        args.placeid = <?php echo $_GET['placeid']; ?>;   
         DayPilot.request(
             "cal_move.php", 
             function(req) { // success
@@ -187,8 +187,9 @@
             function(req) {  // error
                 //dp.message("Saving failed");
             }
-        ); */   
-    };
+        );   
+    };*/
+    dp.eventResizeHandling = "Disabled";
     dp.onBeforeEventRender = function(args) {
         var type = args.data.text;
         switch (type) {
@@ -219,12 +220,13 @@
             //data[i]['id'] = DayPilot.guid();
             //data[i]['text'] = 'Available';
             //console.log(data[i]['id'].toString());
-            if (data[i]['text'] == 'Booked') {
+            /*if (data[i]['text'] == 'Booked') {
                 dp.cssClassPrefix = "month_green";
             } else {
-                dp.cssClassPrefix = "month_traditional";
-            }
-            
+                dp.cssClassPrefix = "month_transparent";
+            }*/
+            console.log(data[i]['start']);
+            console.log(data[i]['end']);
             var e = new DayPilot.Event(
             { 
                 start: new DayPilot.Date(data[i]['start']),
