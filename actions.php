@@ -290,6 +290,7 @@ if (isset($_REQUEST['login'])) {
         $_SESSION['email'] = $row['email'];
         $_SESSION['fname'] = $row['fname'];
         $_SESSION['lname'] = $row['lname'];
+        $_SESSION['contact'] = $row['contact'];
         echo 'done';
     } else {
         echo 'wrong data';

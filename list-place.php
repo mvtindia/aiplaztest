@@ -82,7 +82,7 @@ $sfee = $feeres['percentage'] * .01; ?>
 
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <label for="space">Contact Number*</label>
-                                    <input type="text" class="form-control phone" id="price" placeholder="Contact" name="contact" required>
+                                    <input type="text" class="form-control phone" id="price" value="<?php echo $_SESSION['contact'] ?>" placeholder="Contact" name="contact" required>
                                     <div class="help-block with-errors"></div>
                                 </div>
                         </div><!--frm-field-mar-->
@@ -720,7 +720,7 @@ $(document).ready(function() {
               'showDuration': false
 	});
     $('#date2a').datepicker({
-		          'timeFormat':'yy-mm-dd',
+		          'dateFormat':'yy-mm-dd',
 		          step: 60,
 		          //minTime:'<?php //echo $dt1time ?>',
 		          //maxTime:'<?php //echo $dt2time ?>',
