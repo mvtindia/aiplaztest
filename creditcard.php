@@ -46,9 +46,8 @@ if (isset($_POST['stripeToken'])) {
         ));
         //error_log($charge->status);
         if ($charge->status == 'succeeded') {
-          //error_log('insert into `stripeaccts` (`user_id`, `stripe_cusid`) values ("'.$uid.'", "'.$cusid.'")');
           
-          $inscus = mysqli_query($connect, 'insert into `stripeaccts` (`user_id`, `stripe_cusid`) values ("'.$uid.'", "'.$cusid.'")');
+          $inscus = mysqli_query($connect, 'insert into `stripeaccts` (`user_id`, `stripe_cusid`, `stripe_type`) values ("'.$uid.'", "'.$cusid.'", "cu")');
         }
     } else {
         $charge = \Stripe\Charge::create(array(
@@ -72,7 +71,7 @@ if (isset($_POST['stripeToken'])) {
   ));
   error_log($charge->status);
 } else {
-  $strq = mysqli_query($connect, 'select * from stripeaccts where user_id = "'.$uid.'"');
+  $strq = mysqli_query($connect, 'select * from stripeaccts where user_id = "'.$uid.'" and stripe_type = "cu"');
   $strres = mysqli_fetch_array($strq);
   error_log("stripe code: " . $strres['stripe_cusid']);
 }
@@ -95,7 +94,7 @@ if (isset($charge)) {
 
     $body = "Dear " . $fname . " " . $lname . ",<br><br>
   You have successfully booked a space on 2finda.com<br>
-  See the details of your credit card transation:<br>
+  See the details of your credit card transaction:<br>
   Amount: &#36;" . $total_price . "<br>
   Location: " . $theplace . "<br>
   Event Times: " . $checkin . " to " . $checkout . "<br>Your 2finda team";
@@ -279,7 +278,7 @@ if (isset($charge)) {
   <?php } else {?>
     <div style="font-weight: bold; padding: 10px 10px;">
     <h2>Do you wish to complete your transaction?</h2>
-    <div>Amount: &#36;<?php echo $_POST['total_price'] ?></div>
+    <div>Amount: <?php echo $_POST['total_price'] ?></div>
     <div>Location: <?php echo $_POST['theplace']?></div>
     <div>Event Times: <?php echo $_POST['checkin'] . " to " . $_POST['checkout'] ?></div>
     <form method="post">
