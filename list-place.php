@@ -320,7 +320,7 @@ $sfee = $feeres['percentage'] * .01; ?>
                                 </div>
                             </div>
                             <div class="but-align form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <button type="submit" name="place" class="btn btn-default cus-save-but">Save & continue</button>
+                                <button type="submit" name="place" class="btn btn-default cus-save-but">Register & continue</button>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -453,8 +453,57 @@ $sfee = $feeres['percentage'] * .01; ?>
                                                 </select>
                                 </div>
 		                        <div class="col-md-12 text-center"style="margin-bottom: 11px;">
-			                                    <!--<button id="back" type="button" name="place" class="btn btn-default cus-save-but">Back</button>-->                       	
-			                                    <a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
+			                                    <button id="continue" type="button" name="place" class="btn btn-default cus-save-but">Continue</button>                       	
+			                                    <!--<a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>-->
+		                        </div>
+                                <div class="clearfix"></div>
+    	                    </div><!--frm-field-mar--> 
+                        </div>
+                                </form>
+                        <div class="clearfix"></div>
+                    </div>       
+                    
+                    <form id="sacctform" method="POST" action="stripemaccount.php" enctype="multipart/form-data" >
+                    <div id="sacct-tab" style="display:none;">
+                        <h4 style="color: red;"></h4>
+                        <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
+                        <div class="tellus-data col-lg-12 col-sm-12 col-md-12 col-xs-12 pd-lr-0" >
+                            <div class="had-frm-sec" >Payment Information</div>
+                            <div class="frm-field-mar">
+                                <div class="col-md-4 col-sm-4 col-xs-4 col-lg-offset-3 col-md-offset-3">
+			                        <input type="radio" value="business" id="hour_label" class="per_val" name="account_holder_type">
+			                        <label for="hour_label" style="cursor: pointer;">Business</label>
+		                        </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <input type="radio" value="individual" id="night_label" class="per_val" name="account_holder_type">
+                                    <label for="night_label" style="cursor: pointer;">Personal</label>
+                                </div>
+                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
+                                                <label for="space">Organization</label>
+                		                        <input type='text' class="form-control" name="business_name" id=""  />
+            	                </div>
+          	                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
+                                                <label for="space">Account Number</label>
+                		                        <input type='text' class="form-control" name="account_number" id="" required  />
+                                                <input type='hidden' class="form-control" name="account_type" value="bank_account" required  />
+                                                <input type='hidden' class="form-control" name="account_holder_type" value="individual" required  />
+                                                <input type='hidden' class="form-control" name="country" value="US" required  />
+                                                <input type='hidden' class="form-control" name="currency" value="USD" required  />
+                                                
+            	                </div>
+                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
+                                                <label for="space">Routing Number</label>
+                		                        <input type='text' class="form-control" name="routing_number" id="" required  />
+            	                </div>
+
+                                <!--<div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
+                                                <label for="space">Country</label>
+                		                        <input type='text' class="form-control" name="account_number" id="" required  />
+                                </div>-->
+                                <div class="form-group col-lg-5 col-md-6 col-sm-6 col-lg-offset-3 col-md-offset-3 col-xs-12">
+                	                            <button id="savesacct" type="submit" name="savesacct" class="btn btn-default cus-save-but">Save Account Information</button><br>
+                                                By clicking this button, you agree to the <a href="https://stripe.com/connect-account/legal">Stripe Connected Account Agreement</a>.
+                                                <span id="span1a" style="display:none; color: red;">Please enter missing values.</span>
 		                        </div>
                                 <div class="clearfix"></div>
     	                    </div><!--frm-field-mar--> 
