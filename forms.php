@@ -1507,7 +1507,7 @@ Your 2finda team';
 
 if (isset($_REQUEST['rspass'])) {
     if ($_POST['newpassword'] == $_POST['confpassword']) {
-      $id = $_POST['userid'];
+      $id = base64_decode($_POST['userid']);
       error_log("id before: " . $id);
       $newpwd = md5($_POST['confpassword']);
       error_log("id after: " . $id);
