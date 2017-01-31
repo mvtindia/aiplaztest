@@ -1182,22 +1182,25 @@ if(isset($_GET['cancel_booking']))
   $val = $_GET['cancel_booking'];
   $sql2 = mysqli_query($connect,"SELECT * FROM booking WHERE bookid='".$val."'");
   $row = mysqli_fetch_array($sql2);
+  $dt1 = $row['checkin'] . " " . $row['ftime'] . ":00";
+  $dt2 = $row['checkout'] . " " . $row['ltime'] . ":00";
   $sql= mysqli_query($connect,"DELETE FROM booking WHERE bookid='".$val."'");
   if($sql)
   {
-    $sql4 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$_SESSION['u_id']."'");
-    $row4 = mysqli_fetch_array($sql4);
+    //$sql4 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$_SESSION['u_id']."'");
+    //$row4 = mysqli_fetch_array($sql4);
+    $delr = mysqli_query($connect,"DELETE FROM calenderdata WHERE placeid='".$row['placeid']."' and status = 'Not Available' and date1 = '".$dt1."' and date2 = '".$dt2."'");
     $sql3 = mysqli_query($connect,"SELECT * FROM place WHERE place_id='".$row['placeid']."'");
     $row3 = mysqli_fetch_array($sql3);
 //mail sending here
     
-    $body ="Dear ".$row4['fname']." ".$row4['lname'].",<br> You have Received this mail from 2finda.com.
+    $body ="Dear ".$_SESSION['fname']." ".$_SESSION['lname'].",<br> You have Received this mail from 2finda.com.
      <br><br> Your Booking Request for ".$row3['space_name']." has Been Cancelled<br>";
     $subject = '2finda.com [Booking Info]';
     $params = array(
         'api_user' => $sguser,
         'api_key' => $sgpass,
-        'to' => $row4['email'],
+        'to' => $_SESSION['email'],
         'subject' => $subject,
         'html' => $body,
         //'text' => 'I am the text parameter',
@@ -1215,7 +1218,7 @@ if(isset($_GET['cancel_booking']))
     $sql5 = mysqli_query($connect,"SELECT * FROM users WHERE uid='".$row3['user_id']."'");
     $row5 = mysqli_fetch_array($sql5);
     $body2 ="Dear ".$row5['fname']." ".$row5['lname'].",<br> You have Received this mail from 2finda.com. 
-    <br><br> Your Place ".$row3['space_name']." has Been Cancelled by ".$row4['fname']." ".$row4['lname']."<br>";
+    <br><br> Your Place ".$row3['space_name']." has Been Cancelled by ".$_SESSION['fname']." ".$_SESSION['lname']."<br>";
     $params = array(
         'api_user' => $sguser,
         'api_key' => $sgpass,
