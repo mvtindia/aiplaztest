@@ -261,11 +261,10 @@ if (isset($charge)) {
         </div>
       </div>
       
-      <div class="form-group">
-        <label class="col-lg-3 col-md-3 col-sm-1 control-label" for="cbox">Save credit card information</label>
-        <div class="col-lg-3 col-md-3 col-sm-1 col-sm-offset-3">
-          <input type="checkbox" class="form-control" name="newcustomer" value="yes" id="cbox">
-        </div>
+      <div class="col-lg-4 col-md-4 col-lg-offset-3 checkbox-inline" style="">
+          <label>
+              <input type="checkbox" name="newcustomer" value="yes" id="cbox">Save credit card information
+          </label>
       </div>
       
       <div class="form-group">
