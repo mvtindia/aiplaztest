@@ -370,7 +370,7 @@ if (isset($_REQUEST["upload"])) {
 if (isset($_REQUEST['update'])) {
     $fname = $_REQUEST['fname'];
     $lname = $_REQUEST['lname'];
-    $dob = $_REQUEST['email'];
+    $email = $_REQUEST['email'];
     $contact = $_REQUEST['contact'];
     
     $q2 = mysqli_query($connect, 'UPDATE `users` SET fname="' . $fname . '",lname="' . $lname . '",contact="' . $contact . '",email="' . $email . '" WHERE uid="' . $_SESSION['u_id'] . '"');
