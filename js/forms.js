@@ -206,7 +206,8 @@ $(document).ready(function () {
 
                         if (url != "")
                         {
-                            location.reload();
+                            window.location.href = "dashboard.php";
+                            //location.reload();
                         }
                     }
                 },
