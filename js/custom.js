@@ -330,7 +330,7 @@ $(".book_form2_hour").submit(function(e)
     },
      error: function(jqXHR, textStatus, errorThrown) 
      {
-        swal("Failure!", "Email Id already Exist!", "error");
+        swal("Failure!", "Booking failed", "error");
      }          
     });
     e.preventDefault(); //Prevent Default action.
