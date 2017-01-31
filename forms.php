@@ -1469,8 +1469,8 @@ if (isset($_REQUEST['reset'])) {
     $pword = base64_decode($row2['pwd']);
     error_log($pword);
     if ($row2) {
-    $key =  base64_encode($row2['uid']);
-    $body = 'Hi ' . $row2['fname'] . ',<br>
+      $key =  base64_encode($row2['uid']);
+      $body = 'Hi ' . $row2['fname'] . ',<br>
 
 To reset your 2finda account password, simply click on the following link: http://' . $_SERVER['SERVER_NAME'] . 
 '/change_password.php?id=' . $key . '
