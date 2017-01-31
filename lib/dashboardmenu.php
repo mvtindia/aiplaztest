@@ -23,7 +23,7 @@ include_once('connect.php');
     <li id="two" class="same-class"><a id="a11" class="b10">User Booking</a></li>
 
     <li id="two" class="same-class"><a id="e2" class="b9">My Enquiries</a></li>
-      <li id="two" class="same-class"><a id="a8" class="b7">My Services</a></li>
+      <!--<li id="two" class="same-class"><a id="a8" class="b7">My Services</a></li>-->
 		<li id="three" class="same-class"><a id="a3" class="b3">My Reviews</a></li>
 		<!-- <li id="four" class="same-class"><a id="a4">My Rating</a></li> -->
 		<!-- <li id="five" class="same-class"><a id="a5">My Favourites</a></li> -->
@@ -32,12 +32,11 @@ include_once('connect.php');
 
      ?>
 
-    <li id="two" class="same-class"><a id="a10" class="b8">Notifications <?php if($r['total'] != 0) { ?><span class="badge notes_count"> <?php echo $r['total']; ?></span><?php } ?></a></li>
-    <?php $q = mysqli_query($connect,"select count(`mid`) as total from messages where mto=".$_SESSION['u_id']." and mstatus='N'");
-    $r = mysqli_fetch_array($q);
-
+    <!--<li id="two" class="same-class"><a id="a10" class="b8">Notifications <?php //if($r['total'] != 0) { ?><span class="badge notes_count"> <?php //echo $r['total']; ?></span><?php //} ?></a></li>
+    <?php //$q = mysqli_query($connect,"select count(`mid`) as total from messages where mto=".$_SESSION['u_id']." and mstatus='N'");
+          //$r = mysqli_fetch_array($q);
      ?>
-      <li id="two" class="same-class"><a id="a9" class="b5">Inbox <?php if($r['total'] != 0) { ?><span class="badge inbox_count"> <?php echo $r['total']; ?></span><?php } ?></a></li>
+      <li id="two" class="same-class"><a id="a9" class="b5">Inbox <?php if($r['total'] != 0) { ?><span class="badge inbox_count"> <?php echo $r['total']; ?></span><?php } ?></a></li>-->
         
 		<li id="six" class="same-class"><a id="a6" class="b6">Edit Profile</a></li>
 
