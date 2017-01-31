@@ -176,12 +176,15 @@ $sfee = $feeres['percentage'] * .01; ?>
                                     <div class="help-block with-errors"></div>
                             </div>
                             <div class="col-md-6 pd-r-0">
-                                    <select class="form-control" name="areatype"><option>Select Area Type</option>
-                                        <?php $query=mysqli_query($connect,'Select * from area');
-                                            while($match=mysqli_fetch_array($query)){?>
-                                                <option value="<?php echo $match['areaid'];?>"><?php echo $match['areatype'];?></option>
-                                        <?php } ?>
-                                    </select>
+                                    
+                                        <select class="form-control" name="areatype"><option>Select Area Type</option>
+                                                                                        <option value="1">sqmt</option>
+                                                                                        <option value="2">yards</option>
+                                                                                        <option value="4">sqft</option>
+                                                                                        <option value="11">miles</option>
+                                                                            </select>
+
+                                    
                                     <div class="help-block with-errors"></div>
                             </div>
                         </div>
