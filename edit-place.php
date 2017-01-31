@@ -148,10 +148,7 @@ $sfee = $feeres['percentage'] * .01;
                   <label for="space">Capacity</label>
                   <input type="number" class="form-control" name="capacity" value="<?php echo $row['capacity'];?>" required>
                 </div>
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" >
-                  <label for="space">Accomodates *</label>
-                  <input type="text" class="form-control" id="accomodates" placeholder="Accomodates" value="<?php echo $row['accomodates'];?>" name="accomodates" required>
-                </div>
+
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 sample-only">
                   <label class="wid100" for="space">Can be used for *</label>
                   <select id="select1" class="wid100" multiple="multiple" name="canbe[]" required>
@@ -882,12 +879,14 @@ p {
  </div>
   </div>
 </div>
+<?php include 'lib/footer.php'; //if isset
+?>
   <!--==================Signup Modal box Ends==============-->
   
 
  
 <!--========== footer 1st============-->
-<footer class="footer-media">
+<!--<footer class="footer-media">
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
@@ -951,7 +950,7 @@ p {
 
      <script src="bootstrap/js/bootstrap.js"></script> -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="tm/jquery.timepicker.js"></script>
@@ -966,13 +965,13 @@ p {
 <script src="js/nouislider.js"></script>
 
 
-    <!--<script src="js/forms-map.js"></script>
-    Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/forms-map.js"></script>
+    Include all compiled plugins (below), or include individual files as needed
    
    <script src="js/star-rating.min.js"></script>
-  <!--<script src="js/bootstrap-select.js"></script> -->
+  <script src="js/bootstrap-select.js"></script>
   
-  <script src="js/wow.js"></script>
+  <script src="js/wow.js"></script>-->
     <script type="text/javascript">
         $(function () {
             
