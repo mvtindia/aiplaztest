@@ -1508,9 +1508,9 @@ Your 2finda team';
 if (isset($_REQUEST['rspass'])) {
     if ($_POST['newpassword'] == $_POST['confpassword']) {
       $id = $_POST['userid'];
-      error_log($id);
+      error_log("id before: " . $id);
       $newpwd = md5($_POST['confpassword']);
-      error_log($id);
+      error_log("id after: " . $id);
       $sql2 = mysqli_query($connect,"UPDATE `users` set `pwd` = '".$newpwd."' where uid = '".$id."'");
       error_log("Sql result: " . $sql2);
       if ($sql2) {
