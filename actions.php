@@ -370,10 +370,10 @@ if (isset($_REQUEST["upload"])) {
 if (isset($_REQUEST['update'])) {
     $fname = $_REQUEST['fname'];
     $lname = $_REQUEST['lname'];
+    $dob = $_REQUEST['email'];
     $contact = $_REQUEST['contact'];
-    $dob = $_REQUEST['dob'];
-    $city = $_POST['city'];
-    $q2 = mysqli_query($connect, 'UPDATE `users` SET fname="' . $fname . '",lname="' . $lname . '",contact="' . $contact . '",dob="' . $dob . '",city="' . $city . '" WHERE uid="' . $_SESSION['u_id'] . '"');
+    
+    $q2 = mysqli_query($connect, 'UPDATE `users` SET fname="' . $fname . '",lname="' . $lname . '",contact="' . $contact . '",email="' . $email . '" WHERE uid="' . $_SESSION['u_id'] . '"');
     if ($q2 > 0) {
         echo 'done';
     } else {
