@@ -1,6 +1,6 @@
-<?php
+<?php 
 require_once('connect.php');
-
+$msg = "";
 if(empty($_GET['id']) && empty($_GET['code']))
 {
  header("Location: index.php");
@@ -10,16 +10,15 @@ if(empty($_GET['id']) && empty($_GET['code']))
 if(isset($_GET['id']) && isset($_GET['code']))
 {
     $id = base64_decode($_GET['id']);
-    error_log(base64_encode(418));
+    error_log("id: " . $id);
     $code = $_GET['code'];
-    error_log($id);
     $statusY = 0;
     $statusN = 999;
 
     $result = mysqli_query($connect,"SELECT `uid`, `a_status` FROM `users` WHERE `uid` = '".$id."' AND `activation_link` = '".$code."' LIMIT 1");
+    error_log("spotb");
     while ($row = mysqli_fetch_row($result))
     {
-        error_log($row[1]);
         if($row[1]==$statusN)
             {
                 $res2 = mysqli_query($connect,'UPDATE `users` SET `a_status` = "'.$statusY.'" WHERE `uid` ="'.$id.'"');
@@ -32,10 +31,11 @@ if(isset($_GET['id']) && isset($_GET['code']))
             }
         else
             {
+                error_code("spota");
                 $msg = "
                     <div class='alert alert-error'>
                     <button class='close' data-dismiss='alert'>&times;</button>
-                    <strong>sorry !</strong>  Your Account is already Activated : <a href='index.php'>Login here</a>
+                    <h2>Your Account is already Activated : <a href='index.php'>Login here</a></h2>
                     </div>
                 ";
             }
@@ -67,13 +67,17 @@ if(isset($_GET['id']) && isset($_GET['code']))
         <div class="menu-had2">
                 <?php include 'lib/header.php';?>
         </div><!--menu-had close-->
+<?php if (isset($_SESSION['u_id'])) {
+
+} else {
+    ?>
         <div class="banner-txt">    
             <h1>Confirm Registration</h1>
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-sm-6 col-md-6 col-xs-10" style="margin: 0 385px;">
-                    <?php if(isset($msg)) { echo $msg; } ?>
+                    <?php  echo $msg ?>
         
                    <form class="pd-bottom20" id="login" method="POST">
   
@@ -85,16 +89,17 @@ if(isset($_GET['id']) && isset($_GET['code']))
                     <div class="input-group mg-top20">
                         <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                         <input type="password" class="form-control form-height40 bord-0" name="password" required placeholder="Password"/>
-                        <input type="hidden" class="urlval" >
+                        <input type="hidden" class="urlval" value="dashboard.php" >
                     </div>
                     <div class="text-center mg-top10">
-                        <button type="submit" class="btn-3" name="login">Login</button>
+                        <button type="submit" class="" name="login">Login</button>
                     </div>
 
                    </form>
                 </div>
             </div>
-        </div>
+        </div> 
+<?php } ?>
     </div>
 </div>         
 <?php include 'lib/footer.php';?>
