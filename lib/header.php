@@ -106,7 +106,7 @@ Your 2finda team';
       <li class="dropdown "><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="login-name" tabindex="-1"> <img class="usr-profile" src="img/<?php if(!empty($res['profile'])){echo $res['profile'];}else{echo "default-user.png";} ?>">&nbsp;<?php echo $res['fname']." ".$res['lname']; ?><span class="caret"></span></a>
 
       <ul class="dropdown-menu">
-      <li><a href="dashboard.php"><i class="fa fa-pencil"></i>Dashboard</a></li>
+      <li><a href="dashboard.php">Dashboard</a></li>
       <li><a href="logout.php"><i class="fa fa-sign-out"></i>&nbsp;Logout</a></li>
       </ul>
       </li>
