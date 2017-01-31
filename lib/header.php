@@ -4,7 +4,7 @@ include_once('connect.php');
 require_once('fbConfig.php');
 //require_once('user.php');
 session_start();
-
+/*
 if(!isset($_SESSION['u_id']))
 {
   if ($fbUser) {
@@ -24,7 +24,7 @@ if(!isset($_SESSION['u_id']))
         'last_name'     => $fbUserProfile['last_name'],
         'email'         => $fbUserProfile['email'],
     );*/
-    if (! mysqli_num_rows($query1)) {
+  /*  if (! mysqli_num_rows($query1)) {
       $code = md5(uniqid(rand()));
       $query2 = mysqli_query($connect, "INSERT INTO `users` SET `fuid` = '".$fbUserProfile['id']."', `fname` = '".$fbUserProfile['first_name']."', `lname` = '".$fbUserProfile['last_name']."', `email` = '".$fbUserProfile['email']."', `pwd` = 'password', `contact` = 'contact', `activation_link` = '".$code."', `a_status` = 999");
       
@@ -64,12 +64,12 @@ Your 2finda team';
       curl_close($session);
     } else {
       $row1 = mysqli_fetch_array($query1);
-      error_log($row1['uid']);
+      //error_log($row1['uid']);
       $_SESSION['u_id'] = $row1['uid'];
     }
     
   }
-}
+}*/
  ?>
  <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
 <div class="container">
@@ -106,7 +106,7 @@ Your 2finda team';
       <li class="dropdown "><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="login-name" tabindex="-1"> <img class="usr-profile" src="img/<?php if(!empty($res['profile'])){echo $res['profile'];}else{echo "default-user.png";} ?>">&nbsp;<?php echo $res['fname']." ".$res['lname']; ?><span class="caret"></span></a>
 
       <ul class="dropdown-menu">
-      <li><a href="dashboard.php">Dashboard</a></li>
+      <li><a href="dashboard.php"><i class="fa fa-pencil"></i>Dashboard</a></li>
       <li><a href="logout.php"><i class="fa fa-sign-out"></i>&nbsp;Logout</a></li>
       </ul>
       </li>
