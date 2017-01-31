@@ -19,7 +19,7 @@ if(isset($_SESSION['u_id']))
 <?php include 'lib/header.php';?>
 </div><!--menu-had close-->
 <!--==============menu header close=========================-->
-<?php include 'lib/deshboardmenu.php';?>
+<?php include 'lib/dashboardmenu.php';?>
 <?php  if(isset($_GET['del']))
 {
   $id = $_GET['del'];
@@ -95,21 +95,27 @@ $res = mysqli_fetch_array($q1); ?>
 <div class="col-md-3">
 <h3 class="text-center"><?php echo $res['fname']." ".$res['lname']; ?></h3>
 <p class="text-center">
-<a id="a7" class="color3" data-toggle="modal" data-target="#myModal4">Edit Profile</a>
+<!--<a id="a7" class="color3" data-toggle="modal" data-target="#myModal4">Edit Profile</a>-->
+<a id="a6" class="b6">Edit Profile</a>
 </p>
+
 </div>
 <div class="col-md-7">
 <div class="text-center">
 <button class="btn-3" data-toggle="modal" data-target="#myModal3">Change Password</button>
 </div>
 </div>
+
 </div>
+
 <div class="clearfix"></div>
 </div>
 </div>
+<?php if (isset($_REQUEST['sacct'])) {?><div style="text-align: center;"><br><br><h2>Success! You have listed a place.</h2></div> <?php } ?>
 <!--==============left panel close=========-->
 <!--==============right panel=========-->
 <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0 mg-bottom20">
+
 <div class="main-panel">
 <!-- =========Enquiry Block=============== -->
 <div id="b1" class="welcome col-md-12 pd-lr-0 mg-top20 border1 tab_in_dash">
@@ -599,33 +605,26 @@ while($r31 = mysqli_fetch_array($q31)) {
 <div class="col-md-12 mg-top20">
 <form class="form-group" id="updatedata">
 <div class="col-md-6 mg-top15">
+<label>First Name</label>
 <input type="text" class="form-control" placeholder="First Name" name="fname"required value="<?php echo $res['fname']; ?>">
 </div>
 
 <div class="col-md-6 mg-top15">
+<label>Last Name</label>
 <input type="text" class="form-control" placeholder="Last Name" name="lname" required value="<?php echo $res['lname']; ?>">
 </div>
 
 <div class="col-md-6 mg-top15">
+<label>Email</label>
+<input type="text" class="form-control" placeholder="Email address" name="email" value="<?php echo $res['email']; ?>">
+</div>
+
+<div class="col-md-6 mg-top15">
+<label>Contact</label>
 <input type="text" class="form-control" placeholder="Mobile" name="contact" required value="<?php echo $res['contact']; ?>">
 </div>
 
-<div class="col-md-6 mg-top15">
-<!-- <select name="city" class="form-control">
-  <option value="">-Select City-</option>
-<?php 
-$q2 = mysqli_query($connect,"select * from city");
-while($res2 = mysqli_fetch_array($q2)){
-  echo '<option value="'.$res2['cityid'].'">'.$res2['cityname'].'</option>';
-}//while
-?>
-</select> -->
-<input type="text" class="form-control" placeholder="City" name="city" required value="<?php echo $res['city']; ?>">
-</div>
 
-<div class="col-md-6 mg-top15">
-<input type="text" class="form-control datePicker" placeholder="Date of birth" name="dob" value="<?php echo $res['dob']; ?>">
-</div>
 <div class="col-md-12 mg-top15 mg-bottom20">
 <button class="btn-3" type="submit" name="update">Save</button>
 </div>
@@ -656,18 +655,16 @@ while($res2 = mysqli_fetch_array($q2)){
         <h4 class="modal-title">Change Password</h4>
       </div>
       <form  id="change_pass">
-      <div class="modal-body">
-      
+      <div class="modal-body">  
         <input type="password" class="form-control" placeholder="Current Password" name="curepassword" required>
-		<input type="password" class="form-control mg-top15" placeholder="New Password" name="newpassword" required>
-		<input type="password" class="form-control mg-top15" placeholder="Confirm Password" name="confpassword" required>
-		<div class="text-center">
-		<button class="btn-5 mg-top15" type="submit">Save</button>
-		</div>
+        <input type="password" class="form-control mg-top15" placeholder="New Password" name="newpassword" required>
+        <input type="password" class="form-control mg-top15" placeholder="Confirm Password" name="confpassword" required>
+        <div class="text-center">
+          <button class="btn-5 mg-top15" type="submit">Save</button>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" name="change_pass">Close</button>
-        
       </div>
       </form>
     </div>
