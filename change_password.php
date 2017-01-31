@@ -27,9 +27,9 @@ if(empty($_GET['id']))
             </div>
             
             <div style="float: none; margin: 0 auto;">
-                <form class="form-group" id="reset_pass">
+                <form class="form-group" id="reset_pass" method="post">
                     <div class="col-xs-3" style="float: none; margin: 0 auto;">  
-                        <input type="hidden" class="form-control" name="userid" value=<?php echo $_SESSION['u_id'] ?>>
+                        <input type="hidden" class="form-control" name="userid" value="<?php echo $_REQUEST['id'] ?>">
                         <input type="password" class="form-control mg-top15" placeholder="New Password" name="newpassword" required>
                         <input type="password" class="form-control mg-top15" placeholder="Confirm Password" name="confpassword" required>
                         <div class="text-center">
