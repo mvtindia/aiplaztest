@@ -1511,7 +1511,7 @@ if (isset($_REQUEST['rspass'])) {
       $newpwd = md5($_POST['confpassword']);
       error_log($id);
       $sql2 = mysqli_query($connect,"UPDATE `users` set `pwd` = '".$newpwd."' where uid = '".$id."'");
-    
+      error_log("Sql result: " . $sql2);
       if ($sql2) {
         echo "ok";
       } else {
