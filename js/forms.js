@@ -91,7 +91,7 @@ $(document).ready(function () {
                     //$("#second-block").css('display', 'block');
 
                     swal({
-                        title: "Oos!",
+                        title: "Oops!",
                         html: "The email ID you entered already exists. Please try to login with the ID or change your password if you have forgotten it."
                     });
                 } else if (data['statuscode'] == 200)
@@ -1122,15 +1122,15 @@ $(document).ready(function () {
                         $('.ishowload').css('display', 'none');
                         $("#pricetermss").css('display', 'none');
                         $("#calender-tab").css('display', 'block');
-                        swal('Success', 'Updated Successfully', 'success');
+                        //swal('Success', 'Updated Successfully', 'success');
                     } else {
                         $('.ishowload').css('display', 'none');
                         swal('Invalid Entry', 'Some or all of time period has been entered.', 'error');
                     }
 
                     $('#back2').click(function () {
-                        $("#pricetermss").css('display', 'block');
-                        $("#photovideo").css('display', 'none');
+                        $("#pricetermss").css('display', 'none');
+                        $("#photovideo").css('display', 'block');
                         $("#calender-tab").css('display', 'none');
                         $("#details").css('display', 'none');
 
@@ -1166,6 +1166,11 @@ $(document).ready(function () {
             });
 
         }
+    });
+
+    $('#continue').click(function () {
+        $("#calender-tab").css('display', 'none');
+        $("#sacct-tab").css('display', 'block');
     });
 
     $('#repeat').click(function () {
