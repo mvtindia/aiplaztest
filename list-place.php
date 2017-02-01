@@ -459,7 +459,9 @@ $sfee = $feeres['percentage'] * .01; ?>
 			                                    <button id="continue" type="button" name="place" class="btn btn-default cus-save-but">Continue</button>                       	
 			                                    <!--<a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>-->
 		                        </div>
+                                
                                 <div class="clearfix"></div>
+                                <div id="msg" style="color: red; padding: 0 30px;"></div>
     	                    </div><!--frm-field-mar--> 
                         </div>
                                 </form>
