@@ -196,8 +196,8 @@ $res = mysqli_fetch_array($q1); ?>
           
              $q19 = mysqli_query($connect,"select * from booking where userid='".$_SESSION['u_id']."' order by bookid asc");
              while($r19 = mysqli_fetch_array($q19)) { 
-               $chkin = $r19['checkin'] . date_format(date_create($r19['ftime']), 'g:i a');
-               $chkout = $r19['checkout'] . date_format(date_create($r19['ltime']), 'g:i a'); ?>
+               $chkin = $r19['checkin'] . " " . date_format(date_create($r19['ftime']), 'g:i a');
+               $chkout = $r19['checkout'] . " " . date_format(date_create($r19['ltime']), 'g:i a'); ?>
               <tr>
                 <td><?php echo $serial++; ?></td>
                 <td><?php echo $chkin; ?></td>
