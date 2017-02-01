@@ -181,8 +181,8 @@ $res = mysqli_fetch_array($q1); ?>
         <thead>
             <tr>
                 <th>Sr. No</th>
-                <th>Checkin Date</th>
-                <th>Checkout Date</th>
+                <th>Checkin</th>
+                <th>Checkout</th>
                 <th>Venue</th>
                 <th>Total</th>
                <!--  <th>Action</th> -->
@@ -192,14 +192,16 @@ $res = mysqli_fetch_array($q1); ?>
 		
 		<tbody>
            <?php 
-           $serial = 1;
+             $serial = 1;
           
              $q19 = mysqli_query($connect,"select * from booking where userid='".$_SESSION['u_id']."' order by bookid asc");
-             while($r19 = mysqli_fetch_array($q19)) { ?>
+             while($r19 = mysqli_fetch_array($q19)) { 
+               $chkin = $r19['checkin'] . date_format(date_create($r19['ftime']), 'g:i a');
+               $chkout = $r19['checkout'] . date_format(date_create($r19['ltime']), 'g:i a'); ?>
               <tr>
                 <td><?php echo $serial++; ?></td>
-                <td><?php echo date('d/m/Y',strtotime($r19['checkin'])); ?></td>
-                <td><?php if($r19 == '0000-00-00') { echo $r19['hours']; } else { echo date('d/m/Y',strtotime($r19['checkout'])); } ?></td>
+                <td><?php echo $chkin; ?></td>
+                <td><?php echo $chkout;  ?></td>
                 <td><?php $q20 = mysqli_query($connect,"select * from place where place_id=".$r19['placeid']);
                 $r20 = mysqli_fetch_array($q20); echo $r20['space_name']; ?></td>
                 
