@@ -68,7 +68,7 @@ function initialize() {
   map = new google.maps.Map(
     document.getElementById("map_canvas"), {
       center: new google.maps.LatLng(lt1,ln1),
-      zoom: 10,
+      zoom: 8,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
   geocoder = new google.maps.Geocoder();
@@ -114,7 +114,7 @@ function infoWindow(marker, map, title, address, url) {
   google.maps.event.addListener(marker, 'click', function() {
     //var placeid=1521;
     var html = "<div><h3>" + title + "</h3><p>" + address + "<br></div><a href=" + url + ">View location</a></p>";
-    map.setZoom(7);
+    map.setZoom(8);
     map.setCenter(marker.getPosition());
     iw = new google.maps.InfoWindow({
       content: html,
