@@ -28,23 +28,22 @@ $(document).ready(function(){
     }//if check1
 
 
-
-        var check=myurl.indexOf('searchlst') > -1;
-        var inday;
-              if(check==true){
-                var marker_addresses=$('#marker_addresses').val();
-                var marker_location=$('#marker_location').val();
-                var marker_placeids=$('#marker_placeids').val();
-                var nloc=marker_location.split(">>>");
-                var nadd=marker_addresses.split(">>>");
-                var npla=marker_placeids.split(">>>");
-                inday = new Array(nadd.length);
-                locationsarrayvalue = new Array(nadd.length);
-                for (var i = 0,j=0,k=0; i < nadd.length; i++,j++,k++) {
-                  nadd[j]= nadd[j].replace(/,/g, "");
-                  inday[i] = [nloc[i],nadd[j],npla[k]];
-                }  
-              }
+    var check=myurl.indexOf('searchlst') > -1;
+    var inday;
+          if(check==true){
+            var marker_addresses=$('#marker_addresses').val();
+            var marker_location=$('#marker_location').val();
+            var marker_placeids=$('#marker_placeids').val();
+            var nloc=marker_location.split(">>>");
+            var nadd=marker_addresses.split(">>>");
+            var npla=marker_placeids.split(">>>");
+            inday = new Array(nadd.length);
+            locationsarrayvalue = new Array(nadd.length);
+            for (var i = 0,j=0,k=0; i < nadd.length; i++,j++,k++) {
+              nadd[j]= nadd[j].replace(/,/g, "");
+              inday[i] = [nloc[i],nadd[j],npla[k]];
+            }  
+          }
               
 var locations = inday;
 var lt1=$('#mylat').val()//30.9007;
@@ -68,7 +67,7 @@ function initialize() {
   map = new google.maps.Map(
     document.getElementById("map_canvas"), {
       center: new google.maps.LatLng(lt1,ln1),
-      zoom: 6,
+      zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
   geocoder = new google.maps.Geocoder();
@@ -112,9 +111,8 @@ function geocodeAddress(locations, i) {
 
 function infoWindow(marker, map, title, address, url) {
   google.maps.event.addListener(marker, 'click', function() {
-    //var placeid=1521;
     var html = "<div><h3>" + title + "</h3><p>" + address + "<br></div><a href=" + url + ">View location</a></p>";
-    map.setZoom(6);
+    map.setZoom(8);
     map.setCenter(marker.getPosition());
     iw = new google.maps.InfoWindow({
       content: html,
