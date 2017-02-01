@@ -47,11 +47,6 @@ $(document).ready(function(){
               }
               
 var locations = inday;
-
-
-
-
-
 var lt1=$('#mylat').val()//30.9007;
 var ln1=$('#mylng').val();
 /*========================Map JS=============================
@@ -72,7 +67,7 @@ var bounds = new google.maps.LatLngBounds();
 function initialize() {
   map = new google.maps.Map(
     document.getElementById("map_canvas"), {
-   center: new google.maps.LatLng(lt1,ln1),
+      center: new google.maps.LatLng(lt1,ln1),
       zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
@@ -119,7 +114,7 @@ function infoWindow(marker, map, title, address, url) {
   google.maps.event.addListener(marker, 'click', function() {
     //var placeid=1521;
     var html = "<div><h3>" + title + "</h3><p>" + address + "<br></div><a href=" + url + ">View location</a></p>";
-    map.setZoom(8);
+    map.setZoom(7);
     map.setCenter(marker.getPosition());
     iw = new google.maps.InfoWindow({
       content: html,
