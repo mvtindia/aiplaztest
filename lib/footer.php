@@ -389,7 +389,7 @@ else
 <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
 
 <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
-<script type="text/javascript" src="js/validator.js"></script>
+<!--<script type="text/javascript" src="js/validator.js"></script>-->
 
 <script type="text/javascript" src="bm/js/plugins/canvas-to-blob.min.js"></script>
 <script src="bm/js/fileinput.min.js" type="text/javascript"></script>
