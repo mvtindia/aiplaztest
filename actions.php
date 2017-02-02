@@ -442,11 +442,13 @@ if (isset($_REQUEST['eplace'])) {
     $area = $_POST['area'];
     $areatype = $_POST['areatype'];
 
-    $commonammenties = "";
-    for ($j = 0; $j < count($_POST['commonammenties']); $j++) {
-        $commonammenties .= $_POST['commonammenties'][$j] . ",";
+    $commonamenities = "";
+    error_log("spota");
+    for ($j = 0; $j < count($_POST['commonamenities']); $j++) {
+        error_log($_POST['commonamenities[0]']);
+        $commonamenities .= $_POST['commonamenities'][$j] . ",";
     }
-    $commonammenties = rtrim($commonammenties, ",");
+    $commonamenities = rtrim($commonamenities, ",");
 
     $add_ammenties = "";
     for ($i = 0; $i < count($_POST['add_ammenties']); $i++) {
@@ -482,7 +484,7 @@ if (isset($_REQUEST['eplace'])) {
     if ($_SESSION['u_id'] == "") {
         echo "login";
     } else {
-        $sql = mysqli_query($connect, "UPDATE `place` SET `p_name`='" . $name . "', `p_contact`='" . $contact . "', `postal_code`='" . $postal . "', `p_location`='" . $location . "', `p_address`='" . $address . "', `p_country`='" . $country . "', `p_city`='" . $city . "', `p_code`='" . $postcode . "', `p_state`='" . $state . "', `space_name`='" . $space_name . "', `property_typeid`='" . $property . "', `can_be_usedid`='" . $canbe . "', `accomodates`='" . $accomodates . "', `place_area`='" . $area . "', `ammenties_id`='" . $commonammenties . "', `add_ammenties`='" . $add_ammenties . "', `details`='" . $details . "', `rules_doid`='" . $ruledo . "', `rules_donotid`='" . $ruledonot . "', `timestampdate`='" . date('Y-m-d') . "', `saftyid`='" . $safety . "', `fire_extinguisher`='" . $fire_extinguisher . "', `fire_alarm`='" . $fire_alaram . "', `gas_valve`='" . $gas_valve . "', `exit_extinguisher`='" . $emergency . "',`capacity`='" . $capacity . "',`user_id`='" . $_SESSION['u_id'] . "',`areatype`='" . $areatype . "' where place_id='" . $pid . "'");
+        $sql = mysqli_query($connect, "UPDATE `place` SET `p_name`='" . $name . "', `p_contact`='" . $contact . "', `postal_code`='" . $postal . "', `p_location`='" . $location . "', `p_address`='" . $address . "', `p_country`='" . $country . "', `p_city`='" . $city . "', `p_code`='" . $postcode . "', `p_state`='" . $state . "', `space_name`='" . $space_name . "', `property_typeid`='" . $property . "', `can_be_usedid`='" . $canbe . "', `accomodates`='" . $accomodates . "', `place_area`='" . $area . "', `ammenties_id`='" . $commonamenities . "', `add_ammenties`='" . $add_ammenties . "', `details`='" . $details . "', `rules_doid`='" . $ruledo . "', `rules_donotid`='" . $ruledonot . "', `timestampdate`='" . date('Y-m-d') . "', `saftyid`='" . $safety . "', `fire_extinguisher`='" . $fire_extinguisher . "', `fire_alarm`='" . $fire_alaram . "', `gas_valve`='" . $gas_valve . "', `exit_extinguisher`='" . $emergency . "',`capacity`='" . $capacity . "',`user_id`='" . $_SESSION['u_id'] . "',`areatype`='" . $areatype . "' where place_id='" . $pid . "'");
 //echo $_SESSION['placeids']=mysqli_insert_id($connect);
         echo ',,,';
         if ($sql > 0) {
