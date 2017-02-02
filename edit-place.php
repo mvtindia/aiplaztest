@@ -172,7 +172,7 @@ $sfee = $feeres['percentage'] * .01;
                   <input type="text" class="form-control" id="accomodates" placeholder="Area" name="area" value="<?php echo $row['place_area'];?>" required="">
                 </div>
                 <div class="col-md-6">
-                  <select class="form-control" name="areatype"><option>Select Area Type*</option>
+                  <select class="form-control" name="areatype"><option value="">Select Area Type*</option>
                   <?php $query=mysqli_query($connect,'Select * from area');
                     while($match=mysqli_fetch_array($query)){
       //echo "<<<<<".$match['areaid']."<br> >>>>>>".$row['areatype'];
@@ -187,7 +187,7 @@ $sfee = $feeres['percentage'] * .01;
               </div>
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <label for="space">Common Ammenities *</label>
-                <select class="form-control" id="select6" name="add_ammenties[]" multiple >
+                <select class="form-control" id="select6" name="commonamenities[]" multiple >
                 <?php 
                   $caid=explode(",",$row['ammenties_id']);
                   $query=mysqli_query($connect,'Select * from ammenities where atype="common"');
@@ -195,16 +195,16 @@ $sfee = $feeres['percentage'] * .01;
                     if(in_array($match['aid'], $caid)){?>
                       <div class="col-md-12 checkbox">
                             <label type="checkbox">
-                              <option name="commonammenties[]" value="<?php echo $match['aid'];?>" checked><?php echo $match['aname'];?></option>
+                              <option name="commonamenities[]" value="<?php echo $match['aid'];?>" selected><?php echo $match['aname'];?></option>
                             </label>
-                        <!--<input type="checkbox" name="commonammenties[]"  value="<?php echo $match['aid'];?>" checked>&nbsp;<?php echo $match['aname'];?>-->
+                        <!--<input type="checkbox" name="commonammenties[]"  value="<?php //echo $match['aid'];?>" checked>&nbsp;<?php echo $match['aname'];?>-->
                       </div>
                 <?php }else{ ?>
                       <div class="col-md-12 checkbox">
                         <label type="checkbox">
-                              <option name="commonammenties[]" value="<?php echo $match['aid'];?>"><?php echo $match['aname'];?></option>
+                              <option name="commonamenities[]" value="<?php echo $match['aid'];?>"><?php echo $match['aname'];?></option>
                         </label>
-                        <!--<input type="checkbox" name="commonammenties[]"  value="<?php echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?>-->
+                        <!--<input type="checkbox" name="commonammenties[]"  value="<?php //echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?>-->
                       </div>
                 <?php } }//while?>
                 </select>
@@ -220,7 +220,7 @@ $sfee = $feeres['percentage'] * .01;
                 ?>  
                 <div class="col-md-12">
                   <label type="checkbox">
-                              <option name="add_ammenties[]" value="<?php echo $match['aid'];?>" checked><?php echo $match['aname'];?></option>
+                              <option name="add_ammenties[]" value="<?php echo $match['aid'];?>" selected><?php echo $match['aname'];?></option>
                   </label>
                 </div>
                 <?php } else {?>
