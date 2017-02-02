@@ -187,22 +187,31 @@ $sfee = $feeres['percentage'] * .01;
               </div>
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <label for="space">Common Ammenities *</label>
+                <select class="form-control" id="select6" name="add_ammenties[]" multiple >
                 <?php 
                   $caid=explode(",",$row['ammenties_id']);
                   $query=mysqli_query($connect,'Select * from ammenities where atype="common"');
                   while($match=mysqli_fetch_array($query)){
                     if(in_array($match['aid'], $caid)){?>
-                      <div class="col-md-12">
-                        <input type="checkbox" name="commonammenties[]"  value="<?php echo $match['aid'];?>" checked>&nbsp;<?php echo $match['aname'];?>
+                      <div class="col-md-12 checkbox">
+                            <label type="checkbox">
+                              <option name="commonammenties[]" value="<?php echo $match['aid'];?>" checked><?php echo $match['aname'];?></option>
+                            </label>
+                        <!--<input type="checkbox" name="commonammenties[]"  value="<?php echo $match['aid'];?>" checked>&nbsp;<?php echo $match['aname'];?>-->
                       </div>
                 <?php }else{ ?>
-                      <div class="col-md-12">
-                        <input type="checkbox" name="commonammenties[]"  value="<?php echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?>
+                      <div class="col-md-12 checkbox">
+                        <label type="checkbox">
+                              <option name="commonammenties[]" value="<?php echo $match['aid'];?>"><?php echo $match['aname'];?></option>
+                        </label>
+                        <!--<input type="checkbox" name="commonammenties[]"  value="<?php echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?>-->
                       </div>
                 <?php } }//while?>
+                </select>
               </div>
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <label for="space">Additional Ammenities *</label>
+                <select class="form-control" id="select5" name="add_ammenties[]" multiple >
                 <?php 
                   $aid=explode(",",$row['add_ammenties']);
                   $query1=mysqli_query($connect,'SELECT * FROM `ammenities` where atype="additional" ');
@@ -210,13 +219,18 @@ $sfee = $feeres['percentage'] * .01;
                       if(in_array($match['aid'], $aid)){
                 ?>  
                 <div class="col-md-12">
-                  <input type="checkbox" name="add_ammenties[]" value="<?php echo $match['aid'];?>" checked>&nbsp;<?php echo $match['aname'];?>
+                  <label type="checkbox">
+                              <option name="add_ammenties[]" value="<?php echo $match['aid'];?>" checked><?php echo $match['aname'];?></option>
+                  </label>
                 </div>
                 <?php } else {?>
                 <div class="col-md-12">
-                  <input type="checkbox" name="add_ammenties[]"  value="<?php echo $match['aid'];?>" >&nbsp;<?php echo $match['aname'];?>
+                  <label type="checkbox">
+                              <option name="add_ammenties[]" value="<?php echo $match['aid'];?>"><?php echo $match['aname'];?></option>
+                  </label>
                 </div>
                 <?php } }//while?>
+                </select>
               </div>
               <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <label for="space">Description *</label>
