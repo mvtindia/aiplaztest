@@ -625,9 +625,9 @@ $(document).ready(function () {
                 if (datas[1] == 'success')
                 {
                     $('.placeid').val(datas[0]);
-                    swal('Success', 'Updated Successfully', 'success');
                     $("#ephotovideo").css('display', 'block');
                     $("#edetails").css('display', 'block');
+                    $("div#msg").html("<span style='color: red; text-align: center;'>Changes saved.</span>");
                 } else if (datas[0] == 'error')
                 {
                     swal({title: 'Error', text: 'Unable to Update details.', timer: 2000
