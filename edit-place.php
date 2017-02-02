@@ -234,7 +234,7 @@ $sfee = $feeres['percentage'] * .01;
               </div>
               <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <label for="space">Description *</label>
-                <textarea  class="form-control" id="accomodates" required placeholder="Description" name="details" ><?php echo $row['details'];?></textarea>
+                <textarea  class="form-control" id="accomodates" placeholder="Description" name="details" ><?php echo $row['details'];?></textarea>
               </div>
               <div class="clearfix"></div>
   
@@ -334,8 +334,9 @@ $sfee = $feeres['percentage'] * .01;
 
   
   <div class="but-align form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <!-- <button id="show-photo" type="submit" name="place" class="btn btn-default cus-save-but">Save & continue</button> -->
-  <button type="submit" name="eplace" class="btn btn-default cus-save-but">Save & continue</button>
+ 
+  <button type="submit" name="eplace" class="btn btn-default cus-save-but">Save</button>
+  <div id="msg"></div>
   </div>
 </form>
 <div class="clearfix"></div>
@@ -412,7 +413,7 @@ if($match=mysqli_fetch_array($query)){
 
    <div class="col-md-12 text-center form-group">
 
-  <button id="show-price" type="submit" name="qephoto" class="btn btn-default cus-save-but">Save & Continue</button>
+  <button id="show-price" type="submit" name="qephoto" class="btn btn-default cus-save-but">Save</button>
   </div>
 
   <div class="clearfix"></div>
@@ -461,7 +462,7 @@ if($match=mysqli_fetch_array($query)){
 
    <div class="col-md-12 text-center form-group">
 
-  <button id="show-price" type="submit" name="qephoto" class="btn btn-default cus-save-but">Save & Continue</button>
+  <button id="show-price" type="submit" name="qephoto" class="btn btn-default cus-save-but">Save</button>
   </div>
 
   <div class="clearfix"></div>
@@ -506,7 +507,7 @@ if($match=mysqli_fetch_array($query)){
 <link href="tm/jquery.timepicker.css" rel="stylesheet">
   <div class="col-md-12 text-center form-group">
 
-  <button id="next2" type="submit" name="qeprice_place" class="btn btn-default cus-save-but">Save & continue</button>
+  <button id="next2" type="submit" name="qeprice_place" class="btn btn-default cus-save-but">Save</button>
   </div>
   
   </div><!--frm-field-mar-->
