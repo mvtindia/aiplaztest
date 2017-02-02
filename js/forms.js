@@ -621,7 +621,7 @@ $(document).ready(function () {
             success: function (data) {
                 $('.ishowload').css('display', 'none');
                 var datas = data.split(",,,");
-                console.log(data);
+                
                 if (datas[1] == 'success')
                 {
                     $('.placeid').val(datas[0]);
