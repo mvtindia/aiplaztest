@@ -87,9 +87,8 @@ button.multiselect.dropdown-toggle.btn.btn-default
                   <div class="col-md-2 pd-0">
                     <div class="form-group">
                       <label class="sr-only">Event</label>
-                          <!-- <input type="text" class="form-control bord" placeholder="Event"> -->
-                      <select id="select1" class="form-control bord" multiple="multiple" name="events[]" >
-                               <!--  <option value="" hidden>Select Uses</option> -->
+                      <select id="select1" class="form-control bord" multiple="multiple" name="events[]">
+                               <option value="" disabled selected>Choose an Activity</option>
                         <?php $query=mysqli_query($connect,'Select * from usedfor');
                                 while($match=mysqli_fetch_array($query)){?>
                                   <option value="<?php echo $match['ufid'];?>"><?php echo $match['ufname'];?></option>
@@ -243,7 +242,7 @@ button.multiselect.dropdown-toggle.btn.btn-default
           <figure class="snip1205">
             <img class="img-responsive" src="images/events/<?php echo $row1['ufimage'];?>" >
             <i class="fa fa-search"></i>
-            <a href="searchlst.php?events=<?php echo $row1['ufid']; ?>"></a><!--eventenquiry.php?id=<?php echo $row1['ufid'];?>-->
+            <a href="searchlst.php?events=<?php echo $row1['ufid']; ?>"></a><!--eventenquiry.php?id=<?php //echo $row1['ufid'];?>-->
             <h3 class="text-center abs1"><?php echo $row1['ufname'];?></h3>  
           </figure>
         </div>
