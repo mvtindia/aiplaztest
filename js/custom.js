@@ -22,10 +22,6 @@ var tabsFn = (function() {
       $(this).removeClass("hover");
     }
   );
-
-
-
-  
   
   /* Popup Jquery */
 
@@ -46,9 +42,9 @@ $(document).ready(function() {
        var j = data.trim(" ");
         if(j == 'ok')
         {   	
-        	 swal("Cancelled!", "Booking Cancelled", "success");	
+        	 //swal("Cancelled!", "Booking Cancelled", "success");	
         	$('.confirm').click(function(){
-        		window.location.href="index.php";
+        		window.location.href="searchlst.php";
         	});
        
        }
@@ -645,10 +641,6 @@ $('.phone').mask('(999) 999 9999');
 		// })
 
 
-
-
-
-
 /*==========Price table in Demo-velue fixing JS============*/
 jQuery(function($) {
   function fixDiv() {
@@ -679,10 +671,6 @@ jQuery(function($) {
   $(window).scroll(fixDiv);
   fixDiv();
 });
-
-
-
-
 
 
 	$('#example').DataTable();
@@ -732,7 +720,7 @@ jQuery(this).addClass('active');
 }); */
 	$('[data-toggle="tooltip"]').tooltip(); 
        
-     	$(".btn-3").click(function(){
+$(".btn-3").click(function(){
 		$("#first-block").css('display','none');
 		$("#third-block").css('display','none');		
 		$("#fourth-block").css('display','none');
@@ -740,7 +728,7 @@ jQuery(this).addClass('active');
 
 });
 
-     	$(".btn-4").click(function(){
+$(".btn-4").click(function(){
 
 		$("#first-block").css('display','none');
 		$("#second-block").css('display','none');
@@ -896,18 +884,12 @@ $(function(){
       });
 });
 
-
-
-        $('#select1').multiselect();
-        $('#select2').multiselect();
-         $('#select3').multiselect();
-          $('#select4').multiselect();
-          $('#select5').multiselect();
-          $('#select6').multiselect();
-
-
-
-
+$('#select1').multiselect();
+$('#select2').multiselect();
+$('#select3').multiselect();
+$('#select4').multiselect();
+$('#select5').multiselect();
+$('#select6').multiselect();
 
 
 /*=================================Date of Birth date picker=======================*/
@@ -925,14 +907,6 @@ function loadDatePicker()
 
 
      loadDatePicker();
-
-
-
-
-
-
-
-
 
 
 /*=================No UI Slider JS=================*/
@@ -983,11 +957,6 @@ inputNumber.addEventListener('change', function(){
 });
 
 }
-
-
-
-
-
 
 var select1 = document.getElementById('input1-select');
 if (select1) {
