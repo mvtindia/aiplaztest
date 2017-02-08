@@ -43,9 +43,9 @@ $(document).ready(function() {
         if(j == 'ok')
         {   	
         	 //swal("Cancelled!", "Booking Cancelled", "success");	
-        	$('.confirm').click(function(){
+        	
         		window.location.href="searchlst.php";
-        	});
+        	
        
        }
         else if(j == 'not')
