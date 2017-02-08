@@ -1,41 +1,39 @@
 [
     {
-        "name": "stripe/stripe-php",
-        "version": "v4.4.0",
-        "version_normalized": "4.4.0.0",
+        "name": "braintree/braintree_php",
+        "version": "3.21.1",
+        "version_normalized": "3.21.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/stripe/stripe-php.git",
-            "reference": "9ec772fe502995850954dbc15b1f38e6f9159a4d"
+            "url": "https://github.com/braintree/braintree_php.git",
+            "reference": "fcfabf9170925cdac0ff97b72dc9e7ab44c88263"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/stripe/stripe-php/zipball/9ec772fe502995850954dbc15b1f38e6f9159a4d",
-            "reference": "9ec772fe502995850954dbc15b1f38e6f9159a4d",
+            "url": "https://api.github.com/repos/braintree/braintree_php/zipball/fcfabf9170925cdac0ff97b72dc9e7ab44c88263",
+            "reference": "fcfabf9170925cdac0ff97b72dc9e7ab44c88263",
             "shasum": ""
         },
         "require": {
             "ext-curl": "*",
-            "ext-json": "*",
-            "ext-mbstring": "*",
-            "php": ">=5.3.3"
+            "ext-dom": "*",
+            "ext-hash": "*",
+            "ext-openssl": "*",
+            "ext-xmlwriter": "*",
+            "php": ">=5.4.0"
         },
         "require-dev": {
-            "phpunit/phpunit": "~4.0",
-            "satooshi/php-coveralls": "~0.6.1",
-            "squizlabs/php_codesniffer": "~2.0"
+            "phpunit/phpunit": "3.7.*"
         },
-        "time": "2017-01-18T18:55:45+00:00",
+        "time": "2017-01-17T19:40:39+00:00",
         "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.0-dev"
-            }
-        },
         "installation-source": "dist",
         "autoload": {
+            "psr-0": {
+                "Braintree": "lib/"
+            },
             "psr-4": {
-                "Stripe\\": "lib/"
+                "Braintree\\": "lib/Braintree"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -44,16 +42,10 @@
         ],
         "authors": [
             {
-                "name": "Stripe and contributors",
-                "homepage": "https://github.com/stripe/stripe-php/contributors"
+                "name": "Braintree",
+                "homepage": "http://www.braintreepayments.com"
             }
         ],
-        "description": "Stripe PHP Library",
-        "homepage": "https://stripe.com/",
-        "keywords": [
-            "api",
-            "payment processing",
-            "stripe"
-        ]
+        "description": "Braintree PHP Client Library"
     }
 ]

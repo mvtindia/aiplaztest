@@ -7,16 +7,26 @@ namespace Composer\Autoload;
 class ComposerStaticInit3b2dac19e5de1668f7008188625a6701
 {
     public static $prefixLengthsPsr4 = array (
-        'S' => 
+        'B' => 
         array (
-            'Stripe\\' => 7,
+            'Braintree\\' => 10,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Stripe\\' => 
+        'Braintree\\' => 
         array (
-            0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
+            0 => __DIR__ . '/..' . '/braintree/braintree_php/lib/Braintree',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'B' => 
+        array (
+            'Braintree' => 
+            array (
+                0 => __DIR__ . '/..' . '/braintree/braintree_php/lib',
+            ),
         ),
     );
 
@@ -25,6 +35,7 @@ class ComposerStaticInit3b2dac19e5de1668f7008188625a6701
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit3b2dac19e5de1668f7008188625a6701::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit3b2dac19e5de1668f7008188625a6701::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit3b2dac19e5de1668f7008188625a6701::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }
