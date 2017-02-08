@@ -9,7 +9,6 @@ $sfee = $feeres['percentage'] * .01; ?>
 
 <title>List a Place</title>
   
-
 	<?php include 'lib/top.php';?>
     <link href="tm/jquery.timepicker.css" rel="stylesheet">
   <style>
@@ -18,7 +17,6 @@ $sfee = $feeres['percentage'] * .01; ?>
 	    width: 200px;
     }
   </style>
-
 
 </head>
 
@@ -196,8 +194,8 @@ $sfee = $feeres['percentage'] * .01; ?>
                                         while($match=mysqli_fetch_array($query)){?>
                                             <div class="col-md-12 checkbox">
                                                 <label type="checkbox">
-<!--<input type="checkbox" name="commonammenties[]"  value="<?php echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?></label>-->
-                                                <option name="commonammenties[]"value="<?php echo $match['aid'];?>"><?php echo $match['aname'];?></option>
+                                                <option name="commonammenties[]" value="<?php echo $match['aid'];?>"><?php echo $match['aname'];?></option>
+                                                </label>
                                             </div>
                                     <?php }?>
                                 </select>
@@ -210,7 +208,7 @@ $sfee = $feeres['percentage'] * .01; ?>
                                         while($match=mysqli_fetch_array($query)){?>
                                             <div class="col-md-12 checkbox"><label type="checkbox">
 <!--<input type="checkbox" name="add_ammenties[]"  value="<?php echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?></label>-->
-                                                <option name="add_ammenties[]"value="<?php echo $match['aid'];?>"><?php echo $match['aname'];?></option>
+                                                <option name="add_ammenties[]" value="<?php echo $match['aid'];?>"><?php echo $match['aname'];?></option>
                                             </div>
                                     <?php }?>
                                 </select>
@@ -327,50 +325,6 @@ $sfee = $feeres['percentage'] * .01; ?>
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                        
-                        <!--<div class="frm-field-mar" id="calender-tab">
-                            <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>
-          	                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker6' style="float: left;">
-                		                        <input type='text' class="form-control" name="date1" id="date1" placeholder="From" data-date-format="YYYY-MM-DD HH:mm" />
-                		                        <span class="input-group-addon">
-                    			                    <span class="glyphicon glyphicon-calendar"></span>
-                		                        </span>
-            	                </div>
-               	                <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 input-group date" id='datetimepicker7' style="float: left;">
-                		                        <input type='text' class="form-control" name="date2" id="date2" placeholder="To" data-date-format="YYYY-MM-DD HH:mm"/>
-                		                        <span class="input-group-addon">
-                    			                    <span class="glyphicon glyphicon-calendar"></span>
-                		                        </span>
-            	                </div>
-    		                    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
-                	                            <label for="space">Price Per Hour</label>
-                                                <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="p_p_h">
-                                </div>
-                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
-                	                            <label for="space">Price Per Day</label>
-                                                <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="p_p_n">
-                                </div>
-                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
-                	                            <label for="space">Price Per Week</label>
-                                                <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$" name="w_p_p_n">
-                                </div>
-                                <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
-                	                            <button id="savetime" type="submit" name="savetime" class="btn btn-default cus-save-but">Add Availability</button>
-                                                <button id="repeat" type="button" name="repeat" class="btn btn-default cus-save-but">Repeat</button>
-		                        </div>
-                                <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
-                                                <select class="form-control selectpicker" id="timing" name="timing">
-                                                    <option value="">Select Repeat Frequency</option>
-                                                    <option value="d">Daily</option>
-                                                    <option value="w">Weekly</option>
-                                                </select>
-                                </div>
-		                        <div class="col-md-12 text-center"style="margin-bottom: 11px;">
-			                                    <button id="back" type="button" name="place" class="btn btn-default cus-save-but">Back</button>                       	
-			                                    <a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
-		                        </div>
-                                <div class="clearfix"></div>
-    	                </div>frm-field-mar--> 
                     </div>
                     
 <!-- details end -->
@@ -387,7 +341,7 @@ $sfee = $feeres['percentage'] * .01; ?>
                     
                     <form id="calenderform" method="POST" enctype="multipart/form-data" >
                     <div id="calender-tab" style="display:none;">
-                        <h4 style="color: red;">*You will receive a confirmation email, but in the meantime, please add available times for your place.</h4>
+                        <h4 style="color: blue;">*You will receive a confirmation email, but in the meantime, please add available times for your place.</h4>
                         <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
                         <div class="tellus-data col-lg-12 col-sm-12 col-md-12 col-xs-12 pd-lr-0" >
                             <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>
@@ -468,7 +422,7 @@ $sfee = $feeres['percentage'] * .01; ?>
                         <div class="clearfix"></div>
                     </div>       
                     
-                    <form id="sacctform" method="POST" action="stripemaccount.php" enctype="multipart/form-data" >
+                    <form id="brtacctform" method="POST" action="brtmaccount.php" enctype="multipart/form-data" >
                     <div id="sacct-tab" style="display:none;">
                         <h4 style="color: red;"></h4>
                         <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
@@ -487,9 +441,41 @@ $sfee = $feeres['percentage'] * .01; ?>
                                                 <label for="space">Organization</label>
                 		                        <input type='text' class="form-control" name="business_name" id=""  />
             	                </div>
+                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
+                                                <label for="space">First Name</label>
+                		                        <input type='text' class="form-control" name="firstName" id="" value="<?php echo $_SESSION['fname'] ?>" />
+            	                </div>
+                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
+                                                <label for="space">Last Name</label>
+                		                        <input type='text' class="form-control" name="lastName" id="" value="<?php echo $_SESSION['lname'] ?>"  />
+            	                </div>
+                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
+                                                <label for="space">Email</label>
+                		                        <input type='text' class="form-control" name="email" id="" value="<?php echo $_SESSION['lname'] ?>"  />
+            	                </div>
+                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
+                                                <label for="space">Street Address</label>
+                		                        <input type='text' class="form-control" name="streetAddress" id="" value=""  />
+            	                </div>
+                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
+                                                <label for="space">City</label>
+                		                        <input type='text' class="form-control" name="locality" id="" value=""  />
+            	                </div>
+                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
+                                                <label for="space">State</label>
+                		                        <input type='text' class="form-control" name="region" id="" value=""  />
+            	                </div>
+                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
+                                                <label for="space">Zip Code</label>
+                		                        <input type='text' class="form-control" name="postalCode" id="" value=""  />
+            	                </div>
+                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
+                                                <label for="space">Date of Birth</label>
+                		                        <input type='text' class="form-control" name="dateOfBirth" id="" value=""  />
+            	                </div>
           	                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
                                                 <label for="space">Account Number</label>
-                		                        <input type='text' class="form-control" name="account_number" id="" required  />
+                		                        <input type='text' class="form-control" name="accountNumber" id="" required  />
                                                 <input type='hidden' class="form-control" name="account_type" value="bank_account" required  />
                                                 <input type='hidden' class="form-control" name="account_holder_type" value="individual" required  />
                                                 <input type='hidden' class="form-control" name="country" value="US" required  />
@@ -498,7 +484,7 @@ $sfee = $feeres['percentage'] * .01; ?>
             	                </div>
                                 <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
                                                 <label for="space">Routing Number</label>
-                		                        <input type='text' class="form-control" name="routing_number" id="" required  />
+                		                        <input type='text' class="form-control" name="routingNumber" id="" required  />
             	                </div>
 
                                 <!--<div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
@@ -507,7 +493,7 @@ $sfee = $feeres['percentage'] * .01; ?>
                                 </div>-->
                                 <div class="form-group col-lg-5 col-md-6 col-sm-6 col-lg-offset-3 col-md-offset-3 col-xs-12">
                 	                            <button id="savesacct" type="submit" name="savesacct" class="btn btn-default cus-save-but">Save Account Information</button><br>
-                                                By clicking this button, you agree to the <a href="https://stripe.com/connect-account/legal">Stripe Connected Account Agreement</a>.
+                                                By clicking this button, you agree to the.
                                                 <span id="span1a" style="display:none; color: red;">Please enter missing values.</span>
 		                        </div>
                                 <div class="clearfix"></div>
@@ -525,34 +511,16 @@ $sfee = $feeres['percentage'] * .01; ?>
                     <div class="tellus-data" id="hide-price" style="overflow: auto;">
                         <div class="had-frm-sec" >Price & Terms</div>
                         <div class="frm-field-mar">
-                                <?php //include_once('demo.php');?>
+                                
                                 <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
-                                <!--<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <label for="space">Select Your Currency</label>
-                                    <select class="form-control" id="sel1" name="currency" >
-                                        <option value="">Select Options</option>
-                                        <option value="1">$</option>
-                                        <option value="4">₹</option>
-                                    </select>
-                                </div>-->
-<!--
-      <?php echo '<pre>';
-var_dump($_SESSION);
-echo '</pre>'; ?>
+      <?php //echo '<pre>';
+//var_dump($_SESSION);
+//echo '</pre>'; ?>
 -->
 
                           <!--      <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <label for="space">Price Per Hour</label>
                                     <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$$$" name="p_p_h">
-                                </div>
-                                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <label for="space">Price Per Day</label>
-                                    <input type="number" required class="form-control" id="accomodates" placeholder="Enter $$$$" name="p_p_n">
-                                </div>
-
-                                <div class="col-md-12 text-center"style="margin-bottom: 11px;">
-                                    <button id="back1" type="button" name="place" class="btn btn-default cus-save-but">Back</button>
-                                    <button id="next2" type="submit" name="priceterms" class="btn btn-default cus-save-but">Save and continue</button>
                                 </div>
                         </div><!--frm-field-mar-->
                    <!-- </div><!-- tell us -->
@@ -605,9 +573,6 @@ echo '</pre>'; ?>
   <!--=====================================COL-MD-8 LEFT side CLOSE==========================================-->
 
 <!--==========WHY LIST YOUR PLACE?============-->
-            
-
- <!--==========WHY LIST YOUR PLACE CLOSE============-->
  
         </div><!--container close-->
     </div><!--row close-->
