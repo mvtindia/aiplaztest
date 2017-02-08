@@ -15,7 +15,7 @@ if(isset($_REQUEST['delete_place']))
 		$query = mysqli_query($connect,"INSERT INTO `notes`(`bookid`,`userid`,`ntime`) VALUES ('".$r['bookid']."','".$r['userid']."','".$ntime."')");
 	}
 
-	header('location:dashboard.php?msg=place deleted');
+	header('location:dashboard.php?msg=deleteplace');
 }
 
 if(isset($_REQUEST['ratings']))
