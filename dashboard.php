@@ -113,9 +113,9 @@ $res = mysqli_fetch_array($q1); ?>
 </div>
 <?php if (isset($_REQUEST['msg'])) {
     if ($_REQUEST['msg'] == 'addplace') { ?>
-<div style="text-align: center;"><br><br><h2>Success! You have listed a place.</h2></div> 
+<div style="text-align: center;"><br><br><h3 style="color: blue;">Success! You have listed a place.</h3></div> 
 <?php } else { ?>
-<div style="text-align: center;"><br><br><h2>Delete completed.</h2></div>
+<div style="text-align: center;"><br><br><h3 style="color: blue;">Delete completed.</h3></div>
 <?php } } ?>
 <!--==============left panel close=========-->
 <!--==============right panel=========-->
