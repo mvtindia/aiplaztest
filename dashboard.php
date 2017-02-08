@@ -623,7 +623,7 @@ while($r31 = mysqli_fetch_array($q31)) {
 
 <div class="col-md-6 mg-top15">
 <label>Email</label>
-<input type="text" class="form-control" placeholder="Email address" name="email" value="<?php echo $res['email']; ?>">
+<input type="email" class="form-control" placeholder="Email address" name="email" value="<?php echo $res['email']; ?>">
 </div>
 
 <div class="col-md-6 mg-top15">
