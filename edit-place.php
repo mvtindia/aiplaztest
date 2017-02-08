@@ -412,8 +412,9 @@ if($match=mysqli_fetch_array($query)){
 </div>
 
    <div class="col-md-12 text-center form-group">
-
-  <button id="show-price" type="submit" name="qephoto" class="btn btn-default cus-save-but">Save</button>
+   
+  <button id="show-price" type="submit" name="qephoto" class="btn btn-default cus-save-but">Save</button><br>
+  <div id="msg2"></div>
   </div>
 
   <div class="clearfix"></div>
@@ -896,6 +897,7 @@ p {
 </div>
 <?php include 'lib/footer.php'; //if isset
 ?>
+<script src="tm/jquery.timepicker.js"></script>
   <!--==================Signup Modal box Ends==============-->
   
 

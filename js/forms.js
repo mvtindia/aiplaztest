@@ -783,7 +783,8 @@ $(document).ready(function () {
                         $("#epricetermss").css('display', 'block');
                         $("#ephotovideo").css('display', 'block');
                         $("form#ephotovideo").trigger('reset');
-                        swal('Success', 'Updated Successfully', 'success');
+                        $("#msg2").html("<h3 style='color: red;'>Updated Successfully</h3>");
+                        //swal('Success', 'Updated Successfully', 'success');
                     } else if (data1[0] == 'wrong_exe')
                     {
                         swal('Wrong Dimension', 'The Image ' + data1[1] + ' have wrong size', 'error');
