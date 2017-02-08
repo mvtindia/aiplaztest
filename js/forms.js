@@ -1171,8 +1171,9 @@ $(document).ready(function () {
     });
 
     $('#continue').click(function () {
-        $("#calender-tab").css('display', 'none');
-        $("#sacct-tab").css('display', 'block');
+        //$("#calender-tab").css('display', 'none');
+        //$("#sacct-tab").css('display', 'block');
+        window.location.href = 'dashboard.php';
     });
 
     $('#repeat').click(function () {
