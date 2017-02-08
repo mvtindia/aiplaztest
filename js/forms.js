@@ -205,10 +205,9 @@ $(document).ready(function () {
                         var url = $('.urlval').val();
 
                         if (url != "")
-                        {
-                            window.location.href = "dashboard.php";
-                            //location.reload();
-                        }
+                        { 
+                            window.location.href = url;
+                        } 
                     }
                 },
             });
