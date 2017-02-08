@@ -303,14 +303,16 @@ $(document).ready(function () {
             {
                 if (data == 'not')
                 {
-                    swal("Oops!", "Unable To Update Your Profile Details", "error");
+                    //swal("Oops!", "Unable To Update Your Profile Details", "error");
+                    $('span#msg').html("<h3 style='color: red;'>Unable To Update Your Profile Details.</h3>");
                 } else if (data == 'done')
                 {
                     $("#login")[0].reset();
-                    swal("Success", "Profile Details are Updated Successfully ", "success");
-                    $('.confirm').click(function () {
+                    //swal("Success", "Profile Details are Updated Successfully ", "success");
+                    /*$('.confirm').click(function () {
                         window.location.href = "dashboard.php";
-                    });
+                    });*/
+                    $('span#msg').html("<h3 style='color: blue;'>Profile Updated.</h3>");
                 }
 
 

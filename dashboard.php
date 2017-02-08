@@ -633,7 +633,7 @@ while($r31 = mysqli_fetch_array($q31)) {
 
 
 <div class="col-md-12 mg-top15 mg-bottom20">
-<button class="btn-3" type="submit" name="update">Save</button>
+<button class="btn-3" type="submit" name="update">Save</button><span id="msg"><h3 style="color: blue;"></h3></span>
 </div>
 </form>
 </div>
