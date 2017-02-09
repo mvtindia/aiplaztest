@@ -306,17 +306,17 @@ braintree.client.create({
         'color': 'red'
       },
       'input.valid': {
-        'color': 'green'
+        'color': 'black'
       }
     },
     fields: {
       number: {
         selector: '#card-number',
-        placeholder: '4111 1111 1111 1111'
+        placeholder: ''
       },
       cvv: {
         selector: '#cvv',
-        placeholder: '123'
+        placeholder: ''
       },
       expirationMonth: {
         selector: '#expiration-month',
@@ -328,7 +328,7 @@ braintree.client.create({
       },
       postalCode: {
         selector: '#postal-code',
-        placeholder: '90210'
+        placeholder: ''
       }
     }
   }, function (hostedFieldsErr, hostedFieldsInstance) {
