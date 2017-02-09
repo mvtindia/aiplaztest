@@ -523,92 +523,73 @@ if($match=mysqli_fetch_array($query)){
             <div id="calender-tab" style="display:block;">
   <form id="calenderform" method="post" enctype="multipart/form-data" >
                             <input type="hidden" class="placeid" name="placeid" value="<?php echo $_REQUEST['placeid']?>" id="placeid">
-                            <div class="tellus-data col-lg-12 col-sm-12 col-md-12 col-xs-12 pd-lr-0" ><!--id="calendar-tab"-->
+                            <div class="tellus-data col-lg-12 col-sm-12 col-md-12 col-xs-12 pd-lr-0"><!--id="calendar-tab"-->
                                 <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>
-                                <div class="frm-field-mar">
-          	                        <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12 input-group date pull-left col-lg-offset-2" id='datetimepicker6'>
-                		                        <input type='text' class="form-control" name="from-date1a" id="date1a" required placeholder="From Day" data-date-format="YYYY-MM-DD"  />
-                		                        <span class="input-group-addon">
+                                <div class="frm-field-mar container">
+          	                    <div class="form-group input-group date row" id='datetimepicker6' style="margin: 0 0 5px 70px;">
+                		                        <div class="col-md-6 col-lg-6"><label for="space">From date:</label>
+                                            <input type='text' class="form-control" name="from-date1a" id="date1a" required placeholder="From" data-date-format="YYYY-MM-DD" />
+                		                        <!--<span class="input-group-addon">
                     			                    <span class="glyphicon glyphicon-calendar"></span>
-                		                        </span>
-            	                      </div>
-                                    <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12 input-group date pull-left" name="from-date1b" id='datetimepicker7'>
-                                                <input type='text' class="form-control" name="from-date1b" id="date1b" required placeholder="From Hour" data-date-format="hh:mm" />
-                                                <!--<span class="input-group-addon">
-                                                  <span class="glyphicon glyphicon-calendar"></span>
-                                                </span>-->
-                                    </div>
-                                    <div class="clear-fix"></div>
-                                    <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12 input-group date col-lg-offset-2 pull-left" id='datetimepicker8'>
-                                                <input type='text' class="form-control" name="to-date2a" id="date2a" required placeholder="To Day" data-date-format="YYYY-MM-DD"/>
-                                                <span class="input-group-addon">
-                                                  <span class="glyphicon glyphicon-calendar"></span>
-                                                </span>
-                                    </div>
-                                    <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12 input-group date pull-left" id='datetimepicker9'>
-                                                <input type='text' class="form-control" name="to-date2b" id="date2b" required placeholder="To Hour" data-date-format="HH:mm"/>
-                                                <!--<span class="input-group-addon">
-                                                  <span class="glyphicon glyphicon-calendar"></span>
-                                                </span>-->
-                                    </div>  
-                                    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
-                                                  <div class="">
-                                                    <label for="space">Price Per Hour</label>       
-                                                    <input type="number" required class="form-control"  id="priceph" placeholder="Enter $$" name="p_p_h">
-                                                  </div>
-                                                  <div class="">
-                                                    <label for="space">Price Per Day</label>
-                                                    <input type="number" required class="form-control"  id="pricepd" placeholder="Enter $$" name="p_p_n">
-                                                  </div>
-                                    </div>
+                		                        </span>-->
+                                            </div>
+                                            
+                                            <div class="col-md-6 col-lg-6"><label for="space">To date: </label>
+                                              <input type='text' class="form-control" name="to-date2a" id="date2a" required placeholder="To" data-date-format="YYYY-MM-DD"/>                                   
+                                            </div>
+            	                  </div>        
+               	                <div class="form-group input-group date row" id='datetimepicker8' style="margin: 5px 0 5px 70px;">
+                		                        <div class="col-md-6 col-lg-6"><label for="space">From time:</label>
+                                              <input type='text' class="form-control" name="from-date1b" id="date1b" required placeholder="From" data-date-format="HH:mm" />
+                		                          <!--<span class="input-group-addon">
+                    			                      <span class="glyphicon glyphicon-calendar"></span>
+                		                          </span>-->
+                                            </div>
+                                            <div class="col-md-6 col-lg-6"><label for="space">To time:</label>
+                                              <input type='text' class="form-control" name="to-date2b" id="date2b" required placeholder="To" data-date-format="HH:mm"/>
+                                            </div>
+            	                  </div>
                                 
-                                <!--<div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
-                	                            <label for="space">Price Per Day</label>
-                                                <input type="number" required class="form-control" id="pricepd" placeholder="Enter $$" name="p_p_n">
-                                </div>-->
+    		                        <div class="form-group input-group row" style="margin: 5px 0 5px 70px;">
+                	                          <div class="col-md-4 col-lg-4" style="margin: 0 0px 0 0;"><label for="priceph">Price Per Hour</label>
+                                                <input type="number" class="form-control" size="3" id="priceph" placeholder="Enter $$" name="p_p_h">
+                                                <div class="" style="">
+                                                  <b>My Takehome (per hour):</b> <span id="netpph">$0</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-lg-4"><label for="pricepd">Price Per Day </label>
+                                                <input type="number"  class="form-control" size="3" id="pricepd" placeholder="Enter $$" name="p_p_n">
+                                                <div class="  " ><br>
+                                                  <b> My Takehome (per day):</b> <span id="netppd">$0</span>
+                                                </div>
+                                                <input type="hidden" class="sfee" value=<?php echo $sfee ?>>
+                                              </div>                                          
+                                </div>                               
                                 
-                                <!--<div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
-                	                            <label for="space">Price Per Week</label>
-                                                <input type="number" class="form-control" id="pricepw"  value=0 placeholder="Enter $$" name="w_p_p_n">
-                                                
-                                </div>-->
-                                    <div class="form-group col-lg-7 col-md-9 col-sm-12 col-xs-12" style="margin: 10px 0 10px 0;">
-                                                  <div class="">
-                                                    <label for="space">Price Per Hour(minus service fee)</label>
-                                                    <input type="text"  class="form-control" id="netpph" placeholder="Enter $$">
-                                                  </div>
-                                                  <div class="">
-                                                    <label for="space">Price Per Day(minus service fee)</label>
-                                                    <input type="text"  class="form-control" id="netppd" placeholder="Enter $$">
-                                                  </div>
-                                    </div>
-                                <!--<div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
-                                                <label for="space">Price Per Day(minus service fee)</label>
-                                                <input type="text"  class="form-control" id="netppd" placeholder="Enter $$">
-                                </div>-->                            
-                                <!--<div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
-                	                            <label for="space">Price Per Week(minus service fee)</label>
-                                                <input type="text"  class="form-control" id="netppw" placeholder="Enter $$">
-                                </div>-->
-        
-                                    <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
-                                                  <button id="savetime" type="button" name="savetime" class="btn btn-default cus-save-but">Add Availability</button>
-                                                    <button id="repeat" type="button" name="repeat" class="btn btn-default cus-save-but">Repeat</button>
-                                                    <span id="span1a" style="display:none; color: red;">Please enter missing values.</span>
-                                    </div>
-                                    <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
-                                            <select class="form-control selectpicker" id="timing" name="timing">
-                                                <option value="">Select Repeat Frequency</option>
-                                                <option value="d">Daily</option>
-                                                <option value="w">Weekly</option>
-                                            </select>
-                                    </div>
-                                    <div class="col-md-12 text-center"style="margin-bottom: 11px;">
-                                      <input type="hidden" class="sfee" value=<?php echo $sfee ?>>                                   	
-                                      <a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>
-                                    </div>
-                                    <div class="clearfix"></div>
-    	                        </div><!--frm-field-mar--> 
+                                <div class="form-group  row" style="margin: 20px 0 5px 70px; width: 650px;">
+                	                            <div class="col-md-4 col-lg-4">
+                                                <button id="savetime" type="button" name="savetime" class="btn btn-default cus-save-but">Add Availability</button>            
+                                              </div>                                        
+                                              <div class="col-md-2 col-lg-2">
+                                                <button id="repeat" type="button" name="repeat" class="btn btn-default cus-save-but">Repeat</button>
+                                              </div>
+                                              <div class="col-md-6 col-lg-6">
+                                                <select class="form-control selectpicker" id="timing" name="timing">
+                                                      <option value="">Select Repeat Frequency</option>
+                                                      <option value="d">Daily</option>
+                                                      <option value="w">Weekly</option>
+                                                </select>
+                                              </div>
+                                              <span id="span1a" style="display:none; color: red;">Please enter missing values.</span>
+		                            </div>
+                              
+		                        <div class="col-md-12 col-lg-12 form-group row" style="margin: 5px 0px 11px 70px;">
+			                                    <button id="continue" type="button" name="place" class="btn btn-default cus-save-but">Continue</button>                       	
+			                                    <!--<a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>-->
+		                        </div>
+                                
+                                <div id="msg" style="color: red; padding: 0 30px;"></div>
+    	                    </div><!--frm-field-mar--> 
                             </div>
 </form>
 <div class="clearfix"></div>
@@ -1038,13 +1019,13 @@ p {
         $("#priceph").change(function() {
             $prh = Number($("#priceph").val());
             $newval = $prh - ($prh * $sfee)
-            $("#netpph").val("$" + String($newval));
+            $("#netpph").html("$" + String($newval));
         });
 
         $("#pricepd").change(function() {
           $prd = Number($("#pricepd").val());
           $newval = $prd - ($prd * $sfee)
-          $("#netppd").val("$" + String($newval));
+          $("#netppd").html("$" + String($newval));
         });
 
         $("#pricepw").change(function() {
