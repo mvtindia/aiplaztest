@@ -133,8 +133,6 @@ if (isset($_POST['payment-method-nonce'])) {
     $cusid = "";
     if (isset($_POST['newcustomer'])) {
       $result = Braintree_Customer::create([
-        'firstName' => 'Davey',
-        'lastName' => 'Jones',
         'paymentMethodNonce' => $nonceFromTheClient
       ]);
     
@@ -149,6 +147,11 @@ if (isset($_POST['payment-method-nonce'])) {
           error_log($result2->customer->paymentMethods[0]->token);
           if ($result2->success) {
             $inscus = mysqli_query($connect, 'insert into `stripeaccts` (`user_id`, `stripe_cusid`, `stripe_type`) values ("'.$uid.'", "'.$cusid.'", "cu")');
+            if ($inscus) {
+              $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `stripe_cusid`, `amount`) values ("'.$uid.'", "'.$cusid.'", "'.$amt.'")');
+            }
+          } else {
+            $error = "true";
           }
       } else {
           foreach($result->errors->deepAll() AS $error) {
@@ -164,10 +167,12 @@ if (isset($_POST['payment-method-nonce'])) {
       ]
       ]);
       if ($result->success || !is_null($result->transaction)) {
+          $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `amount`, `comment`) values ("'.$uid.'", "'.$amt.'", "One time transaction.")');
           $transaction = $result->transaction;
           //header("Location: transaction.php?id=" . $transaction->id);
       } else {
           $errorString = "";
+          $error = "true";
           foreach($result->errors->deepAll() as $error) {
               $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
           }
@@ -184,6 +189,7 @@ if (isset($_POST['payment-method-nonce'])) {
               'amount' => $amt
             ]
     );
+    $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `amount`, `cust_id`) values ("'.$uid.'", "'.$amt.'", "'.$cusid.'")');
  } else {
     $strq = mysqli_query($connect, 'select * from stripeaccts where user_id = "'.$uid.'" and stripe_type = "cu"');
     $strres = mysqli_fetch_array($strq);
@@ -196,14 +202,19 @@ if (isset($_POST['payment-method-nonce'])) {
 
         <div class="container">
           <div class="row">
-              <div class="col-lg-8 col-sm-8 col-md-8 col-xs-12 tellus-data" >
+              <div class="col-lg-8 col-sm-8 col-md-8 col-xs-12 tellus-data" style="text-align: center; padding-bottom: 20px;">
   <?php if ($result->success || $result2->success) {?>
                 <!--<div style="font-weight: bold; padding: 10px 10px;">-->
+
                   <div><h2>Your transaction was successful!</h2></div>
-                  <div>Amount: &#36;<?php echo $_POST['total_price'] * .01 ?></div>
+                  <div>Amount: &#36;<?php echo $_POST['total_price']?></div>
                   <div>Location: <?php echo $_POST['theplace']?></div>
                   <div>Event Times: <?php echo $_POST['checkin'] . " to " . $_POST['checkout'] ?></div>
                   <div>An email has been sent to you to you with your transaction details.</div>
+                </div>
+  <?php } else if (isset($error)) { ?>
+                  <div><h2>Transaction failed.</h2></div>
+                  <div>Please contact 2finda support for help with this error.</div>
                 </div>
   <?php } else if (!isset($strres['stripe_cusid'])) { ?>
       <form id="checkout-form" method="post">
@@ -240,7 +251,7 @@ if (isset($_POST['payment-method-nonce'])) {
                     <div class="form-control" id="postal-code"></div>
                   </div>
               </div>
-              <input type="hidden" name="total_price" value="<?php echo (ltrim($_POST['total_price'], '$') * 100) ?>">
+              <input type="hidden" name="total_price" value="<?php echo ltrim($_POST['total_price'], '$') ?>">
               <input type="hidden" name="checkin" value="<?php echo $_POST['checkin'] ?>">
               <input type="hidden" name="checkout" value="<?php echo $_POST['checkout'] ?>">
               <input type="hidden" name="theplace" value="<?php echo $_POST['theplace'] ?>">
@@ -254,6 +265,7 @@ if (isset($_POST['payment-method-nonce'])) {
               </label>
               </div>
               <input type="submit" value="Pay Now" disabled>
+              <div style="height: 10px;"></div>
         </form>
               <div class="clearfix"></div>
             </div>

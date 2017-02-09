@@ -42,11 +42,22 @@ if (isset($_REQUEST['placeid'])) {
 			</style>
 		</div><!--menu-had close-->
 <?php 
+setlocale(LC_MONETARY, 'en_US');
 $placeid=$_REQUEST['placeid'];
 $checkin=$_REQUEST['checkin'];
 $checkout=$_REQUEST['checkout'];
-//$date1=$_REQUEST['checkin'] . " 00:00";
-//$date2=$_REQUEST['checkout'] . " 23:59";
+if (isset($_REQUEST['frtm'])) {
+	$frtm=$_REQUEST['frtm'];
+} else {
+	$frtm="";
+}
+if (isset($_REQUEST['totm'])) {
+	$totm=$_REQUEST['totm'];
+} else {
+	$totm="";
+}
+
+
 $query=mysqli_query($connect,'Select * from place where place_id="'.$placeid.'"') ;
 //$query=mysqli_query($connect,'Select * from calenderdata inner join place on calenderdata.placeid = place.place_id 
 //where calenderdata.placeid="'.$placeid.'" and calenderdata.status="Available" and ((date1 >= "'.$date1.'" and date1 < "'.$date2.'")
@@ -600,16 +611,16 @@ if (mysqli_num_rows($bresult) == 0) {
 	}
 	
 } else {
-$k = 0;
-$l = 0;
-$timeray1 = array();
-$timeray2 = array();
-$calray1 = array();
-$calray2 = array();
-$dt1time2 = "";
-$dt2time2 = "";
-$dt1time2a = "";
-$dt2time2a = "";
+	$k = 0;
+	$l = 0;
+	$timeray1 = array();
+	$timeray2 = array();
+	$calray1 = array();
+	$calray2 = array();
+	$dt1time2 = "";
+	$dt2time2 = "";
+	$dt1time2a = "";
+	$dt2time2a = "";
 
 //while ($bookres = mysqli_fetch_array($bresult)) {
 foreach ($calrows as $crow2) {
@@ -661,7 +672,7 @@ foreach ($calrows as $crow2) {
 	}
 		
 }
-	error_log($dt1time2 . " " . $calray2[$k]);
+	//error_log($dt1time2 . " " . $calray2[$k]);
 	if ($dt1time2 != $calray2[$k])
 	{
 		echo "<br>" . date_format(date_create($dt1time2), 'g:i a') . " to " . date_format(date_create($calray2[$k]), 'g:i a');
@@ -686,8 +697,8 @@ foreach ($calrows as $crow2) {
 <div class="col-md-4 pd-lr-6">
 <div class="input-group mg-top20">
     <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-    <input type="text" id="basic" name="time"/ class="form-control" placeholder="Start">
-    <input type="text" id="basic2" name="time"/ class="form-control"placeholder="End">
+    <input type="text" id="basic" name="time"/ class="form-control" value="<?php echo $frtm ?>" placeholder="Start">
+    <input type="text" id="basic2" name="time"/ class="form-control" value="<?php echo $totm ?>" placeholder="End">
 </div>
 
 </div>
@@ -760,21 +771,6 @@ foreach ($calrows as $crow2) {
 </div>  <!--my div end -->	
 <!--<form class="book_form"  method="post">
 
-
-     <?php
-//$country = $match['p_country'] ;
-                                       //  echo $country;
-?>
-<?php //switch ($country) {
-            ?>
-<?php    //case "United States":  $currency= "&#36;"?>
-         <h4>	&#36; <span class="night_rupee"><?php //echo $match[2]; ?></span></h4>
-<?php        //break; case "United Kingdom":  $currency= "&163;"?>
-       <h4>&#163; <span class="night_rupee"><?php //echo $match[2]; ?></span></h4> </h4>
- <?php       //break; case "India": $currency= "&#8377;"?>
-        <h4>&#8377; <span class="night_rupee"><?php //echo $match[2]; ?></span></h4> </h4>
-
-<?php //}  ?>
 
     </div>
     <div class="col-md-6 col-sm-6 col-xs-6">
@@ -1045,7 +1041,7 @@ $(document).ready(function(){
         }
         });*/
 
-		var final_total = price + (price * fee);
+		var final_total = (price + (price * fee)).toFixed(2);
 		$('#time1').val(starttime);
         $('#time2').val(endtime);
         $('#total_hour').val(hours);
@@ -1053,7 +1049,8 @@ $(document).ready(function(){
         $('.night_rupee').html(per_hours);
         $('.price_cal').html(per_hours);
 		$('.initprice').html(price);
-		$('.total_price_cal').html(Number(Math.round((price * fee)+'e2')+'e-2'));
+		//$('.total_price_cal').html(Number(Math.round((price * fee)+'e2')+'e-2'));
+		$('.total_price_cal').html((price * fee).toFixed(2));
 		$('.totalprice').val(final_total);
 		$('.total_price').html(final_total);
         $('.calculated').html(hours+' hours');
@@ -1172,7 +1169,7 @@ $(document).ready(function(){
 			$('.calculated').html(hours+' hours');
 			}
 			});*/
-			var final_total = price + (price * fee);
+			var final_total = (price + (price * fee)).toFixed(2);
 			$('#time1').val(starttime);
 			$('#time2').val(endtime);
 			$('#total_hour').val(hours);
@@ -1180,7 +1177,8 @@ $(document).ready(function(){
 			$('.night_rupee').html(per_hours);
 			$('.price_cal').html(per_hours);
 			$('.initprice').html(price);
-			$('.total_price_cal').html(Number(Math.round((price * fee)+'e2')+'e-2'));
+			//$('.total_price_cal').html(Number(Math.round((price * fee)+'e2')+'e-2'));
+			$('.total_price_cal').html((price * fee).toFixed(2));
 			$('.totalprice').val(final_total);
 			$('.total_price').html(final_total);
 			$('.calculated').html(hours+' hours');

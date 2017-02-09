@@ -295,6 +295,7 @@ if(isset($_REQUEST['replying']))
         //start 
         if($query_status=="0")
         {
+          error_log("INSERT INTO `booking`(`placeid`, `userid`, `package`, `price`, `checkin`, `checkout`, `hours`, `guests`, `online`, `hotel`,`ftime`,`ltime`) VALUES ('".$placeid."','".$_SESSION['u_id']."','".$package."','".$price."','".$checkin."','".$checkout."','".$hours."','".$guests."','".$totalprice."','".$totalprice."','".$start_time12."','".$end_time12."')");
           $q = mysqli_query($connect,"INSERT INTO `booking`(`placeid`, `userid`, `package`, `price`, `checkin`, `checkout`, `hours`, `guests`, `online`, `hotel`,`ftime`,`ltime`) VALUES ('".$placeid."','".$_SESSION['u_id']."','".$package."','".$price."','".$checkin."','".$checkout."','".$hours."','".$guests."','".$totalprice."','".$totalprice."','".$start_time12."','".$end_time12."')");
           $last_id = $connect->insert_id;
           //error_log("last id: " . $last_id);

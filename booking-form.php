@@ -3,14 +3,14 @@ session_start();
 include_once('connect.php');
 // if(isset($_SESSION['u_id'])
 // {
-$paypal_url='https://www.paypal.com/cgi-bin/webscr'; // Test Paypal API URL
-$paypal_id='bluestar.jeet@gmail.com'; // Business email ID
+//$paypal_url='https://www.paypal.com/cgi-bin/webscr'; // Test Paypal API URL
+//$paypal_id='bluestar.jeet@gmail.com'; // Business email ID
 $book = $_REQUEST['bookid'];
-error_log("book: " . $book);
+
 $q17 = mysqli_query($connect,'Select * from users,booking where uid="'.$_SESSION['u_id'].'" and uid=userid and bookid="'.$book.'"');
 if(mysqli_num_rows($q17)>0)
 {
-  error_log("I made it");
+  
 $r17=mysqli_fetch_array($q17);
 
 // $q18 = mysqli_query($connect,"select * from booking where bookid=".$book);
@@ -65,7 +65,7 @@ $r17=mysqli_fetch_array($q17);
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
    <input type="hidden" value="<?php echo $book; ?>" id="booking_id" >
      <input type="text" name="book_id" hidden value="<?php echo $book; ?>">
-    <input readonly="" type="text" value="<?php echo $r17['package']; ?>" class="form-control" id="" placeholder="Premium">
+    <input readonly="" type="text" value="<?php echo $r17['hours']. " " . $r17['package']; ?>" class="form-control" id="" placeholder="Premium">
   </div>
   
   </div>
