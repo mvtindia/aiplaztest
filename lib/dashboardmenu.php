@@ -22,7 +22,7 @@ include_once('connect.php');
 		<li id="two" class="same-class"><a id="a2" class="b2">My Booking</a></li>
     <li id="two" class="same-class"><a id="a11" class="b10">User Booking</a></li>
 
-    <li id="two" class="same-class"><a id="e2" class="b9">My Enquiries</a></li>
+    <!--<li id="two" class="same-class"><a id="e2" class="b9">My Enquiries</a></li>-->
       <!--<li id="two" class="same-class"><a id="a8" class="b7">My Services</a></li>-->
 		<li id="three" class="same-class"><a id="a3" class="b3">My Reviews</a></li>
 		<!-- <li id="four" class="same-class"><a id="a4">My Rating</a></li> -->
