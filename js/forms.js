@@ -1125,11 +1125,11 @@ $(document).ready(function () {
                         $('.ishowload').css('display', 'none');
                         $("#pricetermss").css('display', 'none');
                         $("#calender-tab").css('display', 'block');
-                        $("div#msg").html('<h3>Availability added.</h3>');
+                        $("#msg3").html('<h3 style="color: blue;">Availability added.</h3>');
                         //swal('Success', 'Updated Successfully', 'success');
                     } else {
                         $('.ishowload').css('display', 'none');
-                        $("div#msg").html('<h3>Some or all of time period has been scheduled.</h3>');
+                        $("#msg3").html('<h3 style="color: red;">Some or all of time period has been scheduled.</h3>');
                     }
 
                     $('#back2').click(function () {
