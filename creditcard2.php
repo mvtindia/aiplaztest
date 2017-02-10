@@ -181,6 +181,7 @@ if (isset($_POST['payment-method-nonce'])) {
       }
     }
  } else if (isset($_POST['customer'])) {
+   error_log("here i am");
     $cusid = $_POST['stripeid'];
     $amt = $_POST['total_price'];
     $result = Braintree_Transaction::sale(
@@ -191,6 +192,7 @@ if (isset($_POST['payment-method-nonce'])) {
     );
     $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `amount`, `cust_id`) values ("'.$uid.'", "'.$amt.'", "'.$cusid.'")');
  } else {
+   error_log("here i was");
     $strq = mysqli_query($connect, 'select * from stripeaccts where user_id = "'.$uid.'" and stripe_type = "cu"');
     $strres = mysqli_fetch_array($strq);
  }
