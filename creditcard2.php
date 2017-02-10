@@ -283,7 +283,7 @@ if (isset($_POST['payment-method-nonce'])) {
 // generate a client token on your server (see section below).
 var form = document.querySelector('#checkout-form');
 var submit = document.querySelector('input[type="submit"]');
-var authorize = '<?php echo Braintree_ClientToken::generate() ?>';
+var authorize = <?php echo Braintree_ClientToken::generate() ?>;
 
 braintree.client.create({
   // Replace this with your own authorization.
