@@ -218,7 +218,8 @@ if (isset($_POST['payment-method-nonce'])) {
                   <div><h2>Transaction failed.</h2></div>
                   <div>Please contact 2finda support for help with this error.</div>
                 </div>
-  <?php } else if (!isset($strres['stripe_cusid'])) { ?>
+  <?php } else if (!isset($strres['stripe_cusid'])) { 
+    $clientToken = Braintree_ClientToken::generate(); ?>
       <form id="checkout-form" method="post">
               <div class="row">
                   <div class="form-group col-xs-8">
@@ -285,7 +286,7 @@ if (isset($_POST['payment-method-nonce'])) {
 // generate a client token on your server (see section below).
 var form = document.querySelector('#checkout-form');
 var submit = document.querySelector('input[type="submit"]');
-var authorize = <?php echo Braintree_ClientToken::generate() ?>;
+var authorize = '<?php echo $clientToken ?>';
 
 braintree.client.create({
   // Replace this with your own authorization.
