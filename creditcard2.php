@@ -15,10 +15,16 @@
         
     $amt = $_POST['total_price'];
     $zip = $_POST['address_zip'];
+    $theplace = $_POST['theplace'];
+    $checkin = $_POST['checkin'];
+    $checkout = $_POST['checkout'];
     
     $customer = "";
     $charge = "";
     $cusid = "";
+    $fname = $_SESSION['fname'];
+    $lname = $_SESSION['lname'];
+    $email = $_SESSION['email'];
     
     // Charge the user's card:
 
@@ -125,7 +131,7 @@
 
 if (isset($_POST['payment-method-nonce'])) {
     $nonceFromTheClient = $_POST['payment-method-nonce'];
-    $amt = $_POST['total_price'];
+    //$amt = $_POST['total_price'];
     $zip = $_POST['address_zip'];
     
     $customer = "";
@@ -144,11 +150,12 @@ if (isset($_POST['payment-method-nonce'])) {
               'amount' => $amt
             ]
           );
-          error_log($result2->customer->paymentMethods[0]->token);
+          
           if ($result2->success) {
             $inscus = mysqli_query($connect, 'insert into `stripeaccts` (`user_id`, `stripe_cusid`, `stripe_type`) values ("'.$uid.'", "'.$cusid.'", "cu")');
             if ($inscus) {
               $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `stripe_cusid`, `amount`) values ("'.$uid.'", "'.$cusid.'", "'.$amt.'")');
+              email_message($fname, $lname, $email, $sguser, $sgpass, $sgrequest, $amt, $theplace, $checkin, $checkout);
             }
           } else {
             $error = "true";
@@ -169,6 +176,7 @@ if (isset($_POST['payment-method-nonce'])) {
       if ($result->success || !is_null($result->transaction)) {
           $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `amount`, `comment`) values ("'.$uid.'", "'.$amt.'", "One time transaction.")');
           $transaction = $result->transaction;
+          email_message($fname, $lname, $email, $sguser, $sgpass, $sgrequest, $amt, $theplace, $checkin, $checkout);
           //header("Location: transaction.php?id=" . $transaction->id);
       } else {
           $errorString = "";
@@ -181,9 +189,9 @@ if (isset($_POST['payment-method-nonce'])) {
       }
     }
  } else if (isset($_POST['customer'])) {
-   error_log("here i am");
+   
     $cusid = $_POST['stripeid'];
-    $amt = $_POST['total_price'];
+    //$amt = $_POST['total_price'];
     $result = Braintree_Transaction::sale(
             [
               'customerId' => $cusid,
@@ -191,10 +199,52 @@ if (isset($_POST['payment-method-nonce'])) {
             ]
     );
     $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `amount`, `cust_id`) values ("'.$uid.'", "'.$amt.'", "'.$cusid.'")');
+    email_message($fname, $lname, $email, $sguser, $sgpass, $sgrequest, $amt, $theplace, $checkin, $checkout);
  } else {
-   error_log("here i was");
+  
     $strq = mysqli_query($connect, 'select * from stripeaccts where user_id = "'.$uid.'" and stripe_type = "cu"');
     $strres = mysqli_fetch_array($strq);
+ }
+
+ function email_message($fname, $lname, $email, $sguser, $sgpass, $sgrequest, $total_price, $theplace, $checkin, $checkout) {
+   
+              $subject = 'Your 2finda transaction';
+
+              $body = "Dear " . $fname . " " . $lname . ",<br><br>
+            You have successfully booked a space on 2finda.com<br>
+            See the details of your credit card transaction:<br>
+            Amount: &#36;" . $total_price . "<br>
+            Location: " . $theplace . "<br>
+            Event Times: " . $checkin . " to " . $checkout . "<br>Your 2finda team";
+
+              /*$json_string = array(
+                'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
+              );*/
+
+              $json_string = array(
+                'to' => array($email), 'category' => 'test_category'
+              );
+              
+              $params = array(
+                  'api_user' => $sguser,
+                  'api_key' => $sgpass,
+                  'to' => $email,
+                  'subject' => $subject,
+                  'html' => $body,
+                  'from' => 'info@2finda.com',
+              );
+error_log($params['html']);
+              $session = curl_init($sgrequest);
+              curl_setopt($session, CURLOPT_POST, true);
+              curl_setopt($session, CURLOPT_POSTFIELDS, $params);
+              curl_setopt($session, CURLOPT_HEADER, false);
+              curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+              curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+              $response = curl_exec($session);
+              curl_close($session);
+              //mysqli_close($connect);
+              header('Location: success.php');
+              
  }
 
 ?>       
@@ -212,7 +262,7 @@ if (isset($_POST['payment-method-nonce'])) {
                   <div>Amount: &#36;<?php echo $_POST['total_price']?></div>
                   <div>Location: <?php echo $_POST['theplace']?></div>
                   <div>Event Times: <?php echo $_POST['checkin'] . " to " . $_POST['checkout'] ?></div>
-                  <div>An email has been sent to you to you with your transaction details.</div>
+                  <div>An email has been sent to you with your transaction details.</div>
                 </div>
   <?php } else if (isset($error)) { ?>
                   <div><h2>Transaction failed.</h2></div>

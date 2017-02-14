@@ -233,7 +233,7 @@ button.multiselect.dropdown-toggle.btn.btn-default
 
 <!--======================Services Block=================================-->
     <div class="container mg-top20 mg-bottom30">
-      <h4 class="text-center city2">We facilitate sharing your free space for celebration like weddings, private parties, conferences and help you grow with us</h4>
+      <h4 class="text-center city2">We facilitate sharing your free space for celebrations like weddings, private parties, conferences.</h4>
       <?php
         $query1=mysqli_query($connect,'SELECT * FROM `usedfor` limit 4');
           while($row1=mysqli_fetch_array($query1)){
