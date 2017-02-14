@@ -655,6 +655,7 @@ if($match=mysqli_fetch_array($query)){
             <button name="calender_price_delete" id="he<?php echo $row9['calid']; ?>" class="btn btn-danger onclick_delete_price " value="<?php echo $row9['calid'] ?>"><i class="fa fa-trash"></i></button></div>
             
             </div>
+            <span id="delmsg" style="color: blue;"></span>
           <?php
           $he++;
           }

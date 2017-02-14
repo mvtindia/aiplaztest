@@ -970,7 +970,7 @@ $(document).ready(function () {
 //delete price calenderdata
     $('.onclick_delete_price').click(function () {
         var d_cal = $(this).val();
-        console.log(d_cal);
+        
         var r = confirm("Confirm deletion.");
         if (r == false) {
             return false;
@@ -984,7 +984,8 @@ $(document).ready(function () {
                         // $('.for_re').load(window.location + ' .for_re');
                         // $(this).attr('disabled');
                         $('#he' + d_cal).parent('div').parent('div').css('display', 'none');
-                        swal('Success', 'Updated Successfully', 'success');
+                        $('#delmsg').html("Delete Successful.");
+                        //swal('Success', 'Updated Successfully', 'success');
                     } else
                     {
                         swal('Fail', 'Updated Unsuccessfully', 'failure');
