@@ -13,7 +13,7 @@
     //require __DIR__ . '/vendor/autoload.php';
     
         
-    $amt = $_POST['total_price'];
+    $amt = ltrim($_POST['total_price'], '$');
     $zip = $_POST['address_zip'];
     $theplace = $_POST['theplace'];
     $checkin = $_POST['checkin'];
@@ -25,6 +25,7 @@
     $fname = $_SESSION['fname'];
     $lname = $_SESSION['lname'];
     $email = $_SESSION['email'];
+    $placeid = $_SESSION['placeid'];
     
     // Charge the user's card:
 
@@ -198,7 +199,8 @@ if (isset($_POST['payment-method-nonce'])) {
               'amount' => $amt
             ]
     );
-    $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `amount`, `cust_id`) values ("'.$uid.'", "'.$amt.'", "'.$cusid.'")');
+    
+    $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `amount`, `cusid`) values ("'.$uid.'", "'.$amt.'", "'.$cusid.'")');
     email_message($fname, $lname, $email, $sguser, $sgpass, $sgrequest, $amt, $theplace, $checkin, $checkout);
  } else {
   
@@ -215,7 +217,7 @@ if (isset($_POST['payment-method-nonce'])) {
             See the details of your credit card transaction:<br>
             Amount: &#36;" . $total_price . "<br>
             Location: " . $theplace . "<br>
-            Event Times: " . $checkin . " to " . $checkout . "<br>Your 2finda team";
+            Event Times: " . $checkin . " to " . $checkout . "<br><br>Your 2finda team";
 
               /*$json_string = array(
                 'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
@@ -233,7 +235,41 @@ if (isset($_POST['payment-method-nonce'])) {
                   'html' => $body,
                   'from' => 'info@2finda.com',
               );
-error_log($params['html']);
+
+              $session = curl_init($sgrequest);
+              curl_setopt($session, CURLOPT_POST, true);
+              curl_setopt($session, CURLOPT_POSTFIELDS, $params);
+              curl_setopt($session, CURLOPT_HEADER, false);
+              curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+              curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+              $response = curl_exec($session);
+              curl_close($session);
+              //mysqli_close($connect);
+              $sql5 = mysqli_query($connect,"SELECT * FROM place, users WHERE userid = user_id and place_id = '".$placeid."'");
+              $row5 = mysqli_fetch_array($sql5);
+              $subject = 'Your 2finda transaction';
+
+              $body = "Dear " . $row5['fname'] . " " . $row5['lname'] . ",<br><br>"
+            . $fname . " " . $lname . " has booked your space, " . $row5['space_name'] . " from " . $checkin . " to " . $checkout
+             . "<br><br>Your 2finda team";
+
+              /*$json_string = array(
+                'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
+              );*/
+
+              $json_string = array(
+                'to' => array($email), 'category' => 'test_category'
+              );
+              
+              $params = array(
+                  'api_user' => $sguser,
+                  'api_key' => $sgpass,
+                  'to' => $email,
+                  'subject' => $subject,
+                  'html' => $body,
+                  'from' => 'info@2finda.com',
+              );
+
               $session = curl_init($sgrequest);
               curl_setopt($session, CURLOPT_POST, true);
               curl_setopt($session, CURLOPT_POSTFIELDS, $params);
@@ -416,13 +452,13 @@ braintree.client.create({
   <?php } else { ?>
   <!--<div style="font-weight: bold; padding: 10px 10px;">-->
     <h2>Do you wish to complete your transaction?</h2>
-    <div>Amount: <?php echo $_POST['total_price'] ?></div>
+    <div>Amount: &#36;<?php echo $_POST['total_price'] ?></div>
     <div>Location: <?php echo $_POST['theplace']?></div>
     <div>Event Times: <?php echo $_POST['checkin'] . " to " . $_POST['checkout'] ?></div>
     <form method="post">
     <input type="hidden" name="stripeid" value="<?php echo $strres['stripe_cusid'] ?>">
     <input type="hidden" name="customer" value="customer">
-    <input type="hidden" name="total_price" value="<?php echo (ltrim($_POST['total_price'], '$') * 100) ?>">
+    <input type="hidden" name="total_price" value="<?php echo $_POST['total_price'] ?>">
     <input type="hidden" name="checkin" value="<?php echo $_POST['checkin'] ?>">
     <input type="hidden" name="checkout" value="<?php echo $_POST['checkout'] ?>">
     <input type="hidden" name="theplace" value="<?php echo $_POST['theplace'] ?>">

@@ -110,7 +110,8 @@ $r17=mysqli_fetch_array($q17);
     <label for="space">Total Price</label>
   </div>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-    <input readonly="" id="amount" type="text" name="total_price" value=$<?php echo $r17['hotel'] ?> class="form-control" >
+    <input readonly="" id="amount" type="text" name="show_price" value=$<?php echo $r17['hotel'] ?> class="form-control" >
+    <input type="hidden" name="total_price" value=<?php echo $r17['hotel'] ?> >
   </div>
   
   </div>
@@ -163,6 +164,7 @@ $r17=mysqli_fetch_array($q17);
   </div>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
     <input readonly="" type="text" value="<?php echo $r17['email']; ?>" class="form-control" id="" placeholder="Email">
+    <input type="hidden" name="placeid" value="<?php echo $_POST['placeid'] ?>">
   </div>
   </div>
 
@@ -186,13 +188,14 @@ $r17=mysqli_fetch_array($q17);
     
 <?php 
   $sql4 = mysqli_query($connect,"SELECT * FROM place,users WHERE user_id=uid and place_id='".$r17['placeid']."'");
-  $row4 = mysqli_fetch_array($sql4); ?>
+  $row4 = mysqli_fetch_array($sql4); 
+?>
     <form method="post" id="book_messagess">
-<input name="to_msg" value="<?php echo $row4['uid']; ?>" type="hidden">
-  <div class="hides">
- <textarea required="" class="form-control height90" name="message" placeholder="Type Your Message Here.."></textarea>
- <input type="text" name="place_id" hidden value="<?php echo $r17['placeid']; ?>">
-   </div>
+    <input name="to_msg" value="<?php echo $row4['uid']; ?>" type="hidden">
+    <div class="hides">
+      <textarea required="" class="form-control height90" name="message" placeholder="Type Your Message Here.."></textarea>
+      <input type="text" name="place_id" hidden value="<?php echo $r17['placeid']; ?>">
+    </div>
     <button class="btn-reply send_btn2 mg-top10" type="submit" name="book_messagess" style="display: none;"><i class="fa fa-share-square-o"></i>&nbsp;Send</button>
     <button class="btn-reply cancel_btn2 mg-top10" type="button" style="display: none;"><i class="fa fa-times"></i>&nbsp;Cancel</button>
     </form>

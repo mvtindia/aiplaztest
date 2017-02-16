@@ -722,10 +722,10 @@ foreach ($calrows as $crow2) {
 <div class="errormessage">
 <div class="row">
 <div class="col-md-6 col-sm-6 col-xs-7 pricecel">
-<h5>$ <span class="price_cal"><?php echo $res9[3] ?></span> x <span class="calculated">1 Hour</span></h5>
+<h5>&#36;<span class="price_cal"><?php echo $res9[3] ?></span> x <span class="calculated">1 Hour</span></h5>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>$ </span><span class="initprice"><?php echo $res9[3] ?> </span></h5>
+<h5 class="text-right"><span>&#36;</span><span class="initprice"><?php echo $res9[3] ?> </span></h5>
 </div>
 </div>
 	<div class="row" id="forappend"></div>
@@ -734,14 +734,14 @@ foreach ($calrows as $crow2) {
 		<h5>Convenience Fee</h5>
 	</div>
 	<div class="col-md-6 col-sm-6 col-xs-5">
-		<h5 class="text-right"><span class="total_price_cal">$<?php echo ($res9[3] * $fee) ?></span></h5>
+		<h5 class="text-right">&#36;<span class="total_price_cal"><?php echo ($res9[3] * $fee) ?></span></h5>
 	</div>
 	
 		<div class="col-md-6 col-sm-6 col-xs-7">
 			<h5>Total</h5>
 		</div>
 		<div class="col-md-6 col-sm-6 col-xs-5">
-			<h5 class="text-right"><span>$ </span><span class="total_price"><?php echo ($res9[3] + ($res9[3] * $fee)) ?> </span></h5>
+			<h5 class="text-right">&#36;<span class="total_price"><?php echo ($res9[3] + ($res9[3] * $fee)) ?> </span></h5>
 		</div>
 	
 </div>
@@ -764,6 +764,7 @@ foreach ($calrows as $crow2) {
 	<form id="gotobook" action="booking-form.php" method="post">
 		<input name="theplace" value="<?php echo $match['space_name'].",".$match['p_address'];?>" type="hidden" />
 		<input id="bookid" name="bookid"  type="hidden" />
+		<input name="placeid" value="<?php echo $placeid ?>" type="hidden" />
 		<button id="bk-btn" type="submit">
 	</form>
 </div>
@@ -1120,7 +1121,7 @@ $(document).ready(function(){
 			{
 			var per_hours =price_cal;
 			var price = parseInt(hours)*parseInt(price_cal);
-			//console.log("defailt price"+price);
+			
 			}
 			else
 			{ 
