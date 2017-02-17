@@ -200,8 +200,8 @@ else
           <!--<a href=<?php echo $output ?><button class="fb-btn"><i class="fa fa-facebook"></i>&nbsp;Join with Facebook</button></a>-->
                   <?php echo $output ?>
               </div>
-              <div class="google mg-top10">
-                <button class="google-btn"><i class="fa fa-google-plus"></i>&nbsp;Join with Google</button>
+              <div class="google mg-top10" id="gSignInWrapper">
+                <button class="google-btn customGPlusSignIn"><i class="fa fa-google-plus"></i>&nbsp;Join with Google</button>
               </div>
               <p class="text-center">or</p>
               <div class="text-center">
@@ -406,7 +406,7 @@ else
    <script src="js/star-rating.min.js"></script>
   <!--<script src="js/bootstrap-select.js"></script> -->
   
-  <script src="js/wow.js"></script>
+  <!--<script src="js/wow.js"></script>-->
 <style>
   .ui-datepicker-unselectable span
   {
@@ -1180,7 +1180,10 @@ $(document).ready(function() {
     pauseOnHover: true,
     interval: 2000,
   });
-    
+  
+  $('.google-btn').click(function() {
+    startApp();
+  });
 
 });
       var placeSearch, autocomplete;

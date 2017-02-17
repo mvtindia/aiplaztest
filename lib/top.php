@@ -46,4 +46,32 @@
 <link href="css/nouislider.min.css" rel="stylesheet">
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+<script src="https://apis.google.com/js/api:client.js"></script>
+  <script>
+  var googleUser = {};
+  var startApp = function() {
+    gapi.load('auth2', function(){
+      // Retrieve the singleton for the GoogleAuth library and set up the client.
+      auth2 = gapi.auth2.init({
+        client_id: '1021417611119-7tco73rh4s5rs29463sgruetap5pl7sl.apps.googleusercontent.com',
+        cookiepolicy: 'single_host_origin',
+        // Request scopes in addition to 'profile' and 'email'
+        //scope: 'additional_scope'
+      });
+      attachSignin(document.getElementById('customBtn'));
+    });
+  };
+
+  function attachSignin(element) {
+    //console.log(element.id);
+    auth2.attachClickHandler(element, {},
+        function(googleUser) {
+          //document.getElementById('name').innerText = "Signed in: " +
+          //    googleUser.getBasicProfile().getName();
+          alert(googleUser.getBasicProfile().getName());
+        }, function(error) {
+          alert(JSON.stringify(error, undefined, 2));
+        });
+  }
+  </script>
        
