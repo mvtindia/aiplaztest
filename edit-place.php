@@ -588,7 +588,7 @@ if($match=mysqli_fetch_array($query)){
 			                                    <!--<a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>-->
 		                        </div>
                                 
-                                <div id="msg" style="color: red; padding: 0 30px;"></div>
+                                <div id="msg3" style="color: red; padding: 0 30px;"></div>
     	                    </div><!--frm-field-mar--> 
                             </div>
 </form>
