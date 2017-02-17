@@ -201,7 +201,7 @@ else
                   <?php echo $output ?>
               </div>
               <div class="google mg-top10" id="gSignInWrapper">
-                <button class="google-btn customGPlusSignIn"><i class="fa fa-google-plus"></i>&nbsp;Join with Google</button>
+                <button class="google-btn customGPlusSignIn" id="customBtn"><i class="fa fa-google-plus"></i>&nbsp;Join with Google</button>
               </div>
               <p class="text-center">or</p>
               <div class="text-center">
@@ -1173,16 +1173,13 @@ $('.picking').change(function(){
 <?php if (isset($_PUT['rsemail'])) { ?>
         $('#fourth-block').css('display','block');
 <?php } ?>
+startApp();
 $(document).ready(function() {
   
   //Set the carousel options
   $('#quote-carousel').carousel({
     pauseOnHover: true,
     interval: 2000,
-  });
-  
-  $('.google-btn').click(function() {
-    startApp();
   });
 
 });
