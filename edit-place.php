@@ -584,7 +584,7 @@ if($match=mysqli_fetch_array($query)){
 		                            </div>
                               
 		                        <div class="col-md-12 col-lg-12 form-group row" style="margin: 5px 0px 11px 70px;">
-			                                    <button id="continue" type="button" name="place" class="btn btn-default cus-save-but">Continue</button>                       	
+			                                                          	
 			                                    <!--<a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>-->
 		                        </div>
                                 
@@ -1109,8 +1109,8 @@ p {
 
 
       function formVal() {
-                    var mess = "Please Enter Missing Information.";
-
+            var mess = "Please Enter Missing Information.";
+            $('#msg3').html("");
     				var fn=document.getElementById('date1a').value;
     				if(fn == ""){
         				
