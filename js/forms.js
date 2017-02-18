@@ -984,7 +984,7 @@ $(document).ready(function () {
                         // $('.for_re').load(window.location + ' .for_re');
                         // $(this).attr('disabled');
                         $('#he' + d_cal).parent('div').parent('div').css('display', 'none');
-                        $('#delmsg').html("Delete Successful.");
+                        //$('#delmsg').html("Delete Successful.");
                         //swal('Success', 'Updated Successfully', 'success');
                     } else
                     {
