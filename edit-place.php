@@ -619,12 +619,12 @@ if($match=mysqli_fetch_array($query)){
     border-bottom-color: transparent;
 }
     </style>
-          <div class="col-md-3" style="text-align: center;">From</div>
+          <div class="col-md-3" style="text-align: center; padding-left: 50px;">From</div>
           <div class="col-md-3" style="text-align: center;">To</div>
-          <div class="col-md-1">Price/<br>Hour</div>
-          <div class="col-md-1">Price/<br>Day</div>
-          <div class="col-md-1">Price/<br>Week</div>
-          <div class="col-md-3" style="text-align: center;">Action</div>
+          <div class="col-md-1" style="padding-left: 50px;">Price/<br>Hour</div>
+          <div class="col-md-1" style="padding-left: 50px;">Price/<br>Day</div>
+          <!--<div class="col-md-1">Price/<br>Week</div>-->
+          <div class="col-md-3" style="text-align: center; style="padding-left: 50px;">Action</div>
         </div>
         <?php
         $he = 1;
@@ -632,7 +632,7 @@ if($match=mysqli_fetch_array($query)){
         {
           $fromdt = date_format(date_create($row9['date1']), 'Y-m-d g:s a');
           $todt = date_format(date_create($row9['date2']), 'Y-m-d g:s a');
-          ?><div class="row for_re" style="padding: 11px 0px 1px 0px;
+          ?><div class="row for_re" style="padding: 11px 0px 1px 50px;
     border-bottom: 2px solid rgb(252, 139, 17);">
             <div class="col-md-3 text-center"><?php echo $fromdt ?></div>
             <div class="col-md-3 text-center"><?php echo $todt ?></div>
@@ -649,7 +649,7 @@ if($match=mysqli_fetch_array($query)){
                ?>
             <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="p_p_h" value="<?php echo $row9['p_p_h']  ? $row9['p_p_h'] : '0';  ?>"></div>
             <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="p_p_n" value="<?php echo $row9['p_p_n'] ? $row9['p_p_n'] : '0';  ?>"></div>       
-            <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="w_p_p_n" value="<?php echo $row9['w_p_p_n']  ? $row9['w_p_p_n'] : '0'; ?>"></div>
+            <!--<div class="col-md-1 text-center"><input class="he<?php //echo $he; ?>" style="width: 59px;" type="text" name="w_p_p_n" value="<?php //echo $row9['w_p_p_n']  ? $row9['w_p_p_n'] : '0'; ?>"></div>-->
             <?php //} ?>
             <div class="col-md-3 text-center"><button name="calender_price_update" id="he<?php echo $he; ?>" class="btn btn-success onclick_submit_price " value="<?php echo $row9['calid'] ?>" ><i class="fa fa-floppy-o"></i></button>
             <button name="calender_price_delete" id="he<?php echo $row9['calid']; ?>" class="btn btn-danger onclick_delete_price " value="<?php echo $row9['calid'] ?>"><i class="fa fa-trash"></i></button></div>
@@ -1194,9 +1194,11 @@ p {
 						$("#span1a").css('display', 'none');
     				}*/
                     
-                    var dt1 = new Date($("#date1a").val() + " " + $("#date1b").val());
+              var dt1 = new Date($("#date1a").val() + " " + $("#date1b").val());
 			        var dt2 = new Date($("#date2a").val() + " " + $("#date2b").val());
-                    var dt3 = new Date();
+              var dt3 = new Date();
+              var dttm1 = new Date($("#date1a").val() + " " + $("#date1b").val());
+              var dttm2 = new Date($("#date1a").val() + " " + $("#date2b").val());
 			        if (dt1 >= dt2) {
 				        document.getElementById('date1a').style.borderColor = "red";
 				        document.getElementById('date1b').style.borderColor = "red";
@@ -1205,13 +1207,19 @@ p {
 				        $("#span1a").html("From Date is Greater than or Equal to To Date.");
 				        $("#span1a").css('display', 'block');
 				        return false;
-                    } else if (dt1 < dt3) {
-                        document.getElementById('date1a').style.borderColor = "red";
-                        $("#span1a").html("From Date is in the Past.");
+              } else if (dt1 < dt3) {
+                document.getElementById('date1a').style.borderColor = "red";
+                $("#span1a").html("From Date is in the Past.");
 				        $("#span1a").css('display', 'block');
-                        return false;
-                    }
-                    return true;
+                return false;
+              } else if (dttm1 >= dttm2) {
+                document.getElementById('date1b').style.borderColor = "red";
+				        document.getElementById('date2b').style.borderColor = "red";
+				        $("#span1a").html("From Time is Greater than or Equal to To Time.");
+				        $("#span1a").css('display', 'block');
+				        return false;
+              }
+              return true;
     }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0ceT-_kjPt8INNEKoVX9axkv3zw3miBY&signed_in=true&libraries=places&callback=initAutocomplete"
