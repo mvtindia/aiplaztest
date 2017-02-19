@@ -221,8 +221,8 @@ if(isset($_REQUEST['replying']))
               $time_array = $time_array.$start_time.",";
        }
        
-       $time_array = rtrim($time_array,',');
-       $time_array = explode(',',$time_array);
+        $time_array = rtrim($time_array,',');
+        $time_array = explode(',',$time_array);
         $package = $_POST['package'];
         $price = $_POST['price'];
         $checkin = date('Y-m-d', strtotime($_POST['checkin']));
@@ -237,7 +237,7 @@ if(isset($_REQUEST['replying']))
        
         $placeid = $_POST['myplaceid'];
         $guests = $_POST['guests'];
-        error_log($guests);
+        //error_log($guests);
         $totalprice = $_POST['totalprice'];
         $query_status="0";
         $sql = mysqli_query($connect,"SELECT * FROM  `booking` WHERE`placeid`='".$placeid."' and `userid`='".$_SESSION['u_id']."'and `checkin`='".$checkin."'and `checkout`='".$checkout."'");
@@ -289,16 +289,14 @@ if(isset($_REQUEST['replying']))
         {
             $query_status="0";
         }
-        //error_log($query_status);
-        //error_log($checkin . " " . $checkout . " " . $totalprice . " " . $placeid . " " . $package);
-        //error_log($start_time . " " . $end_time);
+        
         //start 
         if($query_status=="0")
         {
-          error_log("INSERT INTO `booking`(`placeid`, `userid`, `package`, `price`, `checkin`, `checkout`, `hours`, `guests`, `online`, `hotel`,`ftime`,`ltime`) VALUES ('".$placeid."','".$_SESSION['u_id']."','".$package."','".$price."','".$checkin."','".$checkout."','".$hours."','".$guests."','".$totalprice."','".$totalprice."','".$start_time12."','".$end_time12."')");
+          
           $q = mysqli_query($connect,"INSERT INTO `booking`(`placeid`, `userid`, `package`, `price`, `checkin`, `checkout`, `hours`, `guests`, `online`, `hotel`,`ftime`,`ltime`) VALUES ('".$placeid."','".$_SESSION['u_id']."','".$package."','".$price."','".$checkin."','".$checkout."','".$hours."','".$guests."','".$totalprice."','".$totalprice."','".$start_time12."','".$end_time12."')");
           $last_id = $connect->insert_id;
-          //error_log("last id: " . $last_id);
+          
           if($q)
           {
             $caldt1 = $checkin . " " . $start_time12;
@@ -309,7 +307,7 @@ if(isset($_REQUEST['replying']))
             if($row['a_status']== 0)
               {    
       
-                $subject = '2finda Booking Information';
+                /*$subject = '2finda Booking Information';
 
                 $sql4 = mysqli_query($connect,"SELECT * FROM place WHERE place_id='".$placeid."'");
                 $row4 = mysqli_fetch_array($sql4);
@@ -358,14 +356,14 @@ if(isset($_REQUEST['replying']))
                 curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
                 $response = curl_exec($session);
-                curl_close($session);
-                error_log("spota");
+                curl_close($session);*/
+                
                 echo "ok";
                 echo ">>>";
                 echo $last_id;
                 // echo "<script> window.location.href='booking-form.php?booking_id=".$last_id."';</script>";
               } else {
-                $encrypt=md5($row['email'].time());
+                /*$encrypt=md5($row['email'].time());
                 $sql3 = mysqli_query($connect,"UPDATE   users SET activation_link='".$encrypt."' WHERE uid='".$_SESSION['u_id']."'");
                 $subject = "2finda.com [Sent Enquiry]";
                 $message ="Dear ".$row['fname']." ".$row['lname'].", <br>You have Received this mail from 2finda.com. 
@@ -387,7 +385,7 @@ if(isset($_REQUEST['replying']))
                 curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
                 $response = curl_exec($session);
-                curl_close($session);
+                curl_close($session);*/
                 echo"not_activate";
           }
           } else { echo "not_inserted";}
@@ -418,12 +416,12 @@ if((isset($_GET['activatelink']))&&(isset($_GET['bookid'])))
   $sql2 = mysqli_query($connect,"SELECT * FROM  users WHERE activation_link='".$activation."' and uid='".$row['userid']."' and a_status='0'");
   if(mysqli_num_rows($sql2)>0)
   {
-    $sql3 = mysqli_query($connect,"UPDATE users SET a_status='1' WHERE uid='".$row['userid']."'");
-   header('location:booking-form.php?booking_id='.$bookid.'');
+      $sql3 = mysqli_query($connect,"UPDATE users SET a_status='1' WHERE uid='".$row['userid']."'");
+      header('location:booking-form.php?booking_id='.$bookid.'');
   }
   else
   {
-     header('location:index.php');
+      header('location:index.php');
   }
 }
 
