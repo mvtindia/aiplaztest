@@ -25,49 +25,13 @@
     $fname = $_SESSION['fname'];
     $lname = $_SESSION['lname'];
     $email = $_SESSION['email'];
-    $placeid = $_SESSION['placeid'];
+    $placeid = $_POST['placeid'];
     
     // Charge the user's card:
 
 
 
-/*    $subject = 'Your 2finda transaction';
 
-    $body = "Dear " . $fname . " " . $lname . ",<br><br>
-  You have successfully booked a space on 2finda.com<br>
-  See the details of your credit card transaction:<br>
-  Amount: &#36;" . $total_price . "<br>
-  Location: " . $theplace . "<br>
-  Event Times: " . $checkin . " to " . $checkout . "<br>Your 2finda team";
-
-
-    $json_string = array(
-        'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
-    );
-    /* $json_string = array(
-      'to' => array($email), 'category' => 'test_category'
-      ); */
-    /*$params = array(
-        'api_user' => $sguser,
-        'api_key' => $sgpass,
-        'to' => $email,
-        'subject' => $subject,
-        'html' => $body,
-        'from' => 'info@2finda.com',
-    );
-
-
-    $session = curl_init($sgrequest);
-    curl_setopt($session, CURLOPT_POST, true);
-    curl_setopt($session, CURLOPT_POSTFIELDS, $params);
-    curl_setopt($session, CURLOPT_HEADER, false);
-    curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
-    $response = curl_exec($session);
-    curl_close($session);
-    mysqli_close($connect);
-    header('Location: success.php');
-    die();*/
 
 
 // if(isset($_SESSION['u_id'])
@@ -134,7 +98,7 @@ if (isset($_POST['payment-method-nonce'])) {
     $nonceFromTheClient = $_POST['payment-method-nonce'];
     //$amt = $_POST['total_price'];
     $zip = $_POST['address_zip'];
-    
+    $placeid = $_POST['placeid'];
     $customer = "";
     $charge = "";
     $cusid = "";
@@ -156,7 +120,7 @@ if (isset($_POST['payment-method-nonce'])) {
             $inscus = mysqli_query($connect, 'insert into `stripeaccts` (`user_id`, `stripe_cusid`, `stripe_type`) values ("'.$uid.'", "'.$cusid.'", "cu")');
             if ($inscus) {
               $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `stripe_cusid`, `amount`) values ("'.$uid.'", "'.$cusid.'", "'.$amt.'")');
-              email_message($fname, $lname, $email, $sguser, $sgpass, $sgrequest, $amt, $theplace, $checkin, $checkout);
+              email_message($fname, $lname, $email, $sguser, $sgpass, $sgrequest, $amt, $theplace, $checkin, $checkout, $placeid,$connect);
             }
           } else {
             $error = "true";
@@ -177,7 +141,10 @@ if (isset($_POST['payment-method-nonce'])) {
       if ($result->success || !is_null($result->transaction)) {
           $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `amount`, `comment`) values ("'.$uid.'", "'.$amt.'", "One time transaction.")');
           $transaction = $result->transaction;
-          email_message($fname, $lname, $email, $sguser, $sgpass, $sgrequest, $amt, $theplace, $checkin, $checkout);
+          //$sql5 = mysqli_query($connect,'Select * from users,place where uid=user_id and place_id=5158');
+          //$row5 = mysqli_fetch_array($sql5);
+          //$email2 = $row5['email'];
+          email_message($fname, $lname, $email, $sguser, $sgpass, $sgrequest, $amt, $theplace, $checkin, $checkout,$placeid,$connect);
           //header("Location: transaction.php?id=" . $transaction->id);
       } else {
           $errorString = "";
@@ -201,15 +168,15 @@ if (isset($_POST['payment-method-nonce'])) {
     );
     
     $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `amount`, `cusid`) values ("'.$uid.'", "'.$amt.'", "'.$cusid.'")');
-    email_message($fname, $lname, $email, $sguser, $sgpass, $sgrequest, $amt, $theplace, $checkin, $checkout);
+    email_message($fname, $lname, $email, $sguser, $sgpass, $sgrequest, $amt, $theplace, $checkin, $checkout, $placeid, $connect);
  } else {
   
     $strq = mysqli_query($connect, 'select * from stripeaccts where user_id = "'.$uid.'" and stripe_type = "cu"');
     $strres = mysqli_fetch_array($strq);
  }
 
- function email_message($fname, $lname, $email, $sguser, $sgpass, $sgrequest, $total_price, $theplace, $checkin, $checkout) {
-   
+ function email_message($fname, $lname, $email, $sguser, $sgpass, $sgrequest, $total_price, $theplace, $checkin, $checkout, $placeid, $connect) {
+              //error_log("email: " . $email2);
               $subject = 'Your 2finda transaction';
 
               $body = "Dear " . $fname . " " . $lname . ",<br><br>
@@ -219,13 +186,13 @@ if (isset($_POST['payment-method-nonce'])) {
             Location: " . $theplace . "<br>
             Event Times: " . $checkin . " to " . $checkout . "<br><br>Your 2finda team";
 
-              /*$json_string = array(
-                'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
-              );*/
-
               $json_string = array(
-                'to' => array($email), 'category' => 'test_category'
+                'to' => array($email, 'info@2finda.com'), 'category' => 'test_category'
               );
+
+              /*$json_string = array(
+                'to' => array($email), 'category' => 'test_category'
+              );*/
               
               $params = array(
                   'api_user' => $sguser,
@@ -245,12 +212,23 @@ if (isset($_POST['payment-method-nonce'])) {
               $response = curl_exec($session);
               curl_close($session);
               //mysqli_close($connect);
-              $sql5 = mysqli_query($connect,"SELECT * FROM place, users WHERE userid = user_id and place_id = '".$placeid."'");
+              //error_log('Select * from users,place where uid=userid and place_id="'.$placeid.'"');
+              //$sql5 = mysqli_query($connect,'Select * from users,place where uid=userid and place_id="5158"');
+              
+              //error_log("query result: " . $sql5);
+              
+              //$row5 = mysqli_fetch_array($sql5);
+              //error_log($row5);
+              //error_log($row5['lname']);
+              $sql5 = mysqli_query($connect,'Select * from users,place where uid=user_id and place_id="'.$placeid.'"');
               $row5 = mysqli_fetch_array($sql5);
+              $email2 = $row5['email'];
+
               $subject = 'Your 2finda transaction';
+              //$email2 = $row5['email'];
 
               $body = "Dear " . $row5['fname'] . " " . $row5['lname'] . ",<br><br>"
-            . $fname . " " . $lname . " has booked your space, " . $row5['space_name'] . " from " . $checkin . " to " . $checkout
+            . $fname . " " . $lname . " has booked your space, " . $row5['space_name'] . ", from " . $checkin . " to " . $checkout
              . "<br><br>Your 2finda team";
 
               /*$json_string = array(
@@ -258,13 +236,13 @@ if (isset($_POST['payment-method-nonce'])) {
               );*/
 
               $json_string = array(
-                'to' => array($email), 'category' => 'test_category'
+                'to' => array($email2), 'category' => 'test_category'
               );
               
               $params = array(
                   'api_user' => $sguser,
                   'api_key' => $sgpass,
-                  'to' => $email,
+                  'to' => $email2,
                   'subject' => $subject,
                   'html' => $body,
                   'from' => 'info@2finda.com',
@@ -344,6 +322,7 @@ if (isset($_POST['payment-method-nonce'])) {
               <input type="hidden" name="checkin" value="<?php echo $_POST['checkin'] ?>">
               <input type="hidden" name="checkout" value="<?php echo $_POST['checkout'] ?>">
               <input type="hidden" name="theplace" value="<?php echo $_POST['theplace'] ?>">
+              <input type="hidden" name="placeid" value="<?php echo $_POST['placeid'] ?>">
               
 
               <!--<button value="submit" id="submit" class="btn btn-success btn-lg center-block">Pay with <span id="card-type">Card</span></button>-->
@@ -462,6 +441,8 @@ braintree.client.create({
     <input type="hidden" name="checkin" value="<?php echo $_POST['checkin'] ?>">
     <input type="hidden" name="checkout" value="<?php echo $_POST['checkout'] ?>">
     <input type="hidden" name="theplace" value="<?php echo $_POST['theplace'] ?>">
+    <input type="hidden" name="placeid" value="<?php echo $_POST['placeid'] ?>">
+
     <button type="submit">Yes</button>
     </form>
   </div>
