@@ -280,8 +280,7 @@ if (isset($_REQUEST['login'])) {
     $password = $_POST['password'];
     $password = md5($password);
     $statusY = 0;
-    error_log($password);
-    error_log($email);
+    
 
     $q2 = mysqli_query($connect, 'SELECT * FROM users where email="' . $email . '" AND pwd="' . $password . '" and a_status = "' . $statusY . '"');
     if (mysqli_num_rows($q2) > 0) {
@@ -291,6 +290,11 @@ if (isset($_REQUEST['login'])) {
         $_SESSION['fname'] = $row['fname'];
         $_SESSION['lname'] = $row['lname'];
         $_SESSION['contact'] = $row['contact'];
+        ini_set('session.gc_maxlifetime', 3600);
+// each client should remember their session id for EXACTLY 1 hour
+        session_set_cookie_params(3600);
+        session_start();
+        
         echo 'done';
     } else {
         echo 'wrong data';
