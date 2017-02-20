@@ -68,10 +68,25 @@
         function(googleUser) {
           //document.getElementById('name').innerText = "Signed in: " +
           //    googleUser.getBasicProfile().getName();
-          alert(googleUser.getBasicProfile().getName());
+          gfname = googleUser.getBasicProfile().getGivenName());
+          glname = googleUser.getBasicProfile().getFamilyName()); 
+          guserid = googleUser.getBasicProfile().getId());
+          gemail = googleUser.getBasicProfile().getEmail());
+          $.ajax({
+                url: 'actions.php?gfname=' + gfname + '&glname=' + glname + '&guserid=' + guserid + '&gemail=' + gemail  
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data, textStatus, jqXHR) {
+
+                }
+          });
         }, function(error) {
           alert(JSON.stringify(error, undefined, 2));
         });
   }
   </script>
+  <?php 
+  include_once('connect.php');
+  ?>
        

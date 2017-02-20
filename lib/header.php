@@ -1,9 +1,9 @@
 <?php 
 
-include_once('connect.php');
+
 require_once('fbConfig.php');
 //require_once('user.php');
-session_start();
+//session_start();
 /*
 if(!isset($_SESSION['u_id']))
 {

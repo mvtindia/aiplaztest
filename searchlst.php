@@ -1,15 +1,28 @@
-<?php include_once('connect.php');
+<?php session_start() ?>
+<!doctype html>
+<html>
+<head>
+
+	<title>Book a Space</title>
+	<?php 
+  include 'lib/top.php';
+  ?>
+  <?php
+  $mainquery = "select distinct a.place_id, a.p_address, a.p_city, a.p_state, a.p_country, a.postal_code, 
+  a.photo, a.space_name, a.capacity, a.p_p_h, a.p_p_n from place a, calenderdata b where place_id = placeid and 
+  user_id != '".$_SESSION['u_id']."' and status = 'Available' ";
+
   if (isset($_POST['chin'])) {
     //$chinvar = date_format(date_create($_POST['chin']), 'Y-m-d 00:00:00');
     //$choutvar = date_format(date_create($_POST['chin']), 'Y-m-d 23:59:00');
     $chinvar = date_format(date_create($_POST['chin']), 'Y-m-d');
     $choutvar = date_format(date_create($_POST['chin']), 'Y-m-d');
+    $mainquery = $mainquery . "and date(b.date1) <= '".$chinvar."' and date(b.date2) >= '".$choutvar."' ";
   }
   
   if(!empty($_REQUEST['place_loc'])){
     $place_loc = $_REQUEST['place_loc'];
-  } else {
-    $place_loc = "";
+    $mainquery = $mainquery . "and p_address like '%".$place_loc."%' ";
   }
   if(!empty($_REQUEST['my-lat'])){
     $mylat = $_REQUEST['my-lat'];
@@ -37,7 +50,6 @@
     $events = rtrim($events,',');
   }
   if(!empty($_REQUEST['date1'])){
- //$daterange = $_REQUEST['daterange'];
     $dates = $_REQUEST['date1'];
     $sep = explode(':', $dates[0]);
     $sep1 = explode(':', $dates[1]);
@@ -50,9 +62,8 @@
 
   if(!empty($_REQUEST['guests'])){
     $gue = explode(' ',$_REQUEST['guests']);
-    $guests = $gue[0];  
-  } else {
-    $guests = 1;
+    $guests = $gue[0];
+    $mainquery = $mainquery . "and capacity >= '".$guests."' ";
   }
 
   if(!empty($_REQUEST['minbud'])){
@@ -65,19 +76,17 @@
   } else {
     $maxbud = 50000;
   }
-  $chinvarpl = date('Y-m-d HH:mm', strtotime($chinvar . "-1 days"));
-  $q21 = mysqli_query($connect,"select distinct a.place_id, a.p_address, a.p_city, a.p_state, a.p_country, a.postal_code, 
+  $mainquery = $mainquery . "and ((b.p_p_h between '".$minbud."' and '".$maxbud."') or (b.p_p_n between '".$minbud."' and '".$maxbud."')) order by a.place_id";
+  error_log($mainquery);
+  
+  /*$q21 = mysqli_query($connect,"select distinct a.place_id, a.p_address, a.p_city, a.p_state, a.p_country, a.postal_code, 
   a.photo, a.space_name, a.capacity, a.p_p_h, a.p_p_n from place a, calenderdata b where place_id = placeid and 
   user_id != '".$_SESSION['u_id']."' and status = 'Available' and p_address like '%".$place_loc."%' and 
   capacity >= '".$guests."' and date(b.date1) <= '".$chinvar."' and date(b.date2) >= '".$choutvar."' and 
-  ((b.p_p_h between '".$minbud."' and '".$maxbud."') or (b.p_p_n between '".$minbud."' and '".$maxbud."')) order by a.place_id"); 
-?>
-<!doctype html>
-<html>
-<head>
-
-	<title>Book a Space</title>
-	<?php include 'lib/top.php';?>
+  ((b.p_p_h between '".$minbud."' and '".$maxbud."') or (b.p_p_n between '".$minbud."' and '".$maxbud."')) order by a.place_id"); */
+  $q21 = mysqli_query($connect, $mainquery);
+  
+  ?>
 
 	<style>
   .btn .caret{
