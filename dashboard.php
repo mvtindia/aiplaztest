@@ -111,12 +111,12 @@ $res = mysqli_fetch_array($q1); ?>
 <div class="clearfix"></div>
 </div>
 </div>
-<?php if (isset($_REQUEST['msg'])) {
+<?php /*if (isset($_REQUEST['msg'])) {
     if ($_REQUEST['msg'] == 'addplace') { ?>
 <div style="text-align: center;"><br><br><h3 style="color: blue;">Success! You have listed a place.</h3></div> 
 <?php } else { ?>
 <div style="text-align: center;"><br><br><h3 style="color: blue;">Delete completed.</h3></div>
-<?php } } ?>
+<?php } }*/ ?>
 <!--==============left panel close=========-->
 <!--==============right panel=========-->
 <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0 mg-bottom20">
