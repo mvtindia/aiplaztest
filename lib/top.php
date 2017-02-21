@@ -78,6 +78,18 @@
                 contentType: false,
                 processData: false,
                 success: function (data, textStatus, jqXHR) {
+                  $("#login")[0].reset();
+                  $('.showmsg').html('<font color="green">You are Successfully Logged In</font>');
+                  $('#myNavbar').load(window.location + ' #myNavbar');
+                  $("#myModal2").modal('hide');
+                  $('.showload').css('display', 'none');
+
+                  var url = $('.urlval').val();
+
+                  if (url != "")
+                  { 
+                      window.location.href = url;
+                  } 
 
                 }
           });
