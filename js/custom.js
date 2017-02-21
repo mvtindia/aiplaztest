@@ -356,7 +356,7 @@ $("#ccsave-form").submit(function(e)
 			}
 		}
 	});
-}
+});
 
 // Booking form end
 
