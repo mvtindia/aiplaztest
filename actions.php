@@ -301,6 +301,41 @@ if (isset($_REQUEST['login'])) {
     }
 }
 // end here
+if (isset($_REQUEST['guserid'])) {
+    $fname = $_REQUEST['gfname'];
+    $lname = $_REQUEST['glname'];
+    $googleid = $_REQUEST['guserid'];
+    $email = $_REQUEST['gemail'];
+    //$password = $_POST['password'];
+    //$password = md5($password);
+    //$statusY = 0;
+    
+    $q2 = mysqli_query($connect, 'SELECT * FROM users where fuid = "'.$googleid.'"');
+    if (mysqli_num_rows($q2) > 0) {
+        $row = mysqli_fetch_array($q2);
+        $_SESSION['u_id'] = $row['uid'];
+        $_SESSION['email'] = $row['email'];
+        $_SESSION['fname'] = $row['fname'];
+        $_SESSION['lname'] = $row['lname'];
+        $_SESSION['contact'] = $row['contact'];
+        ini_set('session.gc_maxlifetime', 3600);
+// each client should remember their session id for EXACTLY 1 hour
+        session_set_cookie_params(3600);
+        session_start();
+        
+        echo 'done';
+    } else {
+        error_log('INSERT INTO users (fname, lname, email, Fuid) values ("'.$fname.'", "'.$lname.'", "'.$email.'", "'.$googleid.'")');
+        $q2 = mysqli_query($connect, 'INSERT INTO users (fname, lname, email, Fuid) values ("'.$fname.'", "'.$lname.'", "'.$email.'", "'.$googleid.'")');
+        if ($q2) {
+            $_SESSION['u_id'] = mysqli_insert_id($connect);
+            $_SESSION['email'] = $email;
+            $_SESSION['fname'] = $fname;
+            $_SESSION['lname'] = $lname;    
+        }
+        echo 'wrong data';
+    }
+}
 if (isset($_REQUEST['fblogin'])) {
 
     require_once 'fbConfig.php';
