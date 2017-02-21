@@ -655,11 +655,14 @@ while($r31 = mysqli_fetch_array($q31)) {
 include_once('braintree-init.php');
 
 $qccard = mysqli_query($connect,"Select * from stripeaccts where user_id='".$_SESSION['u_id']."'");
+$ccnum = "";
+$cctype = "";
 while($rccard = mysqli_fetch_array($qccard)) {
-  error_log($rccard['stripe_cusid']);
+  
   try {
   $bresult = Braintree_Customer::find($rccard['stripe_cusid']); 
-  error_log("result: " . $bresult->creditCards[0]->last4);
+  $ccnum = $bresult->creditCards[0]->last4;
+  $cctype = $bresult->creditCards[0]->cardType;
   }
   catch (Braintree_Exception_NotFound $e) {
     echo $e->getMessage();
@@ -672,8 +675,10 @@ while($rccard = mysqli_fetch_array($qccard)) {
                   <div class="form-group col-xs-8">
                     <label class="control-label">Card Number</label>
                     <!--  Hosted Fields div container -->
-                    <?php echo "here is: " . $bresult->success ?>
-                    <input type="text" value="">
+                
+                    <input type="text" value="************<?php echo $ccnum ?>">
+                    <label class="control-label">Card Type</label>
+                    <input type="text" value="<?php echo $cctype ?>">
                     <span class="helper-text"></span>
                   </div>
               </div>
