@@ -656,8 +656,15 @@ include_once('braintree-init.php');
 
 $qccard = mysqli_query($connect,"Select * from stripeaccts where user_id='".$_SESSION['u_id']."'");
 while($rccard = mysqli_fetch_array($qccard)) {
-  $bresult = Braintree_Customer::find($rccard['stripe_cusid']);
+  error_log($rccard['stripe_cusid']);
+  try {
+  $bresult = Braintree_Customer::find($rccard['stripe_cusid']); 
   error_log($bresult->success);
+  }
+  catch (Braintree_Exception_NotFound $e) {
+    echo $e->getMessage();
+  }
+  
 ?>
 <div class="col-md-12 mg-top20">
 <form id="" method="post">
