@@ -98,6 +98,10 @@ $res = mysqli_fetch_array($q1); ?>
 <!--<a id="a7" class="color3" data-toggle="modal" data-target="#myModal4">Edit Profile</a>-->
 <a id="a6" class="b6">Edit Profile</a>
 </p>
+<p class="text-center">
+<!--<a id="a7" class="color3" data-toggle="modal" data-target="#myModal4">Edit Profile</a>-->
+<a id="a11" class="b11">Edit Payment Information</a>
+</p>
 
 </div>
 <div class="col-md-7">
@@ -572,16 +576,16 @@ while($res3 = mysqli_fetch_array($q3)){
 <!--=========Transaction History Block===============-->
 <div id="b8" class="welcome col-md-12 pd-lr-0 mg-top20 border1 tab_in_dash">
 <div class="col-md-12 backcolor3 pd-top10">
-  <?php $qr = mysqli_query($connect,"select count(`nid`) as total from notes where userid=".$_SESSION['u_id']." and nstatus='N'");
+  <?php /*$qr = mysqli_query($connect,"select count(`nid`) as total from notes where userid=".$_SESSION['u_id']." and nstatus='N'");
     $rw = mysqli_fetch_array($qr);
-
+*/
      ?>
-<p class="bold"><h3>Notifications <?php if($rw['total'] != 0) { ?><span class="badge notes_count"> <?php echo $rw['total']; ?></span><?php } ?></h3></p>
+<p class="bold"><h3>Notifications <?php //if($rw['total'] != 0) { ?><span class="badge notes_count"> <?php //echo $rw['total']; ?></span><?php //} ?></h3></p>
 </div>
 <div class="col-md-12 mg-top20">
 
 <ul style="list-style-type: none;padding: 0px;">
-<?php $q31 = mysqli_query($connect,"Select * from notes where userid=".$_SESSION['u_id']);
+<?php /*$q31 = mysqli_query($connect,"Select * from notes where userid=".$_SESSION['u_id']);
 while($r31 = mysqli_fetch_array($q31)) {
   $q32 = mysqli_query($connect,"select * from booking book , place p where book.bookid='".$r31['bookid']."' and book.placeid=p.place_id");
   $r32 = mysqli_fetch_array($q32);
@@ -593,7 +597,7 @@ while($r31 = mysqli_fetch_array($q31)) {
   <?php } else { ?>  <li class="" style="padding: 1%;cursor: pointer; border: 1px solid #eeeeee"> <?php } ?>
     <p><i class="fa fa-bell"></i> Your Booking For Place-<?php echo $r32['space_name']; ?> Has Been Cancelled Due To Some Circumstances.</p>
   </li>
-  <?php } ?>
+  <?php }*/ ?>
 </ul>
 
 </div>
@@ -641,7 +645,45 @@ while($r31 = mysqli_fetch_array($q31)) {
 </div>
 <!----=========Edit Profile Block close===============-->
 
+<!-- =========Edit Payment info=============== -->
 
+<div id="b11" class="welcome col-md-12 pd-lr-0 mg-top20 border1 tab_in_dash">
+<div class="col-md-12 backcolor3 pd-top10">
+<p class="bold">Edit Payment Information</p>
+</div>
+<?php 
+include_once('braintree-init.php');
+
+$qccard = mysqli_query($connect,"Select * from stripeaccts where user_id='".$_SESSION['u_id']."'");
+while($rccard = mysqli_fetch_array($qccard)) {
+  $bresult = Braintree_Customer::find($rccard['stripe_cusid']);
+  error_log($bresult->success);
+?>
+<div class="col-md-12 mg-top20">
+<form id="" method="post">
+              <div class="row">
+                  <div class="form-group col-xs-8">
+                    <label class="control-label">Card Number</label>
+                    <!--  Hosted Fields div container -->
+                    <?php echo "here is: " . $bresult->success ?>
+                    <input type="text" value="">
+                    <span class="helper-text"></span>
+                  </div>
+              </div>
+              <!--<button value="submit" id="submit" class="btn btn-success btn-lg center-block">Pay with <span id="card-type">Card</span></button>-->
+              <input type="hidden" name="payment-method-nonce">
+               <div class="col-lg-4 col-md-4 col-lg-offset-3 checkbox-inline" style="">
+              <label>
+              <input type="checkbox" name="newcustomer" value="yes" id="cbox">Delete credit card information
+              </label>
+              </div>
+              <input type="submit" value="Save">
+              <div style="height: 10px;"></div>
+        </form>
+        </div>
+<?php } ?>
+</div>
+<!----=========Edit Payment Info Block close===============-->
 
 </div>
 
