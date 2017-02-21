@@ -47,7 +47,7 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
 <script src="https://apis.google.com/js/api:client.js"></script>
-  <script>
+<script>
   var googleUser = {};
   var startApp = function() {
     gapi.load('auth2', function(){
@@ -68,12 +68,12 @@
         function(googleUser) {
           //document.getElementById('name').innerText = "Signed in: " +
           //    googleUser.getBasicProfile().getName();
-          gfname = googleUser.getBasicProfile().getGivenName());
-          glname = googleUser.getBasicProfile().getFamilyName()); 
-          guserid = googleUser.getBasicProfile().getId());
-          gemail = googleUser.getBasicProfile().getEmail());
+          gfname = googleUser.getBasicProfile().getGivenName();
+          glname = googleUser.getBasicProfile().getFamilyName(); 
+          guserid = googleUser.getBasicProfile().getId();
+          gemail = googleUser.getBasicProfile().getEmail();
           $.ajax({
-                url: 'actions.php?gfname=' + gfname + '&glname=' + glname + '&guserid=' + guserid + '&gemail=' + gemail  
+                url: 'actions.php?gfname=' + gfname + '&glname=' + glname + '&guserid=' + guserid + '&gemail=' + gemail,  
                 cache: false,
                 contentType: false,
                 processData: false,
@@ -85,7 +85,7 @@
           alert(JSON.stringify(error, undefined, 2));
         });
   }
-  </script>
+</script>
   <?php 
   include_once('connect.php');
   ?>
