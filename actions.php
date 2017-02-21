@@ -326,14 +326,14 @@ if (isset($_REQUEST['guserid'])) {
         echo 'done';
     } else {
         error_log('INSERT INTO users (fname, lname, email, Fuid) values ("'.$fname.'", "'.$lname.'", "'.$email.'", "'.$googleid.'")');
-        $q2 = mysqli_query($connect, 'INSERT INTO users (fname, lname, pwd, contact, email, Fuid) values ("'.$fname.'", "'.$lname.'", "password", "none", "'.$email.'", "'.$googleid.'")');
+        $q2 = mysqli_query($connect, 'INSERT INTO users (fname, lname, pwd, contact, email, Fuid, a_status) values ("'.$fname.'", "'.$lname.'", "password", "none", "'.$email.'", "'.$googleid.'", 0)');
         if ($q2) {
             $_SESSION['u_id'] = mysqli_insert_id($connect);
             $_SESSION['email'] = $email;
             $_SESSION['fname'] = $fname;
             $_SESSION['lname'] = $lname;    
         }
-        echo 'wrong data';
+        echo 'done';
     }
 }
 if (isset($_REQUEST['fblogin'])) {
