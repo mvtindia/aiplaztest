@@ -659,7 +659,7 @@ while($rccard = mysqli_fetch_array($qccard)) {
   error_log($rccard['stripe_cusid']);
   try {
   $bresult = Braintree_Customer::find($rccard['stripe_cusid']); 
-  error_log($bresult->success);
+  error_log("result: " . $bresult);
   }
   catch (Braintree_Exception_NotFound $e) {
     echo $e->getMessage();
