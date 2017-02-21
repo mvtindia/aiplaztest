@@ -1173,10 +1173,10 @@ p {
 					var fn2=document.getElementById('pricepd').value;
     				if(fn2 == ""){
         				
-        				document.getElementById('pricepd').style.borderColor = "red";
+        				/*document.getElementById('pricepd').style.borderColor = "red";
 						$("#span1a").html(mess);
 						$("#span1a").css('display', 'block');
-        				return false;
+        				return false;*/
     				}else{
         				document.getElementById('pricepd').style.borderColor = "green";
 						$("#span1a").css('display', 'none');
