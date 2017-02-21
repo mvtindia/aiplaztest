@@ -448,6 +448,7 @@ echo"not";
 }
 //booking message end here
 if (isset($_REQUEST['ccsave'])) {
+    error_log("spota");
     $nonceFromTheClient = $_POST['payment-method-nonce'];
     $result = Braintree_Customer::update(
       $_POST['cusid'],
@@ -460,6 +461,7 @@ if (isset($_REQUEST['ccsave'])) {
     if ($result->success) {
       echo "ok";
     }
+    error_log("spotb");
 }
 
 //paypal insertion Start HERE
