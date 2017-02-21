@@ -653,16 +653,20 @@ while($r31 = mysqli_fetch_array($q31)) {
 </div>
 <?php 
 include_once('braintree-init.php');
-
+$clientToken = Braintree_ClientToken::generate();
 $qccard = mysqli_query($connect,"Select * from stripeaccts where user_id='".$_SESSION['u_id']."'");
 $ccnum = "";
-$cctype = "";
+$ccmonth = "";
+$ccyear = "";
+$cczip = "";
 while($rccard = mysqli_fetch_array($qccard)) {
   
   try {
-  $bresult = Braintree_Customer::find($rccard['stripe_cusid']); 
-  $ccnum = $bresult->creditCards[0]->last4;
-  $cctype = $bresult->creditCards[0]->cardType;
+    $bresult = Braintree_Customer::find($rccard['stripe_cusid']); 
+    $ccnum = $bresult->creditCards[0]->last4;
+    $ccmonth = $bresult->creditCards[0]->expirationMonth;
+    $ccyear = $bresult->creditCards[0]->expirationYear;
+    $cczip = $bresult->creditCards[0]->billingAddress->postalCode;
   }
   catch (Braintree_Exception_NotFound $e) {
     echo $e->getMessage();
@@ -670,30 +674,142 @@ while($rccard = mysqli_fetch_array($qccard)) {
   
 ?>
 <div class="col-md-12 mg-top20">
-<form id="" method="post">
+<form id="ccsave-form" method="post" class="form-inline">
               <div class="row">
-                  <div class="form-group col-xs-8">
+                  <div class="form-group col-md-2">
                     <label class="control-label">Card Number</label>
-                    <!--  Hosted Fields div container -->
-                
-                    <input type="text" value="************<?php echo $ccnum ?>">
-                    <label class="control-label">Card Type</label>
-                    <input type="text" value="<?php echo $cctype ?>">
-                    <span class="helper-text"></span>
+                    <div class="form-control" id="card-number"></div>
+                    <!--<input type="text" value="************<?php echo $ccnum ?>">-->
                   </div>
+                  <div class="form-group col-md-2">
+                    <label class="control-label">Expiration Month</label>
+                    <div class="form-control" id="expiration-month"></div>
+                    <!--<input type="text" value="<?php echo $ccmonth ?>">-->
+                  </div>
+                  <div class="form-group col-md-2">               
+                    <label class="control-label">Expiration Year</label>
+                    <div class="form-control" id="expiration-year"></div>
+                    <!--<input type="text" value="<?php echo $ccyear ?>">-->
+                  </div>
+                  <div class="form-group col-md-2">               
+                    <label class="control-label">Security Code</label>
+                    <div class="form-control" id="cvv"></div>
+                    <!--<input type="text" value="***">-->
+                  </div>
+                  <div class="form-group col-md-2">               
+                    <label class="control-label">Zipcode</label>
+                    <div class="form-control" id="postal-code"></div>
+                    <!--<input type="text" value="***">-->
+                  </div>
+                  <div class="form-group col-md-2" style="padding-top: 20px;">
+                    <input id="cusid" type="hidden" value="<?php echo $rccard['stripe_cusid'] ?>">
+                    <input id="ccsave" type="submit" value="Save">
+                    <input id="ccdel" type="button" value="Delete">
+                  </div>
+              </div>
+              <div class="row">
+                  <!--<div class="form-group col-md-8">    
+                    <input type="submit" value="Save">
+                    <input type="submit" value="Delete">
+                  </div>-->
+                    <span class="helper-text"></span>
               </div>
               <!--<button value="submit" id="submit" class="btn btn-success btn-lg center-block">Pay with <span id="card-type">Card</span></button>-->
               <input type="hidden" name="payment-method-nonce">
-               <div class="col-lg-4 col-md-4 col-lg-offset-3 checkbox-inline" style="">
-              <label>
-              <input type="checkbox" name="newcustomer" value="yes" id="cbox">Delete credit card information
-              </label>
-              </div>
-              <input type="submit" value="Save">
               <div style="height: 10px;"></div>
         </form>
         </div>
-<?php } ?>
+<script src="https://js.braintreegateway.com/web/3.7.0/js/client.min.js"></script>
+
+<!-- Load the Hosted Fields component. -->
+<script src="https://js.braintreegateway.com/web/3.7.0/js/hosted-fields.min.js"></script>
+
+<script>
+// We generated a client token for you so you can test out this code
+// immediately. In a production-ready integration, you will need to
+// generate a client token on your server (see section below).
+var form = document.querySelector('#ccsave-form');
+var submit = document.querySelector('input[type="submit"]');
+var authorize = '<?php echo $clientToken ?>';
+
+braintree.client.create({
+  // Replace this with your own authorization.
+  
+  authorization: authorize
+}, function (clientErr, clientInstance) {
+  if (clientErr) {
+    // Handle error in client creation
+    return;
+  }
+
+  braintree.hostedFields.create({
+    client: clientInstance,
+    styles: {
+      'input': {
+        'font-size': '12pt'
+      },
+      'font-family': 'helvetica, tahoma, calibri, sans-serif',
+      'input.invalid': {
+        'color': 'red'
+      },
+      'input.valid': {
+        'color': 'black'
+      }
+    },
+    fields: {
+      number: {
+        selector: '#card-number',
+        placeholder: "<?php if ($ccnum) { echo '************' . $ccnum; } ?>"
+      },
+      cvv: {
+        selector: '#cvv',
+        placeholder: '***'
+      },
+      expirationMonth: {
+        selector: '#expiration-month',
+        placeholder: '<?php if ($ccmonth) { echo $ccmonth; } ?>',
+        select: true
+      },
+      expirationYear: {
+        selector: '#expiration-year',
+        placeholder: '<?php if ($ccyear) { echo $ccyear; } ?>',
+        select: true
+      },
+      postalCode: {
+        selector: '#postal-code',
+        placeholder: '<?php if ($cczip) { echo $cczip; } ?>'
+      }
+    }
+  }, function (hostedFieldsErr, hostedFieldsInstance) {
+    if (hostedFieldsErr) {
+      // Handle error in Hosted Fields creation
+      return;
+    }
+
+    submit.removeAttribute('disabled');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
+        if (tokenizeErr) {
+          // Handle error in Hosted Fields tokenization
+          return;
+        }
+
+        // Put `payload.nonce` into the `payment-method-nonce` input, and then
+        // submit the form. Alternatively, you could send the nonce to your server
+        // with AJAX.
+        console.log(payload.nonce);
+        document.querySelector('input[name="payment-method-nonce"]').value = payload.nonce;
+        form.submit();
+      });
+    }, false);
+  });
+});
+</script>
+<?php 
+} ?>
 </div>
 <!----=========Edit Payment Info Block close===============-->
 

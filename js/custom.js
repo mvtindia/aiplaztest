@@ -334,7 +334,29 @@ $(".book_form2_hour").submit(function(e)
     //e.unbind();
 }); 
     
-
+$("#ccsave-form").submit(function(e)
+{
+    //if ( ) {
+	var formObj = $(this);
+    var formURL = formObj.attr("action");
+    var formData = new FormData(this);
+	//$("#book_button").attr("disabled", true);
+    $.ajax({
+        url: 'forms.php?ccsave=101',
+        type: 'POST',
+        data:  formData,
+        mimeType:"multipart/form-data",
+        contentType: false,
+        cache: false,
+        processData:false,
+		success: function(data, textStatus, jqXHR)
+		{
+			if (data == 'ok') {
+				$('#ccsave-form').reset();
+			}
+		}
+	});
+}
 
 // Booking form end
 

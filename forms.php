@@ -447,7 +447,20 @@ echo"not";
 }
 }
 //booking message end here
-
+if (isset($_REQUEST['ccsave'])) {
+    $nonceFromTheClient = $_POST['payment-method-nonce'];
+    $result = Braintree_Customer::update(
+      $_POST['cusid'],
+      [
+        'creditCard' => [
+            'paymentMethodNonce' => $nonceFromTheClient,
+        ]
+      ]
+    );
+    if ($result->success) {
+      echo "ok";
+    }
+}
 
 //paypal insertion Start HERE
 if(isset($_GET['paypal_insertion']))
