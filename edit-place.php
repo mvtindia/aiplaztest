@@ -624,7 +624,7 @@ if($match=mysqli_fetch_array($query)){
           <div class="col-md-1" style="padding-left: 50px;">Price/<br>Hour</div>
           <div class="col-md-1" style="padding-left: 50px;">Price/<br>Day</div>
           <!--<div class="col-md-1">Price/<br>Week</div>-->
-          <div class="col-md-3" style="text-align: center; style="padding-left: 50px;">Action</div>
+          <div class="col-md-3" style="text-align: center;padding-left: 50px;">Action</div>
         </div>
         <?php
         $he = 1;
