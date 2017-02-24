@@ -1131,7 +1131,7 @@ $(document).ready(function () {
                         $("#msg3").html('<h3 style="color: blue;">Availability added.</h3>');
                         $('.for_claender_data').append('<div class="row for_re" style="padding: 11px 0px 1px 50px; border-bottom: 2px solid rgb(252, 139, 17);">' +
                         '<div class="col-md-3 text-center">' + timeinfo[0] + '</div><div class="col-md-3 text-center">' + timeinfo[1] + '</div><div class="col-md-1 text-center"><input class="he' + heval +'" style="width: 59px;" type="text" name="p_p_h" value="' + timeinfo[2] + '"></div>' +
-                        '<div class="col-md-1 text-center"><input class="he' + heval + '" style="width: 59px;" type="text" name="p_p_n" value="' + timeinfo[3] + '"></div><div class="col-md-3 text-center"><button name="calender_price_update" id="he' + heval + '" class="btn btn-success onclick_submit_price " value="' + timeinfo[4] + '" ><i class="fa fa-floppy-o"></i></button>' +
+                        '<div class="col-md-1 text-center"><input class="he' + heval + '" style="width: 59px;" type="text" name="p_p_n" value="' + timeinfo[3] + '"></div><div class="col-md-3 text-center"><button name="calender_price_update" id="he' + heval + '" class="btn btn-success ' + 'onclick_submit_price " value="' + timeinfo[4] + '" ><i class="fa fa-floppy-o"></i></button>' +
                         '<button name="calender_price_delete" id="he' + timeinfo[4] + '" class="btn btn-danger onclick_delete_price " value="' + timeinfo[4] + '"><i class="fa fa-trash"></i></button></div>');
                         $('#heval').html(heval++);
                     } else {
