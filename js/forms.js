@@ -906,10 +906,6 @@ $(document).ready(function () {
 //calender price  update
 
     $('.onclick_submit_price').click(function () {
-        submitprice();
-    });
-
-    function submitprice() {
         var clid = $(this).val();
         var m = $(this).attr('id');
         var value_in = "";
@@ -937,7 +933,7 @@ $(document).ready(function () {
             contentType: false,
             processData: false
         });
-    };
+    });
 //end here
 
 
@@ -1139,7 +1135,35 @@ $(document).ready(function () {
                         '<button name="calender_price_delete" id="he' + timeinfo[4] + '" class="btn btn-danger onclick_delete_price " value="' + timeinfo[4] + '"><i class="fa fa-trash"></i></button></div>');
                         
                         $('#heval').html(heval++);
-                        $('.for_claender_data').on('click', '.onclick_submit_price', submitprice);
+                        $('.for_claender_data').on('click', '.onclick_submit_price', function() {
+                            var clid = $(this).val();
+                            var m = $(this).attr('id');
+                            var value_in = "";
+                            $('.' + m).each(function () {
+                                value_in = value_in + $(this).val() + ",";
+                            });
+                            value_in = value_in.split(',');
+                            var ppn = value_in[0];
+                            var pph = value_in[1];
+                            var wppn = value_in[2];
+                            //console.log(clid);
+
+                            $.ajax({
+                                url: 'actions.php?calender_id=' + clid + '&cal_ppn=' + ppn + '&cal_pph=' + pph + '&cal_wppn=' + wppn,
+                                success: function (data) {
+                                    console.log(data);
+                                    if (data == "ok") {
+                                        swal({title: "Updated!", text: "Price Updated Successfully", timer: 1000, showConfirmButton: true});
+                                    } else
+                                    {
+                                        alert("not");
+                                    }
+                                },
+                                cache: false,
+                                contentType: false,
+                                processData: false
+                            });
+                        });
                     } else {
                         $('.ishowload').css('display', 'none');
                         $("#msg3").html('<h3 style="color: red;">Some or all of time period has been scheduled.</h3>');
