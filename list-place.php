@@ -321,7 +321,7 @@ $sfee = $feeres['percentage'] * .01; ?>
                                 </div>
                             </div>
                             <div class="but-align form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <button type="submit" name="place" class="btn btn-default cus-save-but">Register & continue</button>
+                                <button type="submit" name="place" class="btn btn-default cus-save-but">Continue</button>
                             </div>
                             <div class="clearfix"></div>
                         </div>
