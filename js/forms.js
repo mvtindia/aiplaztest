@@ -916,7 +916,7 @@ $(document).ready(function () {
         var ppn = value_in[0];
         var pph = value_in[1];
         var wppn = value_in[2];
-        console.log(clid);
+        //console.log(clid);
 
         $.ajax({
             url: 'actions.php?calender_id=' + clid + '&cal_ppn=' + ppn + '&cal_pph=' + pph + '&cal_wppn=' + wppn,
@@ -1123,10 +1123,15 @@ $(document).ready(function () {
                     var datas = data.split(",,,");
 
                     if (datas[0] == "success") {
+                        timeinfo = datas[1].split(",");
                         $('.ishowload').css('display', 'none');
                         $("#pricetermss").css('display', 'none');
                         $("#calender-tab").css('display', 'block');
                         $("#msg3").html('<h3 style="color: blue;">Availability added.</h3>');
+                        $('.for_claender_data').append('<div class="row for_re" style="padding: 11px 0px 1px 50px; border-bottom: 2px solid rgb(252, 139, 17);">' +
+                        '<div class="col-md-3 text-center">' + timeinfo[0] + '</div><div class="col-md-3 text-center">' + timeinfo[1] + '</div><div class="col-md-1 text-center"><input class="he99" style="width: 59px;" type="text" name="p_p_h" value="' + timeinfo[2] + '"></div>' +
+                        '<div class="col-md-1 text-center"><input class="he100" style="width: 59px;" type="text" name="p_p_n" value="' + timeinfo[3] + '"></div><div class="col-md-3 text-center"><button name="calender_price_update" id="he" class="btn btn-success onclick_submit_price " value="' + timeinfo[3] + '" ><i class="fa fa-floppy-o"></i></button>' +
+                        '<button name="calender_price_delete" id="he' + timeinfo[3] + '" class="btn btn-danger onclick_delete_price " value="' + timeinfo[3] + '"><i class="fa fa-trash"></i></button></div>');
                         //swal('Success', 'Updated Successfully', 'success');
                     } else {
                         $('.ishowload').css('display', 'none');

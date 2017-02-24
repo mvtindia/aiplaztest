@@ -585,9 +585,11 @@ if (isset($_REQUEST['savetime'])) {
 `p_p_h`='" . $pph . "', `date1`='" . $date1a . "', `date2`='" . $date4a . "', `time1`='".$date7."', `time2`='".$date8."', `status` ='Available', `ctimestampdate` = '" . date('Y-m-d') . "'");
             
             if ($sql > 0) {
+                $calid = mysqli_insert_id($connect);
                 echo "success";
+                echo ",,,";
+                echo date_format(date_create($date1a), 'Y-m-d g:i a') . "," . date_format(date_create($date4a), 'Y-m-d g:i a') . "," . $pph . "," . $ppn . "," . $calid;
             } else {
-                error_log("hereis");
                 echo "error";
             }
             echo ",,,";
@@ -981,7 +983,7 @@ if (isset($_GET['calneder_id1'])) {
 if (isset($_GET['deletecalender_id'])) {
     $val = $_GET['deletecalender_id'];
     $sql = mysqli_query($connect, "DELETE FROM calenderdata WHERE calid='" . $val . "'");
-    error_log($sql);
+    //error_log($sql);
     if ($sql > 0) {
         echo"ok";
     } else {
