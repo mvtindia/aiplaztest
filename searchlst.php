@@ -393,7 +393,9 @@ $que = mysqli_query($connect,"select * from calenderdata where placeid=".$r21['p
                     <div class="req-cus"><i class="fa fa-map-marker icncolor"></i> 
                       <?php 
                         $paddress=$r21['p_address'];
-                        if(strlen($paddress)>40){echo substr($paddress,0,30)."..." ;}else{echo $paddress;} 
+                        if(isset($_SESSION['u_id'])) {
+                          if(strlen($paddress)>40){echo substr($paddress,0,30)."..." ;}else{echo $paddress;}
+                        }
                       ?>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12 no-pad req-cus">
