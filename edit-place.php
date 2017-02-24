@@ -660,6 +660,7 @@ if($match=mysqli_fetch_array($query)){
           $he++;
           }
           ?>
+          <span id="heval" style="display:none;"><?php echo $he ?></span>
                <div class="row"style="padding: 11px 0px 1px 0px;
     border-bottom: 2px solid rgb(252, 139, 17);">
           <!--div class="col-md-12 form-group">
