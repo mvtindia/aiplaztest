@@ -981,6 +981,7 @@ p {
             //$('#datetimepicker9').datetimepicker();
         });
         $(document).ready(function() {
+          $('.for_claender_data').on('click', '.onclick_submit_price', $('.onclick_submit_price').click());
           $('#date1a').datepicker({
 		          'dateFormat':'yy-mm-dd',
 		          step: 60,
