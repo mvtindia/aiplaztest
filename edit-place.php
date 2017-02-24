@@ -595,7 +595,7 @@ if($match=mysqli_fetch_array($query)){
 <div class="clearfix"></div>
         </div>
         <div class="col-md-12 tellus-data for_claender_data" style="border-bottom: 0px solid rgb(252, 139, 17);border-left: 2px solid rgb(252, 139, 17);border-right: 2px solid rgb(252, 139, 17);">
-      <?php  $sql9 = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$pid."'");
+      <?php  $sql9 = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$pid."' and status = 'Available' ");
       if(mysqli_num_rows($sql9)>0)
       { 
         ?>
@@ -981,7 +981,7 @@ p {
             //$('#datetimepicker9').datetimepicker();
         });
         $(document).ready(function() {
-          //$('.for_claender_data').on('click', '.onclick_submit_price', $('.onclick_submit_price').click());
+          
           $('#date1a').datepicker({
 		          'dateFormat':'yy-mm-dd',
 		          step: 60,
