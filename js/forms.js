@@ -906,6 +906,10 @@ $(document).ready(function () {
 //calender price  update
 
     $('.onclick_submit_price').click(function () {
+        submitprice();
+    });
+
+    function submitprice() {
         var clid = $(this).val();
         var m = $(this).attr('id');
         var value_in = "";
@@ -933,7 +937,7 @@ $(document).ready(function () {
             contentType: false,
             processData: false
         });
-    });
+    };
 //end here
 
 
@@ -1135,6 +1139,7 @@ $(document).ready(function () {
                         '<button name="calender_price_delete" id="he' + timeinfo[4] + '" class="btn btn-danger onclick_delete_price " value="' + timeinfo[4] + '"><i class="fa fa-trash"></i></button></div>');
                         
                         $('#heval').html(heval++);
+                        $('.for_claender_data').on('click', '.onclick_submit_price', submitprice);
                     } else {
                         $('.ishowload').css('display', 'none');
                         $("#msg3").html('<h3 style="color: red;">Some or all of time period has been scheduled.</h3>');
