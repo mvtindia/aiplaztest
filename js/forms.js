@@ -1133,7 +1133,7 @@ $(document).ready(function () {
                         '<div class="col-md-3 text-center">' + timeinfo[0] + '</div><div class="col-md-3 text-center">' + timeinfo[1] + '</div><div class="col-md-1 text-center"><input class="he' + heval +'" style="width: 59px;" type="text" name="p_p_h" value="' + timeinfo[2] + '"></div>' +
                         '<div class="col-md-1 text-center"><input class="he' + heval + '" style="width: 59px;" type="text" name="p_p_n" value="' + timeinfo[3] + '"></div><div class="col-md-3 text-center"><button name="calender_price_update" id="he' + heval + '" class="btn btn-success    ' + 'onclick_submit_price " value="' + timeinfo[4] + '" ><i class="fa fa-floppy-o"></i></button>' +
                         '<button name="calender_price_delete" id="he' + timeinfo[4] + '" class="btn btn-danger onclick_delete_price " value="' + timeinfo[4] + '"><i class="fa fa-trash"></i></button></div>');
-                        $(document).on('click', '.onclick_submit_price', $('.onclick_submit_price').click());
+                        $('.for_claender_data').on('click', '.onclick_submit_price', $('.onclick_submit_price').click());
                         $('#heval').html(heval++);
                     } else {
                         $('.ishowload').css('display', 'none');
