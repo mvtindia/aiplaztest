@@ -910,13 +910,18 @@ $(document).ready(function () {
         var clid = $(this).val();
         var m = $(this).attr('id');
         var value_in = "";
+        var pph = "";
+        var ppn = "";
         $('.' + m).each(function () {
-            value_in = value_in + $(this).val() + ",";
+            if (this.name == "p_p_h") {
+                pph = $(this).val();
+            } else {
+                ppn = $(this).val();
+            }
         });
-        value_in = value_in.split(',');
-        var pph = value_in[0];
-        var ppn = value_in[1];
-        var wppn = value_in[2];
+        //value_in = value_in.split(',');
+        
+        //var wppn = value_in[2];
         //console.log(clid);
 
         $.ajax({
