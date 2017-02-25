@@ -912,6 +912,7 @@ $(document).ready(function () {
         var value_in = "";
         var pph = "";
         var ppn = "";
+        var wppn = "";
         $('.' + m).each(function () {
             if (this.name == "p_p_h") {
                 pph = $(this).val();
