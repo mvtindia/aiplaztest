@@ -1,25 +1,11 @@
 <?php session_start();
-include('connect.php');
-if(!isset($_SESSION['u_id'])) {
-  header( 'Location: http://' . $_SERVER['SERVER_NAME'] ) ;
-}
-$fees = mysqli_query($connect,"select * from fees where feefor='s'");
-$feeres = mysqli_fetch_array($fees);
-$sfee = $feeres['percentage'] * .01;
-?> 
-
+include('connect.php');?>
 <!doctype html>
 <html>
 <head>
 
   <title>Edit Place</title>
   <?php include 'lib/top.php';?>
-  <style>
-    .bootstrap-datetimepicker-widget {
-        font-size: 10px;
-	    width: 200px;
-    }
-  </style>
   
 </head>
 
@@ -60,9 +46,8 @@ $sfee = $feeres['percentage'] * .01;
         <ul class="nav nav-tabs">
           <li class="active"><a data-toggle="tab" href="#home">Details</a></li>
           <li><a data-toggle="tab" href="#menu12">Photos & Videos</a></li>
-          <li><a data-toggle="tab" href="#menu15">Documents</a></li>
           <!--<li><a data-toggle="tab" href="#menu13">Prices</a></li>-->
-          <li><a data-toggle="tab" href="#menu14">Scheduling and Prices</a></li>
+          <li><a data-toggle="tab" href="#menu14">Special Prices</a></li>
         </ul>
         <div class="tab-content">
           <div id="home" class="tab-pane fade in active">
@@ -128,7 +113,7 @@ $sfee = $feeres['percentage'] * .01;
               <div class="had-frm-sec">Your Place Details</div>
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <label for="space">Space Title *</label>
-                  <input type="text" class="form-control" id="price" placeholder="Space title" value="<?php echo $row['space_name'];?>" name="space_name" required>
+                  <input type="text" class="form-control" id="price" placeholder="Space title" value="<?php echo $row['p_country'];?>" name="space_name" required>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label for="email">Property type *</label>
@@ -148,7 +133,10 @@ $sfee = $feeres['percentage'] * .01;
                   <label for="space">Capacity</label>
                   <input type="number" class="form-control" name="capacity" value="<?php echo $row['capacity'];?>" required>
                 </div>
-
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" >
+                  <label for="space">Accomodates *</label>
+                  <input type="text" class="form-control" id="accomodates" placeholder="Accomodates" value="<?php echo $row['p_country'];?>" name="accomodates" required>
+                </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 sample-only">
                   <label class="wid100" for="space">Can be used for *</label>
                   <select id="select1" class="wid100" multiple="multiple" name="canbe[]" required>
@@ -172,7 +160,7 @@ $sfee = $feeres['percentage'] * .01;
                   <input type="text" class="form-control" id="accomodates" placeholder="Area" name="area" value="<?php echo $row['place_area'];?>" required="">
                 </div>
                 <div class="col-md-6">
-                  <select class="form-control" name="areatype"><option value="">Select Area Type*</option>
+                  <select class="form-control" name="areatype"><option>Select Area Type*</option>
                   <?php $query=mysqli_query($connect,'Select * from area');
                     while($match=mysqli_fetch_array($query)){
       //echo "<<<<<".$match['areaid']."<br> >>>>>>".$row['areatype'];
@@ -187,54 +175,40 @@ $sfee = $feeres['percentage'] * .01;
               </div>
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <label for="space">Common Ammenities *</label>
-                <select class="form-control" id="select6" name="commonamenities[]" multiple >
                 <?php 
                   $caid=explode(",",$row['ammenties_id']);
                   $query=mysqli_query($connect,'Select * from ammenities where atype="common"');
                   while($match=mysqli_fetch_array($query)){
                     if(in_array($match['aid'], $caid)){?>
-                      <div class="col-md-12 checkbox">
-                            <label type="checkbox">
-                              <option name="commonamenities[]" value="<?php echo $match['aid'];?>" selected><?php echo $match['aname'];?></option>
-                            </label>
-                        <!--<input type="checkbox" name="commonammenties[]"  value="<?php //echo $match['aid'];?>" checked>&nbsp;<?php echo $match['aname'];?>-->
+                      <div class="col-md-12">
+                        <input type="checkbox" name="commonammenties[]"  value="<?php echo $match['aid'];?>" checked>&nbsp;<?php echo $match['aname'];?>
                       </div>
                 <?php }else{ ?>
-                      <div class="col-md-12 checkbox">
-                        <label type="checkbox">
-                              <option name="commonamenities[]" value="<?php echo $match['aid'];?>"><?php echo $match['aname'];?></option>
-                        </label>
-                        <!--<input type="checkbox" name="commonammenties[]"  value="<?php //echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?>-->
+                      <div class="col-md-12">
+                        <input type="checkbox" name="commonammenties[]"  value="<?php echo $match['aid'];?>">&nbsp;<?php echo $match['aname'];?>
                       </div>
                 <?php } }//while?>
-                </select>
               </div>
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <label for="space">Additional Ammenities *</label>
-                <select class="form-control" id="select5" name="add_ammenties[]" multiple >
                 <?php 
                   $aid=explode(",",$row['add_ammenties']);
                   $query1=mysqli_query($connect,'SELECT * FROM `ammenities` where atype="additional" ');
                     while($match=mysqli_fetch_array($query1)){
                       if(in_array($match['aid'], $aid)){
-                ?>  
+                ?>
                 <div class="col-md-12">
-                  <label type="checkbox">
-                              <option name="add_ammenties[]" value="<?php echo $match['aid'];?>" selected><?php echo $match['aname'];?></option>
-                  </label>
+                  <input type="checkbox" name="add_ammenties[]" value="<?php echo $match['aid'];?>" checked>&nbsp;<?php echo $match['aname'];?>
                 </div>
                 <?php } else {?>
                 <div class="col-md-12">
-                  <label type="checkbox">
-                              <option name="add_ammenties[]" value="<?php echo $match['aid'];?>"><?php echo $match['aname'];?></option>
-                  </label>
+                  <input type="checkbox" name="add_ammenties[]"  value="<?php echo $match['aid'];?>" >&nbsp;<?php echo $match['aname'];?>
                 </div>
-                <?php } }//while?>
-                </select>
+                <?php } }//while?>?>
               </div>
               <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <label for="space">Description *</label>
-                <textarea  class="form-control" id="accomodates" placeholder="Description" name="details" ><?php echo $row['details'];?></textarea>
+                <textarea  class="form-control" id="accomodates" required placeholder="Description" name="details" ><?php echo $row['details'];?></textarea>
               </div>
               <div class="clearfix"></div>
   
@@ -309,7 +283,7 @@ $sfee = $feeres['percentage'] * .01;
                 <p>Where is safety card located?</p>
               </div>
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <label for="space">Fire Extinguisher</label>
+                <label for="space">Fire Exitinguisher</label>
                 <input type="text" class="form-control" id="accomodates" value="<?php echo $row['fire_extinguisher'];?>" placeholder="Enter Location" name="fire_extinguisher">
               </div>
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -334,9 +308,8 @@ $sfee = $feeres['percentage'] * .01;
 
   
   <div class="but-align form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
- 
-  <button type="submit" name="eplace" class="btn btn-default cus-save-but">Save</button>
-  <div id="msg"></div>
+  <!-- <button id="show-photo" type="submit" name="place" class="btn btn-default cus-save-but">Save & continue</button> -->
+  <button type="submit" name="eplace" class="btn btn-default cus-save-but">Save & continue</button>
   </div>
 </form>
 <div class="clearfix"></div>
@@ -412,58 +385,8 @@ if($match=mysqli_fetch_array($query)){
 </div>
 
    <div class="col-md-12 text-center form-group">
-   
-  <button id="show-price" type="submit" name="qephoto" class="btn btn-default cus-save-but">Save</button><br>
-  <div id="msg2"></div>
-  </div>
 
-  <div class="clearfix"></div>
-   </div>
-  </div> <!--frm-field-mar-->
-  </form>
-  <!--=====================================-->
-    </div>
-    <div id="menu15" class="tab-pane fade">
-  <!--==========================Photos AND Videos TAB STARTS=======================-->
- <form id="edoc" method="post" enctype="multipart/form-data" style="">
-
-  <div class="" id="hide-photo" >
-    <div class="tellus-data col-md-12 col-sm-12 col-xs-12 pd-lr-0">
-   <div class="had-frm-sec"  >Documents</div>
-  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"><b>Upload documents *</b></div>
-  <div class="mphotos col-md-9" style="">
-                       <input type="hidden" name="pg3" id="pg3" value="<?php echo $row['document'];?>">
- 
-    <?php  
-    if(!empty($row['document'])){
-      $doc=explode(",",$row['document']);
-      $query=mysqli_query($connect,'Select * from place where place_id="'.$pid.'"');
-      if($match=mysqli_fetch_array($query)){
-        for ($k=0; $k < count($doc); $k++) { 
-          if($doc[$k]=="")
-          {
-            continue;
-          } 
-          //echo '<div style="width: 60%;"><a href="doc/'.$doc[$k].'" class="img-responsive mimages">Document</a>';
-          echo '<div style="width: 60%; display:inline;"><a href="doc/'.$doc[$k].'" target="newtab" class=""><i class="fa fa-paperclip cross-hover">'.$doc[$k].'</i></a>';
-          echo ' <i class="fa fa-trash-o dcross-hover"  data-pid="'.$k.'"></i></div><div class="clearfix"></div>';
-        }//for
-  }
-  }?>
-  </div>
-  <input type="hidden" name="placeid1" value="<?php echo $pid; ?>" id="placeid1">
-
-   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >     
-<label class="custom-upload uploadphoto">ADD DOCUMENTS</label>
-<div class="upphoto" style="display:none;">
-   <input id="input-9" name="inputdocs[]" data-show-upload="false" multiple type="file" class="file file-loading" >
-    <p style="font-size: 12px"> Please Upload Documents of (pdf/txt/doc/docx) formats</p>
-</div>
-</div>
-
-   <div class="col-md-12 text-center form-group">
-
-  <button id="show-price" type="submit" name="qephoto" class="btn btn-default cus-save-but">Save</button>
+  <button id="show-price" type="submit" name="qephoto" class="btn btn-default cus-save-but">Save & Continue</button>
   </div>
 
   <div class="clearfix"></div>
@@ -505,10 +428,10 @@ if($match=mysqli_fetch_array($query)){
    <input type="text" required class="form-control" id="accomodates" value="<?php echo $row['w_p_p_n'];?>" placeholder="Enter price" name="w_p_p_n">
   </div>
 -->
-<link href="tm/jquery.timepicker.css" rel="stylesheet">
+
   <div class="col-md-12 text-center form-group">
 
-  <button id="next2" type="submit" name="qeprice_place" class="btn btn-default cus-save-but">Save</button>
+  <button id="next2" type="submit" name="qeprice_place" class="btn btn-default cus-save-but">Save & continue</button>
   </div>
   
   </div><!--frm-field-mar-->
@@ -518,92 +441,19 @@ if($match=mysqli_fetch_array($query)){
    </form>
     </div>
     <div id="menu14" class="tab-pane fade">
-        <div class="" id="hide-photo" >
+          <div class="" id="hide-photo" >
  
-            <div id="calender-tab" style="display:block;">
-  <form id="calenderform" method="post" enctype="multipart/form-data" >
-                            <input type="hidden" class="placeid" name="placeid" value="<?php echo $_REQUEST['placeid']?>" id="placeid">
-                            <div class="tellus-data col-lg-12 col-sm-12 col-md-12 col-xs-12 pd-lr-0"><!--id="calendar-tab"-->
-                                <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>
-                                <div class="frm-field-mar container">
-          	                    <div class="form-group input-group date row" id='datetimepicker6' style="margin: 0 0 5px 70px;">
-                		                        <div class="col-md-6 col-lg-6"><label for="space">From date:</label>
-                                            <input type='text' class="form-control" name="from-date1a" id="date1a" required placeholder="From" data-date-format="YYYY-MM-DD" />
-                		                        <!--<span class="input-group-addon">
-                    			                    <span class="glyphicon glyphicon-calendar"></span>
-                		                        </span>-->
-                                            </div>
-                                            
-                                            <div class="col-md-6 col-lg-6"><label for="space">To date: </label>
-                                              <input type='text' class="form-control" name="to-date2a" id="date2a" required placeholder="To" data-date-format="YYYY-MM-DD"/>                                   
-                                            </div>
-            	                  </div>        
-               	                <div class="form-group input-group date row" id='datetimepicker8' style="margin: 5px 0 5px 70px;">
-                		                        <div class="col-md-6 col-lg-6"><label for="space">From time:</label>
-                                              <input type='text' class="form-control" name="from-date1b" id="date1b" required placeholder="From" data-date-format="HH:mm" />
-                		                          <!--<span class="input-group-addon">
-                    			                      <span class="glyphicon glyphicon-calendar"></span>
-                		                          </span>-->
-                                            </div>
-                                            <div class="col-md-6 col-lg-6"><label for="space">To time:</label>
-                                              <input type='text' class="form-control" name="to-date2b" id="date2b" required placeholder="To" data-date-format="HH:mm"/>
-                                            </div>
-            	                  </div>
-                                
-    		                        <div class="form-group input-group row" style="margin: 5px 0 5px 70px;">
-                	                          <div class="col-md-4 col-lg-4" style="margin: 0 0px 0 0;"><label for="priceph">Price Per Hour</label>
-                                                <input type="number" class="form-control" size="3" id="priceph" placeholder="Enter $$" name="p_p_h">
-                                                <div class="" style="">
-                                                  <b>My Takehome (per hour):</b> <span id="netpph">$0</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-lg-4"><label for="pricepd">Price Per Day </label>
-                                                <input type="number"  class="form-control" size="3" id="pricepd" placeholder="Enter $$" name="p_p_n">
-                                                <div class="  " ><br>
-                                                  <b> My Takehome (per day):</b> <span id="netppd">$0</span>
-                                                </div>
-                                                <input type="hidden" class="sfee" value=<?php echo $sfee ?>>
-                                              </div>                                          
-                                </div>                               
-                                
-                                <div class="form-group  row" style="margin: 20px 0 5px 70px; width: 650px;">
-                	                            <div class="col-md-4 col-lg-4">
-                                                <button id="savetime" type="button" name="savetime" class="btn btn-default cus-save-but">Add Availability</button>            
-                                              </div>                                        
-                                              <div class="col-md-2 col-lg-2">
-                                                <button id="repeat" type="button" name="repeat" class="btn btn-default cus-save-but">Repeat</button>
-                                              </div>
-                                              <div class="col-md-6 col-lg-6">
-                                                <select class="form-control selectpicker" id="timing" name="timing">
-                                                      <option value="">Select Repeat Frequency</option>
-                                                      <option value="d">Daily</option>
-                                                      <option value="w">Weekly</option>
-                                                </select>
-                                              </div>
-                                              <span id="span1a" style="display:none; color: red;">Please enter missing values.</span>
-		                            </div>
-                              
-		                        <div class="col-md-12 col-lg-12 form-group row" style="margin: 5px 0px 11px 70px;">
-			                                                          	
-			                                    <!--<a id="" type="button" href="dashboard.php" name="place" class="btn btn-default cus-save-but">My DashBoard</a>-->
-		                        </div>
-                                
-                                <div id="msg3" style="color: red; padding: 0 30px;"></div>
-    	                    </div><!--frm-field-mar--> 
-                            </div>
-</form>
-<div class="clearfix"></div>
-        </div>
-        <div class="col-md-12 tellus-data for_claender_data" style="border-bottom: 0px solid rgb(252, 139, 17);border-left: 2px solid rgb(252, 139, 17);border-right: 2px solid rgb(252, 139, 17);">
-      <?php  $sql9 = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$pid."' and status = 'Available' ");
+   
+    <div class="col-md-12 tellus-data for_claender_data" style="border-bottom: 0px solid rgb(252, 139, 17);border-left: 2px solid rgb(252, 139, 17);border-right: 2px solid rgb(252, 139, 17);">
+      <?php  $sql9 = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$pid."'");
       if(mysqli_num_rows($sql9)>0)
       { 
         ?>
         <div class="row" style="background: rgb(252, 139, 17);
-    padding: 18px 0px;
+    padding: 13px 0px;
     color: white;
     font-weight: bolder;
-    font-size: 13px;">
+    font-size: 19px;">
     <style>
 .full-green-theme.range-calendar, .full-green-theme .range-calendar {
     background-color: #FC8B11 !important;
@@ -619,23 +469,21 @@ if($match=mysqli_fetch_array($query)){
     border-bottom-color: transparent;
 }
     </style>
-          <div class="col-md-3" style="text-align: center; padding-left: 50px;">From</div>
-          <div class="col-md-3" style="text-align: center;">To</div>
-          <div class="col-md-1" style="padding-left: 50px;">Price/<br>Hour</div>
-          <div class="col-md-1" style="padding-left: 50px;">Price/<br>Day</div>
-          <!--<div class="col-md-1">Price/<br>Week</div>-->
-          <div class="col-md-3" style="text-align: center;padding-left: 50px;">Action</div>
+          <div class="col-md-3">From</div>
+          <div class="col-md-3">To</div>
+          <div class="col-md-1">ppn</div>
+          <div class="col-md-1">pph</div>
+          <div class="col-md-1">ppw</div>
+          <div class="col-md-3">Action</div>
         </div>
         <?php
         $he = 1;
         while($row9 = mysqli_fetch_array($sql9))
         {
-          $fromdt = date_format(date_create($row9['date1']), 'Y-m-d g:s a');
-          $todt = date_format(date_create($row9['date2']), 'Y-m-d g:s a');
-          ?>
-            <div class="row for_re" style="padding: 11px 0px 1px 50px; border-bottom: 2px solid rgb(252, 139, 17);">
-            <div class="col-md-3 text-center"><?php echo $fromdt ?></div>
-            <div class="col-md-3 text-center"><?php echo $todt ?></div>
+          ?><div class="row for_re" style="    padding: 11px 0px 1px 0px;
+    border-bottom: 2px solid rgb(252, 139, 17);">
+            <div class="col-md-3 text-center"><?php echo $row9['date1'] ?></div>
+            <div class="col-md-3 text-center"><?php echo $row9['date2'] ?></div>
           
             <?php /*if(($row9['p_p_n']=="")&&($row9['p_p_h']=="")&&($row9['w_p_p_n']==""))
             {*/
@@ -647,27 +495,25 @@ if($match=mysqli_fetch_array($query)){
               //{
 
                ?>
+            <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="p_p_n" value="<?php echo $row9['p_p_n'] ? $row9['p_p_n'] : '0';  ?>"></div>
             <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="p_p_h" value="<?php echo $row9['p_p_h']  ? $row9['p_p_h'] : '0';  ?>"></div>
-            <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="p_p_n" value="<?php echo $row9['p_p_n'] ? $row9['p_p_n'] : '0';  ?>"></div>       
-            <!--<div class="col-md-1 text-center"><input class="he<?php //echo $he; ?>" style="width: 59px;" type="text" name="w_p_p_n" value="<?php //echo $row9['w_p_p_n']  ? $row9['w_p_p_n'] : '0'; ?>"></div>-->
+            <div class="col-md-1 text-center"><input class="he<?php echo $he; ?>" style="width: 59px;" type="text" name="w_p_p_n" value="<?php echo $row9['w_p_p_n']  ? $row9['w_p_p_n'] : '0'; ?>"></div>
             <?php //} ?>
             <div class="col-md-3 text-center"><button name="calender_price_update" id="he<?php echo $he; ?>" class="btn btn-success onclick_submit_price " value="<?php echo $row9['calid'] ?>" ><i class="fa fa-floppy-o"></i></button>
             <button name="calender_price_delete" id="he<?php echo $row9['calid']; ?>" class="btn btn-danger onclick_delete_price " value="<?php echo $row9['calid'] ?>"><i class="fa fa-trash"></i></button></div>
             
             </div>
-            <span id="delmsg" style="color: blue;"></span>
           <?php
           $he++;
           }
           ?>
-          <span id="heval" style="display:none;"><?php echo $he ?></span>
                <div class="row"style="padding: 11px 0px 1px 0px;
     border-bottom: 2px solid rgb(252, 139, 17);">
-          <!--div class="col-md-12 form-group">
-            <!--<button id="add_cal_price" class="btn-success btn">Add</button>-->
-            <!--<a href="dashboard.php" class="btn-warning btn">My DashBoard</a>-->
+          <div class="col-md-12 form-group">
+            <button id="add_cal_price" class="btn-success btn">Add</button>
+            <a href="dashboard.php" class="btn-warning btn">My DashBoard</a>
             <!--<a href="edit-place.php?placeid=17" class="btn-info btn">Update Details</a>-->
-          <!--</div>--></div>
+          </div></div>
           <?php
       }
       else{
@@ -681,7 +527,7 @@ if($match=mysqli_fetch_array($query)){
   </div>
         </div> 
         <div class="col-md-12" id="cal_data_cl" style="display: none;padding: 11px 0px 1px 0px; border-bottom: 2px solid rgb(252, 139, 17);">
-    <?php //include_once('calender.php'); ?>
+    <?php include_once('calender.php'); ?>
   </div>
     </div>
     </div>
@@ -764,7 +610,6 @@ p {
  // include 'lib/footer.php'; //if isset 
 
   ?> -->
-  
   <div id="myModal2" class="modal fade" role="dialog">
 
   <div class="modal-dialog">
@@ -846,7 +691,7 @@ p {
 </form>
   </div>
 
-  <div class="hide1" id="fourth-block"> 
+  <div class="hide1" id="fourth-block">
 <form class="form-group" id="change_price">
     <div class="input-group" id="change_price">
       <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -878,15 +723,12 @@ p {
  </div>
   </div>
 </div>
-<?php include 'lib/footer.php'; //if isset
-?>
-<script src="tm/jquery.timepicker.js"></script>
   <!--==================Signup Modal box Ends==============-->
   
 
  
 <!--========== footer 1st============-->
-<!--<footer class="footer-media">
+<footer class="footer-media">
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
@@ -949,103 +791,46 @@ p {
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
      <script src="bootstrap/js/bootstrap.js"></script> -->
-
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="tm/jquery.timepicker.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>   
-<script src="js/forms.js"></script>
-<script src="js/forms2.js"></script>
-<script src="sm/dist/sweetalert2.min.js"></script>
-<script src="bm/js/fileinput.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/jquery.mask.js"></script>
-<script src="js/nouislider.js"></script>
+   
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+   <script src="http://www.jqueryscript.net/demo/jQuery-jQuery-UI-Based-Date-Range-Picker-Plugin/jquery.comiseo.daterangepicker.js"></script>
+   
+   
+        <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
+      
 
 
+    <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+ 
+    <script type="text/javascript" src="bm/js/plugins/canvas-to-blob.min.js"></script>
+    <script src="bm/js/fileinput.min.js" type="text/javascript"></script>
+    <script src="js/custom-calendar.js"></script>
+     
+    <script type="text/javascript" src="js/jquery.mask.js"></script>
+
+  
+     
+     <script src="sm/dist/sweetalert2.min.js"></script>
+
+     <script src="js/nouislider.js"></script>
+
+     
+    <script type="text/javascript" src="js/jquery.mask.js"></script>
+    <script src="js/custom.js"></script>
+   
+   
+      <script src="js/forms.js"></script>
+
+      <script src="js/forms2.js"></script>
     <script src="js/forms-map.js"></script>
-    Include all compiled plugins (below), or include individual files as needed
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
    
    <script src="js/star-rating.min.js"></script>
-  <script src="js/bootstrap-select.js"></script>
+  <!--<script src="js/bootstrap-select.js"></script> -->
   
-  <script src="js/wow.js"></script>-->
-    <script type="text/javascript">
-        $(function () {
-            
-            //$('#datetimepicker6').datetimepicker();
-            //$('#datetimepicker7').datetimepicker();
-            //$('#datetimepicker8').datetimepicker();
-            //$('#datetimepicker9').datetimepicker();
-        });
-        $(document).ready(function() {
-          
-          $('#date1a').datepicker({
-		          'dateFormat':'yy-mm-dd',
-		          step: 60,
-		          //minTime:'<?php //echo $dt1time ?>',
-		          //maxTime:'<?php //echo $dt2time ?>',
-    	        'scrollDefaultNow': 'true',
-              'closeOnWindowScroll': 'true',
-              'showDuration': false
-	        });
-          $('#date2a').datepicker({
-		          'dateFormat':'yy-mm-dd',
-		          step: 60,
-		          //minTime:'<?php //echo $dt1time ?>',
-		          //maxTime:'<?php //echo $dt2time ?>',
-    	        'scrollDefaultNow': 'true',
-              'closeOnWindowScroll': 'true',
-              'showDuration': false
-	        });
-          $('#date1b').timepicker({
-		          'timeFormat':'g:i a',
-		          step: 60,
-		          //minTime:'<?php //echo $dt1time ?>',
-		          //maxTime:'<?php //echo $dt2time ?>',
-    	        'scrollDefaultNow': 'true',
-              'closeOnWindowScroll': 'true',
-              'showDuration': false
-	      });
-        $('#date2b').timepicker({
-		          'timeFormat':'g:i a',
-		          step: 60,
-		          //minTime:'<?php //echo $dt1time ?>',
-		          //maxTime:'<?php //echo $dt2time ?>',
-    	        'scrollDefaultNow': 'true',
-              'closeOnWindowScroll': 'true',
-              'showDuration': false
-	      });
-        $sfee = $('.sfee').val();
-        $("#priceph").change(function() {
-            $prh = Number($("#priceph").val());
-            $newval = $prh - ($prh * $sfee)
-            $("#netpph").html("$" + String($newval));
-        });
-
-        $("#pricepd").change(function() {
-          $prd = Number($("#pricepd").val());
-          $newval = $prd - ($prd * $sfee)
-          $("#netppd").html("$" + String($newval));
-        });
-
-        $("#pricepw").change(function() {
-          $prw = Number($("#pricepw").val());
-          $newval = $prw - ($prw * $sfee);
-          $("#netppw").val("$" + String($newval));
-        });
-
-        $('#savetime').click(function(e){
-                    if (formVal()) {
-                        $("form#calenderform").submit();
-                    } else {
-                        e.preventDefault();
-                    }
-	      });
-        });
-    </script>
+  <script src="js/wow.js"></script>
 
    <script>
          var placeSearch, autocomplete;
@@ -1108,121 +893,6 @@ p {
           });
         }
       }
-
-
-      function formVal() {
-            var mess = "Please Enter Missing Information.";
-            $('#msg3').html("");
-    				var fn=document.getElementById('date1a').value;
-    				if(fn == ""){
-        				
-        				document.getElementById('date1a').style.borderColor = "red";
-						$("#span1a").html(mess);
-						$("#span1a").css('display', 'block');
-        				return false;
-    				}else{
-        				document.getElementById('date1a').style.borderColor = "green";
-						$("#span1a").css('display', 'none');
-    				}
-
-					var fn1=document.getElementById('date1b').value;
-    				if(fn1 == ""){
-        				
-        				document.getElementById('date1b').style.borderColor = "red";
-						$("#span1a").html(mess);
-						$("#span1a").css('display', 'block');
-        				return false;
-    				}else{
-        				document.getElementById('date1b').style.borderColor = "green";
-						$("#span1a").css('display', 'none');
-    				}
-
-					var fn2=document.getElementById('date2a').value;
-    				if(fn2 == ""){
-        				
-        				document.getElementById('date2a').style.borderColor = "red";
-						$("#span1a").html(mess);
-						$("#span1a").css('display', 'block');
-        				return false;
-    				}else{
-        				document.getElementById('date2a').style.borderColor = "green";
-						$("#span1a").css('display', 'none');
-    				}
-
-					var fn2=document.getElementById('date2b').value;
-    				if(fn2 == ""){
-        				
-        				document.getElementById('date2b').style.borderColor = "red";
-						$("#span1a").html(mess);
-						$("#span1a").css('display', 'block');
-        				return false;
-    				}else{
-        				document.getElementById('date2b').style.borderColor = "green";
-						$("#span1a").css('display', 'none');
-    				}
-					var fn1=document.getElementById('priceph').value;
-    				if(fn1 == ""){
-        				
-        				document.getElementById('priceph').style.borderColor = "red";
-						$("#span1a").html(mess);
-						$("#span1a").css('display', 'block');
-        				return false;
-    				}else{
-        				document.getElementById('priceph').style.borderColor = "green";
-						$("#span1a").css('display', 'none');
-    				}
-
-					var fn2=document.getElementById('pricepd').value;
-    				if(fn2 == ""){
-        				
-        				/*document.getElementById('pricepd').style.borderColor = "red";
-						$("#span1a").html(mess);
-						$("#span1a").css('display', 'block');
-        				return false;*/
-    				}else{
-        				document.getElementById('pricepd').style.borderColor = "green";
-						$("#span1a").css('display', 'none');
-    				}
-
-					/*var fn2=document.getElementById('pricepw').value;
-    				if(fn2 == ""){
-        				
-        				document.getElementById('pricepw').style.borderColor = "red";
-						$("#span1a").html(mess);
-						$("#span1a").css('display', 'block');
-        				return false;
-    				}else{
-        				document.getElementById('pricepw').style.borderColor = "green";
-						$("#span1a").css('display', 'none');
-    				}*/
-                    
-              var dt1 = new Date($("#date1a").val() + " " + $("#date1b").val());
-			        var dt2 = new Date($("#date2a").val() + " " + $("#date2b").val());
-              var dt3 = new Date();
-              var dttm1 = new Date($("#date1a").val() + " " + $("#date1b").val());
-              var dttm2 = new Date($("#date1a").val() + " " + $("#date2b").val());
-			        if (dt1 >= dt2) {
-				        document.getElementById('date1a').style.borderColor = "red";
-				        document.getElementById('date1b').style.borderColor = "red";
-				        document.getElementById('date2a').style.borderColor = "red";
-				        document.getElementById('date2b').style.borderColor = "red";
-				        $("#span1a").html("From Date is Greater than or Equal to To Date.");
-				        $("#span1a").css('display', 'block');
-				        return false;
-              } else if (dt1 < dt3) {
-                document.getElementById('date1a').style.borderColor = "red";
-                $("#span1a").html("From Date is in the Past.");
-				        $("#span1a").css('display', 'block');
-                return false;
-              } else if (dttm1 >= dttm2) {
-                document.getElementById('date1b').style.borderColor = "red";
-				        document.getElementById('date2b').style.borderColor = "red";
-				        $("#span1a").html("From Time is Greater than or Equal to To Time.");
-				        $("#span1a").css('display', 'block');
-				        return false;
-              }
-              return true;
-    }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0ceT-_kjPt8INNEKoVX9axkv3zw3miBY&signed_in=true&libraries=places&callback=initAutocomplete"
         async defer></script>

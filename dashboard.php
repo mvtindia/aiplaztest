@@ -3,6 +3,7 @@
 <head>
 	<title>Dashboard</title>
 	<?php include 'lib/top.php';?>
+  
 </head>
 
 <body>
@@ -18,7 +19,7 @@ if(isset($_SESSION['u_id']))
 <?php include 'lib/header.php';?>
 </div><!--menu-had close-->
 <!--==============menu header close=========================-->
-<?php include 'lib/deshboardmenu.php';?>
+<?php include 'lib/dashboardmenu.php';?>
 <?php  if(isset($_GET['del']))
 {
   $id = $_GET['del'];
@@ -94,21 +95,35 @@ $res = mysqli_fetch_array($q1); ?>
 <div class="col-md-3">
 <h3 class="text-center"><?php echo $res['fname']." ".$res['lname']; ?></h3>
 <p class="text-center">
-<a id="a7" class="color3">Edit Profile</a>
+<!--<a id="a7" class="color3" data-toggle="modal" data-target="#myModal4">Edit Profile</a>-->
+<a id="a6" class="b6">Edit Profile</a>
 </p>
+<!--<p class="text-center">
+<a id="a11" class="b11">Edit Payment Information</a>
+</p>-->
+
 </div>
 <div class="col-md-7">
 <div class="text-center">
 <button class="btn-3" data-toggle="modal" data-target="#myModal3">Change Password</button>
 </div>
 </div>
+
 </div>
+
 <div class="clearfix"></div>
 </div>
 </div>
+<?php /*if (isset($_REQUEST['msg'])) {
+    if ($_REQUEST['msg'] == 'addplace') { ?>
+<div style="text-align: center;"><br><br><h3 style="color: blue;">Success! You have listed a place.</h3></div> 
+<?php } else { ?>
+<div style="text-align: center;"><br><br><h3 style="color: blue;">Delete completed.</h3></div>
+<?php } }*/ ?>
 <!--==============left panel close=========-->
 <!--==============right panel=========-->
 <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0 mg-bottom20">
+
 <div class="main-panel">
 <!-- =========Enquiry Block=============== -->
 <div id="b1" class="welcome col-md-12 pd-lr-0 mg-top20 border1 tab_in_dash">
@@ -131,7 +146,7 @@ $res = mysqli_fetch_array($q1); ?>
 		    <tbody>
            <?php 
            $se = 1 ;
-           $q21 = mysqli_query($connect,"select * from place where user_id=".$_SESSION['u_id']);
+           $q21 = mysqli_query($connect,"select * from place where user_id=".$_SESSION['u_id']." order by place_id desc");
            while($r21 = mysqli_fetch_array($q21)) 
            {
             ?>
@@ -141,10 +156,13 @@ $res = mysqli_fetch_array($q1); ?>
               <td> <?php echo $r21['p_address']; ?> </td>
               <td> <?php $q22 = mysqli_query($connect,"select * from property where pid =".$r21['property_typeid']); $r22 = mysqli_fetch_array($q22); echo $r22['ptype'];  ?> </td>
               <td> <?php echo $r21['capacity']; ?> </td>
-              <td> <a href="demo-venue.php?placeid=<?php echo $r21['place_id']; ?>"><button class="btn-success"><i class="fa fa-eye"></i>&nbsp;</button></a>
-              <a href="edit-place.php?placeid=<?php echo $r21['place_id']; ?>"><button class="btn-primary"><i class="fa fa-pencil"></i>&nbsp;</button></a>
-              <a href="new-actions.php?delete_place=<?php echo $r21['place_id']; ?>"><button class="btn-danger"><i class="fa fa-trash"></i>&nbsp;</button></a>
+              <td> <a href="demo-venue.php?placeid=<?php echo $r21['place_id']; ?>" title="View"><button class="btn-success"><i class="fa fa-eye"></i>&nbsp;</button></a>
+              <a href="calendar.php?placeid=<?php echo $r21['place_id']; ?>&placename=<?php echo $r21['space_name']; ?>"><button class="btn-success" title="Calendar"><i class="fa fa-calendar"></i>&nbsp;</button></a>
+              <a href="edit-place.php?placeid=<?php echo $r21['place_id']; ?>"><button class="btn-primary" title="Edit"><i class="fa fa-pencil"></i>&nbsp;</button></a>
+              <a href="new-actions.php?delete_place=<?php echo $r21['place_id']; ?>" id="btndelpl"><button class="btn-danger" title="Delete"><i class="fa fa-trash"></i>&nbsp;</button></a>
+              
             </tr>
+     
             <?php
            }
            ?>           
@@ -171,8 +189,8 @@ $res = mysqli_fetch_array($q1); ?>
         <thead>
             <tr>
                 <th>Sr. No</th>
-                <th>Checkin Date</th>
-                <th>Checkout Date</th>
+                <th>Checkin</th>
+                <th>Checkout</th>
                 <th>Venue</th>
                 <th>Total</th>
                <!--  <th>Action</th> -->
@@ -182,14 +200,16 @@ $res = mysqli_fetch_array($q1); ?>
 		
 		<tbody>
            <?php 
-           $serial = 1;
+             $serial = 1;
           
              $q19 = mysqli_query($connect,"select * from booking where userid='".$_SESSION['u_id']."' order by bookid asc");
-             while($r19 = mysqli_fetch_array($q19)) { ?>
+             while($r19 = mysqli_fetch_array($q19)) { 
+               $chkin = $r19['checkin'] . " " . date_format(date_create($r19['ftime']), 'g:i a');
+               $chkout = $r19['checkout'] . " " . date_format(date_create($r19['ltime']), 'g:i a'); ?>
               <tr>
                 <td><?php echo $serial++; ?></td>
-                <td><?php echo date('d/m/Y',strtotime($r19['checkin'])); ?></td>
-                <td><?php if($r19 == '0000-00-00') { echo $r19['hours']; } else { echo date('d/m/Y',strtotime($r19['checkout'])); } ?></td>
+                <td><?php echo $chkin; ?></td>
+                <td><?php echo $chkout;  ?></td>
                 <td><?php $q20 = mysqli_query($connect,"select * from place where place_id=".$r19['placeid']);
                 $r20 = mysqli_fetch_array($q20); echo $r20['space_name']; ?></td>
                 
@@ -297,10 +317,6 @@ $res = mysqli_fetch_array($q1); ?>
 <!-- Enquries Block close -->
 
 
-
-
-
-
 <!-- Services Block -->
 <div id="b7" class="welcome col-md-12 col-sm-12 col-xs-12 pd-lr-0 mg-top20 border1 tab_in_dash" style="display: none;">
 <div class="col-md-12 col-sm-12 col-xs-12 backcolor3 pd-top10">
@@ -366,9 +382,6 @@ $res = mysqli_fetch_array($q1); ?>
 
 </div>
 <!-- =========Services Block close=============== -->
-
-
-
 
 
 
@@ -562,16 +575,16 @@ while($res3 = mysqli_fetch_array($q3)){
 <!--=========Transaction History Block===============-->
 <div id="b8" class="welcome col-md-12 pd-lr-0 mg-top20 border1 tab_in_dash">
 <div class="col-md-12 backcolor3 pd-top10">
-  <?php $qr = mysqli_query($connect,"select count(`nid`) as total from notes where userid=".$_SESSION['u_id']." and nstatus='N'");
+  <?php /*$qr = mysqli_query($connect,"select count(`nid`) as total from notes where userid=".$_SESSION['u_id']." and nstatus='N'");
     $rw = mysqli_fetch_array($qr);
-
+*/
      ?>
-<p class="bold"><h3>Notifications <?php if($rw['total'] != 0) { ?><span class="badge notes_count"> <?php echo $rw['total']; ?></span><?php } ?></h3></p>
+<p class="bold"><h3>Notifications <?php //if($rw['total'] != 0) { ?><span class="badge notes_count"> <?php //echo $rw['total']; ?></span><?php //} ?></h3></p>
 </div>
 <div class="col-md-12 mg-top20">
 
 <ul style="list-style-type: none;padding: 0px;">
-<?php $q31 = mysqli_query($connect,"Select * from notes where userid=".$_SESSION['u_id']);
+<?php /*$q31 = mysqli_query($connect,"Select * from notes where userid=".$_SESSION['u_id']);
 while($r31 = mysqli_fetch_array($q31)) {
   $q32 = mysqli_query($connect,"select * from booking book , place p where book.bookid='".$r31['bookid']."' and book.placeid=p.place_id");
   $r32 = mysqli_fetch_array($q32);
@@ -583,7 +596,7 @@ while($r31 = mysqli_fetch_array($q31)) {
   <?php } else { ?>  <li class="" style="padding: 1%;cursor: pointer; border: 1px solid #eeeeee"> <?php } ?>
     <p><i class="fa fa-bell"></i> Your Booking For Place-<?php echo $r32['space_name']; ?> Has Been Cancelled Due To Some Circumstances.</p>
   </li>
-  <?php } ?>
+  <?php }*/ ?>
 </ul>
 
 </div>
@@ -602,35 +615,28 @@ while($r31 = mysqli_fetch_array($q31)) {
 <div class="col-md-12 mg-top20">
 <form class="form-group" id="updatedata">
 <div class="col-md-6 mg-top15">
+<label>First Name</label>
 <input type="text" class="form-control" placeholder="First Name" name="fname"required value="<?php echo $res['fname']; ?>">
 </div>
 
 <div class="col-md-6 mg-top15">
+<label>Last Name</label>
 <input type="text" class="form-control" placeholder="Last Name" name="lname" required value="<?php echo $res['lname']; ?>">
 </div>
 
 <div class="col-md-6 mg-top15">
+<label>Email</label>
+<input type="email" class="form-control" placeholder="Email address" name="email" value="<?php echo $res['email']; ?>">
+</div>
+
+<div class="col-md-6 mg-top15">
+<label>Contact</label>
 <input type="text" class="form-control" placeholder="Mobile" name="contact" required value="<?php echo $res['contact']; ?>">
 </div>
 
-<div class="col-md-6 mg-top15">
-<!-- <select name="city" class="form-control">
-  <option value="">-Select City-</option>
-<?php 
-$q2 = mysqli_query($connect,"select * from city");
-while($res2 = mysqli_fetch_array($q2)){
-  echo '<option value="'.$res2['cityid'].'">'.$res2['cityname'].'</option>';
-}//while
-?>
-</select> -->
-<input type="text" class="form-control" placeholder="City" name="city" required value="<?php echo $res['city']; ?>">
-</div>
 
-<div class="col-md-6 mg-top15">
-<input type="text" class="form-control datePicker" placeholder="Date of birth" name="dob" value="<?php echo $res['dob']; ?>">
-</div>
 <div class="col-md-12 mg-top15 mg-bottom20">
-<button class="btn-3" type="submit" name="update">Save</button>
+<button class="btn-3" type="submit" name="update">Save</button><span id="msg"><h3 style="color: blue;"></h3></span>
 </div>
 </form>
 </div>
@@ -638,10 +644,173 @@ while($res2 = mysqli_fetch_array($q2)){
 </div>
 <!----=========Edit Profile Block close===============-->
 
+<!-- =========Edit Payment info=============== -->
 
+<div id="b11" class="welcome col-md-12 pd-lr-0 mg-top20 border1 tab_in_dash" style="display: none;">
+<div class="col-md-12 backcolor3 pd-top10">
+<p class="bold">Edit Payment Information</p>
+</div>
+<?php 
+include_once('braintree-init.php');
+$clientToken = Braintree_ClientToken::generate();
+$qccard = mysqli_query($connect,"Select * from stripeaccts where user_id='".$_SESSION['u_id']."'");
+$ccnum = "";
+$ccmonth = "";
+$ccyear = "";
+$cczip = "";
+while($rccard = mysqli_fetch_array($qccard)) {
+  
+  try {
+    $bresult = Braintree_Customer::find($rccard['stripe_cusid']); 
+    $ccnum = $bresult->creditCards[0]->last4;
+    $ccmonth = $bresult->creditCards[0]->expirationMonth;
+    $ccyear = $bresult->creditCards[0]->expirationYear;
+    $cczip = $bresult->creditCards[0]->billingAddress->postalCode;
+  }
+  catch (Braintree_Exception_NotFound $e) {
+    echo $e->getMessage();
+  }
+  
+?>
+<div class="col-md-12 mg-top20">
+<form id="ccsave-form" method="post" class="form-inline">
+              <div class="row">
+                  <div class="form-group col-md-2">
+                    <label class="control-label">Card Number</label>
+                    <div class="form-control" id="card-number"></div>
+                    <!--<input type="text" value="************<?php echo $ccnum ?>">-->
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label class="control-label">Expiration Month</label>
+                    <div class="form-control" id="expiration-month"></div>
+                    <!--<input type="text" value="<?php echo $ccmonth ?>">-->
+                  </div>
+                  <div class="form-group col-md-2">               
+                    <label class="control-label">Expiration Year</label>
+                    <div class="form-control" id="expiration-year"></div>
+                    <!--<input type="text" value="<?php echo $ccyear ?>">-->
+                  </div>
+                  <div class="form-group col-md-2">               
+                    <label class="control-label">Security Code</label>
+                    <div class="form-control" id="cvv"></div>
+                    <!--<input type="text" value="***">-->
+                  </div>
+                  <div class="form-group col-md-2">               
+                    <label class="control-label">Zipcode</label>
+                    <div class="form-control" id="postal-code"></div>
+                    <!--<input type="text" value="***">-->
+                  </div>
+                  <div class="form-group col-md-2" style="padding-top: 20px;">
+                    <input id="cusid" type="hidden" value="<?php echo $rccard['stripe_cusid'] ?>">
+                    <input id="ccsave" type="submit" value="Save">
+                    <input id="ccdel" type="button" value="Delete">
+                  </div>
+              </div>
+              <div class="row">
+                  <!--<div class="form-group col-md-8">    
+                    <input type="submit" value="Save">
+                    <input type="submit" value="Delete">
+                  </div>-->
+                    <span class="helper-text"></span>
+              </div>
+              <!--<button value="submit" id="submit" class="btn btn-success btn-lg center-block">Pay with <span id="card-type">Card</span></button>-->
+              <input type="hidden" name="payment-method-nonce">
+              <div style="height: 10px;"></div>
+        </form>
+        </div>
+<script src="https://js.braintreegateway.com/web/3.7.0/js/client.min.js"></script>
 
+<!-- Load the Hosted Fields component. -->
+<script src="https://js.braintreegateway.com/web/3.7.0/js/hosted-fields.min.js"></script>
 
+<script>
+// We generated a client token for you so you can test out this code
+// immediately. In a production-ready integration, you will need to
+// generate a client token on your server (see section below).
+var form = document.querySelector('#ccsave-form');
+var submit = document.querySelector('input[type="submit"]');
+var authorize = '<?php echo $clientToken ?>';
 
+braintree.client.create({
+  // Replace this with your own authorization.
+  
+  authorization: authorize
+}, function (clientErr, clientInstance) {
+  if (clientErr) {
+    // Handle error in client creation
+    return;
+  }
+
+  braintree.hostedFields.create({
+    client: clientInstance,
+    styles: {
+      'input': {
+        'font-size': '12pt'
+      },
+      'font-family': 'helvetica, tahoma, calibri, sans-serif',
+      'input.invalid': {
+        'color': 'red'
+      },
+      'input.valid': {
+        'color': 'black'
+      }
+    },
+    fields: {
+      number: {
+        selector: '#card-number',
+        placeholder: "<?php if ($ccnum) { echo '************' . $ccnum; } ?>"
+      },
+      cvv: {
+        selector: '#cvv',
+        placeholder: '***'
+      },
+      expirationMonth: {
+        selector: '#expiration-month',
+        placeholder: '<?php if ($ccmonth) { echo $ccmonth; } ?>',
+        select: true
+      },
+      expirationYear: {
+        selector: '#expiration-year',
+        placeholder: '<?php if ($ccyear) { echo $ccyear; } ?>',
+        select: true
+      },
+      postalCode: {
+        selector: '#postal-code',
+        placeholder: '<?php if ($cczip) { echo $cczip; } ?>'
+      }
+    }
+  }, function (hostedFieldsErr, hostedFieldsInstance) {
+    if (hostedFieldsErr) {
+      // Handle error in Hosted Fields creation
+      return;
+    }
+
+    submit.removeAttribute('disabled');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
+        if (tokenizeErr) {
+          // Handle error in Hosted Fields tokenization
+          return;
+        }
+
+        // Put `payload.nonce` into the `payment-method-nonce` input, and then
+        // submit the form. Alternatively, you could send the nonce to your server
+        // with AJAX.
+        console.log(payload.nonce);
+        document.querySelector('input[name="payment-method-nonce"]').value = payload.nonce;
+        form.submit();
+      });
+    }, false);
+  });
+});
+</script>
+<?php 
+} ?>
+</div>
+<!----=========Edit Payment Info Block close===============-->
 
 </div>
 
@@ -662,18 +831,16 @@ while($res2 = mysqli_fetch_array($q2)){
         <h4 class="modal-title">Change Password</h4>
       </div>
       <form  id="change_pass">
-      <div class="modal-body">
-      
+      <div class="modal-body">  
         <input type="password" class="form-control" placeholder="Current Password" name="curepassword" required>
-		<input type="password" class="form-control mg-top15" placeholder="New Password" name="newpassword" required>
-		<input type="password" class="form-control mg-top15" placeholder="Confirm Password" name="confpassword" required>
-		<div class="text-center">
-		<button class="btn-5 mg-top15" type="submit">Save</button>
-		</div>
+        <input type="password" class="form-control mg-top15" placeholder="New Password" name="newpassword" required>
+        <input type="password" class="form-control mg-top15" placeholder="Confirm Password" name="confpassword" required>
+        <div class="text-center">
+          <button class="btn-5 mg-top15" type="submit">Save</button>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" name="change_pass">Close</button>
-        
       </div>
       </form>
     </div>
@@ -681,7 +848,50 @@ while($res2 = mysqli_fetch_array($q2)){
   </div>
 </div>
 <!-- change pwd modal box close -->
+<div id="myModal4" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="showload" style="display:none;">
+        <img class="showimg" src="img/loading.gif" style="margin:0 auto;display:block;">
+      </div>
+      <div class="hidecontent">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Update your profile</h4>
+        </div>
+        <div class="modal-body">
+          <div class="" id="third-block">
+  <form class="form-group" action="actions.php" id="updprof_form" method="POST">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <input type="text" class="form-control form-height40 bord-0" name="fname" placeholder="First Name" required/>
+            </div>
+            <div class="input-group mg-top20"> 
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <input type="text" class="form-control form-height40 bord-0" name="lname" placeholder="Last Name" required/>
+            </div>
+            <div class="input-group mg-top20">
+              <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+              <input type="text"  maxlength="15" class="form-control form-height40 bord-0 phone" name="contact" placeholder="Mobile" required/>
+            </div>  
+            <div class="text-center mg-top10">
+              <button type="submit" name="signup" id="signup" class="btn-4">Save</button>
+              <button type="button" class="btn-back" data-dismiss="modal">Back</button>
+            </div>
+  </form>
+          </div>
+        </div>
+        <div class="modal-footer" style="text-align: center;">
+       <!--  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+          <span class="showmsg" style="display:none;"></span>
+        </div>
+      </div>
+        <br>      
+    </div>
+  </div>
+</div>
 
 <!-- compose msg Modal box start -->
 <div id="compose" class="modal fade" role="dialog">
@@ -731,6 +941,20 @@ else
 <!--========================center part close=================================-->
 <!--======footer======-->
 	<?php include 'lib/footer.php';?>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('a#btndelpl').click(function(e){
+      var r = confirm("Confirm deletion.");
+      if (r == false) {
+        e.preventDefault();
+        return false;
+      } else {
+        return true;
+      }
+    });
+  });
+  </script>
+  
 	
 <!--======footer close======-->
 </div><!--row close-->
@@ -745,16 +969,7 @@ else
   }
 
 </style>
-</body>	
-</html>
+</body>
 
-<?php if(isset($_REQUEST['msg']))
-{
-  ?>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      swal('Success','Record Deleted Successfully','success');
-    });
-  </script>
-  <?php
-  } ?>
+
+</html>

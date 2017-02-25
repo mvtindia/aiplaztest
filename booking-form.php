@@ -3,12 +3,14 @@ session_start();
 include_once('connect.php');
 // if(isset($_SESSION['u_id'])
 // {
-  $paypal_url='https://www.paypal.com/cgi-bin/webscr'; // Test Paypal API URL
-$paypal_id='bluestar.jeet@gmail.com'; // Business email ID
-$book = $_REQUEST['booking_id'];
+//$paypal_url='https://www.paypal.com/cgi-bin/webscr'; // Test Paypal API URL
+//$paypal_id='bluestar.jeet@gmail.com'; // Business email ID
+$book = $_REQUEST['bookid'];
+
 $q17 = mysqli_query($connect,'Select * from users,booking where uid="'.$_SESSION['u_id'].'" and uid=userid and bookid="'.$book.'"');
 if(mysqli_num_rows($q17)>0)
 {
+  
 $r17=mysqli_fetch_array($q17);
 
 // $q18 = mysqli_query($connect,"select * from booking where bookid=".$book);
@@ -21,7 +23,7 @@ $r17=mysqli_fetch_array($q17);
 
   <title>Booking form</title>
   <?php include 'lib/top.php';?>
-  
+  <script src="https://checkout.stripe.com/checkout.js"></script>
 </head>
 
 <body>
@@ -51,7 +53,8 @@ $r17=mysqli_fetch_array($q17);
 <div class="row">
 <div class="col-lg-8 col-sm-8 col-md-8 col-xs-12">
 <div class="tellus-data col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0">
-<form  id="booking_form45" method="post" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0" >
+<!--<form  id="booking_form45" method="post" action="creditcard.php" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0" >-->
+<form  method="post" action="creditcard2.php" id="bkform" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0" >
 <div class="had-frm">Your Details</div>
 <div class="frm-field-mar">
 
@@ -62,7 +65,7 @@ $r17=mysqli_fetch_array($q17);
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
    <input type="hidden" value="<?php echo $book; ?>" id="booking_id" >
      <input type="text" name="book_id" hidden value="<?php echo $book; ?>">
-    <input readonly="" type="text" value="<?php echo $r17['package']; ?>" class="form-control" id="" placeholder="Premium">
+    <input readonly="" type="text" value="<?php echo $r17['hours']. " " . $r17['package']; ?>" class="form-control" id="" placeholder="Premium">
   </div>
   
   </div>
@@ -73,15 +76,19 @@ $r17=mysqli_fetch_array($q17);
     <label for="space">Price Per <?php echo $r17['package']; ?></label>
   </div>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-    <input readonly="" type="text" value="<?php echo $r17['price']; ?>" class="form-control" id="" placeholder="2000/-">
+    <input readonly="" type="text" value="$<?php echo $r17['price']; ?>" class="form-control" id="" placeholder="2000/-">
   </div>
   </div>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-top10">
   <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
     <label for="space">Checkin</label>
   </div>
+  <?php
+    $dtin = date_format(date_create($r17['checkin'] . " " . $r17['ftime']), 'Y-m-d g:i a');
+    $dtout = date_format(date_create($r17['checkout'] . " " . $r17['ltime']), 'Y-m-d g:i a');
+  ?>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-    <input readonly="" type="text" value="<?php echo $r17['checkin']; ?>" class="form-control" id="" placeholder="2-10-12">
+    <input readonly="" type="text" value="<?php echo $dtin; ?>" name="checkin" class="form-control" id="" placeholder="2-10-12">
   </div>
   
   </div>
@@ -92,7 +99,7 @@ $r17=mysqli_fetch_array($q17);
     <label for="space">Checkout</label>
   </div>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-    <input readonly="" type="text" value="<?php echo $r17['checkout']; ?>" class="form-control" id="" placeholder="5-10-12">
+    <input readonly="" type="text" value="<?php echo $dtout ?>" name="checkout" class="form-control" id="" placeholder="5-10-12">
   </div>
   
   </div>
@@ -103,7 +110,8 @@ $r17=mysqli_fetch_array($q17);
     <label for="space">Total Price</label>
   </div>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-    <input readonly="" id="amount" type="text" name="total_price" value="<?php echo $r17['hotel']; ?>" class="form-control" id="" >
+    <input readonly="" id="amount" type="text" name="show_price" value=$<?php echo $r17['hotel'] ?> class="form-control" >
+    <input type="hidden" name="total_price" value=<?php echo $r17['hotel'] ?> >
   </div>
   
   </div>
@@ -115,7 +123,7 @@ $r17=mysqli_fetch_array($q17);
     <label for="space">Number of persons</label>
   </div>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-    <input readonly="" type="text" value="<?php echo $r17['guests ']; ?>" class="form-control" id="" placeholder="1">
+    <input readonly="" type="text" value="<?php echo $r17['guests'] ?>" class="form-control" id="" placeholder="1">
   </div>
   
   </div>
@@ -140,13 +148,13 @@ $r17=mysqli_fetch_array($q17);
   </div>
   </div>
   
-       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-top10">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-top10">
       <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
-    <label for="space">Location</label>
-  </div>
-   <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-    <input readonly="" type="text" value="<?php echo $r17['city']; ?>" class="form-control" id="" placeholder="Location">
-  </div>
+        <label for="space">Location</label>
+      </div>
+      <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
+        <input readonly="" type="text" value="<?php echo $_REQUEST['theplace'] ?>" name="theplace" class="form-control" id="" placeholder="Location">
+      </div>
   </div>
   
   
@@ -156,24 +164,19 @@ $r17=mysqli_fetch_array($q17);
   </div>
    <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
     <input readonly="" type="text" value="<?php echo $r17['email']; ?>" class="form-control" id="" placeholder="Email">
+    <input type="hidden" name="placeid" value="<?php echo $_POST['placeid'] ?>">
   </div>
   </div>
-  
-  
-  
-  
 
   <!--=======================================-->
 
   <div class="col-md-12 text-center mg-top20 mg-bottom20">
   <div class="btn-group" data-toggle="buttons">
       <label class="btn btn-success">
-        <button type="submit" id="paypal_data" name="paypal_insertion"  style="background: transparent;border: none; padding: 0px;">Pay online</button>
+        <!--<button type="button" id="paypal_data" name="paypal_insertion"  style="background: transparent;border: none; padding: 0px;">Pay online</button>-->   
+        <button type="submit" id="payonline" name="payonline"  style="background: transparent;border: none; padding: 0px;">Pay online</button>
       </label>
       
-      <label class="btn btn-success hotel-btn">
-        <button type="button" required="" class="hotel-btn"  name="method" value="hotel" style="background: transparent;border: none; padding: 0px;">Pay at Hotel</button>
-      </label>
       <label class="btn btn-success ">
         <button type="button" required="" class="cancel-btn btn-danger"  name="method"style="background: transparent;border: none; padding: 0px;" value="<?php echo $r17['bookid']; ?>">Cancel Booking</button>
       </label>
@@ -182,15 +185,17 @@ $r17=mysqli_fetch_array($q17);
     </div>
       </div>
     </form>
+    
 <?php 
   $sql4 = mysqli_query($connect,"SELECT * FROM place,users WHERE user_id=uid and place_id='".$r17['placeid']."'");
-  $row4 = mysqli_fetch_array($sql4); ?>
+  $row4 = mysqli_fetch_array($sql4); 
+?>
     <form method="post" id="book_messagess">
-<input name="to_msg" value="<?php echo $row4['uid']; ?>" type="hidden">
-  <div class="hides">
- <textarea required="" class="form-control height90" name="message" placeholder="Type Your Message Here.."></textarea>
- <input type="text" name="place_id" hidden value="<?php echo $r17['placeid']; ?>">
-   </div>
+    <input name="to_msg" value="<?php echo $row4['uid']; ?>" type="hidden">
+    <div class="hides">
+      <textarea required="" class="form-control height90" name="message" placeholder="Type Your Message Here.."></textarea>
+      <input type="text" name="place_id" hidden value="<?php echo $r17['placeid']; ?>">
+    </div>
     <button class="btn-reply send_btn2 mg-top10" type="submit" name="book_messagess" style="display: none;"><i class="fa fa-share-square-o"></i>&nbsp;Send</button>
     <button class="btn-reply cancel_btn2 mg-top10" type="button" style="display: none;"><i class="fa fa-times"></i>&nbsp;Cancel</button>
     </form>
@@ -204,9 +209,9 @@ $r17=mysqli_fetch_array($q17);
     <input type="hidden" name="item_number" value="1">
     <input type="hidden" name="amount" value="<?php echo $r17['hotel']; ?>">
     <input type="hidden" name="currency_code" value="USD">
-    <input type="hidden" name="cancel_return" value="http://vismaadlabs.org/bookmyspace/forms.php?bookid_cancel=<?php echo $r17['bookid']; ?>">
-    <input type="hidden" name="return" value="http://vismaadlabs.org/bookmyspace/forms.php?bookid_success=<?php echo $r17['bookid']; ?>&ser_placeid=<?php echo $r17['placeid']; ?>">
-    <input type="image" id="paypal_submit" border="0" name="submit" hidden>
+    <!--<input type="hidden" name="cancel_return" value="http://vismaadlabs.org/bookmyspace/forms.php?bookid_cancel=<?php //echo $r17['bookid']; ?>">
+    <input type="hidden" name="return" value="http://vismaadlabs.org/bookmyspace/forms.php?bookid_success=<?php //echo $r17['bookid']; ?>&ser_placeid=<?php //echo $r17['placeid']; ?>">
+    <input type="image" id="paypal_submit" border="0" name="submit" hidden>-->
    <!--  <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1"> -->
     </form> 
 <!--  <span><button style="float: right; margin-bottom: 1%;" class="btn-3" data-toggle="modal" data-target="#compose">Compose</button></span> -->
@@ -268,7 +273,7 @@ $r17=mysqli_fetch_array($q17);
 }
  else 
   { 
-    header('location:index.php');
+    header('location:searchlst.php');
    } 
 // else
 // {
@@ -276,6 +281,39 @@ $r17=mysqli_fetch_array($q17);
 // }
 
   ?>
+  <script>
+  $tots = <?php echo $r17['hotel'] ?> * 100;
+document.getElementById('payonline').addEventListener('click', function(e) {
+  $('form#bkform').submit();
+}); 
+  
+/*var handler = StripeCheckout.configure({
+  key: 'pk_test_IdZ2U4nGUg0vVG2yu8eMgbbc',
+  //image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+  locale: 'auto',
+  token: function(token) {
+    // You can access the token ID with `token.id`.
+    // Get the token ID to your server-side code for use.
+  }
+});
+$tots = <?php //echo $r17['hotel'] ?> * 100;
+document.getElementById('payonline').addEventListener('click', function(e) {
+  // Open Checkout with further options:
+  handler.open({
+    name: 'testStripe',
+    description: '2 widgets',
+    amount: $tots
+  });
+  
+  e.preventDefault();
+});
+
+// Close Checkout on page navigation:
+/*window.addEventListener('popstate', function() {
+  handler.close();
+});*/
+</script>
+
 <!--======footer close======-->
 </div><!--row close-->
 </div><!--container-fluid close-->

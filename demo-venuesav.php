@@ -1,5 +1,4 @@
 <?php include_once('connect.php');
-
 if (isset($_REQUEST['placeid'])) {
 ?>
 <!doctype html>
@@ -24,45 +23,41 @@ if (isset($_REQUEST['placeid'])) {
 
 <body>
 <div class="container-fluid"><!--container-fluid start-->
-	<div class="row">
+<div class="row">
 
 
 <!--==============menu header=========================-->
-
-		<div class="menu-had">
-			<?php include 'lib/header.php';?>
-			<style>
-				p {
-					font-size: 13px !important;
-				}
-			</style>
-		</div><!--menu-had close-->
+<div class="menu-had">
+<?php include 'lib/header.php';?>
+<style>
+	p {
+		font-size: 13px !important;
+	}
+</style>
+</div><!--menu-had close-->
 <?php 
 $placeid=$_REQUEST['placeid'];
-$date1=$_REQUEST['checkin'] . " 00:00";
-$date2=$_REQUEST['checkout'] . " 23:59";
 
-//$query=mysqli_query($connect,'Select * from calenderdata inner join place on calenderdata.placeid = place.place_id where calenderdata.placeid="'.$placeid.'" and calenderdata.date1 >="'.$date1.'" and calenderdata.date2 <= "'.$date2.'"');
 $query=mysqli_query($connect,'Select * from place where place_id="'.$placeid.'"');
-//if rows place table
 if($match=mysqli_fetch_array($query))
 	{
 		?>
 <!--==============menu header close=========================-->
 
 <!--=================slider========================-->
-		<input type="hidden" class="placeid_val" value="<?php echo $placeid; ?>">
-		<div class="">
-			<div id="carousel-example-generic" class="carousel slide">
+<input type="hidden" class="placeid_val" value="<?php echo $placeid; ?>">
+<div class="">
+  <div id="carousel-example-generic" class="carousel slide">
+     
 
-			<!-- Wrapper for slides -->
-				<div class="carousel-inner hg-500" role="listbox">
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner hg-500" role="listbox">
 	
 		<?php 
 		if(!empty($match['photo']))
 		{
 		 	$photo=explode(",", $match['photo']);
-	  	for ($i=0; $i <count($photo) ; $i++)
+	  		for ($i=0; $i <count($photo) ; $i++)
 	   		{ 
 	  			if($photo[$i]=="")
 	  			{
@@ -71,99 +66,108 @@ if($match=mysqli_fetch_array($query))
 	  			if($i=="0")
 	  			{
   		?>
-					<style>
-							.slide<?php echo $i; ?> {
-								background: url("images/placephotos/<?php echo $photo[$i]; ?>");
-								padding-top:100px !important;
-								background-position:center;
-								background-size:cover;
-							}
-    				</style>
-        			<div class="item slide<?php echo$i; ?> active">
-        				<div class="carousel-caption"></div>
-        			</div> <!-- /.item -->
+	<style>
+		.slide<?php echo $i; ?> {
+		background: url("images/placephotos/<?php echo $photo[$i]; ?>");
+		padding-top:100px !important;
+		background-position:center;
+		background-size:cover;
+		}
+    </style>
+        <div class="item slide<?php echo$i; ?> active">
+        <div class="carousel-caption"></div>
+        </div> <!-- /.item -->
 	  	<?php
-	  			} else {
+	  	}else
+	  	{
 	  		  	?>
-	  				<style>
-							.slide<?php echo$i; ?> {
-							background: url("images/placephotos/<?php echo $photo[$i]; ?>");
-							padding-top:100px !important;
-							background-position:center;
-							background-size:cover;
-						}
-    				</style>
-					<div class="item slide<?php echo$i; ?>">
-						<div class="carousel-caption"></div>
-					</div> <!-- /.item -->
+	  <style>
+	.slide<?php echo$i; ?> {
+		background: url("images/placephotos/<?php echo $photo[$i]; ?>");
+		padding-top:100px !important;
+	background-position:center;
+	background-size:cover;
+}
+        </style>
+              <div class="item slide<?php echo$i; ?>">
+          <div class="carousel-caption">
+				
+          </div>
+        </div> <!-- /.item -->
 	  	<?php
-	  			}
-	  		}
-		} else {
-	  	?>
-							<style> .slide { background-color: #202935; } </style>
-	<?php 
-		} 
-		?>
-					<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-						<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>
-					</a>
-				</div><!-- /.carousel-inner -->
-			</div><!-- /.carousel -->
+	  	}
+	
+	  }
+	} else {
+	  	?><style> .slide { background-color: #202935; } </style>
+	<?php } ?>
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 
+      </div><!-- /.carousel-inner -->
+
+
+    
+    </div><!-- /.carousel -->
 	<div class="col-md-12 col-sm-12 col-xs-12 h-name">
-		<div class="col-md-6 col-sm-6">
-	  	<h3 class="h-1"><?php echo $match['space_name'].",".$match['p_address'];?></h3>
-	  	<div class="col-md-6 col-sm-6 mg-media">
-	  		<i class="fa fa-users fa-2x"></i>&nbsp;&nbsp;
-	  		<span class="s1"><?php echo $match['capacity']; ?></span>
-	  	</div>
+	<div class="col-md-6 col-sm-6">
+	  <h3 class="h-1"><?php echo $match['space_name'].",".$match['p_address'];?></h3>
+	  <div class="col-md-6 col-sm-6 mg-media">
+	  <i class="fa fa-users fa-2x"></i>&nbsp;&nbsp;
+	  <span class="s1"><?php echo $match['capacity']; ?></span>
+	  </div>
 	  </div>
 	  <div class="col-md-6 col-sm-6">
-  		<div class="absolute-center">
-    		<ul class="social-icons text-center">
-      		<li>
-        		<a target="_blank" href="http://facebook.com">
-          		<i class="fa fa-facebook color1"></i>
-        		</a>
-      		</li>
-      		<li>
-        		<a target="_blank" href="http://twitter.com">
-          		<i class="fa fa-twitter color1"></i>
-        		</a>
-      		</li>
-      		<li>
-        		<a target="_blank" href="#">
-          		<i class="fa fa-instagram color1"></i>
-        		</a>
-      		</li>
-	   			<li>
-        		<a target="_blank" href="#">
-          		<i class="fa fa-google-plus color1"></i>
-        		</a>
-      		</li>
-    		</ul>
-	  	</div>
+  <div class="absolute-center">
+    <ul class="social-icons text-center">
+      <li>
+        <a target="_blank" href="http://facebook.com">
+          <i class="fa fa-facebook color1"></i>
+        </a>
+      </li>
+
+      <li>
+        <a target="_blank" href="http://twitter.com">
+          <i class="fa fa-twitter color1"></i>
+        </a>
+      </li>
+
+      <li>
+        <a target="_blank" href="#">
+          <i class="fa fa-instagram color1"></i>
+        </a>
+      </li>
+	   <li>
+        <a target="_blank" href="#">
+          <i class="fa fa-google-plus color1"></i>
+        </a>
+      </li>
+
+    </ul>
+
+	  </div>
 	  </div>
 	  
-	</div>
+	  </div>
+
 
 </div><!-- /.container -->
 
 <!--===================slider close==========================-->
 <div class="col">
-	<div class="container col-inner">
-		<div class="col-md-6">
+<div class="container col-inner">
+<div class="col-md-6">
 
 <!--========================================Left Side=====================================-->
-			<div class="col-md-12">
-				<h2 class="color1"><?php echo $match['space_name'];?></h2>
-				<p>
+<div class="col-md-12">
+<h2 class="color1"><?php echo $match['space_name'];?></h2>
+<p>
 <?php echo $match['p_address']; ?>
 <!-- Kapila Matrix, Koregaon Park, Pune. 411001 --></p>
 <div class="col-md-5">
@@ -246,9 +250,11 @@ if($match=mysqli_fetch_array($query))
 	  	{echo " ".$rq['areatype'];}
 	  		?>
 
+
+
 	  </p>
 	   <h5 class="color1 mg-top20">Accomodates</h5>
-	  <p><?php echo $match['capacity'];?></p>
+	  <p><?php echo $match['accomodates'];?></p>
 	  <h5 class="color1 mg-top20">Common Ammenities</h5>
 	  <?php 
 	  $ammenties=explode(",", $match['ammenties_id']);
@@ -339,25 +345,7 @@ if($match1=mysqli_fetch_array($query1)){
 	  
 	  
 	  <!---==========================Video section Ends=======================-->	  
-	   <!---==========================Doc section=======================-->
-	 
-	  <div class="row">
-	  <h4 class="color1 col-md-12 col-sm-12  mg-top20">Document(s)</h4>
-	  <div class="col-md-12 col-sm-12 ">
-	   <?php if(!empty($match['document'])) { 
-	  $doc=explode(",", $match['document']);
-	  for ($i=0; $i <count($doc) ; $i++) {
-	  if($doc[$i]==""){
-	  		continue;
-	  	} 
-	  		echo '<div class="col-md-4 col-sm-4  mg-media"><a href="doc/'.$doc[$i].'" target="new">'.$doc[$i].'</a></div>';
-	  }?>
-	  <?php }else{echo "-";} ?>
-	  </div>
-	  </div>
 	  
-	  
-	  <!---==========================Doc section Ends=======================-->	  
 	  <!---==========================Rules section=======================-->
 	  	  <div class="row">
 		  <div class="col-md-12">
@@ -510,34 +498,155 @@ if($match1=mysqli_fetch_array($query1)){
 <!--==================================Right Side=================================-->
  <!-- right side -->
 	  
-	  <?php /*if($_SESSION['u_id'] != $match['user_id']) 
-	  } else {*/
+	  <?php if($_SESSION['u_id'] != $match['user_id']) 
+	  {
+	   if(!empty($match['p_p_n']) || !empty($match['p_p_h']) || !empty($match['w_p_p_n'])) 
+	   {
+	    ?>
+	  <div class="col-md-6 custom2">
+	  <div class="price-table-demo ">
+	  <div class="row">
+	  	
+	  	<div class="col-md-12 col-sm-12 col-xs-12 pd-top20 pd-bottom20">
+	  	<?php if(!empty($match['p_p_h'])) { ?>
+	  	<div class="col-md-4 col-sm-4 col-xs-4">
+			<input type="radio" value="hour" id="hour_label" class="per_val" name="types">
+			<label for="hour_label" style="cursor: pointer;">Per Hour</label>
+		</div>
+		<?php } 
+		if(!empty($match['p_p_n'])) { ?>
+		<div class="col-md-4 col-sm-4 col-xs-4">
+			<input type="radio" checked="" value="night" id="night_label" class="per_val" name="types">
+			<label for="night_label" style="cursor: pointer;">Per Day</label>
+		</div>
+		<?php } 
+		if(!empty($match['w_p_p_n'])) { ?>
+		<div class="col-md-4 col-sm-4 col-xs-4">
+			<input type="radio" value="week" id="week_label" class="per_val" name="types">
+			<label for="week_label" style="cursor: pointer;">Per Week</label>
+		</div>
+		<?php } ?>
+		</div>
+
+	  </div>
+	  <?php if(!empty($match['p_p_n'])) { ?>
+<div class="show_div"> <!-- my div start -->
+<form class="book_form"  method="post">
+
+<div class="row bg-row">
+    <div class="col-md-6 col-sm-6 col-xs-6">
+        <input type="hidden" class="ppnight" value="<?php echo $match['p_p_n']; ?>">
+<!--        <h4>&#8377; -->
+
+     <?php
+$country = $match['p_country'] ;
+                                       //  echo $country;
+?>
+<?php switch ($country) {
+            ?>
+<?php    case "United States":  $currency= "&#36;"?>
+         <h4>	&#36; <span class="night_rupee"><?php echo $match['p_p_n']; ?></span></h4>
+<?php        break; case "United Kingdom":  $currency= "&163;"?>
+       <h4>&#163; <span class="night_rupee"><?php echo $match['p_p_n']; ?></span></h4> </h4>
+ <?php       break; case "India": $currency= "&#8377;"?>
+        <h4>&#8377; <span class="night_rupee"><?php echo $match['p_p_n']; ?></span></h4> </h4>
+
+<?php }  ?>
+
+
+
+
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-6">
+        <h4 class="text-right">Per Day</h4> </div>
+</div>
+<div class="row mg-top15 ">
+<div class="col-md-4 pd-lr-6">
+
+<div class="input-group mg-top20"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+    <input type="text" id="datepicker" name="checkin" value="<?php if(isset($_REQUEST['checkin'])) { echo $_REQUEST['checkin']; } else { echo date('m/d/Y'); } ?>" placeholder="CheckIn" class="form-control bord-0"> </div>
+
+</div>
+<div class="col-md-4 pd-lr-6">
+<div class="input-group mg-top20">
+    
+    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+	<input type="text" id="datepicker1" name="checkout" value="<?php if(isset($_REQUEST['checkout'])) { echo $_REQUEST['checkout']; } else { $datetime = new DateTime('today');
+echo $datetime->format('m/d/Y'); } ?>" placeholder="CheckOut" class="form-control bord-0">
+</div>
+
+</div>
+<div class="col-md-4 pd-lr-6">
+<div class="input-group mg-top20">
+    <span class="input-group-addon"><i class="fa fa-users"></i></span>
+	<input name="guests" type="number" min="1" max="<?php echo $match['capacity']; ?>" placeholder="Guests" value="1" class="form-control bord-0">
+</div>
+
+</div>
+</div>
+<div class="errormessage">
+<div class="row">
+<div class="col-md-6 col-sm-6 col-xs-7">
+<h5><?php echo $currency ?> <span class="price_cal"><?php echo $match['p_p_n']; ?></span> x <span class="calculated">1 Night</span></h5>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-5">
+<h5 class="text-right"><span><?php echo $currency ?> </span><span class="total_price"><?php echo $match['p_p_n']; ?> </span></h5>
+</div>
+</div>
+<div class="row" id="forappend">
+</div>
+<div class="row">
+<div class="col-md-6 col-sm-6 col-xs-7">
+<h5>Total</h5>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-5">
+<h5 class="text-right"><span><?php echo $currency ?> </span><span class="total_price_cal"><?php echo $match['p_p_n']; ?> </span></h5>
+</div>
+</div>
+</div>
+<div class="errormessage22"></div>
+<input name="package" value="night" type="hidden" />
+<input name="price" value="<?php echo $match['p_p_n']; ?>" id="price_per_week" type="hidden" />
+<input name="myplaceid" value="<?php echo $placeid; ?>" type="hidden" />
+<input name="totalprice" class="totalprice" value="<?php echo $match['p_p_n']; ?>" type="hidden" />
+<div class="text-center">
+	<button type="submit" id="book_button"  name="book_now" class="btn-4">Book Now</button>
+</div>
+</form>
+</div> <!-- my div end -->
+<?php } ?>
+	</div>
+</div>
+	  <?php }
+
+	   }
+	   else
+	  {
 	 ?>
 	 <div class="col-md-6 custom2"style="display: block;border-bottom: 0px solid #1BBC9B;border-left: 2px solid #1BBC9B;border-right: 2px solid #1BBC9B;padding-bottom: 0px;">
-      <div class="row" style="background: #1BBC9B;
-    padding: 13px 0px;
-    color: white;
-    font-weight: bolder;
-    font-size: 13px;">
-          <div class="col-md-3">From</div>
-          <div class="col-md-3">To</div>
-          <div class="col-md-2">Price/Day</div>
-          <div class="col-md-2">Price/Hour</div>
-          <div class="col-md-2">Price/Week</div>
-        </div>
-	  <?php  $sql9 = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$placeid."'");
+      <?php  $sql9 = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$placeid."'");
       if(mysqli_num_rows($sql9)>0)
       { 
         ?>
-        
+        <div class="row" style="background: #1BBC9B;
+    padding: 13px 0px;
+    color: white;
+    font-weight: bolder;
+    font-size: 19px;">
+          <div class="col-md-3">From</div>
+          <div class="col-md-3">To</div>
+          <div class="col-md-2">ppn</div>
+          <div class="col-md-2">pph</div>
+          <div class="col-md-2">ppw</div>
+        </div>
         <?php
         $he = 1;
         while($row9 = mysqli_fetch_array($sql9))
         {
           ?><div class="row for_re" style="    padding: 11px 0px 1px 0px;
-    border-bottom: 2px solid #1BBC9B; font-size: .89em;">
-			<div class="col-md-3 text-center"><?php echo date_format(date_create($row9['date1']), 'Y-m-d g:i a') ?></div>
-			<div class="col-md-3 text-center"><?php echo date_format(date_create($row9['date2']), 'Y-m-d g:i a') ?></div>
+    border-bottom: 2px solid #1BBC9B;">
+            <div class="col-md-3 text-center"><?php echo $row9['date1'] ?></div>
+            <div class="col-md-3 text-center"><?php echo $row9['date2'] ?></div>
             <?php /* if(($row9['p_p_n']=="")&&($row9['p_p_h']=="")&&($row9['w_p_p_n']==""))
             {
               ?>
@@ -577,11 +686,10 @@ if($match1=mysqli_fetch_array($query1)){
     <div class="col-md-8"></div> 
           </div>';
         } ?>     
-		
+
   </div>
-  <div><a href="edit-place.php?placeid=<?php echo $placeid ?>"><button type="button" style="background: #1BBC9B;color: white;" >Edit</button></a></div>
 	 <?php
-	  //} ?> 
+	  } ?> 
 
 <!--=======================================Right Side close============================-->
 </div>
@@ -590,264 +698,11 @@ if($match1=mysqli_fetch_array($query1)){
 </div>
 
 <?php 
-} else {
-?>
-	<div style="height: 250px;"></div>
-<?php } 
+}
 
 	  //if isset ?>
 <!--======footer======-->
 	<?php include 'lib/footer.php';?>
-	<script src="tm/jquery.timepicker.js"></script>
-<script>
-	
-    $(document).ready(function(){
-   $('#basic').timepicker({
-	'timeFormat':'H:i',
-       show2400: true,
-	step: 60,
-	maxTime:'23:00',
-    'scrollDefaultNow': 'true',
-        'closeOnWindowScroll': 'true',
-        'showDuration': true
-});
-$('#basic').change(function(){
-// start here 
-    var starttime = $('#basic').val();
-    var endtime = $('#basic2').val();
-    var date_val2 = $('#hourdatepicker').val();
-    var price_cal = $('.ppnight').val();
-    var placeid = $('.placeid_val').val();
-    console.log("datedata"+date_val2)
-    if(endtime!='')
-    {
-    	if(endtime>starttime)
-    	{
-    $.ajax({
-      url: 'forms2.php?hoursdate_val1='+date_val2+'&placeid='+placeid+'&pervalues=hour&start_time='+starttime+'&end_time='+endtime,
-      success: function(data)
-      {
-        console.log('my data - '+data);
-        
-        data1 = data.split('>>>');
-        console.log(data1[0]);
-        console.log(data1[1]);
-        var j = data1[0].trim(' ');
-         var av = data1[2].trim(' ');
-        if(av=='1')
-        { $('#book_button').css('display','none');
-          $('.errormessage22').css('display','block');
-          $('.errormessage22').html('<p>This Date is Not Available</p>');
-          $('.errormessage').css('display','none');
-        }
-        else
-        {
-
-         if(data1[1]=='00')
-        { $('#book_button').css('display','none');
-          $('.errormessage22').css('display','block');
-          $('.errormessage22').html('<p>Please Choose Valid Date</p>');
-          $('.errormessage').css('display','none');
-        }
-        else
-        {  $('#book_button').css('display','block');
-              $('.errormessage22').css('display','none');
-          $('.errormessage').css('display','block');    
-          var hours=data1[1];
-        }
-        if(j=='0')
-        {
-        var per_hours =price_cal;
-          var price = parseInt(hours)*parseInt(price_cal);
-           console.log("defailt price"+price);
-        }
-        else
-        { 
-          // alert("please  time");
-          var per_hours =data1[0];
-          var price = parseInt(hours)*parseInt(data1[0]);
-        }
-      }
-       /* $.ajax({
-        url:'forms2.php?taxesid=00',
-        success: function(taxes)
-        {
-          console.log(taxes);
-          var texes1 = taxes.split('===');
-          if(texes1[0]==0)
-          {
-
-          }
-          else
-          { 
-            var texes2 = texes1[0].split(',');
-            var title = texes1[1].split(',');
-            var count = texes2.length;
-            var tax_data="";
-            var tax_value="0";
-            for(var j=0;j<count;j++)
-            {
-              var final = texes2[j];
-              tax_data =tax_data+'<div class="col-md-6 col-sm-6 col-xs-7 "><h5>&#8377; <span class=""></span> <span class="">'+title[j] +'</span></h5></div><div class="col-md-6 col-sm-6 col-xs-5"><h5 class="text-right"><span>&#8377; </span><span class="">'+final+'</span></h5></div>';
-              tax_value = parseInt(tax_value)+parseInt(final);
-            }
-            // console.log("tax value"+tax_value)
-            $('#forappend').html(tax_data);
-            var final_total = parseInt(tax_value)+parseInt(price);
-            console.log("final"+final_total);
-          }
-             $('#time1').val(starttime);
-           $('#time2').val(endtime);
-          $('#total_hour').val(hours);
-          $('#price_per_week').val(per_hours);
-          $('.night_rupee').html(per_hours);
-          $('.price_cal').html(per_hours);
-        $('.total_price_cal').html(final_total);
-        $('.totalprice').val(final_total);
-        $('.total_price').html(price);
-        $('.calculated').html(hours+' hours');
-        }
-        });*/
-				var final_total = price;
-				$('#time1').val(starttime);
-        $('#time2').val(endtime);
-        $('#total_hour').val(hours);
-        $('#price_per_week').val(per_hours);
-        $('.night_rupee').html(per_hours);
-        $('.price_cal').html(per_hours);
-        $('.total_price_cal').html(final_total);
-        $('.totalprice').val(final_total);
-        $('.total_price').html(price);
-        $('.calculated').html(hours+' hours');
-      }
-    });
-}
-}
-
-
-//end here 
-
-    var new_end = $(this).timepicker('getTime');
-   var dd = new_end.setHours(new_end.getHours()+1);
-
-    $('#basic2').timepicker({
-    	'timeFormat':'H:i',
-    	  show2400: true,
-    	step: 60,
-    	minTime:new_end,
-    	maxTime:'23:59',
-    });
-    	$('#basic2').change(function(){
-            var starttime = $('#basic').val();
-            var endtime = $('#basic2').val();
-    var date_val2 = $('#hourdatepicker').val();
-    var price_cal = $('.ppnight').val();
-    var placeid = $('.placeid_val').val();
-    console.log("datedata"+date_val2)
-    $.ajax({
-      url: 'forms2.php?hoursdate_val1='+date_val2+'&placeid='+placeid+'&pervalues=hour&start_time='+starttime+'&end_time='+endtime,
-      success: function(data)
-      {
-        //console.log('my data - '+data);
-        
-        data1 = data.split('>>>');
-        //console.log(data1[0]);
-        //console.log(data1[1]);
-        var j = data1[0].trim(' ');
-         var av = data1[2].trim(' ');
-        if(av=='1')
-        {
-           $('#book_button').css('display','none');
-          $('.errormessage22').css('display','block');
-          $('.errormessage22').html('<p>This Date is Not Available</p>');
-          $('.errormessage').css('display','none');
-        }
-        else
-        {
-         if(data1[1]=='00')
-        { 
-          $('#book_button').css('display','none');
-          $('.errormessage22').css('display','block');
-          $('.errormessage22').html('<p>Please Choose Valid Date</p>');
-          $('.errormessage').css('display','none');
-        }
-        else
-        { 
-          $('#book_button').css('display','block');
-              $('.errormessage22').css('display','none');
-          $('.errormessage').css('display','block');    
-          var hours=data1[1];
-        }
-        if(j=='0')
-        {
-        var per_hours =price_cal;
-          var price = parseInt(hours)*parseInt(price_cal);
-           console.log("defailt price"+price);
-        }
-        else
-        { 
-          // alert("please  time");
-          var per_hours =data1[0];
-          var price = parseInt(hours)*parseInt(data1[0]);
-        }
-      }
-        /*$.ajax({
-        url:'forms2.php?taxesid=00',
-        success: function(taxes)
-        {
-          console.log(taxes);
-          var texes1 = taxes.split('===');
-          if(texes1[0]==0)
-          {
-
-          }
-          else
-          { 
-            var texes2 = texes1[0].split(',');
-            var title = texes1[1].split(',');
-            var count = texes2.length;
-            var tax_data="";
-            var tax_value="0";
-            for(var j=0;j<count;j++)
-            {
-              var final = texes2[j];
-              tax_data =tax_data+'<div class="col-md-6 col-sm-6 col-xs-7 "><h5>&#8377; <span class=""></span> <span class="">'+title[j] +'</span></h5></div><div class="col-md-6 col-sm-6 col-xs-5"><h5 class="text-right"><span>&#8377; </span><span class="">'+final+'</span></h5></div>';
-              tax_value = parseInt(tax_value)+parseInt(final);
-            }
-            // console.log("tax value"+tax_value)
-            $('#forappend').html(tax_data);
-            var final_total = parseInt(tax_value)+parseInt(price);
-            console.log("final"+final_total);
-          }   
-          $('#time1').val(starttime);
-           $('#time2').val(endtime);
-          $('#total_hour').val(hours);
-          $('#price_per_week').val(per_hours);
-          $('.night_rupee').html(per_hours);
-          $('.price_cal').html(per_hours);
-        $('.total_price_cal').html(final_total);
-        $('.totalprice').val(final_total);
-        $('.total_price').html(price);
-        $('.calculated').html(hours+' hours');
-        }
-        });*/
-				var final_total = price;
-				 $('#time1').val(starttime);
-           $('#time2').val(endtime);
-          $('#total_hour').val(hours);
-          $('#price_per_week').val(per_hours);
-          $('.night_rupee').html(per_hours);
-          $('.price_cal').html(per_hours);
-        $('.total_price_cal').html(final_total);
-        $('.totalprice').val(final_total);
-        $('.total_price').html(price);
-        $('.calculated').html(hours+' hours');
-      }
-    });
-  });
-    })
-});
-</script>
 <!--======footer close======-->
 
 
@@ -859,8 +714,8 @@ $('#basic').change(function(){
 <?php } ?>
 
 <script>
-	/*$(document).ready(function(){
-		var date_val1 = $('#datepicker').val();
+	$(document).ready(function(){
+	var date_val1 = $('#datepicker').val();
 		var date_val2 = $('#datepicker1').val();
 		var price_cal = $('.ppnight').val();
 		var placeid = $('.placeid_val').val();
@@ -964,10 +819,10 @@ $('#basic').change(function(){
 	}
 	else
 	{
-				$('#book_button').css('display','none');
+		$('#book_button').css('display','none');
 				$('.errormessage22').html("<p>Those Dates Are Not available<p>");
 				$('.errormessage22').css('display','block');
 				$('.errormessage').css('display','none');
 	}
-	});*/
+	});
 </script>

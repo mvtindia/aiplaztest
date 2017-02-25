@@ -39,8 +39,8 @@ if(isset($_GET['taxesid']))
           $st = date('Y-m-d',strtotime($d1));
           $et = date('Y-m-d',strtotime($d2));
 
-          $st1    = date_create($st);
-          $et1    = date_create($et);
+          $st1    = new DateTime($st);
+          $et1    = new DateTime($et);
           $in1 = new DateInterval('P1D'); // 1 day interval
           $per1   = new DatePeriod($st1, $in1, $et1);
           foreach ($per1 as $day) 
@@ -57,9 +57,9 @@ if(isset($_GET['taxesid']))
           {      
             $days="";
             $newdays = "";
-            $start    = date_create($rw2['checkin']);
+            $start    = new DateTime($rw2['checkin']);
             $end_date = $rw2['checkout'];
-            $end      = date_create($rw2['checkout']);
+            $end      = new DateTime($rw2['checkout']);
             $interval = new DateInterval('P1D'); // 1 day interval
             $period   = new DatePeriod($start, $interval, $end);
             foreach ($period as $day)
@@ -105,8 +105,8 @@ if(isset($_GET['taxesid']))
       		$st = date('Y-m-d',strtotime($d1));
       		$et = date('Y-m-d',strtotime($d2));
 
-      		$st1    = date_create($st);
-      		$et1    = date_create($et);
+      		$st1    = new DateTime($st);
+      		$et1    = new DateTime($et);
       		$in1 = new DateInterval('P1D'); // 1 day interval
       		$per1   = new DatePeriod($st1, $in1, $et1);
       		foreach ($per1 as $day) 
@@ -123,9 +123,9 @@ if(isset($_GET['taxesid']))
       		{      
         		$days="";
         		$newdays = "";
-        		$start    = date_create($rw['date1']);
+        		$start    = new DateTime($rw['date1']);
         		$end_date = $rw['date2'];
-        		$end      = date_create($rw['date2']);
+        		$end      = new DateTime($rw['date2']);
         		$interval = new DateInterval('P1D'); // 1 day interval
         		$period   = new DatePeriod($start, $interval, $end);
         		foreach ($period as $day)
@@ -186,7 +186,9 @@ if(isset($_GET['taxesid']))
 		echo $diff->format("%a");
 		echo ">>>";
 		echo $money; 	
-	} else if($pervalues == 'week') {
+	}
+
+	else if($pervalues == 'week') {
 
 		// $interval = $date1->diff($date2);
 
@@ -209,8 +211,11 @@ if(isset($_GET['taxesid']))
 		echo $money;
 		echo">>>";
 		echo $final_w_ppn__price;
-	} else {
-      echo $final_ppn_price;
+	}
+
+	else
+	{
+echo $final_ppn_price;
 			echo">>>";
 			echo $counting;
 			echo">>>";
@@ -225,63 +230,54 @@ if(isset($_GET['taxesid']))
 // get hours code start here
 	if(isset($_REQUEST['hoursdate_val1']))
 	{
-   
-		$start_time = $_REQUEST['start_time'];
-		$end_time = $_REQUEST['end_time'];
-    $sttime= date_format(date_create($start_time), 'H:i');
-    $endtime= date_format(date_create($end_time), 'H:i');
-    $strStart = '2013-06-19 '.$start_time; 
-    $strEnd   = '06/19/13 '.$end_time; 
-    $dteStart = date_create($strStart);
-    $dteEnd   = date_create($strEnd);
-    $dteDiff  = date_diff($dteStart, $dteEnd);    
+		 $start_time = $_REQUEST['start_time'];
+		 $end_time = $_REQUEST['end_time'];
+
+// Example 
+
+   $strStart = '2013-06-19 '.$start_time; 
+   $strEnd   = '06/19/13 '.$end_time; 
+   $dteStart = new DateTime($strStart); 
+   $dteEnd   = new DateTime($strEnd); 
+   $dteDiff  = $dteStart->diff($dteEnd); 
 		$placeid = $_REQUEST['placeid'];
 		$pervalues = $_REQUEST['pervalues'];
 		$d1 = $_REQUEST['hoursdate_val1'];
 
+
 //Booking disable start here
 
-    $money="0";
+   $money="0";
 
-		$sql = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$placeid."' order by time1 asc");
-    
+
+
+
+		$sql = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$placeid."'");
 		if(mysqli_num_rows($sql)>0)
 		{	    
-          
-      $st = date('Y-m-d',strtotime($d1));    
-      $price="0";
-           
+      		$st = date('Y-m-d',strtotime($d1));
+       		$price="0";
 			while($rw = mysqli_fetch_array($sql))
       		{  
-            $days=""; 
-            $newdays="";
-            $time1 = date_format(date_create($rw['date1']), 'H:i');
-            $time2 = date_format(date_create($rw['date2']), 'H:i');     
-        		//$start    = new DateTime($rw['date1']);
-            $start    = date_create($rw['date1']);
+          $days=""; 
+          $newdays="";   
+        		$start    = new DateTime($rw['date1']);
         		$end_date = $rw['date2'];
-        		//$end      = new DateTime($rw['date2']);
-            $end      = date_create($rw['date2']);
-            
+        		$end      = new DateTime($rw['date2']);
         		$interval = new DateInterval('P1D'); // 1 day interval
         		$period   = new DatePeriod($start, $interval, $end);
-            
         		foreach ($period as $day)
         		{
            		 	// Do stuff with each $day...
            			$days .= $day->format('Y-m-d').',';
-        		}  
-            //error_log($days);  
-        		//$days = $days.$end_date.'<br>';
-            $days = $days.'<br>';
+        		}    
+        		$days = $days.$end_date.'<br>';
         		$newdays = explode('<br>', $days);
-            //error_log($newdays);  
         		
         		 $ppn_money = "";
 						
         		foreach ($newdays as $range) 
-        		{
-              
+        		{	
         			$ppn2 = "";
           			$ranges = explode(',',$range);
           			         	
@@ -290,21 +286,12 @@ if(isset($_GET['taxesid']))
                   if(in_array($st, $ranges))
             			{  
                   if($rw['status']=="Available")
-                    {
-                      if (($time1 <= $sttime && $time2 > $sttime) || ($time1 < $endtime && $time2 >= $endtime) ||
-                        ($time1 > $sttime && $time2 < $endtime) || ($time1 == $sttime && $time2 == $endtime))
-                         {
-                           $price = $rw['p_p_h'];
-                         } else {
-                           $money=1;
-                         }
+                    { 
+               				$price = $rw['p_p_h'];
                     }
                     elseif($rw['status']=="Not Available")
                     {
-                      //error_log($time1 . "," . $time2 . "," . $sttime . "," . $endtime);
-                      if (($time1 <= $sttime && $time2 > $sttime) || ($time1 < $endtime && $time2 >= $endtime) ||
-                        ($time1 > $sttime && $time2 < $endtime) || ($time1 == $sttime && $time2 == $endtime))
-                        { $money=1; }
+                      $money=1;
                     }
                   } // if in array end
           			} // ik for end
@@ -313,18 +300,17 @@ if(isset($_GET['taxesid']))
         
 			}
 
-    $sql_footer2 = mysqli_query($connect,"SELECT * FROM booking WHERE placeid='".$placeid."'");
-       
-    if(mysqli_num_rows($sql_footer2)>0)
+       $sql_footer2 = mysqli_query($connect,"SELECT * FROM booking WHERE placeid='".$placeid."'");
+if(mysqli_num_rows($sql_footer2)>0)
     {     
-      $st = date('Y-m-d',strtotime($d1));
+          $st = date('Y-m-d',strtotime($d1));
       while($rw2 = mysqli_fetch_array($sql_footer2))
           {  
           $days=""; 
           $newdays="";   
-            $start    = date_create($rw2['checkin']);
+            $start    = new DateTime($rw2['checkin']);
             $end_date = $rw2['checkout'];
-            $end      = date_create($rw2['checkout']);
+            $end      = new DateTime($rw2['checkout']);
             $interval = new DateInterval('P1D'); // 1 day interval
             $period   = new DatePeriod($start, $interval, $end);
             foreach ($period as $day)
@@ -360,9 +346,11 @@ if(isset($_GET['taxesid']))
     }
 // End Here    
 
+
+
 			echo $price;
 			echo">>>";
-      echo ltrim($dteDiff->format("%H"), "0");
+			echo $dteDiff->format("%H");
       echo">>>";
       echo $money; 
 				
@@ -402,7 +390,7 @@ if(isset($_GET['taxesid']))
 
 <div class="col-md-6 col-sm-6 col-xs-6">
 <input type="hidden" class="ppnight" value="">
-<h4>$</h4>
+<h4>&#8377; <span class="night_rupee"></span>/-</h4>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-6">
 <h4 class="text-right">Per Hour</h4>
@@ -531,6 +519,10 @@ $('#basic').change(function(){
 
 
 //end here 
+
+
+
+
 
 
 
@@ -705,7 +697,6 @@ echo'</div>
 
 else if($value == 'night')
 		{
-    
 		echo '<form class="book_form" method="post">
 <div class="row bg-row">
 
@@ -731,7 +722,7 @@ else if($value == 'night')
 <div class="input-group mg-top20">
     
     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-	<input type="text" id="" name="checkout" value="" placeholder="CheckOut" class="picking1 form-control bord-0">
+	<input type="text" id="" name="checkout" value="'.$datetime->format('m/d/Y').'" placeholder="CheckOut" class="picking1 form-control bord-0">
 </div>
 
 </div>
@@ -747,10 +738,10 @@ else if($value == 'night')
 <div class="errormessage">
 <div class="row" >
 <div class="col-md-6 col-sm-6 col-xs-7 pricecel">
-<h5>&#8377; <span class="price_cal">"'.$match['p_p_n'].'"</span> x <span class="calculated">1 Night</span></h5>
+<h5>&#8377; <span class="price_cal">'.$match['p_p_n'].'</span> x <span class="calculated">1 Night</span></h5>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>&#8377; </span><span class="total_price">"'.$match['p_p_n'].'" </span></h5>
+<h5 class="text-right"><span>&#8377; </span><span class="total_price">'.$match['p_p_n'].' </span></h5>
 </div>
 	</div>
 	<div class="row" id="forappend">
@@ -762,14 +753,14 @@ else if($value == 'night')
 <h5>Total</h5>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>&#8377; </span><span class="total_price_cal">"'.$match['p_p_n'].'" </span></h5>
+<h5 class="text-right"><span>&#8377; </span><span class="total_price_cal">'.$match['p_p_n'].' </span></h5>
 </div>
 </div>
 	</div>
 <div class="errormessage22"></div>
 <input name="package" value="night" type="hidden" />
 <input name="price" value="'.$match['p_p_n'].'" id="price_per_week" type="hidden" />
-<input name="myplaceid" value="'.$placeid.'" type="hidden" />
+<input name="myplaceid" value="'.$match['place_id'].'" type="hidden" />
 <input name="totalprice" class="totalprice" value="" type="hidden" />
 <div class="text-center">
 
@@ -786,7 +777,7 @@ else if($value == 'week')
 
 <div class="col-md-6 col-sm-6 col-xs-6">
 <input type="hidden" class="ppnight" value="'.$match['w_p_p_n'].'">
-<h4>$</h4>
+<h4>&#8377; <span class="night_rupee">'.$match['w_p_p_n'].'</span>/-</h4>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-6">
 <h4 class="text-right">Per Week</h4>
@@ -823,10 +814,10 @@ else if($value == 'week')
 <div class="row" >
 
 <div class="col-md-6 col-sm-6 col-xs-7 pricecel">
-<h5>&#8377; <span class="price_cal">"'.$match['p_p_n'].'"</span> x <span class="calculated">1 Night</span></h5>
+<h5>&#8377; <span class="price_cal">'.$match['p_p_n'].'</span> x <span class="calculated">1 Night</span></h5>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>&#8377; </span><span class="total_price">"'.$match['p_p_n'].'" </span></h5>
+<h5 class="text-right"><span>&#8377; </span><span class="total_price">'.$match['p_p_n'].' </span></h5>
 </div>
 	</div>
 	<div class="row" id="forappend">
@@ -838,7 +829,7 @@ else if($value == 'week')
 </div>
 </div>
 <div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>&#8377; </span><span class="total_price_cal">"'.$match['w_p_p_n'].'" </span></h5>
+<h5 class="text-right"><span>&#8377; </span><span class="total_price_cal">'.$match['w_p_p_n'].' </span></h5>
 </div>
 </div>
 <div class="errormessage22"></div>
@@ -852,90 +843,9 @@ else if($value == 'week')
 </div></form>
 <script src="js/custom.js"></script>';
 } // week if end
-/*else if($value == 'night')
-		{
-      echo '<form class="book_form"  method="post">
 
-<div class="row bg-row">
-    <div class="col-md-6 col-sm-6 col-xs-6">
-        <input type="hidden" class="ppnight" value="'.$match[2].'"; ?>">';
 
-$country = $match['p_country'] ;
-//echo $country;
-
-switch ($country) {
-            
-case "United States":  $currency= "&#36;";
-        echo '<h4>&#36; <span class="night_rupee">"'.$match[2].'"</span></h4>';
-       break; 
-case "United Kingdom":  $currency= "&163;";
-       echo '<h4>&#163; <span class="night_rupee">"'.$match[2].'"</span></h4> </h4>';
-       break; 
-case "India": $currency= "&#8377;";
-      echo '<h4>&#8377; <span class="night_rupee">"'.$match[2].'"</span></h4> </h4>';
- } 
-echo '
-    </div>
-    <div class="col-md-6 col-sm-6 col-xs-6">
-        <h4 class="text-right">Per Day</h4> </div>
-</div>
-<div class="row mg-top15 ">
-<div class="col-md-4 pd-lr-6">
-
-<div class="input-group mg-top20"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-    <input type="text" id="datepicker" name="checkin" value="';
-    if(isset($_REQUEST['checkin'])) { echo $_REQUEST['checkin']; } else { echo date('m/d/Y'); } echo '" placeholder="CheckIn" class="form-control bord-0"> </div>
-
-</div>
-<div class="col-md-4 pd-lr-6">
-<div class="input-group mg-top20">
-    
-    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-	<input type="text" id="datepicker1" name="checkout" value="';
-  if(isset($_REQUEST['checkout'])) { echo $_REQUEST['checkout']; } else { $datetime = new DateTime('today');
-echo $datetime->format('m/d/Y'); } echo'" placeholder="CheckOut" class="form-control bord-0">
-</div>
-
-</div>
-<div class="col-md-4 pd-lr-6">
-<div class="input-group mg-top20">
-    <span class="input-group-addon"><i class="fa fa-users"></i></span>
-	<input name="guests" type="number" min="1" max="'.$match['capacity'].'" placeholder="Guests" value="1" class="form-control bord-0">
-</div>
-
-</div>
-</div>
-<div class="errormessage">
-<div class="row">
-<div class="col-md-6 col-sm-6 col-xs-7">
-<h5>"'.$currency.'"<span class="price_cal">"'.$match['p_p_n'].'"</span> x <span class="calculated">1 Night</span></h5>
-</div>
-<div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>"'.$currency.'" </span><span class="total_price">"'.$match['p_p_n'].'" </span></h5>
-</div>
-</div>
-<div class="row" id="forappend">
-</div>
-<div class="row">
-<div class="col-md-6 col-sm-6 col-xs-7">
-<h5>Total</h5>
-</div>
-<div class="col-md-6 col-sm-6 col-xs-5">
-<h5 class="text-right"><span>"'.$currency.'"</span><span class="total_price_cal">"'.$match['p_p_n'].'" </span></h5>
-</div>
-</div>
-</div>
-<div class="errormessage22"></div>
-<input name="package" value="night" type="hidden" />
-<input name="price" value="'.$match['p_p_n'].'" id="price_per_week" type="hidden" />
-<input name="myplaceid" value="<?php echo $placeid; ?>" type="hidden" />
-<input name="totalprice" class="totalprice" value="'.$match['p_p_n'].'" type="hidden" />
-<div class="text-center">
-	<button type="submit" id="book_button"  name="book_now" class="btn-4">Book Now</button>
-</div>
-</form>';
-
-	}*/
+	}
 
 
 	// // book form 1 start
@@ -957,7 +867,7 @@ echo $datetime->format('m/d/Y'); } echo'" placeholder="CheckOut" class="form-con
 	// 	header('location:booking-form.php?booking_id='.$last_id);
 	// }
 
-  }
+
 	// booking form 2 start
 
 	if(isset($_REQUEST['booking']))

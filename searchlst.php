@@ -1,83 +1,92 @@
-<?php include_once('connect.php');
-//if(isset($_REQUEST['searching'])) { 
- if(!empty($_REQUEST['place_loc'])){
- $place_loc = $_REQUEST['place_loc'];
- }
-else{
-$place_loc = "";
-}
- if(!empty($_REQUEST['my-lat'])){
- $mylat = $_REQUEST['my-lat'];
- }
- else
- {
-  $mylat = 	41.881832;
- }
- if(!empty($_REQUEST['my-lng'])){
- $mylng = $_REQUEST['my-lng'];
- }else{
-  $mylng = -87.623177;
- }
- if(!empty($_REQUEST['events'])){
-  $events='';
-foreach($_REQUEST['events'] as $event)
-{
-  $events .= $event.',';
-}
- $events = rtrim($events,',');
-}
-else{
-  $events='';
-   $sq1 = mysqli_query($connect,"select * from usedfor");
-   while ($rrw=mysqli_fetch_array($sq1)) {
-      $events .= $rrw['ufid'].",";
-   }
- $events = rtrim($events,',');
-  }
-  if(!empty($_REQUEST['daterange'])){
- //$daterange = $_REQUEST['daterange'];
- $dates = explode(',',$_REQUEST['daterange']);
-$sep = explode(':', $dates[0]);
-$sep1 = explode(':', $dates[1]);
-$pdate1 = date('Y-m-d',strtotime(substr($sep[1],1,strlen($sep[1])-2)));
-$pdate2 = date('Y-m-d',strtotime(substr($sep1[1],1,strlen($sep1[1])-3)));
-}
-else{
-$pdate1 = date('Y-m-d');
-
-$pdate2 = date('Y-m-d');
-}
-
-if(!empty($_REQUEST['guests'])){
-   $gue = explode(' ',$_REQUEST['guests']);
-   $guests = $gue[0];
-}
-else{
-$guests = 1;
-}
-
-   if(!empty($_REQUEST['minbud'])){
-   $minbud = $_REQUEST['minbud'];
-   }else{
-    $minbud = 1;
-   }
-   if(!empty($_REQUEST['maxbud'])){
-   $maxbud = $_REQUEST['maxbud'];
-   }else{
-    $maxbud = 50000;
-   }
-   //and date2='".$pdate2."' and date1='".$pdate1."'
-//echo "select * from place where p_address like '%".$place_loc."%' and capacity >= '".$guests."' and ((p_p_h between ".$minbud." and ".$maxbud.") or (p_p_n between ".$minbud." and ".$maxbud.") or (w_p_p_n between ".$minbud." and ".$maxbud."))";
- // $q21 = mysqli_query($connect,"select * from place where p_address like '%".$place_loc."%' and capacity >= '".$guests."' and ((p_p_h between ".$minbud." and ".$maxbud.") or (p_p_n between ".$minbud." and ".$maxbud.") or (w_p_p_n between ".$minbud." and ".$maxbud."))"); 
-  $q21 = mysqli_query($connect,"select * from place where p_address like '%".$place_loc."%' "); 
-
-?>
+<?php session_start() ?>
 <!doctype html>
 <html>
 <head>
 
 	<title>Book a Space</title>
-	<?php include 'lib/top.php';?>
+	<?php 
+  include 'lib/top.php';
+  ?>
+  <?php
+  $mainquery = "select distinct a.place_id, a.p_address, a.p_city, a.p_state, a.p_country, a.postal_code, 
+  a.photo, a.space_name, a.capacity, a.p_p_h, a.p_p_n from place a, calenderdata b where place_id = placeid and 
+  user_id != '".$_SESSION['u_id']."' and status = 'Available' ";
+
+  if (isset($_POST['chin'])) {
+    //$chinvar = date_format(date_create($_POST['chin']), 'Y-m-d 00:00:00');
+    //$choutvar = date_format(date_create($_POST['chin']), 'Y-m-d 23:59:00');
+    $chinvar = date_format(date_create($_POST['chin']), 'Y-m-d');
+    $choutvar = date_format(date_create($_POST['chin']), 'Y-m-d');
+    $mainquery = $mainquery . "and date(b.date1) <= '".$chinvar."' and date(b.date2) >= '".$choutvar."' ";
+  }
+  
+  if(!empty($_REQUEST['place_loc'])){
+    $place_loc = $_REQUEST['place_loc'];
+    $mainquery = $mainquery . "and p_address like '%".$place_loc."%' ";
+  }
+  if(!empty($_REQUEST['my-lat'])){
+    $mylat = $_REQUEST['my-lat'];
+  } else {
+    $mylat = 	41.881832;
+  }
+  if(!empty($_REQUEST['my-lng'])){
+    $mylng = $_REQUEST['my-lng'];
+  } else {
+    $mylng = -87.623177;
+  }
+  if(!empty($_REQUEST['events'])){
+    $events='';
+    foreach($_REQUEST['events'] as $event)
+    {
+      $events .= $event.',';
+    }
+    $events = rtrim($events,',');
+  } else {
+    $events='';
+    $sq1 = mysqli_query($connect,"select * from usedfor");
+    while ($rrw=mysqli_fetch_array($sq1)) {
+      $events .= $rrw['ufid'].",";
+    }
+    $events = rtrim($events,',');
+  }
+  if(!empty($_REQUEST['date1'])){
+    $dates = $_REQUEST['date1'];
+    $sep = explode(':', $dates[0]);
+    $sep1 = explode(':', $dates[1]);
+    $pdate1 = date('Y-m-d',strtotime(substr($sep[1],1,strlen($sep[1])-2)));
+    $pdate2 = date('Y-m-d',strtotime(substr($sep1[1],1,strlen($sep1[1])-3)));
+  } else {
+    $pdate1 = date('Y-m-d');
+    $pdate2 = date('Y-m-d');
+  }
+
+  if(!empty($_REQUEST['guests'])){
+    $gue = explode(' ',$_REQUEST['guests']);
+    $guests = $gue[0];
+    $mainquery = $mainquery . "and capacity >= '".$guests."' ";
+  }
+
+  if(!empty($_REQUEST['minbud'])){
+    $minbud = $_REQUEST['minbud'];
+  } else {
+    $minbud = 1;
+  }
+  if(!empty($_REQUEST['maxbud'])){
+    $maxbud = $_REQUEST['maxbud'];
+  } else {
+    $maxbud = 50000;
+  }
+  $mainquery = $mainquery . "and ((b.p_p_h between '".$minbud."' and '".$maxbud."') or (b.p_p_n between '".$minbud."' and '".$maxbud."')) order by a.place_id";
+  error_log($mainquery);
+  
+  /*$q21 = mysqli_query($connect,"select distinct a.place_id, a.p_address, a.p_city, a.p_state, a.p_country, a.postal_code, 
+  a.photo, a.space_name, a.capacity, a.p_p_h, a.p_p_n from place a, calenderdata b where place_id = placeid and 
+  user_id != '".$_SESSION['u_id']."' and status = 'Available' and p_address like '%".$place_loc."%' and 
+  capacity >= '".$guests."' and date(b.date1) <= '".$chinvar."' and date(b.date2) >= '".$choutvar."' and 
+  ((b.p_p_h between '".$minbud."' and '".$maxbud."') or (b.p_p_n between '".$minbud."' and '".$maxbud."')) order by a.place_id"); */
+  $q21 = mysqli_query($connect, $mainquery);
+  
+  ?>
 
 	<style>
   .btn .caret{
@@ -89,7 +98,7 @@ $guests = 1;
     height:100% !important;
   }
 	.container-custom{
-		
+		 
 		width:100% !Important;
 	}
   .multiselect-selected-text
@@ -131,42 +140,39 @@ $guests = 1;
 
 <body>
 <div class=""><!--container-fluid start-->
-<div class="">
-
+  <div class="">
 
 <!--==============menu header=========================-->
-<div class="menu-had2" style="    position: fixed;
-    z-index: 20;
-    top: 0px;
-    width: 100%;">
-<?php include 'lib/header.php';?>
-</div><!--menu-had close-->
+    <div class="menu-had2" style="position: fixed;
+      z-index: 20;
+      top: 0px;
+      width: 100%;">
+      <?php include 'lib/header.php';?>
+    </div><!--menu-had close-->
 <!--==============menu header close=========================-->
 
+    <div class="">
+      <div class="main-center-data" style="margin-top: 129px;">
+        <div class="search-lst-data">
+          <div class="col-md-5 pd-l-0 hidden-sm hidden-xs">
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0ceT-_kjPt8INNEKoVX9axkv3zw3miBY&libraries=places"></script>
+      <!--      <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAHOSxxua5IIFTA1-WiZbenpWIj0yv9hU8"></script> -->          
+            <div id="map_canvas"></div>
+          </div>
+        </div>
+        <!--<div class="col-md-7 col-sm-12 col-xs-12" style="border: solid 1px;">-->
+        <div class="col-md-7 col-sm-12 col-xs-12" style="border: solid 1px;">
+          <h1 class="search-had"><?php echo $place_loc; ?></h1>
 
-<div class="">
-<div class="main-center-data" style="margin-top: 129px;">
-<div class="search-lst-data">
-<div class="col-md-5 pd-l-0 hidden-sm hidden-xs">
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAHOSxxua5IIFTA1-WiZbenpWIj0yv9hU8"></script>
-
-<div id="map_canvas"></div>
-</div>
-</div>
-
-<div class="col-md-7 col-sm-12 col-xs-12">
-<h1 class="search-had"><?php echo $place_loc; ?></h1>
-<div class="moon-divider2 small"></div>
-
-<form method="post" action="searchlst.php">
-
-<div class="row">
-<div class="col-md-2">
-<p>Budget</p>
-</div>
-<div class="col-md-4" style="padding-left:0px">
-<input type="hidden" name="my-address" id="my-address" value="<?php echo $place_loc;?>">
-<input type="hidden" name="mylat" id="mylat" value="<?php if($mylat=='')
+          <form method="post" action="searchlst.php">
+          <div class="had-frm" >Search</div>
+          <div class="row">
+            <div class="col-md-2">
+              <p>Budget</p>
+            </div>
+            <div class="col-md-4" style="padding-left:0px">
+              <input type="hidden" name="my-address" id="my-address" value="<?php echo $place_loc;?>">
+              <input type="hidden" name="mylat" id="mylat" value="<?php if($mylat=='')
 {
  echo 17.3700;
 $mylng = 78.4800;
@@ -177,7 +183,7 @@ else
   echo $mylat; 
   }
   ?>">
-<input type="hidden" name="mylng" id="mylng" value="<?php  if($mylng=='')
+              <input type="hidden" name="mylng" id="mylng" value="<?php  if($mylng=='')
 {
 echo  78.4800;
 }
@@ -187,85 +193,84 @@ else
   echo $mylng; 
   } ?>">
 
-  <input style="width:50%;float:left" type="number" id="input-select" name="minbud" class="form-control">
-  <input style="width:50%;" class="form-control" type="number" min="1" max="50000" name="maxbud" step="1" id="input-number">
-</div>
-<div class="col-md-6">
-<div id="html5" class="noUi-target noUi-ltr noUi-horizontal noUi-background"></div>
-</div>
-</div>
+              <input style="width:50%;float:left" type="number" id="input-select" name="minbud" class="form-control">
+              <input style="width:50%;" class="form-control" type="number" min="1" max="50000" name="maxbud" step="1" id="input-number">
+            </div>
+            <div class="col-md-6">
+              <div id="html5" class="noUi-target noUi-ltr noUi-horizontal noUi-background"></div>
+              </div>
+            </div>
 
-<div class="row mg-top20">
-<div class="col-md-2">
-<p>Date</p>
-</div>
-<div class="col-md-4" style="padding-left:0px">
+            <div class="row mg-top20">
+              <div class="col-md-2">
+                <p>Date</p>
+              </div>
+              <div class="col-md-2" style="padding-left:0px">
 <?php 
-if(!empty($_REQUEST['daterange']))
+if(!empty($_REQUEST['chin']))
 {
   $dates = explode(',',$_REQUEST['daterange']);
-$sep = explode(':', $dates[0]);
-$sep1 = explode(':', $dates[1]);
-$final = date('m/d/Y',strtotime(substr($sep[1],1,strlen($sep[1])-2)));
-$final1 = date('m/d/Y',strtotime(substr($sep1[1],1,strlen($sep1[1])-3)));
-}else{
-$final = date('m/d/Y');
-$final1 = date('m/d/Y');
+  $sep = explode(':', $dates[0]);
+  $sep1 = explode(':', $dates[1]);
+  $final = date('m/d/Y',strtotime(substr($sep[1],1,strlen($sep[1])-2)));
+  $final1 = date('m/d/Y',strtotime(substr($sep1[1],1,strlen($sep1[1])-3)));
+} else {
+  $final = date('m/d/Y');
+  $final1 = date('m/d/Y');
 }
 
  ?>
-<input  style="width:50%;float:left" type="text" id="datepicker" value="<?php 
-echo $final; ?>" name="chin" class="form-control" placeholder="From">
-<input style="width:50%;" type="text" id="datepicker1" value="<?php 
-echo $final1; ?>" name="chout" class="form-control" placeholder="To">
-</div>
+                <input  style="float:left" type="text" id="datepicker" 
+                value= "<?php if (isset($_REQUEST['chin'])) { echo $_REQUEST['chin']; } else { echo date('m/d/Y'); } ?>" name="chin" class="form-control" placeholder="From">
+                <!--<input style="width:50%;" type="text" id="datepicker1" value="<?php 
+//echo $final1; ?>" name="chout" class="form-control" placeholder="To">-->
+              </div>
 
-<div class="col-md-2">
-<p>Location</p>
-</div>
-<div class="col-md-4">
-<input type="text" value="<?php echo $place_loc; ?>" id="autocomplete" name="place_loc" onFocus="geolocate();" onchange="geolocate()" class="form-control" >
- <input type="hidden" name="my-lat" id="my-lat" value="">
- <input type="hidden" name="my-lng" id="my-lng" value="">
-</div>
-</div>
+              <div class="col-md-2">
+                <p>Location</p>
+              </div>
+              <div class="col-md-4">
+                <input type="text" value="<?php echo $place_loc; ?>" id="autocomplete" name="place_loc" onFocus="geolocate();" onchange="geolocate()" class="form-control" >
+                <input type="hidden" name="my-lat" id="my-lat" value="">
+                <input type="hidden" name="my-lng" id="my-lng" value="">
+              </div>
+            </div>
 
-<div class="row mg-top20">
-<div class="col-md-2">
-<p>Guests</p>
-</div>
-<div class="col-md-4" style="padding-left:0px">
-<input type="text" value="<?php echo $guests; ?> Guests" name="guests" class="form-control" >
-</div>
+            <div class="row mg-top20">
+              <div class="col-md-2">
+                <p>Guests</p>
+              </div>
+              <div class="col-md-2" style="padding-left:0px">
+                <input type="number" value="<?php echo (int)$guests; ?>" name="guests" class="form-control" />
+              </div>
 
-<div class="col-md-2">
-<p>Events</p>
-</div>
-<div class="col-md-4">
+              <div class="col-md-2">
+                <p>Events</p>
+              </div>
+              <div class="col-md-4">
  <!-- <input type="text" class="form-control bord" placeholder="Event"> -->
                           <select id="select1" class="form-control bord" multiple="multiple" name="events[]" >
                                <!--  <option value="" hidden>Select Uses</option> -->
                               <?php $query=mysqli_query($connect,'Select * from usedfor');
-                          while($match=mysqli_fetch_array($query)){
+                                while($match=mysqli_fetch_array($query)){
 
-                            if(in_array($match['ufid'], $_REQUEST['events']))
-                            {
-                              ?><option selected value="<?php echo $match['ufid'];?>"><?php echo $match['ufname'];?></option><?php
-                            }
-                            else
-                            {
+                                  if(in_array($match['ufid'], $_REQUEST['events']))
+                                {
                               ?>
-                              <option value="<?php echo $match['ufid'];?>"><?php echo $match['ufname'];?></option>
+                                <option selected value="<?php echo $match['ufid'];?>">
+                                  <?php echo $match['ufname'];?>
+                                </option>
                               <?php
-                            }
-
-                            ?>
-                              
-                          <?php }//while ?>
+                                  } else {
+                              ?>
+                                <option value="<?php echo $match['ufid'];?>"><?php echo $match['ufname'];?></option>
+                              <?php
+                                  }
+                                }//while 
+                              ?>
                           </select> 
-</div>       
-
-</div>
+              </div>
+            </div>
 <!-- <div class="row mg-top20">
 <div class="col-md-2">
 <p>Sort by</p>
@@ -288,69 +293,66 @@ echo $final1; ?>" name="chout" class="form-control" placeholder="To">
       </div>
 </div>
 </div> -->
-<button class="btn-3 mg-top20 mg-bottom20" type="submit">Search</button>
-</form>
-<div class="row">
-<?php 
-$count = 0;
-
-      $days1 = "";
-      $st = date('Y-m-d',strtotime($final));
-      $et = date('Y-m-d',strtotime($final1));
-
-      $st1    = new DateTime($st);
-      $et1    = new DateTime($et);
-      $in1 = new DateInterval('P1D'); // 1 day interval
-      $per1   = new DatePeriod($st1, $in1, $et1);
-      foreach ($per1 as $day) 
-      {
+            <button class="btn-3 mg-top20 mg-bottom20" type="submit">Search</button>
+          </form>
+            <div class="row">
+              <?php 
+                $count = 0;
+                $days1 = "";
+                $st = date('Y-m-d',strtotime($final));
+                $et = date('Y-m-d',strtotime($final1));
+                $dtz = new DateTimeZone('America/Chicago');
+                $st1    = new DateTime($st, $dtz);
+                $et1    = new DateTime($et, $dtz);
+                $in1 = new DateInterval('P1D'); // 1 day interval
+                $per1   = new DatePeriod($st1, $in1, $et1);
+                foreach ($per1 as $day) 
+                {
             // Do stuff with each $day...
-           $days1 .= $day->format('Y-m-d').',';
-      }    
-     $days1 = $days1.$et;
-
-       $chinout = explode(',',$days1);
-
-if(mysqli_num_rows($q21)>0){
-while($r21 = mysqli_fetch_array($q21)) {
-
-$canbe = explode(',', $r21['can_be_usedid']);
-
-                     $images = explode(',',$r21['photo']);
-                     $marker_addresses .= $r21['p_address'].">>>";
-                     $marker_location .= $r21['p_city'].",".$r21['p_state'].",".$r21['p_country'].">>>";
+                  $days1 .= $day->format('Y-m-d').',';
+                }    
+                $days1 = $days1.$et;
+                $chinout = explode(',',$days1);
+                if(mysqli_num_rows($q21)>0){
+                  while($r21 = mysqli_fetch_array($q21)) {
+                    $canbe = explode(',', $r21['can_be_usedid']);
+                    $images = explode(',',$r21['photo']);
+                    $marker_addresses .= $r21['p_address'].">>>";
+                    $marker_location .= $r21['p_city'].",".$r21['p_state'].",".$r21['p_country'].">>>";
+                    $marker_placeids .= $r21['place_id'].">>>";
 //echo "block1";
-      ?>
+              ?>
 
-           <div class="col-md-6 col-sm-6 col-xs-12 pd-lr-4">
-           <a href="demo-venue.php?placeid=<?php echo $r21['place_id']; ?>&checkin=<?php echo $st; ?>&checkout=<?php echo $et; ?>">
-          <div class="border-box">
-          <div id="myCarousel<?php echo $r21['place_id']; ?>" class="carousel slide" data-ride="carousel">
+              <div class="col-md-6 col-sm-6 col-xs-12 pd-lr-4">
+                <a href="demo-venue2.php?placeid=<?php echo $r21['place_id']; ?>&checkin=<?php if (isset($chinvar)) {echo $chinvar;} else { echo $st; } ?>&checkout=<?php if (isset($choutvar)) {echo $choutvar;} else { echo $st; } ?>&guests=<?php echo $_POST['guests']?>">
+                <div class="border-box">
+                  <div id="myCarousel<?php echo $r21['place_id']; ?>" class="carousel slide" data-ride="carousel">
 
             <!-- Wrapper for slides -->
-            <div class="carousel-inner inner1" role="listbox">
-              <?php foreach($images as $photos) {
-                if($photos=="")
-              { continue;  } ?>
-              <div class="item">
-                <img src="images/placephotos/<?php echo $photos; ?>">
-              </div>
-              <?php } ?>
-
-            </div>
-<?php if(count($images)>1){?>
+                    <div class="carousel-inner inner1" role="listbox">
+                      <?php foreach($images as $photos) {
+                        if($photos=="")
+                        { continue;  
+                        } 
+                      ?>
+                        <div class="item">
+                          <img src="images/placephotos/<?php echo $photos; ?>">
+                        </div>
+                      <?php } ?>
+                        </div>
+                      <?php if(count($images)>1){?>
             <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel<?php echo $r21['place_id']; ?>" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel<?php echo $r21['place_id']; ?>" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-            <?php }?>
-          </div>
-<?php
+                        <a class="left carousel-control" href="#myCarousel<?php echo $r21['place_id']; ?>" role="button" data-slide="prev">
+                          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel<?php echo $r21['place_id']; ?>" role="button" data-slide="next">
+                          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      <?php }?>
+                    </div>
+                    <?php
 /*if(empty($r21['p_p_h']) && empty($r21['p_p_n']) && empty($r21['w_p_p_n'])){
 $que = mysqli_query($connect,"select * from calenderdata where placeid=".$r21['place_id']." group by placeid");
       if(mysqli_num_rows($que)>0){
@@ -361,10 +363,14 @@ $que = mysqli_query($connect,"select * from calenderdata where placeid=".$r21['p
           $sppw=$rw['w_p_p_n'];
       }//while que
       }//if que numrows
-          }*///calenderdata table prices ?>
-<?php $spacename=$r21['space_name'];?>
-          <h4 class="hotel-name"><?php 
-          if(strlen($spacename)>10){echo substr($spacename,0,10)."..." ;}else{echo $spacename;} ?></h4>
+          }*///calenderdata table prices 
+                    ?>
+                    <?php $spacename=$r21['space_name'];?>
+                    <h4 class="hotel-name">
+                      <?php 
+                        if(strlen($spacename)>10){echo substr($spacename,0,10)."..." ;}else{echo $spacename;} 
+                      ?>
+                    </h4>
 <!--
           <div class="req-cus rat-star">
           <i class="fa fa-star"></i>
@@ -374,82 +380,102 @@ $que = mysqli_query($connect,"select * from calenderdata where placeid=".$r21['p
           <i class="fa fa-star-o"></i>
           </div>
 -->
-              
-              
-        <?php
-$country = $r21['p_country'] ;
+                    <?php
+                      $country = $r21['p_country'] ;
                                        //  echo $country;
-?>
-<?php switch ($country) {
-            ?>
-<?php    case "United States":  $currency= "&#36;"?>
-<?php        break; case "United Kingdom":  $currency= "&163;"?>
- <?php       break; case "India": $currency= "&#8377;"?>
-<?php }  ?>      
+                      switch ($country) {
+                        case "United States":  $currency= "&#36;"; break; 
+                        case "United Kingdom":  $currency= "&163;"; break; 
+                        case "India": $currency= "&#8377;";
+                      }
+                    ?>      
         
-          <div class="req-cus"><i class="fa fa-map-marker icncolor"></i> <?php $paddress=$r21['p_address'];
-          if(strlen($paddress)>40){echo substr($paddress,0,30)."..." ;}else{echo $paddress;} ?></div>
-          <div class="col-md-6 col-sm-6 col-xs-12 no-pad req-cus"><?php 
-          if(!empty($r21['p_p_h']))
-          {
-              echo $currency;
-            echo '' .$r21['p_p_h'].' Per  Hour<br>';
-          }else{ echo "<br>";//'<i class="fa fa-inr icncolor"></i> ' .$spph.' Per  Hour<br>';
-        }
-          if(!empty($r21['p_p_n']))
-          {
-                            echo $currency;
+                    <div class="req-cus"><i class="fa fa-map-marker icncolor"></i> 
+                      <?php 
+                        $paddress=$r21['p_address'];
+                        if(isset($_SESSION['u_id'])) {
+                          if(strlen($paddress)>40){echo substr($paddress,0,30)."..." ;}else{echo $paddress;}
+                        }
+                      ?>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 no-pad req-cus">
+                      <?php 
+                        if(!empty($r21['p_p_h']))
+                        {
+                          echo $currency;
+                          echo '' .$r21['p_p_h'].' Per  Hour<br>';
+                        }else{ echo "<br>";//'<i class="fa fa-inr icncolor"></i> ' .$spph.' Per  Hour<br>';
+                        }
+                        if(!empty($r21['p_p_n']))
+                        {
+                          echo $currency;
+                          echo ''.$r21['p_p_n'].' Per Night<br>';
+                        } else { 
+                          echo "<br>";//'<i class="fa fa-inr icncolor"></i> ' .$sppn.' Per  Night<br>';
+                        }
+                        if(!empty($r21['w_p_p_n']))
+                        {
+                          echo $currency;
+                          echo ''.$r21['w_p_p_n'].' Per Week';
+                        } else { 
+                          echo "<br>";//'<i class="fa fa-inr icncolor"></i> ' .$sppw.' Per  Week<br>';
+                        }
+                      ?> 
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 no-pad cap-txt req-cus">
+                      <i class="fa fa-users icncolor"></i>  Capacity: <?php echo $r21['capacity']; ?>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                </a>
+              </div>
+              <?php
+                      }  //while end 
+                    } else {
+                      echo "<p><font color='red'>No Result Found</font></p>";
+                    }
+              ?>
 
-            echo ''.$r21['p_p_n'].' Per Night<br>';
-          }else{ echo "<br>";//'<i class="fa fa-inr icncolor"></i> ' .$sppn.' Per  Night<br>';
-        }
-          if(!empty($r21['w_p_p_n']))
-          {
-                            echo $currency;
+              <input type="hidden" name="marker_addresses" id="marker_addresses" value="<?php echo rtrim($marker_addresses,">>>");?>" placeholder="">
+              <input type="hidden" name="marker_location" id="marker_location" value="<?php echo rtrim($marker_location,">>>");?>" placeholder="">
+              <input type="hidden" name="marker_placeids" id="marker_placeids" value="<?php echo rtrim($marker_placeids,">>>");?>" placeholder="">
+            </div>
 
-            echo ''.$r21['w_p_p_n'].' Per Week';
-          }else{ echo "<br>";//'<i class="fa fa-inr icncolor"></i> ' .$sppw.' Per  Week<br>';
-        }
-          ?> </div>
-          <div class="col-md-6 col-sm-6 col-xs-12 no-pad cap-txt req-cus"><i class="fa fa-users icncolor"></i>  Capacity: <?php echo $r21['capacity']; ?></div>
+	          <?php include 'lib/footer.php';?>
+            <script src="js/forms-map.js"></script>
+            <script>
+              initAutocomplete();
+              $(document).ready(function(){
+                $('#datepicker1').change(function(){
+                  var starttime = $('#datepicker').val();
+                  var endtime = $('#datepicker1').val();
+                  
+                  if(endtime<starttime)
+                  {
+                    $('#datepicker1').val("");
+                    swal("Error", "End date is less than start date.", "error");
+                  }
+                });
+              });
+            </script>
+          </div>
           <div class="clearfix"></div>
-          </div>
-            </a>
-          </div>
-
-      <?php
-
-                          }  //while end 
-                          }//if numrows
-                          else{
-                            echo "<p><font color='red'>No Result Found</font></p>";
-                          }
-     ?>
-
-<!--<input type="hidden" name="marker_addresses" id="marker_addresses" value="<?php echo rtrim($marker_addresses,">>>");?>" placeholder="">-->
-<!--<input type="hidden" name="marker_location" id="marker_location" value="<?php echo rtrim($marker_location,">>>");?>" placeholder="">-->
-</div>
-
-	<?php include 'lib/footer.php';?>
-  <script src="js/forms-map.js"></script>
-</div>
-<div class="clearfix"></div>
-</div>
-</div><!--main-center-data close-->
-</div><!--row close-->
+        </div>
+      </div><!--main-center-data close-->
+  </div><!--row close-->
 	
 <!--======footer close======-->
 
-
 </div><!--container-fluid close-->
 </body>
+
 <?php 
-   if(!isset($_SESSION['u_id'])) {
+   //if(!isset($_SESSION['u_id'])) {
 ?>
 <script>
-     $("#myModal2").modal();
+     //$("#myModal2").modal();
 </script>
-<?php   }
+<?php   //}
 ?>
 
 </html>
