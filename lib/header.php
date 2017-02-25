@@ -1,7 +1,7 @@
 <?php 
 
 
-require_once('fbConfig.php');
+//require_once('fbConfig.php');
 //require_once('user.php');
 //session_start();
 /*
@@ -71,7 +71,7 @@ Your 2finda team';
   }
 }*/
  ?>
- <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
 <div class="container">
 <div class="row">
 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
