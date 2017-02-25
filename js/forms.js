@@ -379,6 +379,7 @@ $(document).ready(function () {
 
     /* add place form start */
     $('form#add_place').submit(function (e) {
+        $('#addplace').prop('disabled', true);
         $('.ishowload').css('display', 'block');
         var formData = new FormData(this);
 
