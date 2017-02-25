@@ -1147,12 +1147,18 @@ $(document).ready(function () {
                             var m = $(this).attr('id');
                             var value_in = "";
                             $('.' + m).each(function () {
-                                value_in = value_in + $(this).val() + ",";
+                                $('.' + m).each(function () {
+                                    if (this.name == "p_p_h") {
+                                        pph = $(this).val();
+                                    } else {
+                                        ppn = $(this).val();
+                                    }
+                                });
                             });
-                            value_in = value_in.split(',');
-                            var ppn = value_in[0];
-                            var pph = value_in[1];
-                            var wppn = value_in[2];
+                            //value_in = value_in.split(',');
+                            //var ppn = value_in[0];
+                            //var pph = value_in[1];
+                            var wppn = "";
                             //console.log(clid);
 
                             $.ajax({
