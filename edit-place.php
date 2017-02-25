@@ -309,7 +309,7 @@ $sfee = $feeres['percentage'] * .01;
                 <p>Where is safety card located?</p>
               </div>
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <label for="space">Fire Exitinguisher</label>
+                <label for="space">Fire Extinguisher</label>
                 <input type="text" class="form-control" id="accomodates" value="<?php echo $row['fire_extinguisher'];?>" placeholder="Enter Location" name="fire_extinguisher">
               </div>
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -1037,11 +1037,11 @@ p {
           $("#netppw").val("$" + String($newval));
         });
 
-        $('#savetime').click(function(){
+        $('#savetime').click(function(e){
                     if (formVal()) {
                         $("form#calenderform").submit();
                     } else {
-                        return false;
+                        e.preventDefault();
                     }
 	      });
         });

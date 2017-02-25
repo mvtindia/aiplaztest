@@ -961,7 +961,7 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data);
                 if (data == "ok") {
-                    swal({title: "Updated!", text: "Price Updated Successfully", timer: 1000, showConfirmButton: true});
+                    swal('Updated!', 'Updated successfully', 'success');
                 } else
                 {
                     alert("not");
