@@ -1177,6 +1177,37 @@ $(document).ready(function () {
                                 processData: false
                             });
                         });
+                        $('.for_claender_data').on('click', '.onclick_delete_price', function() {
+                            var d_cal = $(this).val();
+        
+                            var r = confirm("Confirm deletion.");
+                            if (r == false) {
+                                return false;
+                            } else {
+
+                                $.ajax({
+                                    url: 'actions.php?deletecalender_id=' + d_cal,
+                                    success: function (data) {
+                                        console.log(data);
+                                        if (data == "ok") {
+                                            // $('.for_re').load(window.location + ' .for_re');
+                                            // $(this).attr('disabled');
+                                            $('#he' + d_cal).parent('div').parent('div').css('display', 'none');
+                                            //$('#delmsg').html("Delete Successful.");
+                                            //swal('Success', 'Updated Successfully', 'success');
+                                        } else
+                                        {
+                                            swal('Fail', 'Updated Unsuccessfully', 'failure');
+                                        }
+                                    },
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false
+                                });
+                            }
+
+                        });
+
                     } else {
                         $('.ishowload').css('display', 'none');
                         $("#msg3").html('<h3 style="color: red;">Some or all of time period has been scheduled.</h3>');
