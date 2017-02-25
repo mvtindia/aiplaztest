@@ -313,7 +313,7 @@ $sfee = $feeres['percentage'] * .01;
                 <input type="text" class="form-control" id="accomodates" value="<?php echo $row['fire_extinguisher'];?>" placeholder="Enter Location" name="fire_extinguisher">
               </div>
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <label for="space">Fire Alarm</label>
+                <label for="space">Fire Alarms</label>
                 <input type="text" class="form-control" id="accomodates" value="<?php echo $row['fire_alarm'];?>" placeholder="Enter Location" name="fire_alaram">
               </div>
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
