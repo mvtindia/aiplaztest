@@ -45,7 +45,9 @@
       this.header.appendChild(this.title); 
       this.header.appendChild(right);
       this.header.appendChild(left);
-      this.el.appendChild(this.header);
+      if (this.el) {
+        this.el.appendChild(this.header);
+      }
     }
 
     this.title.innerHTML = this.current.format('MMMM YYYY');
@@ -74,7 +76,9 @@
       });
     } else {
         this.month = createElement('div', 'month');
-        this.el.appendChild(this.month);
+        if (this.el) {
+          this.el.appendChild(this.month);
+        }
         this.backFill();
         this.currentMonth();
         this.fowardFill();
@@ -551,7 +555,9 @@ var myurl=protocol+host+"/"+third+"/"+fourth;
       var entry = createElement('span', 'entry ' +  parts[1], parts[0]);
       legend.appendChild(entry);
     });
-    this.el.appendChild(legend);
+    if (this.el) {
+      this.el.appendChild(legend);
+    }
   }
 
   Calendar.prototype.nextMonth = function() {

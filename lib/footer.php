@@ -1,8 +1,11 @@
 <!--==================Signup Modal box==============-->
   <!-- Modal -->
     <?php
+if (isset($_GET['placeid'])){
+  $placeid = $_GET['placeid'];
+}
 
- $placeid = $_GET['placeid'];
+ 
 
 //booking disable for hours
  $sql_footer2 = mysqli_query($connect,"SELECT * FROM booking WHERE placeid='".$placeid."'");
@@ -14,9 +17,11 @@ if(mysqli_num_rows($sql_footer2)>0)
 {        
             $days="";
             $newdays = "";
-            $start    = new DateTime($row_footer['checkin']);
+            //$start    = new DateTime($row_footer['checkin']);
+            $start    = date_create($row_footer['checkin']);
             $end_date = $row_footer['checkout'];
-            $end      = new DateTime($row_footer['checkout']);
+            //$end      = new DateTime($row_footer['checkout']);
+            $end      = date_create($row_footer['checkout']);
             $interval = new DateInterval('P1D'); // 1 day interval
             $period   = new DatePeriod($start, $interval, $end);
             foreach ($period as $day)
@@ -73,9 +78,10 @@ if(mysqli_num_rows($sql_footer2)>0)
 {        
             $days="";
             $newdays = "";
-            $start    = new DateTime($row_footer['checkin']);
+            //$start    = new DateTime($row_footer['checkin']);
+            $start    = date_create($row_footer['checkin']);
             $end_date = $row_footer['checkout'];
-            $end      = new DateTime($row_footer['checkout']);
+            $end      = date_create($row_footer['checkout']);
             $interval = new DateInterval('P1D'); // 1 day interval
             $period   = new DatePeriod($start, $interval, $end);
             foreach ($period as $day)
@@ -117,7 +123,7 @@ else
 // End HEre
 
 
-$sql_footer = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$placeid."' and status='Not Available'");
+$sql_footer = mysqli_query($connect,"SELECT * FROM calenderdata WHERE placeid='".$placeid."'");
 if(mysqli_num_rows($sql_footer)>0)
 { 
   $total_array_days="";
@@ -125,9 +131,9 @@ if(mysqli_num_rows($sql_footer)>0)
 {        
             $days="";
             $newdays = "";
-            $start    = new DateTime($row_footer['date1']);
+            $start    = date_create($row_footer['date1']);
             $end_date = $row_footer['date2'];
-            $end      = new DateTime($row_footer['date2']);
+            $end      = date_create($row_footer['date2']);
             $interval = new DateInterval('P1D'); // 1 day interval
             $period   = new DatePeriod($start, $interval, $end);
             foreach ($period as $day)
@@ -168,7 +174,6 @@ else
 }
     ?>
 <div id="myModal2" class="modal fade" role="dialog">
-
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -184,52 +189,51 @@ else
         <h4 class="modal-title">Login to continue</h4>
       </div>
       <div class="modal-body">
-    <div id="first-block">
-        <div class="fb">
-  <button class="fb-btn"><i class="fa fa-facebook"></i>&nbsp;Join with Facebook</button>
-  </div>
-
-  <div class="google mg-top10">
-  <button class="google-btn"><i class="fa fa-google-plus"></i>&nbsp;Join with Google</button>
-  </div>
-
-  <p class="text-center">or</p>
-  <div class="text-center">
-  <button type="button" class="btn-3">Login</button>
-  <button type="button" class="btn-4">Signup</button>
-  </div>
-  </div>
-  <div class="hide1" id="second-block">
-  <form class="form-group" id="login">
+          <div id="first-block">
+            <?php
+//Include FB config file && User class
   
-  <div class="input-group" id="login">
-    
-    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-  <input type="email" class="form-control form-height40 bord-0"  name="email" reuired placeholder="Email Id"/>
-</div>
+              $loginURL = $facebook->getLoginUrl(array('redirect_uri'=>$redirectURL,'scope'=>$fbPermissions));
+              $output = '<a href="'.$loginURL.'"><button class="fb-btn"><i class="fa fa-facebook"></i>&nbsp;Join with Facebook</button></a>';
+            ?>     
+              <div class="fb">
+          <!--<a href=<?php echo $output ?><button class="fb-btn"><i class="fa fa-facebook"></i>&nbsp;Join with Facebook</button></a>-->
+                  <?php echo $output ?>
+              </div>
+              <div class="google mg-top10" id="gSignInWrapper">
+                <button class="google-btn customGPlusSignIn" id="customBtn"><i class="fa fa-google-plus"></i>&nbsp;Join with Google</button>
+              </div>
+              <p class="text-center">or</p>
+              <div class="text-center">
+                <button type="button" class="btn-3">Login</button>
+                <button type="button" class="btn-4">Signup</button>
+              </div>
+          </div>
+          <div class="hide1" id="second-block">
+  <form class="form-group" id="login" method="POST">
+  
+            <div class="input-group" id="login">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <input type="email" class="form-control form-height40 bord-0"  name="email" required placeholder="Email Id"/>
+            </div>
 
-<div class="input-group mg-top20">
-    
-    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-  <input type="password" class="form-control form-height40 bord-0" name="password" required placeholder="Password"/>
-
-  <input type="hidden" class="urlval" >
-
-</div>
-
-  <div class="text-center mg-top10">
-  <button type="submit" class="btn-3" name="login">Login</button>
-  <button type="button" class="btn-back">Back</button>
-  </div>
+            <div class="input-group mg-top20">
+              <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+              <input type="password" class="form-control form-height40 bord-0" name="password" required placeholder="Password"/>
+              <input type="hidden" class="urlval" >
+            </div>
+            <div class="text-center mg-top10">
+              <button type="submit" class="btn-3" name="login">Login</button>
+              <button type="button" class="btn-back">Back</button>
+            </div>
+            <div>If you forgot your password, click <a class="link-1" href="#" onClick="link1();">here</a> to reset.</div>
   </form>
-  </div>
+          </div>
   
-  
-  <div class="hide1" id="third-block">
+          <div class="hide1" id="third-block">
   <form class="form-group" action="actions.php" id="signup_form" method="POST">
   
-  <div class="input-group">
-    
+            <div class="input-group">
     <span class="input-group-addon"><i class="fa fa-user"></i></span>
   <input type="text" class="form-control form-height40 bord-0" name="fname" placeholder="First Name" required/>
 </div>
@@ -267,7 +271,26 @@ else
 
       
   </form>
+          <br>      
+<div class="container">
+<p> By signing up, you agree to our <a href="lib/terms.php" target="_blank">Terms And Conditions</a> </p>
+</div>
   </div>
+  <div class="hide1" id="fourth-block">
+  <form class="form-group" id="reset" method="POST">
+  
+            <div class="input-group" id="login">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <input type="email" class="form-control form-height40 bord-0"  name="rsemail" required placeholder="Email address"/>
+            </div>
+
+            <div class="text-center mg-top10">
+              <button type="submit" class="btn-5" name="reset">Reset My Password</button>
+              <button type="button" class="btn-back">Back</button>
+            </div><br>
+            <div id="reset_msg" style="display: none; color: red;">You will receive an email with a link to reset your password.</div>
+  </form>
+          </div>
   
       </div>
       <div class="modal-footer" style="text-align: center;">
@@ -275,12 +298,7 @@ else
         <span class="showmsg" style="display:none;"></span>
       </div>
     </div>
-        <br>      
-<div class="container">
-<p> By signing up, you agree to our <a href="lib/terms.php" target="_blank">Terms And Conditions</a> </p>
-    
-      
-</div>
+
  </div>
   </div>
 </div>
@@ -359,50 +377,36 @@ else
  
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="js/jquery.min.js"></script>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
-     <script src="bootstrap/js/bootstrap.js"></script>
-   
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
-   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-   <script src="http://www.jqueryscript.net/demo/jQuery-jQuery-UI-Based-Date-Range-Picker-Plugin/jquery.comiseo.daterangepicker.js"></script>
-   
-   
-        <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
-      
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<!--<script src="https://www.jqueryscript.net/demo/jQuery-jQuery-UI-Based-Date-Range-Picker-Plugin/jquery.comiseo.daterangepicker.js"></script>-->
+<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
 
+<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+<!--<script type="text/javascript" src="js/validator.js"></script>-->
 
-    <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
- 
-    <script type="text/javascript" src="bm/js/plugins/canvas-to-blob.min.js"></script>
-    <script src="bm/js/fileinput.min.js" type="text/javascript"></script>
-    <script src="js/custom-calendar.js"></script>
-     
-    <script type="text/javascript" src="js/jquery.mask.js"></script>
-
-  
-     
-     <script src="sm/dist/sweetalert2.min.js"></script>
-
-     <script src="js/nouislider.js"></script>
-
-     
-    <script type="text/javascript" src="js/jquery.mask.js"></script>
-    <script src="js/custom.js"></script>
-   
-   
-      <script src="js/forms.js"></script>
-
-      <script src="js/forms2.js"></script>
+<script type="text/javascript" src="bm/js/plugins/canvas-to-blob.min.js"></script>
+<script src="bm/js/fileinput.min.js" type="text/javascript"></script>
+<!--<script src="js/custom-calendar.js"></script>-->
+<script type="text/javascript" src="js/jquery.mask.js"></script>
+<script src="sm/dist/sweetalert2.min.js"></script>
+<script src="js/nouislider.js"></script>
+<script src="js/forms.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/forms2.js"></script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
    
    <script src="js/star-rating.min.js"></script>
   <!--<script src="js/bootstrap-select.js"></script> -->
   
-  <script src="js/wow.js"></script>
+  <!--<script src="js/wow.js"></script>-->
 <style>
   .ui-datepicker-unselectable span
   {
@@ -413,7 +417,8 @@ else
     opacity: 100 !important;
   }
 </style>
-  <script>
+<script type="text/javascript">
+
   $(function() {
     var arrDisabledDates = {};
     <?php echo $assign_values;  echo $assign_values2; ?> 
@@ -421,18 +426,33 @@ else
 
     $( "#datepicker" ).datepicker({  
         minDate: today,
-      beforeShowDay: function (dt) {
+        beforeShowDay: function (dt) {
+        var bDisable = arrDisabledDates[dt];
+        if (bDisable)
+            return [false, '', ''];
+        else
+            return [true, '', ''];
+        }
+    });
+  
+  });
+
+  $(function() {
+    var arrDisabledDates = {};
+    <?php echo $assign_values;  echo $assign_values2; ?> 
+    var today = new Date();
+    $( "#hourdatepicker" ).datepicker({  
+        minDate: today,
+        beforeShowDay: function (dt) {
             var bDisable = arrDisabledDates[dt];
             if (bDisable)
-               return [false, '', ''];
-            else
                return [true, '', ''];
+            else
+               return [false, '', ''];
         }
-  });
     });
-  </script>
-  
-    <script>
+  });
+
   $(function() {
 
      var arrDisabledDates = {};
@@ -455,6 +475,7 @@ else
         }
     });
   });
+
   $(function() {
 
      var today = new Date();
@@ -468,152 +489,154 @@ else
 // par value start HERE 
 
    $('.per_val').click(function(){
-    var value = $(this).val();
+//$(document).ready(function() {
+    //var value = $(.per_val).val();
+    var value = 'hour';
     var placeid = $('.placeid_val').val();
     $.ajax({
 
       url: 'forms2.php?per_val='+value+'&placeid_value='+placeid,
       success: function(data)
       {
-        $('.show_div').html(data);
+        //$('.show_div').html(data);
         
         //picking datepicker 1
 
         $(function() {
-    var arrDisabledDates = {};
-    <?php echo $assign_values;echo $assign_values2; ?> 
-    var today = new Date();
+          var arrDisabledDates = {};
+          <?php echo $assign_values;echo $assign_values2; ?> 
+          var today = new Date();
 
-    $( ".picking" ).datepicker({  
-        minDate: today,
-      beforeShowDay: function (dt) {
-            var bDisable = arrDisabledDates[dt];
-            if (bDisable)
-               return [false, '', ''];
-            else
-               return [true, '', ''];
-        }
-  });
+          $( ".picking" ).datepicker({  
+              minDate: today,
+              beforeShowDay: function (dt) {
+                  var bDisable = arrDisabledDates[dt];
+                  if (bDisable)
+                    return [false, '', ''];
+                  else
+                    return [true, '', ''];
+              }
+          });
     // picking datepicker 2
-    var tomorrow = new Date();
-    tomorrow.setDate(today.getDate() + 1);
- $( ".picking1" ).datepicker({  
-        minDate: tomorrow,
-      beforeShowDay: function (dt) {
-            var bDisable = arrDisabledDates[dt];
-            if (bDisable)
-               return [false, '', ''];
-            else
-               return [true, '', ''];
-        }
-  });
+          var tomorrow = new Date();
+          tomorrow.setDate(today.getDate() + 1);
+          $( ".picking1" ).datepicker({  
+                  minDate: tomorrow,
+                beforeShowDay: function (dt) {
+                      var bDisable = arrDisabledDates[dt];
+                      if (bDisable)
+                        return [false, '', ''];
+                      else
+                        return [true, '', ''];
+                  }
+          });
 
-var arrDisabledDates = {};
-    <?php echo $assign_values;echo $assign_values3; ?> 
-    var today = new Date();
+          var arrDisabledDates = {};
+          <?php echo $assign_values;//echo $assign_values3; ?> 
+          var today = new Date();
 
-    $( "#hourdatepicker" ).datepicker({  
-        minDate: today,
-      beforeShowDay: function (dt) {
-            var bDisable = arrDisabledDates[dt];
-            if (bDisable)
-               return [false, '', ''];
-            else
-               return [true, '', ''];
-        }
-  });
+          $( "#hourdatepicker" ).datepicker({  
+              minDate: today,
+              beforeShowDay: function (dt) {
+                  var bDisable = arrDisabledDates[dt];
+                  if (bDisable)
+                    return [true, '', ''];
+                  else
+                    return [false, '', ''];
+              }
+          });
 
-    });
+        });
  //picking datepicker both end here
 
  // according to night start HERE
 
-if(value == 'night')
+    if(value == 'night')
         {
-       $('.picking1').change(function(){
-    var date_val1 = $('.picking').val();
-    var date_val2 = $(this).val();
-    var price_cal = $('.ppnight').val();
-    var placeid = $('.placeid_val').val();
-    if(date_val1<date_val2)
-    {
-    $.ajax({
-      url: 'forms2.php?date_val1='+date_val1+'&date_val2='+date_val2+'&placeid='+placeid+'&pervalues='+value,
-      success: function(data)
-      { 
-        console.log('my data - '+data);
-        // console.log("<h5>&#8377; <span class="price_cal">'.$match['p_p_n'].'</span> x <span class="calculated">1 Night</span></h5>");
-        data1 = data.split('>>>');
-        if(data1[3]=='0')
-        {
-          $('#book_button').css('display','block');
-          $('.errormessage22').css('display','none');
-          $('.errormessage').css('display','block');
-        if(data1[1]=='0')
-        {
-          var specific_price2=0;
-        }
-        else
-        {     
-        var specific_price = data1[0];
-        specific_price1 = specific_price.split(',');
-        var specific_price2=0;
-        var counter = specific_price1.length;
-        console.log('counter'+counter);
-        for(var i=0; i<counter; i++)
-        {
-          if(specific_price1[i]=="")
-          {
-            continue;
-          }
-          specific_price2 = parseInt(specific_price2)+parseInt(specific_price1[i]);
-        }
-        }
-        // console.log(specific_price2);
-        var counts = data1[1];
-        var regular_price = data1[2];
-        var r_days = parseInt(regular_price)-parseInt(counts);
-        var total = parseInt(price_cal)*parseInt(r_days);
-        var grand_total = parseInt(total)+parseInt(specific_price2);
-        console.log("grand_total"+grand_total);
-        var avg_p = parseInt(grand_total)/parseInt(regular_price);
-        avg_p = Math.round(avg_p);
-        $.ajax({
-        url:'forms2.php?taxesid=00',
-        success: function(taxes)
-        {
-          console.log(taxes);
-          var texes1 = taxes.split('===');
-          if(texes1[0]==0)
-          {
-
-          }
-          else
-          { 
-            var texes2 = texes1[0].split(',');
-            var title = texes1[1].split(',');
-            var count = texes2.length;
-            var tax_data="";
-            var tax_value="0";
-            for(var j=0;j<count;j++)
+          $('.picking1').change(function(){
+            var date_val1 = $('.picking').val();
+            var date_val2 = $(this).val();
+            var price_cal = $('.ppnight').val();
+            var placeid = $('.placeid_val').val();
+            if(date_val1<date_val2)
             {
-              var final = parseInt(texes2[j])*parseInt(regular_price);
-              tax_data =tax_data+'<div class="col-md-6 col-sm-6 col-xs-7 "><h5>&#8377; <span class=""></span> <span class="">'+title[j] +'</span></h5></div><div class="col-md-6 col-sm-6 col-xs-5"><h5 class="text-right"><span>&#8377; </span><span class="">'+final+'</span></h5></div>';
-              tax_value = parseInt(tax_value)+parseInt(final);
-            }
-            console.log("tax value"+tax_value)
-            $('#forappend').html(tax_data);
-            var final_total = parseInt(tax_value)+parseInt(grand_total);
-            console.log("final"+final_total);
-          }
-          $('#price_per_week').val(avg_p);
-          $('.night_rupee').html(avg_p);
-          $('.price_cal').html(avg_p);
-        $('.total_price_cal').html(final_total);
-        $('.totalprice').val(final_total);
-        $('.total_price').html(grand_total);
-        $('.calculated').html(regular_price+' Nights');
-        }
+            $.ajax({
+              url: 'forms2.php?date_val1='+date_val1+'&date_val2='+date_val2+'&placeid='+placeid+'&pervalues='+value,
+              success: function(data)
+              { 
+                console.log('my data - '+data);
+                // console.log("<h5>&#8377; <span class="price_cal">'.$match['p_p_n'].'</span> x <span class="calculated">1 Night</span></h5>");
+                data1 = data.split('>>>');
+                if(data1[3]=='0')
+                {
+                  $('#book_button').css('display','block');
+                  $('.errormessage22').css('display','none');
+                  $('.errormessage').css('display','block');
+                  if(data1[1]=='0')
+                  {
+                    var specific_price2=0;
+                  }
+                  else
+                  {     
+                    var specific_price = data1[0];
+                    specific_price1 = specific_price.split(',');
+                    var specific_price2=0;
+                    var counter = specific_price1.length;
+                    console.log('counter'+counter);
+                    for(var i=0; i<counter; i++)
+                    {
+                      if(specific_price1[i]=="")
+                      {
+                        continue;
+                      }
+                      specific_price2 = parseInt(specific_price2)+parseInt(specific_price1[i]);
+                    }
+                  }
+        // console.log(specific_price2);
+                  var counts = data1[1];
+                  var regular_price = data1[2];
+                  var r_days = parseInt(regular_price)-parseInt(counts);
+                  var total = parseInt(price_cal)*parseInt(r_days);
+                  var grand_total = parseInt(total)+parseInt(specific_price2);
+                  console.log("grand_total"+grand_total);
+                  var avg_p = parseInt(grand_total)/parseInt(regular_price);
+                  avg_p = Math.round(avg_p);
+                  $.ajax({
+                  url:'forms2.php?taxesid=00',
+                  success: function(taxes)
+                  {
+                    console.log(taxes);
+                    var texes1 = taxes.split('===');
+                    if(texes1[0]==0)
+                    {
+
+                    }
+                    else
+                    { 
+                      var texes2 = texes1[0].split(',');
+                      var title = texes1[1].split(',');
+                      var count = texes2.length;
+                      var tax_data="";
+                      var tax_value="0";
+                      for(var j=0;j<count;j++)
+                      {
+                        var final = parseInt(texes2[j])*parseInt(regular_price);
+                        tax_data =tax_data+'<div class="col-md-6 col-sm-6 col-xs-7 "><h5>&#8377; <span class=""></span> <span class="">'+title[j] +'</span></h5></div><div class="col-md-6 col-sm-6 col-xs-5"><h5 class="text-right"><span>&#8377; </span><span class="">'+final+'</span></h5></div>';
+                        tax_value = parseInt(tax_value)+parseInt(final);
+                      }
+                      console.log("tax value"+tax_value)
+                      $('#forappend').html(tax_data);
+                      var final_total = parseInt(tax_value)+parseInt(grand_total);
+                      console.log("final"+final_total);
+                    }
+                $('#price_per_week').val(avg_p);
+                $('.night_rupee').html(avg_p);
+                $('.price_cal').html(avg_p);
+                $('.total_price_cal').html(final_total);
+                $('.totalprice').val(final_total);
+                $('.total_price').html(grand_total);
+                $('.calculated').html(regular_price+' Nights');
+              }
         });
       }
       else
@@ -997,58 +1020,58 @@ $('.picking').change(function(){
           $('#hourdatepicker').change(function(){
             var starttime = $('#basic').val();
             var endtime = $('#basic2').val();
-    var date_val2 = $('#hourdatepicker').val();
-    var price_cal = $('.ppnight').val();
-    var placeid = $('.placeid_val').val();
-    console.log("datedata"+date_val2)
-    $.ajax({
-      url: 'forms2.php?hoursdate_val1='+date_val2+'&placeid='+placeid+'&pervalues='+value+'&start_time='+starttime+'&end_time='+endtime,
-      success: function(data)
-      {
-        console.log('my data - '+data);
-        
-        data1 = data.split('>>>');
-        console.log(data1[0]);
-        console.log(data1[1]);
-        var j = data1[0].trim(' ');
-        var av = data1[2].trim(' ');
-        if(av=='1')
-        {
-          $('#book_button').css('display','none');
-          $('.errormessage22').css('display','block');
-          $('.errormessage22').html('<p>This Date is Not Available</p>');
-          $('.errormessage').css('display','none');
-        }
-        else
-        {
-        if(data1[1]=='00')
-        {
-          $('#book_button').css('display','none');
-          $('.errormessage22').css('display','block');
-          $('.errormessage22').html('<p>Please Choose Valid Date</p>');
-          $('.errormessage').css('display','none');
-        }
-        else
-        {     
-          $('#book_button').css('display','block');
-              $('.errormessage22').css('display','none');
-          $('.errormessage').css('display','block');    
-          var hours=data1[1];
-        }
-        if(j=='0')
-        {
-        var per_hours =price_cal;
-          var price = parseInt(hours)*parseInt(price_cal);
-           console.log("defailt price"+price);
-        }
-        else
-        { 
-          // alert("please  time");
-          var per_hours =data1[0];
-          var price = parseInt(hours)*parseInt(data1[0]);
-        }
-        }
-        $.ajax({
+            var date_val2 = $('#hourdatepicker').val();
+            var price_cal = $('.ppnight').val();
+            var placeid = $('.placeid_val').val();
+            console.log("datedata"+date_val2)
+            $.ajax({
+              url: 'forms2.php?hoursdate_val1='+date_val2+'&placeid='+placeid+'&pervalues='+value+'&start_time='+starttime+'&end_time='+endtime,
+              success: function(data)
+              {
+                console.log('my data - '+data);
+                
+                data1 = data.split('>>>');
+                console.log(data1[0]);
+                console.log(data1[1]);
+                var j = data1[0].trim(' ');
+                var av = data1[2].trim(' ');
+                if(av=='1')
+                {
+                  $('#book_button').css('display','none');
+                  $('.errormessage22').css('display','block');
+                  $('.errormessage22').html('<p>This Date is Not Available</p>');
+                  $('.errormessage').css('display','none');
+                }
+                else
+                {
+                if(data1[1]=='00')
+                {
+                  $('#book_button').css('display','none');
+                  $('.errormessage22').css('display','block');
+                  $('.errormessage22').html('<p>Please Choose Valid Date</p>');
+                  $('.errormessage').css('display','none');
+                }
+                else
+                {     
+                  $('#book_button').css('display','block');
+                      $('.errormessage22').css('display','none');
+                  $('.errormessage').css('display','block');    
+                  var hours=data1[1];
+                }
+                if(j=='0')
+                {
+                var per_hours =price_cal;
+                  var price = parseInt(hours)*parseInt(price_cal);
+                  console.log("defailt price"+price);
+                }
+                else
+                { 
+                  // alert("please  time");
+                  var per_hours =data1[0];
+                  var price = parseInt(hours)*parseInt(data1[0]);
+                }
+                }
+       /* $.ajax({
         url:'forms2.php?taxesid=00',
         success: function(taxes)
         {
@@ -1087,14 +1110,11 @@ $('.picking').change(function(){
         $('.total_price').html(price);
         $('.calculated').html(hours+' hours');
         }
+        });*/
+
+        }
         });
-
-        
-
-
-      }
-    });
-  });
+      });
     }
         //according to hour end here
         
@@ -1150,7 +1170,14 @@ $('.picking').change(function(){
      
 <script>
 // When the DOM is ready, run this function
+<?php if (isset($_PUT['rsemail'])) { ?>
+        $('#fourth-block').css('display','block');
+<?php } ?>
+
+//Google login
+startApp();
 $(document).ready(function() {
+  
   //Set the carousel options
   $('#quote-carousel').carousel({
     pauseOnHover: true,
@@ -1158,16 +1185,7 @@ $(document).ready(function() {
   });
 
 });
-  </script>
-
-
-
-  
-
- 
-
-    <script>
-         var placeSearch, autocomplete;
+      var placeSearch, autocomplete;
       var componentForm = {
         street_number: 'short_name',
         route: 'long_name',
@@ -1227,7 +1245,6 @@ $(document).ready(function() {
         }
       }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0ceT-_kjPt8INNEKoVX9axkv3zw3miBY&signed_in=true&libraries=places&callback=initAutocomplete"
-        async defer></script>
-<script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
-  <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    
+<script src="https://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+  <script src="https://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>

@@ -22,10 +22,6 @@ var tabsFn = (function() {
       $(this).removeClass("hover");
     }
   );
-
-
-
-  
   
   /* Popup Jquery */
 
@@ -42,14 +38,14 @@ $(document).ready(function() {
         processData:false,
     success: function(data, textStatus, jqXHR)
     {   
-        console.log(data);
+        //console.log(data);
        var j = data.trim(" ");
         if(j == 'ok')
         {   	
-        	 swal("Cancelled!", "Booking Cancelled", "success");	
-        	$('.confirm').click(function(){
-        		window.location.href="index.php";
-        	});
+        	 //swal("Cancelled!", "Booking Cancelled", "success");	
+        	
+        		window.location.href="searchlst.php";
+        	
        
        }
         else if(j == 'not')
@@ -93,7 +89,7 @@ $(document).ready(function() {
         processData:false,
     success: function(data, textStatus, jqXHR)
     {   
-        console.log(data);
+        //console.log(data);
         data1 = data.split('>>>');
         if(data1[0] == 'ok')
         {
@@ -118,8 +114,81 @@ $(document).ready(function() {
      }          
     });
     e.preventDefault(); //Prevent Default action. 
-    e.unbind();
-}); 
+    //e.unbind();
+});
+
+$("form#reset").submit(function(e)
+{
+	var formObj = $(this);
+    var formURL = formObj.attr("action");
+	var formData = new FormData(this);
+	$.ajax({
+        url: 'forms.php?reset=101',
+        type: 'POST',
+        data:  formData,
+        mimeType:"multipart/form-data",
+        contentType: false,
+        cache: false,
+        processData:false,
+    success: function(data, textStatus, jqXHR)
+    {   
+        //console.log(data);
+        //data1 = data.split('>>>');
+        if(data == 'ok')
+        {
+		   $('#reset_msg').css('display','block');
+		   	//$('.link-1').click();        
+        }
+        else if(data == 'not')
+        {
+        	// $('.signlog').click();
+        	swal("Failure!", "Cannot find that email address", "error");
+        }
+    },
+     error: function(jqXHR, textStatus, errorThrown) 
+     {
+        swal("Failure!", "Email Id already Exist!", "error");
+     }          
+    });
+	e.preventDefault();
+});
+
+$("form#reset_pass").submit(function(e)
+{
+	var formObj = $(this);
+    var formURL = formObj.attr("action");
+	var formData = new FormData(this);
+	$.ajax({
+        url: 'forms.php?rspass=101',
+        type: 'POST',
+        data:  formData,
+        mimeType:"multipart/form-data",
+        contentType: false,
+        cache: false,
+        processData:false,
+    success: function(data, textStatus, jqXHR)
+    {   
+        //console.log(data);
+        //data1 = data.split('>>>');
+        if(data == 'ok')
+        {
+			$('#reset_msg').css('display','block');
+		   	$('.link-1').click();         
+        }
+        else if(data == 'no match')
+        {
+        	// $('.signlog').click();
+        	swal("Failure!", "Passwords do not match.", "error");
+        } else {
+			swal("Oops!", "We are having technical problems. Please try again later.", "error");
+		}
+    },
+     error: function(jqXHR, textStatus, errorThrown) 
+     {
+        swal("Failure!", "Passwords do not match.", "error");
+     }          
+    });
+});
 
 
 //paypal Insertion Start HEre
@@ -134,7 +203,7 @@ $("#paypal_data").click(function(e)
         processData:false,
     success: function(data, textStatus, jqXHR)
     {   
-        console.log(data);
+        //console.log(data);
        var j = data.trim(" ");
         if(j == 'ok')
         {   	
@@ -175,7 +244,7 @@ $(".book_form").submit(function(e)
         processData:false,
     success: function(data, textStatus, jqXHR)
     {   
-        console.log(data);
+        //console.log(data);
         data1 = data.split(">>>");
         if(data1[0] == 'not_activate')
         {
@@ -212,11 +281,13 @@ $(".book_form").submit(function(e)
 
 $(".book_form2_hour").submit(function(e)
 {
-    var formObj = $(this);
+    //if ( ) {
+	var formObj = $(this);
     var formURL = formObj.attr("action");
     var formData = new FormData(this);
+	$("#book_button").attr("disabled", true);
     $.ajax({
-        url: 'forms.php?book_button_hour=101',
+        url: 'forms.php?book_now_hour=101',
         type: 'POST',
         data:  formData,
         mimeType:"multipart/form-data",
@@ -225,7 +296,7 @@ $(".book_form2_hour").submit(function(e)
         processData:false,
     success: function(data, textStatus, jqXHR)
     {   
-        console.log(data);
+        //console.log(data);
         data1 = data.split(">>>");
         if(data1[0] == 'not_activate')
         {
@@ -233,28 +304,59 @@ $(".book_form2_hour").submit(function(e)
         }
         else if(data1[0] == 'not_login')
         {
+			$("#second-block").css('display','none');
+			$("#third-block").css('display','none');
+			$("#fourth-block").css('display','none');
+			$("#first-block").css('display','block');	
+			$('.urlval').val(window.location.href);
         	$('.signlog').click();
         }
         else if(data1[0] == 'Already')
         {
         	swal('Error','Booking Already Done','error');
+			$("#book_button").attr("disabled", false);
         }
         else if(data1[0] == 'ok')
         {     
-      swal("Success!", "Your Booking order Has Been Placed", "success");   
-      	window.location.href="booking-form.php?booking_id="+data1[1];
+      		//swal("Success!", "Your Booking order Has Been Placed", "success");   
+      		//window.location.href="booking-form.php?bookid="+data1[1];
+			$('#bookid').val(data1[1]);
+			$('#bk-btn').click();
         }
     },
      error: function(jqXHR, textStatus, errorThrown) 
      {
-        swal("Failure!", "Email Id already Exist!", "error");
+        swal("Failure!", "Booking failed", "error");
      }          
     });
-    e.preventDefault(); //Prevent Default action. 
-    e.unbind();
+    e.preventDefault(); //Prevent Default action.
+	//} 
+    //e.unbind();
 }); 
     
-
+$("#ccsave-form").submit(function(e)
+{
+    //if ( ) {
+	var formObj = $(this);
+    var formURL = formObj.attr("action");
+    var formData = new FormData(this);
+	//$("#book_button").attr("disabled", true);
+    $.ajax({
+        url: 'forms.php?ccsave=101',
+        type: 'POST',
+        data:  formData,
+        mimeType:"multipart/form-data",
+        contentType: false,
+        cache: false,
+        processData:false,
+		success: function(data, textStatus, jqXHR)
+		{
+			if (data == 'ok') {
+				$('#ccsave-form').reset();
+			}
+		}
+	});
+});
 
 // Booking form end
 
@@ -264,9 +366,9 @@ $(".book_form2_hour").submit(function(e)
 	});
 
 	$('#drp_autogen0 .ui-button-text').html('Checkin Date - Checkout Date');
-
- $(".daterange1").daterangepicker({
-     presetRanges: [{
+var today = new Date();
+ $(".daterange1").datepicker({
+     /*presetRanges: [{
          text: 'Today',
          dateStart: function() { return moment() },
          dateEnd: function() { return moment() }
@@ -282,13 +384,15 @@ $(".book_form2_hour").submit(function(e)
          text: 'Next Week',
          dateStart: function() { return moment().add('weeks', 1).startOf('week') },
          dateEnd: function() { return moment().add('weeks', 1).endOf('week') }
-     }],
-     applyOnMenuSelect: false,
-     datepickerOptions: {
+     }],*/
+     //applyOnMenuSelect: false,
+     /*datepickerOptions: {
          minDate: 0,
          maxDate: null,
          numberOfMonths : 2
-     }
+     }*/
+	 minDate: today,
+	 format: 'yyyy/mm/dd',	
  });
 
 $('.carousel-inner div:first-child').addClass('active');
@@ -302,7 +406,7 @@ $('.carousel-inner div:first-child').addClass('active');
 			url: 'forms2.php?date_val1='+date_val1+'&date_val2='+date_val2+'&placeid='+placeid,
 			success: function(data)
 			{	
-				console.log('my data - '+data);
+				//console.log('my data - '+data);
 				// console.log("<h5>&#8377; <span class="price_cal">'.$match['p_p_n'].'</span> x <span class="calculated">1 Night</span></h5>");
 				data1 = data.split('>>>');
 				if(data1[3]=='0')
@@ -310,9 +414,9 @@ $('.carousel-inner div:first-child').addClass('active');
 					$('#book_button').css('display','block');
 					$('.errormessage22').css('display','none');
 					$('.errormessage').css('display','block');
-				console.log(data1[0]);
-				console.log(data1[1]);
-				console.log(data1[2]);
+				//console.log(data1[0]);
+				//console.log(data1[1]);
+				//console.log(data1[2]);
 				if(data1[1]=='0')
 				{
 					var specific_price2=0;
@@ -323,7 +427,7 @@ $('.carousel-inner div:first-child').addClass('active');
 				specific_price1 = specific_price.split(',');
 				var specific_price2=0;
 				var counter = specific_price1.length;
-				console.log('counter'+counter);
+				//console.log('counter'+counter);
 				for(var i=0; i<counter; i++)
 				{
 					if(specific_price1[i]=="")
@@ -339,14 +443,14 @@ $('.carousel-inner div:first-child').addClass('active');
 				var r_days = parseInt(regular_price)-parseInt(counts);
 				var total = parseInt(price_cal)*parseInt(r_days);
 				var grand_total = parseInt(total)+parseInt(specific_price2);
-				console.log("grand_total"+grand_total);
+				//console.log("grand_total"+grand_total);
 				var avg_p = parseInt(grand_total)/parseInt(regular_price);
 				avg_p = Math.round(avg_p);
 				$.ajax({
 				url:'forms2.php?taxesid=00',
 				success: function(taxes)
 				{
-					console.log(taxes);
+					//console.log(taxes);
 					var texes1 = taxes.split('===');
 					if(texes1[0]==0)
 					{
@@ -365,10 +469,10 @@ $('.carousel-inner div:first-child').addClass('active');
 							tax_data =tax_data+'<div class="col-md-6 col-sm-6 col-xs-7 "><h5>&#8377; <span class=""></span> <span class="">'+title[j]	+'</span></h5></div><div class="col-md-6 col-sm-6 col-xs-5"><h5 class="text-right"><span>&#8377; </span><span class="">'+final+'</span></h5></div>';
 							tax_value = parseInt(tax_value)+parseInt(final);
 						}
-						console.log("tax value"+tax_value)
+						//console.log("tax value"+tax_value)
 						$('#forappend').html(tax_data);
 						var final_total = parseInt(tax_value)+parseInt(grand_total);
-						console.log("final"+final_total);
+						//console.log("final"+final_total);
 					}
 					$('#price_per_week').val(avg_p);
 					$('.night_rupee').html(avg_p);
@@ -400,7 +504,7 @@ $('.carousel-inner div:first-child').addClass('active');
 			url: 'forms2.php?date_val1='+date_val1+'&date_val2='+date_val2+'&placeid='+placeid,
 			success: function(data)
 			{
-				console.log('mydata-'+data);
+				//console.log('mydata-'+data);
 				// console.log("<h5>&#8377; <span class="price_cal">'.$match['p_p_n'].'</span> x <span class="calculated">1 Night</span></h5>");
 			data1 = data.split('>>>');
 			if(data1[3]=="0")
@@ -408,9 +512,9 @@ $('.carousel-inner div:first-child').addClass('active');
 				$('#book_button').css('display','block');
 					$('.errormessage22').css('display','none');
 					$('.errormessage').css('display','block');
-				console.log(data1[0]);
-				console.log(data1[1]);
-				console.log(data1[2]);
+				//console.log(data1[0]);
+				//console.log(data1[1]);
+				//console.log(data1[2]);
 				if(data1[1]=='0')
 				{
 					var specific_price2=0;
@@ -421,7 +525,7 @@ $('.carousel-inner div:first-child').addClass('active');
 				specific_price1 = specific_price.split(',');
 				var specific_price2=0;
 				var counter = specific_price1.length;
-				console.log('counter'+counter);
+				//console.log('counter'+counter);
 				for(var i=0; i<counter; i++)
 				{
 					if(specific_price1[i]=="")
@@ -437,14 +541,14 @@ $('.carousel-inner div:first-child').addClass('active');
 				var r_days = parseInt(regular_price)-parseInt(counts);
 				var total = parseInt(price_cal)*parseInt(r_days);
 				var grand_total = parseInt(total)+parseInt(specific_price2);
-				console.log("grand_total"+grand_total);
+				//console.log("grand_total"+grand_total);
 				var avg_p = parseInt(grand_total)/parseInt(regular_price);
 				avg_p = Math.round(avg_p);
 				$.ajax({
 				url:'forms2.php?taxesid=00',
 				success: function(taxes)
 				{
-					console.log(taxes);
+					//console.log(taxes);
 					var texes1 = taxes.split('===');
 					if(texes1[0]==0)
 					{
@@ -463,10 +567,10 @@ $('.carousel-inner div:first-child').addClass('active');
 							tax_data =tax_data+'<div class="col-md-6 col-sm-6 col-xs-7 "><h5>&#8377; <span class=""></span> <span class="">'+title[j]	+'</span></h5></div><div class="col-md-6 col-sm-6 col-xs-5"><h5 class="text-right"><span>&#8377; </span><span class="">'+final+'</span></h5></div>';
 							tax_value = parseInt(tax_value)+parseInt(final);
 						}
-						console.log("tax value"+tax_value)
+						//console.log("tax value"+tax_value)
 						$('#forappend').html(tax_data);
 						var final_total = parseInt(tax_value)+parseInt(grand_total);
-						console.log("final"+final_total);
+						//console.log("final"+final_total);
 					}
 					$('#price_per_week').val(avg_p);
 					$('.night_rupee').html(avg_p);
@@ -559,10 +663,6 @@ $('.phone').mask('(999) 999 9999');
 		// })
 
 
-
-
-
-
 /*==========Price table in Demo-velue fixing JS============*/
 jQuery(function($) {
   function fixDiv() {
@@ -593,10 +693,6 @@ jQuery(function($) {
   $(window).scroll(fixDiv);
   fixDiv();
 });
-
-
-
-
 
 
 	$('#example').DataTable();
@@ -646,26 +742,31 @@ jQuery(this).addClass('active');
 }); */
 	$('[data-toggle="tooltip"]').tooltip(); 
        
-     	$(".btn-3").click(function(){
+$(".btn-3").click(function(){
 		$("#first-block").css('display','none');
-		$("#third-block").css('display','none');
+		$("#third-block").css('display','none');		
+		$("#fourth-block").css('display','none');
 		$("#second-block").css('display','block');
 
 });
 
-     	$(".btn-4").click(function(){
+$(".btn-4").click(function(){
 
 		$("#first-block").css('display','none');
 		$("#second-block").css('display','none');
+		$("#fourth-block").css('display','none');
 		$("#third-block").css('display','block');
-
 });
+
+
 
 
 
 $('.btn-back').click(function(){
 	$("#second-block").css('display','none');
 	$("#third-block").css('display','none');
+	$("#fourth-block").css('display','none');
+	$("#reset-msg").css('display', 'none');
 	$("#first-block").css('display','block');
 });
 
@@ -673,11 +774,10 @@ $('.btn-back').click(function(){
 
 $('a').click(function(){
 	var nid= $(this).attr('class');
-	console.log(nid);
+	//console.log(nid);
 	var coun ="1";
 	$('.tab_in_dash').each(function(){
-		var id = $(this).attr('id');
-		console.log(id);	
+		var id = $(this).attr('id');	
 
 		if(id==nid)
 		{
@@ -697,6 +797,15 @@ $('a').click(function(){
 	jQuery('.same-class').click(function(){
  jQuery('.same-class').removeClass('active');
  jQuery(this).addClass('active');
+});
+
+jQuery('a.link-1').click(function() {
+
+		$("#first-block").css('display','none');
+		$("#second-block").css('display','none');
+		$("#third-block").css('display','none');
+		$("#fourth-block").css('display','block');
+
 });
 
 
@@ -797,18 +906,12 @@ $(function(){
       });
 });
 
-
-
-        $('#select1').multiselect();
-        $('#select2').multiselect();
-         $('#select3').multiselect();
-          $('#select4').multiselect();
-          $('#select5').multiselect();
-          $('#select6').multiselect();
-
-
-
-
+$('#select1').multiselect();
+$('#select2').multiselect();
+$('#select3').multiselect();
+$('#select4').multiselect();
+$('#select5').multiselect();
+$('#select6').multiselect();
 
 
 /*=================================Date of Birth date picker=======================*/
@@ -828,19 +931,12 @@ function loadDatePicker()
      loadDatePicker();
 
 
-
-
-
-
-
-
-
-
 /*=================No UI Slider JS=================*/
 
 var select = document.getElementById('input-select');
 
 // Append the option elements
+if (select) {
 for ( var i = 1; i <= 50000; i++ ){
 
 	var option = document.createElement("option");
@@ -882,15 +978,10 @@ inputNumber.addEventListener('change', function(){
 	html5Slider.noUiSlider.set([null, this.value]);
 });
 
-
-
-
-
-
-
+}
 
 var select1 = document.getElementById('input1-select');
-
+if (select1) {
 // Append the option elements
 for ( var i = -20; i <= 40; i++ ){
 
@@ -931,7 +1022,7 @@ input1Number.addEventListener('change', function(){
 	html6Slider.noUiSlider.set([null, this.value]);
 });
 
-
+}
 
 
 $(function() {
