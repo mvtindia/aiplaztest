@@ -98,10 +98,9 @@ $res = mysqli_fetch_array($q1); ?>
 <!--<a id="a7" class="color3" data-toggle="modal" data-target="#myModal4">Edit Profile</a>-->
 <a id="a6" class="b6">Edit Profile</a>
 </p>
-<p class="text-center">
-<!--<a id="a7" class="color3" data-toggle="modal" data-target="#myModal4">Edit Profile</a>-->
+<!--<p class="text-center">
 <a id="a11" class="b11">Edit Payment Information</a>
-</p>
+</p>-->
 
 </div>
 <div class="col-md-7">
@@ -647,7 +646,7 @@ while($r31 = mysqli_fetch_array($q31)) {
 
 <!-- =========Edit Payment info=============== -->
 
-<div id="b11" class="welcome col-md-12 pd-lr-0 mg-top20 border1 tab_in_dash">
+<div id="b11" class="welcome col-md-12 pd-lr-0 mg-top20 border1 tab_in_dash" style="display: none;">
 <div class="col-md-12 backcolor3 pd-top10">
 <p class="bold">Edit Payment Information</p>
 </div>
