@@ -193,7 +193,7 @@ else
             <?php
 //Include FB config file && User class
   
-              $loginURL = $facebook->getLoginUrl(array('redirect_uri'=>$redirectURL,'scope'=>$fbPermissions));
+              //$loginURL = $facebook->getLoginUrl(array('redirect_uri'=>$redirectURL,'scope'=>$fbPermissions));
               $output = '<a href="'.$loginURL.'"><button class="fb-btn"><i class="fa fa-facebook"></i>&nbsp;Join with Facebook</button></a>';
             ?>     
               <div class="fb">
