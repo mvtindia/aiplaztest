@@ -21,14 +21,16 @@ else{
 //die();
 }
 
-if(isset($_REQUEST['submit']))
+if(isset($_REQUEST['oldpass']))
 {
+    error_log("spotb"); 
 $oldpass=$_REQUEST['oldpass'];
 if($oldpass!="")
 {
 $cpass=$_REQUEST['cpass'];
+error_log($cpass);
 
-$updatesql="UPDATE admin SET admin_password='".$cpass."' WHERE admin_id=1";
+$updatesql="UPDATE `admin` SET `admin_password` = '".$cpass."' WHERE `admin_id` = 1";
 
 $query=mysqli_query($connect,$updatesql);
 if($query>0){

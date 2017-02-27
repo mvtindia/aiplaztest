@@ -52,7 +52,7 @@
                               
                                  <div class="form-group last">
                                      <div class="col-md-5" class="iconic-input">
-                                         <button class="btn btn-info" type="submit" id="passsubmit" name="submit">Change </button>
+                                         <button class="btn btn-info" type="submit" id="passsubmit" name="subbut" value="y">Change </button>
                                     </div>
                                  </div>
                             </form>

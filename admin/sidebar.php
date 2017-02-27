@@ -53,6 +53,7 @@
                 <li><a href="rules.php"><i class="fa fa-paperclip"></i>Rules</a></li>
                 <li><a href="event.php"><i class="fa fa-calendar"></i>Events</a></li>
                 <li><a href="tax.php"><i class="fa fa-inr"></i>Tax</a></li>
+                <li><a href="fees.php"><i class="fa fa-inr"></i>Fees</a></li>
                 <li><a href="area.php"><i class="fa fa-inr"></i>Area</a></li>
                 <li><a href="places.php"><i class="fa fa-check-square"></i>Places</a></li>
                 <li><a href="services.php"><i class="fa fa-check-square"></i>Services</a></li>
