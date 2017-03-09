@@ -2,9 +2,13 @@
 session_start();
 include_once('connect.php');
 include_once('email.php');
-$uid = $_SESSION['u_id'];
+if (isset($_SESSION['u_id'])) {
+        $uid = $_SESSION['u_id'];
+} else {
+          header("Location: index.php");
+}
 require __DIR__ . '/vendor/autoload.php';
-\Stripe\Stripe::setApiKey("sk_test_oVcdv8o1obp6jTmxLNRUeH9s");
+\Stripe\Stripe::setApiKey("sk_test_MHPzQScCOwog2wlbeqoZtptR");
 if (isset($_POST['stripeToken'])) {
     
     
