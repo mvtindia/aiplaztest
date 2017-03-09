@@ -23,7 +23,7 @@ if (isset($_POST['stripeToken'])) {
     
     $amt = $_POST['total_price'];
     $zip = $_POST['address_zip'];
-    
+    error_log("total_price" . $amt);
     $customer = "";
     $charge = "";
     $cusid = "";
@@ -61,6 +61,7 @@ if (isset($_POST['stripeToken'])) {
         "source" => $token,
         "address_zip" => $zip,
         ));
+        error_log($charge->status);
     }
 } else if (isset($_POST['customer'])) {
   error_log("here i is");
