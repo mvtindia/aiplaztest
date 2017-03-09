@@ -69,7 +69,7 @@ if (isset($_POST['stripeToken'])) {
         error_log($e);
       }
       $uid = $_SESSION['u_id'];
-      error_log('insert into `transactions` (`user_id`, `amount`, `comment`) values ("'.$uid.'", "'.$amt.'", "One time transaction.")');
+     
       $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `amount`, `comment`) values ("'.$uid.'", "'.$amt.'", "One time transaction.")');
     }
 } else if (isset($_POST['customer'])) {
@@ -84,13 +84,13 @@ if (isset($_POST['stripeToken'])) {
             "currency" => "usd",
             "customer" => $cusid,
   ));
-  error_log('insert into `transactions` (`user_id`, `stripe_cusid`, `amount`) values ("'.$uid.'", "'.$cusid.'", "'.$amt.'")');
+ 
   $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `cusid`, `amount`) values ("'.$uid.'", "'.$cusid.'", "'.$amt.'")');
   
 } else {
   $strq = mysqli_query($connect, 'select * from stripeaccts where user_id = "'.$uid.'" and stripe_type = "cu"');
   $strres = mysqli_fetch_array($strq);
-  error_log("stripe code: " . $strres['stripe_cusid']);
+  
 }
 if (isset($charge)) {
   if ($charge->status = 'succeeded') {
@@ -206,7 +206,7 @@ if (isset($charge)) {
 <h2>Your transaction was successful!</h2>
 </div>
 <!--<div>Amount: &#36;<?php echo $_POST['total_price'] * .01 ?></div>-->
-<div>Amount: &#36;<?php echo $_POST['total_price']; error_log('totalprice: ' . $_POST['total_price']); ?></div>
+<div>Amount: &#36;<?php echo "hello" ?></div>
 <div>Location: <?php echo $_POST['theplace']?></div>
 <div>Event Times: <?php echo $_POST['checkin'] . " to " . $_POST['checkout'] ?></div>
 <div>An email has been sent to you to you with your transaction details.</div>
