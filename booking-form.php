@@ -53,7 +53,7 @@ $r17=mysqli_fetch_array($q17);
 <div class="row">
 <div class="col-lg-8 col-sm-8 col-md-8 col-xs-12">
 <div class="tellus-data col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0">
-<form  id="booking_form45" method="post" action="creditcard.php" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0" >
+<form  id="bkform" method="post" action="creditcard.php" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0" >
 <!--<form  method="post" action="creditcard2.php" id="bkform" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0" >-->
 <div class="had-frm">Your Details</div>
 <div class="frm-field-mar">
@@ -282,7 +282,7 @@ $r17=mysqli_fetch_array($q17);
 
   ?>
   <script>
-  $tots = <?php echo $r17['hotel'] ?> * 100;
+  //$tots = <?php echo $r17['hotel'] ?> * 100;
 document.getElementById('payonline').addEventListener('click', function(e) {
   $('form#bkform').submit();
 }); 
