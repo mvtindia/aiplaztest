@@ -61,7 +61,6 @@ if (isset($_POST['stripeToken'])) {
         "currency" => "usd",
         "description" => "2finda charge",
         "source" => $token,
-        "address_zip" => $zip,
         ));
       } catch (Exception $e) {
         error_log($e);
