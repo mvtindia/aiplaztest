@@ -260,7 +260,7 @@ if (isset($charge)) {
       <div class="form-group">
         <label class="col-sm-3 control-label" for="card-holder-name">Zip Code</label>
         <div class="col-sm-3">
-          <input type="text" class="form-control" data-stripe="address_zip" id="card-holder-name">
+          <input type="text" class="form-control" data-stripe="address_zip" name="address_zip" id="card-holder-name">
           <!--<input type="hidden" name="total_price" value="<?php echo (ltrim($_POST['total_price'], '$') * 100)?>">-->
           <input type="hidden" name="total_price" value="<?php echo ltrim($_POST['total_price'], '$')?>">
           <input type="hidden" name="checkin" value="<?php echo $_POST['checkin']?>">
