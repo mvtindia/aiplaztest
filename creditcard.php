@@ -80,8 +80,9 @@ if (isset($charge)) {
     $email = $_SESSION['email'];
     $fname = $_SESSION['fname'];
     $lname = $_SESSION['lname'];
-    $total_price = $_POST['total_price'] * .01;
-    $_SESSION['total_price'] = $total_price;
+    $total_price = $_POST['total_price'];
+    //$total_price = $_POST['total_price'] * .01;
+    //$_SESSION['total_price'] = $total_price;
     
     $theplace = $_POST['theplace'];
     $_SESSION['theplace'] = $theplace;
@@ -187,7 +188,8 @@ if (isset($charge)) {
 <div>
 <h2>Your transaction was successful!</h2>
 </div>
-<div>Amount: &#36;<?php echo $_POST['total_price'] * .01 ?></div>
+<!--<div>Amount: &#36;<?php echo $_POST['total_price'] * .01 ?></div>-->
+<div>Amount: &#36;<?php echo $_POST['total_price'] ?>
 <div>Location: <?php echo $_POST['theplace']?></div>
 <div>Event Times: <?php echo $_POST['checkin'] . " to " . $_POST['checkout'] ?></div>
 <div>An email has been sent to you to you with your transaction details.</div>
@@ -253,7 +255,8 @@ if (isset($charge)) {
         <label class="col-sm-3 control-label" for="card-holder-name">Zip Code</label>
         <div class="col-sm-3">
           <input type="text" class="form-control" data-stripe="address_zip" id="card-holder-name">
-          <input type="hidden" name="total_price" value="<?php echo (ltrim($_POST['total_price'], '$') * 100)?>">
+          <!--<input type="hidden" name="total_price" value="<?php echo (ltrim($_POST['total_price'], '$') * 100)?>">-->
+          <input type="hidden" name="total_price" value="<?php echo ltrim($_POST['total_price'], '$')?>">
           <input type="hidden" name="checkin" value="<?php echo $_POST['checkin']?>">
           <input type="hidden" name="checkout" value="<?php echo $_POST['checkout']?>">
           <input type="hidden" name="theplace" value="<?php echo $_POST['theplace']?>">
@@ -282,7 +285,8 @@ if (isset($charge)) {
     <form method="post">
     <input type="hidden" name="stripeid" value="<?php echo $strres['stripe_cusid'] ?>">
     <input type="hidden" name="customer" value="customer">
-    <input type="hidden" name="total_price" value="<?php echo (ltrim($_POST['total_price'], '$') * 100) ?>">
+    <!--<input type="hidden" name="total_price" value="<?php echo (ltrim($_POST['total_price'], '$') * 100) ?>">-->
+    <input type="hidden" name="total_price" value="<?php echo ltrim($_POST['total_price'], '$') ?>">
     <input type="hidden" name="checkin" value="<?php echo $_POST['checkin'] ?>">
     <input type="hidden" name="checkout" value="<?php echo $_POST['checkout'] ?>">
     <input type="hidden" name="theplace" value="<?php echo $_POST['theplace'] ?>">
