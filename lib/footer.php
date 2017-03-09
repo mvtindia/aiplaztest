@@ -1175,7 +1175,7 @@ $('.picking').change(function(){
 <?php } ?>
 
 //Google login
-startApp();
+//startApp();
 $(document).ready(function() {
   
   //Set the carousel options
