@@ -56,6 +56,7 @@ if (isset($_POST['stripeToken'])) {
           $inscus = mysqli_query($connect, 'insert into `stripeaccts` (`user_id`, `stripe_cusid`, `stripe_type`) values ("'.$uid.'", "'.$cusid.'", "cu")');
         }
     } else {
+      try {
         $charge = \Stripe\Charge::create(array(
         "amount" => $amt,
         "currency" => "usd",
@@ -63,7 +64,9 @@ if (isset($_POST['stripeToken'])) {
         "source" => $token,
         "address_zip" => $zip,
         ));
-        error_log($charge->status);
+      } catch (Exception $e) {
+        error_log($e);
+      }
     }
 } else if (isset($_POST['customer'])) {
   error_log("here i is");
