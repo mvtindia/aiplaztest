@@ -3,6 +3,7 @@ session_start();
 include_once('connect.php');
 include_once('email.php');
 $uid = "";
+$amt = "";
 if (isset($_SESSION['u_id'])) {
         $uid = $_SESSION['u_id'];
 } else {
@@ -22,7 +23,8 @@ if (isset($_POST['stripeToken'])) {
     //    $token = $_POST['stripeid'];
    // }
     
-    $amt = $_POST['total_price'] * 100;
+    $amt = $_POST['total_price'];
+    $stripe_amt = $amt * 100;
     $zip = $_POST['address_zip'];
     error_log("amount: " . $amt);
     $customer = "";
@@ -45,7 +47,7 @@ if (isset($_POST['stripeToken'])) {
         //error_log('spotx');
         
         $charge = \Stripe\Charge::create(array(
-            "amount" => $amt,
+            "amount" => $stripe_amt,
             "currency" => "usd",
             "customer" => $cusid,
         ));
@@ -57,7 +59,7 @@ if (isset($_POST['stripeToken'])) {
     } else {
       try {
         $charge = \Stripe\Charge::create(array(
-        "amount" => $amt,
+        "amount" => $stripe_amt,
         "currency" => "usd",
         "description" => "2finda charge",
         "source" => $token,
@@ -67,17 +69,17 @@ if (isset($_POST['stripeToken'])) {
       }
     }
 } else if (isset($_POST['customer'])) {
-  error_log("here i is");
   
   $cusid = $_POST['stripeid'];
   $amt = $_POST['total_price'];
-  error_log($cusid . " " . $amt);
+  $stripe_amt = $amt * 100;
+  
   $charge = \Stripe\Charge::create(array(
-            "amount" => $amt,
+            "amount" => $stripe_amt,
             "currency" => "usd",
             "customer" => $cusid,
   ));
-  error_log($charge->status);
+  
 } else {
   $strq = mysqli_query($connect, 'select * from stripeaccts where user_id = "'.$uid.'" and stripe_type = "cu"');
   $strres = mysqli_fetch_array($strq);
