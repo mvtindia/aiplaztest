@@ -26,11 +26,11 @@ if (isset($_POST['stripeToken'])) {
     $amt = $_POST['total_price'];
     $stripe_amt = $amt * 100;
     $zip = $_POST['address_zip'];
-    error_log("amount: " . $amt);
+    
     $customer = "";
     $charge = "";
     $cusid = "";
-    error_log("token: " . $token . " " . $uid);
+    
     // Charge the user's card:
     if (isset($_POST['newcustomer'])) {
       //$strq = mysqli_query($connect, 'select * from stripeaccts where user_id = "'.$uid.'"');
@@ -53,7 +53,7 @@ if (isset($_POST['stripeToken'])) {
         ));
         //error_log($charge->status);
         if ($charge->status == 'succeeded') {
-          
+          $uid = $_SESSION['u_id'];
           $inscus = mysqli_query($connect, 'insert into `stripeaccts` (`user_id`, `stripe_cusid`, `stripe_type`) values ("'.$uid.'", "'.$cusid.'", "cu")');
           $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `stripe_cusid`, `amount`) values ("'.$uid.'", "'.$cusid.'", "'.$amt.'")');
         }
@@ -68,12 +68,14 @@ if (isset($_POST['stripeToken'])) {
       } catch (Exception $e) {
         error_log($e);
       }
+      $uid = $_SESSION['u_id'];
       $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `amount`, `comment`) values ("'.$uid.'", "'.$amt.'", "One time transaction.")');
     }
 } else if (isset($_POST['customer'])) {
   
   $cusid = $_POST['stripeid'];
   $amt = $_POST['total_price'];
+  $uid = $_SESSION['u_id'];
   $stripe_amt = $amt * 100;
   
   $charge = \Stripe\Charge::create(array(
