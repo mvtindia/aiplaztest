@@ -69,6 +69,7 @@ if (isset($_POST['stripeToken'])) {
         error_log($e);
       }
       $uid = $_SESSION['u_id'];
+      error_log('insert into `transactions` (`user_id`, `amount`, `comment`) values ("'.$uid.'", "'.$amt.'", "One time transaction.")');
       $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `amount`, `comment`) values ("'.$uid.'", "'.$amt.'", "One time transaction.")');
     }
 } else if (isset($_POST['customer'])) {
