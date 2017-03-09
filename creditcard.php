@@ -55,7 +55,7 @@ if (isset($_POST['stripeToken'])) {
         if ($charge->status == 'succeeded') {
           $uid = $_SESSION['u_id'];
           $inscus = mysqli_query($connect, 'insert into `stripeaccts` (`user_id`, `stripe_cusid`, `stripe_type`) values ("'.$uid.'", "'.$cusid.'", "cu")');
-          $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `stripe_cusid`, `amount`) values ("'.$uid.'", "'.$cusid.'", "'.$amt.'")');
+          $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `cusid`, `amount`) values ("'.$uid.'", "'.$cusid.'", "'.$amt.'")');
         }
     } else {
       try {
@@ -85,7 +85,7 @@ if (isset($_POST['stripeToken'])) {
             "customer" => $cusid,
   ));
   error_log('insert into `transactions` (`user_id`, `stripe_cusid`, `amount`) values ("'.$uid.'", "'.$cusid.'", "'.$amt.'")');
-  $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `stripe_cusid`, `amount`) values ("'.$uid.'", "'.$cusid.'", "'.$amt.'")');
+  $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `cusid`, `amount`) values ("'.$uid.'", "'.$cusid.'", "'.$amt.'")');
   
 } else {
   $strq = mysqli_query($connect, 'select * from stripeaccts where user_id = "'.$uid.'" and stripe_type = "cu"');
