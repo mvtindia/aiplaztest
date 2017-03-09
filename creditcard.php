@@ -206,7 +206,7 @@ if (isset($charge)) {
 <h2>Your transaction was successful!</h2>
 </div>
 <!--<div>Amount: &#36;<?php echo $_POST['total_price'] * .01 ?></div>-->
-<div>Amount: &#36;<?php echo $_POST['total_price'] ?></div>
+<div>Amount: &#36;<?php echo $_POST['total_price']; error_log('totalprice: ' . $_POST['total_price']); ?></div>
 <div>Location: <?php echo $_POST['theplace']?></div>
 <div>Event Times: <?php echo $_POST['checkin'] . " to " . $_POST['checkout'] ?></div>
 <div>An email has been sent to you to you with your transaction details.</div>
