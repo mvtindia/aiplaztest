@@ -22,10 +22,9 @@ if (isset($_POST['stripeToken'])) {
     //    $token = $_POST['stripeid'];
    // }
     
-    $amt = $_POST['total_price'];
+    $amt = float_val($_POST['total_price']);
     $zip = $_POST['address_zip'];
-    error_log("total_price: " . $amt);
-    error_log("zip: " . $zip);
+    error_log("amount: " . $amt);
     $customer = "";
     $charge = "";
     $cusid = "";
