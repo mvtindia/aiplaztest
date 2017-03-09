@@ -84,6 +84,7 @@ if (isset($_POST['stripeToken'])) {
             "currency" => "usd",
             "customer" => $cusid,
   ));
+  error_log('insert into `transactions` (`user_id`, `stripe_cusid`, `amount`) values ("'.$uid.'", "'.$cusid.'", "'.$amt.'")');
   $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `stripe_cusid`, `amount`) values ("'.$uid.'", "'.$cusid.'", "'.$amt.'")');
   
 } else {
