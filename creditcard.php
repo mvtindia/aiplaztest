@@ -2,6 +2,7 @@
 session_start();
 include_once('connect.php');
 include_once('email.php');
+$uid = "";
 if (isset($_SESSION['u_id'])) {
         $uid = $_SESSION['u_id'];
 } else {
@@ -28,7 +29,7 @@ if (isset($_POST['stripeToken'])) {
     $customer = "";
     $charge = "";
     $cusid = "";
-    error_log("token: " . $token . " ". $uid);
+    error_log("token: " . $token . " " . $uid);
     // Charge the user's card:
     if (isset($_POST['newcustomer'])) {
       //$strq = mysqli_query($connect, 'select * from stripeaccts where user_id = "'.$uid.'"');
@@ -403,7 +404,7 @@ if (isset($charge)) {
 });*/
 <?php // }
 ?> 
-  Stripe.setPublishableKey('pk_test_v4SVzvDaOp0VobXVlwXx6UdB');
+  Stripe.setPublishableKey('pk_test_IdZ2U4nGUg0vVG2yu8eMgbbc');
   $(function() {
   var $form = $('#payment-form');
   $form.submit(function(event) {
