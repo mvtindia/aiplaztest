@@ -98,8 +98,8 @@ if (isset($charge)) {
     $fname = $_SESSION['fname'];
     $lname = $_SESSION['lname'];
     $total_price = $_POST['total_price'];
-    //$total_price = $_POST['total_price'] * .01;
-    //$_SESSION['total_price'] = $total_price;
+    $total_price = $_POST['total_price'];
+    $_SESSION['total_price'] = $total_price;
     
     $theplace = $_POST['theplace'];
     $_SESSION['theplace'] = $theplace;
