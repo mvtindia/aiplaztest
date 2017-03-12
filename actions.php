@@ -27,7 +27,7 @@ if (isset($_REQUEST['value'])) {
 
             $body = 'Hi ' . $fname . ',<br>
 
-To confirm your 2finda account, simply click or copy this link to a browser: http://' . $_SERVER['SERVER_NAME'] . '/verify.php?id=' . $id . '&code=' . $code . '
+To confirm your 2finda account, simply click or copy this link to a browser: https://' . $_SERVER['SERVER_NAME'] . '/verify.php?id=' . $id . '&code=' . $code . '
 <br>
 Your 2finda team';
 

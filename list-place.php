@@ -321,7 +321,7 @@ $sfee = $feeres['percentage'] * .01; ?>
                                 </div>
                             </div>
                             <div class="but-align form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <button type="submit" name="place" class="btn btn-default cus-save-but">Continue</button>
+                                <button type="submit" name="place" class="btn btn-default cus-save-but">Register & continue</button>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -341,7 +341,7 @@ $sfee = $feeres['percentage'] * .01; ?>
                     
                     <form id="calenderform" method="POST" enctype="multipart/form-data" >
                     <div id="calender-tab" style="display:none;">
-                        <h4 style="color: blue;">*You will receive a confirmation email, but in the meantime, please add available times for your place.</h4>
+                        <h4 style="color: red;">*You will receive a confirmation email, but in the meantime, please add available times for your place.</h4>
                         <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
                         <div class="tellus-data col-lg-12 col-sm-12 col-md-12 col-xs-12 pd-lr-0" >
                             <div class="had-frm-sec" >Seasonal & Advanced Scheduling</div>
@@ -422,7 +422,7 @@ $sfee = $feeres['percentage'] * .01; ?>
                         <div class="clearfix"></div>
                     </div>       
                     
-                    <form id="brtacctform" method="POST" action="brtmaccount.php" enctype="multipart/form-data" >
+                    <form id="sacctform" method="POST" action="stripemaccount.php" enctype="multipart/form-data" >
                     <div id="sacct-tab" style="display:none;">
                         <h4 style="color: red;"></h4>
                         <input type="hidden" class="placeid" name="placeid" value="" id="placeid">
@@ -441,41 +441,9 @@ $sfee = $feeres['percentage'] * .01; ?>
                                                 <label for="space">Organization</label>
                 		                        <input type='text' class="form-control" name="business_name" id=""  />
             	                </div>
-                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
-                                                <label for="space">First Name</label>
-                		                        <input type='text' class="form-control" name="firstName" id="" value="<?php echo $_SESSION['fname'] ?>" />
-            	                </div>
-                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
-                                                <label for="space">Last Name</label>
-                		                        <input type='text' class="form-control" name="lastName" id="" value="<?php echo $_SESSION['lname'] ?>"  />
-            	                </div>
-                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
-                                                <label for="space">Email</label>
-                		                        <input type='text' class="form-control" name="email" id="" value="<?php echo $_SESSION['lname'] ?>"  />
-            	                </div>
-                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
-                                                <label for="space">Street Address</label>
-                		                        <input type='text' class="form-control" name="streetAddress" id="" value=""  />
-            	                </div>
-                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
-                                                <label for="space">City</label>
-                		                        <input type='text' class="form-control" name="locality" id="" value=""  />
-            	                </div>
-                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
-                                                <label for="space">State</label>
-                		                        <input type='text' class="form-control" name="region" id="" value=""  />
-            	                </div>
-                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
-                                                <label for="space">Zip Code</label>
-                		                        <input type='text' class="form-control" name="postalCode" id="" value=""  />
-            	                </div>
-                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
-                                                <label for="space">Date of Birth</label>
-                		                        <input type='text' class="form-control" name="dateOfBirth" id="" value=""  />
-            	                </div>
           	                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
                                                 <label for="space">Account Number</label>
-                		                        <input type='text' class="form-control" name="accountNumber" id="" required  />
+                		                        <input type='text' class="form-control" name="account_number" id="" required  />
                                                 <input type='hidden' class="form-control" name="account_type" value="bank_account" required  />
                                                 <input type='hidden' class="form-control" name="account_holder_type" value="individual" required  />
                                                 <input type='hidden' class="form-control" name="country" value="US" required  />
@@ -484,7 +452,7 @@ $sfee = $feeres['percentage'] * .01; ?>
             	                </div>
                                 <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3 input-group date">
                                                 <label for="space">Routing Number</label>
-                		                        <input type='text' class="form-control" name="routingNumber" id="" required  />
+                		                        <input type='text' class="form-control" name="routing_number" id="" required  />
             	                </div>
 
                                 <!--<div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 10px 0 10px 0;">
@@ -493,7 +461,7 @@ $sfee = $feeres['percentage'] * .01; ?>
                                 </div>-->
                                 <div class="form-group col-lg-5 col-md-6 col-sm-6 col-lg-offset-3 col-md-offset-3 col-xs-12">
                 	                            <button id="savesacct" type="submit" name="savesacct" class="btn btn-default cus-save-but">Save Account Information</button><br>
-                                                By clicking this button, you agree to the.
+                                                By clicking this button, you agree to the <a href="https://stripe.com/connect-account/legal">Stripe Connected Account Agreement</a>.
                                                 <span id="span1a" style="display:none; color: red;">Please enter missing values.</span>
 		                        </div>
                                 <div class="clearfix"></div>

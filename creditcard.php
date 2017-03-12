@@ -2,28 +2,33 @@
 session_start();
 include_once('connect.php');
 include_once('email.php');
-$uid = $_SESSION['u_id'];
+$uid = "";
+$amt = "";
+if (isset($_SESSION['u_id'])) {
+        $uid = $_SESSION['u_id'];
+} else {
+          header("Location: index.php");
+}
 require __DIR__ . '/vendor/autoload.php';
-\Stripe\Stripe::setApiKey("sk_test_oVcdv8o1obp6jTmxLNRUeH9s");
+\Stripe\Stripe::setApiKey("sk_test_MHPzQScCOwog2wlbeqoZtptR");
 if (isset($_POST['stripeToken'])) {
     
-    
-
     // Token is created using Stripe.js or Checkout!
     // Get the payment token submitted by the form:
     //if (isset($_POST['stripetoken'])) {
-        $token = $_POST['stripeToken'];
+    $token = $_POST['stripeToken'];
     //} else if (isset($_POST['stripeid'])) {
     //    $token = $_POST['stripeid'];
    // }
     
     $amt = $_POST['total_price'];
+    $stripe_amt = $amt * 100;
     $zip = $_POST['address_zip'];
     
     $customer = "";
     $charge = "";
     $cusid = "";
-    error_log("token: " . $token . " ". $uid);
+    
     // Charge the user's card:
     if (isset($_POST['newcustomer'])) {
       //$strq = mysqli_query($connect, 'select * from stripeaccts where user_id = "'.$uid.'"');
@@ -40,47 +45,58 @@ if (isset($_POST['stripeToken'])) {
         //error_log('spotx');
         
         $charge = \Stripe\Charge::create(array(
-            "amount" => $amt,
+            "amount" => $stripe_amt,
             "currency" => "usd",
             "customer" => $cusid,
         ));
         //error_log($charge->status);
         if ($charge->status == 'succeeded') {
-          
+          $uid = $_SESSION['u_id'];
           $inscus = mysqli_query($connect, 'insert into `stripeaccts` (`user_id`, `stripe_cusid`, `stripe_type`) values ("'.$uid.'", "'.$cusid.'", "cu")');
+          $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `cusid`, `amount`) values ("'.$uid.'", "'.$cusid.'", "'.$amt.'")');
         }
     } else {
+      try {
         $charge = \Stripe\Charge::create(array(
-        "amount" => $amt,
+        "amount" => $stripe_amt,
         "currency" => "usd",
         "description" => "2finda charge",
         "source" => $token,
-        "address_zip" => $zip,
         ));
+      } catch (Exception $e) {
+        error_log($e);
+      }
+      $uid = $_SESSION['u_id'];
+     
+      $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `amount`, `comment`) values ("'.$uid.'", "'.$amt.'", "One time transaction.")');
     }
 } else if (isset($_POST['customer'])) {
-  error_log("here i is");
   
   $cusid = $_POST['stripeid'];
   $amt = $_POST['total_price'];
-  error_log($cusid . " " . $amt);
+  $uid = $_SESSION['u_id'];
+  $stripe_amt = $amt * 100;
+  
   $charge = \Stripe\Charge::create(array(
-            "amount" => $amt,
+            "amount" => $stripe_amt,
             "currency" => "usd",
             "customer" => $cusid,
   ));
-  error_log($charge->status);
+ 
+  $instrans = mysqli_query($connect, 'insert into `transactions` (`user_id`, `cusid`, `amount`) values ("'.$uid.'", "'.$cusid.'", "'.$amt.'")');
+  
 } else {
   $strq = mysqli_query($connect, 'select * from stripeaccts where user_id = "'.$uid.'" and stripe_type = "cu"');
   $strres = mysqli_fetch_array($strq);
-  error_log("stripe code: " . $strres['stripe_cusid']);
+  
 }
 if (isset($charge)) {
   if ($charge->status = 'succeeded') {
     $email = $_SESSION['email'];
     $fname = $_SESSION['fname'];
     $lname = $_SESSION['lname'];
-    $total_price = $_POST['total_price'] * .01;
+    $total_price = $_POST['total_price'];
+    $total_price = $_POST['total_price'];
     $_SESSION['total_price'] = $total_price;
     
     $theplace = $_POST['theplace'];
@@ -187,7 +203,8 @@ if (isset($charge)) {
 <div>
 <h2>Your transaction was successful!</h2>
 </div>
-<div>Amount: &#36;<?php echo $_POST['total_price'] * .01 ?></div>
+<!--<div>Amount: &#36;<?php echo $_POST['total_price'] * .01 ?></div>-->
+<div>Amount: &#36;<?php echo "hello" ?></div>
 <div>Location: <?php echo $_POST['theplace']?></div>
 <div>Event Times: <?php echo $_POST['checkin'] . " to " . $_POST['checkout'] ?></div>
 <div>An email has been sent to you to you with your transaction details.</div>
@@ -252,12 +269,12 @@ if (isset($charge)) {
       <div class="form-group">
         <label class="col-sm-3 control-label" for="card-holder-name">Zip Code</label>
         <div class="col-sm-3">
-          <input type="text" class="form-control" data-stripe="address_zip" id="card-holder-name">
-          <input type="hidden" name="total_price" value="<?php echo (ltrim($_POST['total_price'], '$') * 100)?>">
+          <input type="text" class="form-control" data-stripe="address_zip" name="address_zip" id="card-holder-name">
+          <!--<input type="hidden" name="total_price" value="<?php echo (ltrim($_POST['total_price'], '$') * 100)?>">-->
+          <input type="hidden" name="total_price" value="<?php echo ltrim($_POST['total_price'], '$')?>">
           <input type="hidden" name="checkin" value="<?php echo $_POST['checkin']?>">
           <input type="hidden" name="checkout" value="<?php echo $_POST['checkout']?>">
           <input type="hidden" name="theplace" value="<?php echo $_POST['theplace']?>">
-
         </div>
       </div>
       
@@ -283,7 +300,8 @@ if (isset($charge)) {
     <form method="post">
     <input type="hidden" name="stripeid" value="<?php echo $strres['stripe_cusid'] ?>">
     <input type="hidden" name="customer" value="customer">
-    <input type="hidden" name="total_price" value="<?php echo (ltrim($_POST['total_price'], '$') * 100) ?>">
+    <!--<input type="hidden" name="total_price" value="<?php echo (ltrim($_POST['total_price'], '$') * 100) ?>">-->
+    <input type="hidden" name="total_price" value="<?php echo ltrim($_POST['total_price'], '$') ?>">
     <input type="hidden" name="checkin" value="<?php echo $_POST['checkin'] ?>">
     <input type="hidden" name="checkout" value="<?php echo $_POST['checkout'] ?>">
     <input type="hidden" name="theplace" value="<?php echo $_POST['theplace'] ?>">
@@ -394,7 +412,7 @@ if (isset($charge)) {
 });*/
 <?php // }
 ?> 
-  Stripe.setPublishableKey('pk_test_v4SVzvDaOp0VobXVlwXx6UdB');
+  Stripe.setPublishableKey('pk_test_IdZ2U4nGUg0vVG2yu8eMgbbc');
   $(function() {
   var $form = $('#payment-form');
   $form.submit(function(event) {
