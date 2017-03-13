@@ -4,7 +4,7 @@ require __DIR__ . '/vendor/autoload.php';
 require_once('connect.php');
 \Stripe\Stripe::setApiKey("sk_test_MHPzQScCOwog2wlbeqoZtptR");
 $uid = $_SESSION['u_id'];
-error_log("spota");
+error_log("values: " . $_POST['account_number'] . " " . $_POST['account_holder_type']);
 try {
 $sacct = \Stripe\Account::create(array(
   "managed" => true,
