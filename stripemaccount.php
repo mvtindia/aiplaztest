@@ -2,7 +2,7 @@
 session_start();
 require __DIR__ . '/vendor/autoload.php';
 require_once('connect.php');
-\Stripe\Stripe::setApiKey("sk_test_oVcdv8o1obp6jTmxLNRUeH9s");
+\Stripe\Stripe::setApiKey("sk_test_MHPzQScCOwog2wlbeqoZtptR");
 $uid = $_SESSION['u_id'];
 
 $sacct = \Stripe\Account::create(array(
@@ -18,7 +18,7 @@ $sacct = \Stripe\Account::create(array(
     "account_type_holder" => $_POST['account_holder_type'],
   )),
   "tos_acceptance" => array(
-    "date" => 1485721872,
+    "date" => time(),
     "ip" => "73.72.131.239"
   )
 ));
@@ -26,7 +26,7 @@ $acctid = $sacct->id;
 $insres = mysqli_query($connect, "insert into stripeaccts (user_id, stripe_cusid, stripe_type) values ('".$uid."', '".$acctid."', 'ma')");
 
 if ($insres) {
-  header('Location: dashboard.php');
+  header('Location: dashboard.php?sacct=y');
   exit;
 }
 ?>
