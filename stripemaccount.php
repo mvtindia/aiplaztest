@@ -22,9 +22,11 @@ $sacct = \Stripe\Account::create(array(
     "ip" => "73.72.131.239"
   )
 ));
+error_log("account_holder_type");
+error_log("spotb");
 $acctid = $sacct->id;
 $insres = mysqli_query($connect, "insert into stripeaccts (user_id, stripe_cusid, stripe_type) values ('".$uid."', '".$acctid."', 'ma')");
-error_log("spotb");
+error_log("spotc");
 if ($insres) {
   header('Location: dashboard.php?sacct=y');
   exit;
