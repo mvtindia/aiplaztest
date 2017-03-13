@@ -5,6 +5,7 @@ require_once('connect.php');
 \Stripe\Stripe::setApiKey("sk_test_MHPzQScCOwog2wlbeqoZtptR");
 $uid = $_SESSION['u_id'];
 error_log("spota");
+try {
 $sacct = \Stripe\Account::create(array(
   "managed" => true,
   "country" => "US",
@@ -22,6 +23,9 @@ $sacct = \Stripe\Account::create(array(
     "ip" => "73.72.131.239"
   )
 ));
+} catch (Exception $e) {
+  error_log($e);
+}
 error_log("account_holder_type");
 error_log("spotb");
 $acctid = $sacct->id;
