@@ -4,7 +4,7 @@ require __DIR__ . '/vendor/autoload.php';
 require_once('connect.php');
 \Stripe\Stripe::setApiKey("sk_test_MHPzQScCOwog2wlbeqoZtptR");
 $uid = $_SESSION['u_id'];
-
+error_log("spota");
 $sacct = \Stripe\Account::create(array(
   "managed" => true,
   "country" => "US",
@@ -24,7 +24,7 @@ $sacct = \Stripe\Account::create(array(
 ));
 $acctid = $sacct->id;
 $insres = mysqli_query($connect, "insert into stripeaccts (user_id, stripe_cusid, stripe_type) values ('".$uid."', '".$acctid."', 'ma')");
-
+error_log("spotb");
 if ($insres) {
   header('Location: dashboard.php?sacct=y');
   exit;
