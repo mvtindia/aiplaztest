@@ -53,8 +53,8 @@ $r17=mysqli_fetch_array($q17);
 <div class="row">
 <div class="col-lg-8 col-sm-8 col-md-8 col-xs-12">
 <div class="tellus-data col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0">
-<!--<form  id="booking_form45" method="post" action="creditcard.php" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0" >-->
-<form  method="post" action="creditcard2.php" id="bkform" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0" >
+<form  id="bkform" method="post" action="creditcard.php" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0" >
+<!--<form  method="post" action="creditcard2.php" id="bkform" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd-lr-0" >-->
 <div class="had-frm">Your Details</div>
 <div class="frm-field-mar">
 
@@ -102,6 +102,22 @@ $r17=mysqli_fetch_array($q17);
     <input readonly="" type="text" value="<?php echo $dtout ?>" name="checkout" class="form-control" id="" placeholder="5-10-12">
   </div>
   
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-top10">
+  <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
+    <label for="space">Convenience Fee</label>
+  </div>
+   <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
+    <input readonly="" id="amount" type="text" name="show_price" value=$<?php echo $r17['hotel'] ?> class="form-control" >
+    <input type="hidden" name="total_price" value=<?php echo $_POST['conv_fee'] ?> >
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-top10">
+  <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
+    <label for="space">Processing Fee</label>
+  </div>
+   <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
+    <input readonly="" id="amount" type="text" name="show_price" value=$<?php echo $r17['hotel'] ?> class="form-control" >
+    <input type="hidden" name="total_price" value=<?php echo $_POST['proc_fee'] ?> >
   </div>
   
   
@@ -282,7 +298,7 @@ $r17=mysqli_fetch_array($q17);
 
   ?>
   <script>
-  $tots = <?php echo $r17['hotel'] ?> * 100;
+  //$tots = <?php echo $r17['hotel'] ?> * 100;
 document.getElementById('payonline').addEventListener('click', function(e) {
   $('form#bkform').submit();
 }); 
