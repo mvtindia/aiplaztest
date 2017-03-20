@@ -734,8 +734,15 @@ foreach ($calrows as $crow2) {
 		<h5>Convenience Fee</h5>
 	</div>
 	<div class="col-md-6 col-sm-6 col-xs-5">
-		<h5 class="text-right">&#36;<span class="total_price_cal"><?php echo ($res9[3] * $fee) ?></span></h5>
+		<h5 class="text-right">&#36;<span class="conv_fee"><?php echo ($res9[3] * $fee) ?></span></h5>
 	</div>
+	<div class="col-md-6 col-sm-6 col-xs-7">
+		<h5>Processing Fee</h5>
+	</div>
+	<div class="col-md-6 col-sm-6 col-xs-5">
+		<h5 class="text-right">&#36;<span class="proc_fee"><?php echo ($res9[3] * .029) ?></span></h5>
+	</div>
+
 	
 		<div class="col-md-6 col-sm-6 col-xs-7">
 			<h5>Total</h5>
@@ -990,7 +997,7 @@ $(document).ready(function(){
         }
         if(j=='0')
         {
-        var per_hours =price_cal;
+          var per_hours =price_cal;
           var price = parseInt(hours)*parseInt(price_cal);
            //console.log("defailt price"+price);
         }
@@ -1051,6 +1058,8 @@ $(document).ready(function(){
         $('.price_cal').html(per_hours);
 		$('.initprice').html(price);
 		//$('.total_price_cal').html(Number(Math.round((price * fee)+'e2')+'e-2'));
+		$('.conv_fee').html((price * fee).toFixed(2));
+		$('.proc_fee').html((price * .029).toFixed(2));
 		$('.total_price_cal').html((price * fee).toFixed(2));
 		$('.totalprice').val(final_total);
 		$('.total_price').html(final_total);
