@@ -759,6 +759,8 @@ foreach ($calrows as $crow2) {
 <input name="price" value="'.$res9['p_p_h'].'" id="price_per_week" type="hidden" />
 <input name="hours" value="0" id="total_hour" type="hidden" />
 <input name="myplaceid" value="<?php echo $placeid ?>" type="hidden" />
+<input name="proc_fee" class="processing" value="<?php echo ($res9[3] + ($res9[3] * $fee)) ?>" type="hidden" />
+<input name="conv_fee" class="convenience" value="<?php echo ($res9[3] * $fee) ?>" type="hidden" />
 <input name="totalprice" class="totalprice" value="<?php echo ($res9[3] + ($res9[3] * $fee)) ?>" type="hidden" />
 <input name="checkout" value="" type="hidden" />
 <input name="bfee" class="bfee" value=<?php echo $fee ?> type="hidden" />
@@ -1180,6 +1182,8 @@ $(document).ready(function(){
 			}
 			});*/
 			var final_total = (price + (price * fee) + (price * .029 + .30)).toFixed(2);
+			var conv_fee = (price * fee).toFixed(2);
+			var proc_fee = (price * .029 + .30).toFixed(2);
 			$('#time1').val(starttime);
 			$('#time2').val(endtime);
 			$('#total_hour').val(hours);
@@ -1188,8 +1192,10 @@ $(document).ready(function(){
 			$('.price_cal').html(per_hours);
 			$('.initprice').html(price).toFixed(2);
 			//$('.total_price_cal').html(Number(Math.round((price * fee)+'e2')+'e-2'));
-			$('.conv_fee').html((price * fee).toFixed(2));
-		    $('.proc_fee').html((price * .029 + .30).toFixed(2));
+			$('.conv_fee').html(conv_fee);
+			$('.convenience').val(conv_fee);
+		    $('.proc_fee').html(proc_fee);
+			$('.processing').val(proc_fee);
 			$('.total_price_cal').html((price * fee).toFixed(2));
 			$('.totalprice').val(final_total);
 			$('.total_price').html(final_total);
