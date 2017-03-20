@@ -1188,6 +1188,8 @@ $(document).ready(function(){
 			$('.price_cal').html(per_hours);
 			$('.initprice').html(price);
 			//$('.total_price_cal').html(Number(Math.round((price * fee)+'e2')+'e-2'));
+			$('.conv_fee').html((price * fee).toFixed(2));
+		    $('.proc_fee').html((price * .029).toFixed(2));
 			$('.total_price_cal').html((price * fee).toFixed(2));
 			$('.totalprice').val(final_total);
 			$('.total_price').html(final_total);
