@@ -1179,7 +1179,7 @@ $(document).ready(function(){
 			$('.calculated').html(hours+' hours');
 			}
 			});*/
-			var final_total = (price + (price * fee)).toFixed(2);
+			var final_total = (price + (price * fee) + (price * .029)).toFixed(2);
 			$('#time1').val(starttime);
 			$('#time2').val(endtime);
 			$('#total_hour').val(hours);
@@ -1189,7 +1189,7 @@ $(document).ready(function(){
 			$('.initprice').html(price);
 			//$('.total_price_cal').html(Number(Math.round((price * fee)+'e2')+'e-2'));
 			$('.conv_fee').html((price * fee).toFixed(2));
-		    $('.proc_fee').html((price * .029).toFixed(2));
+		    $('.proc_fee').html((price * .029 + .30).toFixed(2));
 			$('.total_price_cal').html((price * fee).toFixed(2));
 			$('.totalprice').val(final_total);
 			$('.total_price').html(final_total);
