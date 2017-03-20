@@ -1186,7 +1186,7 @@ $(document).ready(function(){
 			$('#price_per_week').val(per_hours);
 			$('.night_rupee').html(per_hours);
 			$('.price_cal').html(per_hours);
-			$('.initprice').html(price);
+			$('.initprice').html(price).toFixed(2);
 			//$('.total_price_cal').html(Number(Math.round((price * fee)+'e2')+'e-2'));
 			$('.conv_fee').html((price * fee).toFixed(2));
 		    $('.proc_fee').html((price * .029 + .30).toFixed(2));
