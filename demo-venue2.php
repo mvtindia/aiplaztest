@@ -774,6 +774,8 @@ foreach ($calrows as $crow2) {
 		<input name="theplace" value="<?php echo $match['space_name'].",".$match['p_address'];?>" type="hidden" />
 		<input id="bookid" name="bookid"  type="hidden" />
 		<input name="placeid" value="<?php echo $placeid ?>" type="hidden" />
+		<input name="proc_fee" class="processing" value="<?php echo ($res9[3] + ($res9[3] * $fee)) ?>" type="hidden" />
+        <input name="conv_fee" class="convenience" value="<?php echo ($res9[3] * $fee) ?>" type="hidden" />
 		<button id="bk-btn" type="submit">
 	</form>
 </div>
