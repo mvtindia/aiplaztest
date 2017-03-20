@@ -108,7 +108,7 @@ $r17=mysqli_fetch_array($q17);
       <label for="space">Convenience Fee</label>
     </div>
     <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-      <input readonly="" id="amount" type="text" name="show_price" value=$<?php echo $r17['hotel'] ?> class="form-control" >
+      <input readonly="" id="amount" type="text" name="show_price" value=$<?php echo $_POST['conv_fee'] ?> class="form-control" >
       <input type="hidden" name="total_price" value=<?php echo $_POST['conv_fee'] ?> >
     </div>
   </div>
@@ -117,7 +117,7 @@ $r17=mysqli_fetch_array($q17);
       <label for="space">Processing Fee</label>
     </div>
     <div class="col-md-9 col-lg-9 col-sm-8 col-xs-6">
-      <input readonly="" id="amount" type="text" name="show_price" value=$<?php echo $r17['hotel'] ?> class="form-control" >
+      <input readonly="" id="amount" type="text" name="show_price" value=$<?php echo $_POST['proc_fee'] ?> class="form-control" >
       <input type="hidden" name="total_price" value=<?php echo $_POST['proc_fee'] ?> >
     </div>
   </div>
