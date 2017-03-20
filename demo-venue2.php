@@ -1179,7 +1179,7 @@ $(document).ready(function(){
 			$('.calculated').html(hours+' hours');
 			}
 			});*/
-			var final_total = (price + (price * fee) + (price * .029)).toFixed(2);
+			var final_total = (price + (price * fee) + (price * .029 + .30)).toFixed(2);
 			$('#time1').val(starttime);
 			$('#time2').val(endtime);
 			$('#total_hour').val(hours);
