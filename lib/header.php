@@ -96,7 +96,7 @@ Your 2finda team';
         <li id="two"><a href="list-place.php">List a Space</a></li>
 
         
-        <!--<li id="three"><a href="list-service.php">List a Service</a></li>-->
+        <li id="three"><a href="list-service.php">List a Service</a></li>
     <?php 
     if(isset($_SESSION['u_id']))
     {
